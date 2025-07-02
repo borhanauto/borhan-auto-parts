@@ -45,3 +45,6 @@ function filterProducts() {
     }
   });
 }
+function toggleSearch() {
+  document.getElementById('quickSearch').classList.toggle('hidden');
+}
