@@ -548,3 +548,80 @@ footer {
 .hidden {
   display: none;
 }
+/* Container for search bar + icon */
+.search-bar-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  max-width: 500px;
+  margin: 20px auto;
+  position: relative;
+}
+
+/* Search input */
+.search-form input[type="search"] {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.search-form input[type="search"]:focus {
+  border-color: #007bff;
+}
+
+/* Search icon button */
+.popup-search-icon {
+  font-size: 22px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #333;
+  padding: 8px;
+  transition: color 0.3s;
+}
+
+.popup-search-icon:hover {
+  color: #007bff;
+}
+
+/* Popup menu */
+.popup {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+/* Popup buttons */
+.popup button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.popup button:hover {
+  background-color: #0056b3;
+}
+
+/* Hide class */
+.hidden {
+  display: none;
+}
