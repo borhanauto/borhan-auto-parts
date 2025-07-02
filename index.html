@@ -27,7 +27,12 @@
       </select>
       <input type="search" id="searchInput" onkeyup="filterProducts()" placeholder="Search products..." />
     </section>
-
+<section class="filter-bar">
+  <select id="categoryFilter" onchange="filterProducts()">
+    ...
+  </select>
+  <input type="search" id="searchInput" onkeyup="filterProducts()" placeholder="Search products..." />
+</section>
     <section class="products">
       <h2>🔥 Featured Products</h2>
       <div class="product-grid">
