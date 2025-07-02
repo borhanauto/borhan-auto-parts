@@ -11,3 +11,9 @@ document.querySelectorAll('.buy-button').forEach(button => {
     alert(`${productName} added to cart!`);
   });
 });
+function toggleDescription(card) {
+  document.querySelectorAll('.product-card').forEach(c => {
+    if (c !== card) c.classList.remove('active');
+  });
+  card.classList.toggle('active');
+}
