@@ -452,3 +452,33 @@ footer {
 .hidden {
   display: none;
 }
+.search-bar-form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  max-width: 350px;
+}
+
+.search-bar-form input[type="search"] {
+  flex: 1;
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.search-icon-button {
+  background: #007bff;
+  color: white;
+  border: none;
+  font-size: 18px;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.search-icon-button:hover {
+  background-color: #0056b3;
+}
