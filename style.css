@@ -1,3 +1,24 @@
+.header {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.logo {
+  width: 100px;
+  margin-bottom: 10px;
+}
+
+.text-with-image {
+  font-size: 70px;
+  font-weight: bold;
+  background: url('your-background.jpg');
+  background-size: cover;
+  background-position: center;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 body {
   font-family: 'Roboto', sans-serif;
   margin: 0;
