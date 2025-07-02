@@ -322,3 +322,34 @@ footer {
   margin-top: 4rem;
   font-size: 0.9rem;
 }
+.filter-bar {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.search-container {
+  position: relative;
+  display: inline-block;
+  width: 250px;
+}
+
+.search-container input[type="search"] {
+  width: 100%;
+  padding: 8px 35px 8px 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.search-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #666;
+  font-size: 18px;
+}
