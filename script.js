@@ -26,3 +26,22 @@ function filterProducts() {
     card.style.display = (matchesCategory && matchesSearch) ? 'flex' : 'none';
   });
 }
+function filterProducts() {
+  const category = document.getElementById('categoryFilter').value.toLowerCase();
+  const searchText = document.getElementById('searchInput').value.toLowerCase();
+  const products = document.querySelectorAll('.product-card');
+
+  products.forEach(card => {
+    const cardCategory = card.getAttribute('data-category').toLowerCase();
+    const cardText = card.innerText.toLowerCase();
+
+    const matchCategory = category === 'all' || cardCategory === category;
+    const matchSearch = cardText.includes(searchText);
+
+    if (matchCategory && matchSearch) {
+      card.style.display = '';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
