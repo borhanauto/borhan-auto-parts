@@ -548,7 +548,7 @@ footer {
 .hidden {
   display: none;
 }
-/* Container for search bar + icon */
+
 .search-bar-container {
   display: flex;
   align-items: center;
@@ -559,7 +559,7 @@ footer {
   position: relative;
 }
 
-/* Search input */
+
 .search-form input[type="search"] {
   width: 100%;
   padding: 10px 14px;
@@ -574,7 +574,6 @@ footer {
   border-color: #007bff;
 }
 
-/* Search icon button */
 .popup-search-icon {
   font-size: 22px;
   background: none;
@@ -589,7 +588,6 @@ footer {
   color: #007bff;
 }
 
-/* Popup menu */
 .popup {
   position: absolute;
   top: 50px;
@@ -605,7 +603,6 @@ footer {
   z-index: 1000;
 }
 
-/* Popup buttons */
 .popup button {
   background-color: #007bff;
   color: #fff;
