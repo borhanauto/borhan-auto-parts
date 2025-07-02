@@ -1,1 +1,3 @@
-console.log("Welcome to Borhan Auto Parts Centre!");
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("Website Loaded: Borhan Auto Parts Centre");
+});
