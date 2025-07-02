@@ -1,149 +1,87 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
   font-family: 'Roboto', sans-serif;
-  background-color: #121212;
-  color: #f0f0f0;
-  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  color: #333;
 }
 
-/* Header */
 header {
+  background: #1e2f97;
+  color: white;
+  padding: 20px;
   text-align: center;
-  padding: 50px 20px 30px;
-  background-color: #1c1c1c;
-}
-
-header h1 {
-  font-size: 48px;
-  background: url('https://github.com/borhanauto/borhan-auto-parts/blob/main/Photoroom-20250620_125134674.png?raw=true');
-  background-size: cover;
-  background-position: center;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
-}
-
-header p {
-  font-size: 18px;
-  color: #ccc;
-  margin: 10px 0 20px;
 }
 
 .whatsapp-button {
   display: inline-block;
-  background-color: #25D366;
-  color: #fff;
-  padding: 12px 24px;
-  border-radius: 25px;
+  margin-top: 10px;
+  padding: 10px 15px;
+  background-color: #25d366;
+  color: white;
   text-decoration: none;
-  font-weight: bold;
-  transition: background 0.3s;
+  border-radius: 5px;
 }
 
-.whatsapp-button:hover {
-  background-color: #1ebe5d;
-}
-
-/* Main Container */
 .container {
-  padding: 40px 20px;
-  max-width: 1200px;
-  margin: auto;
+  padding: 20px;
 }
 
-/* Product Section */
 .products h2 {
-  font-size: 32px;
   text-align: center;
-  margin-bottom: 30px;
-  color: #ff3c3c;
 }
 
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
 }
 
 .product-card {
-  background-color: #1e1e1e;
-  border-radius: 12px;
-  padding: 20px;
+  border: 1px solid #ccc;
+  padding: 15px;
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 1px solid #333;
+  background: #f9f9f9;
+  border-radius: 10px;
+  transition: transform 0.2s ease;
+  cursor: pointer;
 }
 
 .product-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(255, 0, 0, 0.2);
+  transform: scale(1.02);
 }
 
-.product-card img {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
+.price {
+  font-weight: bold;
+  color: #d9534f;
 }
 
-.product-card h3 {
-  margin-top: 15px;
-  font-size: 20px;
-  color: #ffffff;
-}
-
-.product-card p {
-  font-size: 16px;
-  color: #aaaaaa;
-}
-
-/* Footer */
-.site-footer {
-  background-color: #1c1c1c;
-  padding: 30px 20px;
-  text-align: center;
-  font-size: 14px;
-  color: #999;
-}
-
-.site-footer a {
-  color: #25D366;
-  text-decoration: none;
-}
-
-.site-footer a:hover {
-  text-decoration: underline;
-}
-
-/* Responsive */
-@media (max-width: 600px) {
-  header h1 {
-    font-size: 36px;
-  }
-
-  .products h2 {
-    font-size: 24px;
-  }
-}
 .buy-button {
-  margin-top: 15px;
-  padding: 12px 25px;
-  background-color: #ff3c3c;
-  border: none;
-  border-radius: 25px;
+  background: #28a745;
   color: white;
-  font-weight: 700;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  font-size: 16px;
-  width: 100%;
+  margin-top: 5px;
 }
 
-.buy-button:hover {
-  background-color: #e02b2b;
+.product-description {
+  display: none;
+  padding: 10px;
+  background-color: #f3f3f3;
+  border-top: 1px solid #ccc;
+  font-size: 14px;
+  text-align: left;
+}
+
+.product-card.active .product-description {
+  display: block;
+}
+
+footer {
+  text-align: center;
+  padding: 15px;
+  background: #1e2f97;
+  color: white;
 }
