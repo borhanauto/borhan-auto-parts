@@ -1,3 +1,4 @@
+
 body {
   font-family: 'Roboto', sans-serif;
   margin: 0;
@@ -84,8 +85,4 @@ footer {
   padding: 15px;
   background: #1e2f97;
   color: white;
-}
-a {
-  text-decoration: none;
-  color: inherit;
 }
