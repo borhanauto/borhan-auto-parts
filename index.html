@@ -21,19 +21,17 @@
 </header>
 
   <main class="container">
-<section class="filter-bar">
-  <!-- Search input with icon (first item) -->
-  <form class="search-container" action="search.html" method="GET">
-  <input
-    type="search"
-    id="searchInput"
-    name="q"
-    placeholder="Search products..."
-    required />
-  <button class="search-icon" type="submit" aria-label="Search">&#128269;</button>
-</form>
+<form class="search-container" action="search.html" method="GET">
+    <input
+      type="search"
+      id="searchInput"
+      name="q"
+      placeholder="Search products..."
+      required />
+    <button class="search-icon" type="submit" aria-label="Search">&#128269;</button>
+  </form>
 
-  <!-- Category dropdown (second item) -->
+  <!-- Existing category dropdown -->
   <select id="categoryFilter" onchange="filterProducts()">
     <option value="all">All Categories</option>
     <option value="brake">Brake</option>
@@ -42,6 +40,7 @@
     <option value="transmission">Transmission</option>
     <option value="air">Air Intake</option>
   </select>
+
 </section>
     <section class="products">
       <h2>🔥 Featured Products</h2>
