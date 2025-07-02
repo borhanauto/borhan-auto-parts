@@ -3,68 +3,113 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Borhan Auto Parts Centre</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <title>High Graphics Store</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    header {
+      background: url('https://source.unsplash.com/1600x400/?fashion,store') no-repeat center center/cover;
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 3rem;
+      font-weight: bold;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+    }
+
+    .products {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 2rem;
+      gap: 2rem;
+    }
+
+    .product {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      max-width: 300px;
+      transition: transform 0.2s ease;
+    }
+
+    .product:hover {
+      transform: scale(1.03);
+    }
+
+    .product img {
+      width: 100%;
+      height: auto;
+    }
+
+    .product .info {
+      padding: 1rem;
+    }
+
+    .product .info h3 {
+      margin: 0 0 0.5rem;
+    }
+
+    .product .info p {
+      color: #777;
+      margin: 0 0 1rem;
+    }
+
+    .product .info button {
+      background-color: #000;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .product .info button:hover {
+      background-color: #444;
+    }
+  </style>
 </head>
 <body>
 
-  <header>
-    <h1>Borhan Auto Parts Centre</h1>
-    <p>Original & Authentic Motorcycle Parts in RN Road, Jessore</p>
-  </header>
+<header>
+  My Fashion Store
+</header>
 
-  <nav>
-    <a href="#">Home</a>
-    <a href="#products">Products</a>
-    <a href="#checkout">Checkout</a>
-    <a href="#contact">Contact</a>
-  </nav>
-
-  <section id="products" class="products">
-    <div class="product tilt-card">
-      <img src="https://via.placeholder.com/300x200?text=Honda+Brake+Pads" alt="Brake Pads">
-      <h3>Honda Brake Pads</h3>
-      <p>৳900</p>
-      <button class="btn" onclick="selectProduct('Honda Brake Pads', 900)">Buy Now</button>
+<section class="products">
+  <div class="product">
+    <img src="https://source.unsplash.com/400x400/?jacket" alt="Product 1">
+    <div class="info">
+      <h3>Leather Jacket</h3>
+      <p>$120.00</p>
+      <button>Add to Cart</button>
     </div>
-    <div class="product tilt-card">
-      <img src="https://via.placeholder.com/300x200?text=Yamaha+Air+Filter" alt="Air Filter">
-      <h3>Yamaha Air Filter</h3>
-      <p>৳600</p>
-      <button class="btn" onclick="selectProduct('Yamaha Air Filter', 600)">Buy Now</button>
+  </div>
+  <div class="product">
+    <img src="https://source.unsplash.com/400x400/?shoes" alt="Product 2">
+    <div class="info">
+      <h3>Running Shoes</h3>
+      <p>$89.99</p>
+      <button>Add to Cart</button>
     </div>
-    <div class="product tilt-card">
-      <img src="https://via.placeholder.com/300x200?text=Chain+Lube+Spray" alt="Chain Lube">
-      <h3>Chain Lube Spray</h3>
-      <p>৳350</p>
-      <button class="btn" onclick="selectProduct('Chain Lube Spray', 350)">Buy Now</button>
+  </div>
+  <div class="product">
+    <img src="https://source.unsplash.com/400x400/?watch" alt="Product 3">
+    <div class="info">
+      <h3>Luxury Watch</h3>
+      <p>$249.99</p>
+      <button>Add to Cart</button>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="checkout">
-    <h2>Checkout</h2>
-    <p>Selected Product: <span id="selected-product">None</span></p>
-    <p>Total Amount: ৳<span id="amount">0</span></p>
-    <h3>Pay via bKash / Nagad</h3>
-    <p>Send money to <strong>01707659954</strong></p>
-    <p>Then enter your transaction ID below:</p>
-    <input type="text" placeholder="Enter transaction ID" id="trxid">
-    <br><br>
-    <button class="btn" onclick="confirmPayment()">Confirm Payment</button>
-    <p id="confirmation-message" style="color: green; margin-top: 15px;"></p>
-  </section>
-
-  <section id="contact">
-    <h2>Contact Us</h2>
-    <p>Phone: <strong>01707659954</strong> (WhatsApp available)</p>
-    <p>Location: RN Road, Jessore, Bangladesh</p>
-  </section>
-
-  <footer>
-    <p>&copy; 2025 Borhan Auto Parts Centre. All rights reserved.</p>
-  </footer>
-
-  <script src="script.js"></script>
 </body>
 </html>
