@@ -2,89 +2,132 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Borhan Auto Parts Centre</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
   <script src="script.js" defer></script>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
 </head>
 <body>
   <header>
     <h1>Borhan Auto Parts Centre</h1>
     <p>Original Motorcycle Spare Parts in RN Road, Jessore</p>
-    <a href="https://wa.me/8801707659954" class="whatsapp-button">Contact on WhatsApp</a>
+    <a href="https://wa.me/8801707659954" class="whatsapp-button" target="_blank" rel="noopener noreferrer">Contact on WhatsApp</a>
   </header>
 
   <main class="container">
-    <section class="products">
-      <h2>🔥 Featured Products</h2>
-<div class="filter-bar">
-  <select id="categoryFilter" onchange="filterProducts()">
-    <option value="all">All Categories</option>
-    <option value="brake">Brake</option>
-    <option value="engine">Engine</option>
-    <option value="electrical">Electrical</option>
-    <option value="transmission">Transmission</option>
-    <option value="air">Air Intake</option>
-  </select>
-
-  <input type="text" id="searchInput" onkeyup="filterProducts()" placeholder="Search product..." />
-</div>
-</a>
-<div class="product-grid">
-  <a href="brake-pad.html" class="product-card" data-category="brake">
-    <img src="https://via.placeholder.com/150?text=Brake+Pad" alt="Brake Pad" />
-    <h3>Brake Pad</h3>
-    <p>Original quality for top performance.</p>
-    <p class="price">৳350</p>
-    <button class="buy-button" onclick="event.stopPropagation(); window.location.href='https://wa.me/8801707659954?text=I want to buy Brake Pad'">Buy Now</button>
-  </a>
-
-  <a href="engine-oil.html" class="product-card" data-category="engine">
-    <img src="https://via.placeholder.com/150?text=Engine+Oil" alt="Engine Oil" />
-    <h3>Engine Oil</h3>
-    <p>Premium oil for long-lasting engine life.</p>
-    <p class="price">৳800</p>
-    <button class="buy-button" onclick="event.stopPropagation(); window.location.href='https://wa.me/8801707659954?text=I want to buy Engine Oil'">Buy Now</button>
-  </a>
-
-  <a href="spark-plug.html" class="product-card" data-category="electrical">
-    <img src="https://via.placeholder.com/150?text=Spark+Plug" alt="Spark Plug" />
-    <h3>Spark Plug</h3>
-    <p>Efficient ignition for better fuel economy.</p>
-    <p class="price">৳120</p>
-    <button class="buy-button" onclick="event.stopPropagation(); window.location.href='https://wa.me/8801707659954?text=I want to buy Spark Plug'">Buy Now</button>
-  </a>
-
-  <a href="chain-sprocket.html" class="product-card" data-category="transmission">
-    <img src="https://via.placeholder.com/150?text=Chain+Sprocket" alt="Chain Sprocket" />
-    <h3>Chain Sprocket</h3>
-    <p>Durable and perfect for smooth riding.</p>
-    <p class="price">৳450</p>
-    <button class="buy-button" onclick="event.stopPropagation(); window.location.href='https://wa.me/8801707659954?text=I want to buy Chain Sprocket'">Buy Now</button>
-  </a>
-
-  <a href="clutch-plate.html" class="product-card" data-category="transmission">
-    <img src="https://via.placeholder.com/150?text=Clutch+Plate" alt="Clutch Plate" />
-    <h3>Clutch Plate</h3>
-    <p>High performance and long life guarantee.</p>
-    <p class="price">৳600</p>
-    <button class="buy-button" onclick="event.stopPropagation(); window.location.href='https://wa.me/8801707659954?text=I want to buy Clutch Plate'">Buy Now</button>
-  </a>
-
-  <a href="air-filter.html" class="product-card" data-category="air">
-    <img src="https://via.placeholder.com/150?text=Air+Filter" alt="Air Filter" />
-    <h3>Air Filter</h3>
-    <p>Keep your engine breathing clean and strong.</p>
-    <p class="price">৳200</p>
-    <button class="buy-button" onclick="event.stopPropagation(); window.location.href='https://wa.me/8801707659954?text=I want to buy Air Filter'">Buy Now</button>
-  </a>
-</div>
+    <section class="filter-bar">
+      <select id="categoryFilter" onchange="filterProducts()">
+        <option value="all">All Categories</option>
+        <option value="brake">Brake</option>
+        <option value="engine">Engine</option>
+        <option value="electrical">Electrical</option>
+        <option value="transmission">Transmission</option>
+        <option value="air">Air Intake</option>
+      </select>
+      <input type="search" id="searchInput" onkeyup="filterProducts()" placeholder="Search products..." />
     </section>
 
-    <section class="contact-info">
+    <section class="products">
+      <h2>🔥 Featured Products</h2>
+      <div class="product-grid">
+
+        <a href="brake-pad.html" class="product-card" data-category="brake">
+          <img
+            src="https://via.placeholder.com/150?text=Brake+Pad"
+            alt="Brake Pad"
+            loading="lazy"
+            width="150"
+            height="150"
+            style="border-radius:10px; box-shadow: 0 2px 10px rgba(0,0,0,0.6);"
+          />
+          <h3>Brake Pad</h3>
+          <p>Original quality for top performance.</p>
+          <p class="price">৳350</p>
+          <button class="buy-button" onclick="event.stopPropagation(); window.location.href='https://wa.me/8801707659954?text=I want to buy Brake Pad'">Buy Now</button>
+        </a>
+
+        <a href="engine-oil.html" class="product-card" data-category="engine">
+          <img
+            src="https://via.placeholder.com/150?text=Engine+Oil"
+            alt="Engine Oil"
+            loading="lazy"
+            width="150"
+            height="150"
+            style="border-radius:10px; box-shadow: 0 2px 10px rgba(0,0,0,0.6);"
+          />
+          <h3>Engine Oil</h3>
+          <p>Premium oil for long-lasting engine life.</p>
+          <p class="price">৳800</p>
+          <button class="buy-button" onclick="event.stopPropagation(); window.location.href='https://wa.me/8801707659954?text=I want to buy Engine Oil'">Buy Now</button>
+        </a>
+
+        <a href="spark-plug.html" class="product-card" data-category="electrical">
+          <img
+            src="https://via.placeholder.com/150?text=Spark+Plug"
+            alt="Spark Plug"
+            loading="lazy"
+            width="150"
+            height="150"
+            style="border-radius:10px; box-shadow: 0 2px 10px rgba(0,0,0,0.6);"
+          />
+          <h3>Spark Plug</h3>
+          <p>Efficient ignition for better fuel economy.</p>
+          <p class="price">৳120</p>
+          <button class="buy-button" onclick="event.stopPropagation(); window.location.href='https://wa.me/8801707659954?text=I want to buy Spark Plug'">Buy Now</button>
+        </a>
+
+        <a href="chain-sprocket.html" class="product-card" data-category="transmission">
+          <img
+            src="https://via.placeholder.com/150?text=Chain+Sprocket"
+            alt="Chain Sprocket"
+            loading="lazy"
+            width="150"
+            height="150"
+            style="border-radius:10px; box-shadow: 0 2px 10px rgba(0,0,0,0.6);"
+          />
+          <h3>Chain Sprocket</h3>
+          <p>Durable and perfect for smooth riding.</p>
+          <p class="price">৳450</p>
+          <button class="buy-button" onclick="event.stopPropagation(); window.location.href='https://wa.me/8801707659954?text=I want to buy Chain Sprocket'">Buy Now</button>
+        </a>
+
+        <a href="clutch-plate.html" class="product-card" data-category="transmission">
+          <img
+            src="https://via.placeholder.com/150?text=Clutch+Plate"
+            alt="Clutch Plate"
+            loading="lazy"
+            width="150"
+            height="150"
+            style="border-radius:10px; box-shadow: 0 2px 10px rgba(0,0,0,0.6);"
+          />
+          <h3>Clutch Plate</h3>
+          <p>High performance and long life guarantee.</p>
+          <p class="price">৳600</p>
+          <button class="buy-button" onclick="event.stopPropagation(); window.location.href='https://wa.me/8801707659954?text=I want to buy Clutch Plate'">Buy Now</button>
+        </a>
+
+        <a href="air-filter.html" class="product-card" data-category="air">
+          <img
+            src="https://via.placeholder.com/150?text=Air+Filter"
+            alt="Air Filter"
+            loading="lazy"
+            width="150"
+            height="150"
+            style="border-radius:10px; box-shadow: 0 2px 10px rgba(0,0,0,0.6);"
+          />
+          <h3>Air Filter</h3>
+          <p>Keep your engine breathing clean and strong.</p>
+          <p class="price">৳200</p>
+          <button class="buy-button" onclick="event.stopPropagation(); window.location.href='https://wa.me/8801707659954?text=I want to buy Air Filter'">Buy Now</button>
+        </a>
+
+      </div>
+    </section>
+
+    <section class="contact-info" style="text-align:center; margin-top:2rem; color:#aaa;">
       <p>📍 Visit us at RN Road, Jessore, Bangladesh</p>
-      <p>📞 WhatsApp: <a href="https://wa.me/8801707659954">01707659954</a></p>
+      <p>📞 WhatsApp: <a href="https://wa.me/8801707659954" style="color:#1db954;">01707659954</a></p>
     </section>
   </main>
 
