@@ -18,6 +18,44 @@
   <main class="container">
     <section class="products">
       <h2>🔥 Featured Products</h2>
+<div class="filter-bar">
+  <select id="categoryFilter" onchange="filterProducts()">
+    <option value="all">All Categories</option>
+    <option value="brake">Brake</option>
+    <option value="engine">Engine</option>
+    <option value="electrical">Electrical</option>
+    <option value="transmission">Transmission</option>
+    <option value="air">Air Intake</option>
+  </select>
+
+  <input type="text" id="searchInput" onkeyup="filterProducts()" placeholder="Search product..." />
+</div>
+
+<!-- Then add data-category attributes to each product card link -->
+
+<a href="brake-pad.html" class="product-card" data-category="brake">
+  ...
+</a>
+
+<a href="engine-oil.html" class="product-card" data-category="engine">
+  ...
+</a>
+
+<a href="spark-plug.html" class="product-card" data-category="electrical">
+  ...
+</a>
+
+<a href="chain-sprocket.html" class="product-card" data-category="transmission">
+  ...
+</a>
+
+<a href="clutch-plate.html" class="product-card" data-category="transmission">
+  ...
+</a>
+
+<a href="air-filter.html" class="product-card" data-category="air">
+  ...
+</a>
       <div class="product-grid">
         <a href="brake-pad.html" class="product-card">
           <img src="https://via.placeholder.com/150?text=Brake+Pad" alt="Brake Pad" />
