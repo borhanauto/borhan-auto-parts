@@ -23,14 +23,15 @@
   <main class="container">
 <section class="filter-bar">
   <!-- Search input with icon (first item) -->
-  <div class="search-container">
-    <input
-      type="search"
-      id="searchInput"
-      onkeyup="filterProducts()"
-      placeholder="Search products..." />
-    <button class="search-icon" onclick="filterProducts()" aria-label="Search">&#128269;</button>
-  </div>
+  <form class="search-container" action="search.html" method="GET">
+  <input
+    type="search"
+    id="searchInput"
+    name="q"
+    placeholder="Search products..."
+    required />
+  <button class="search-icon" type="submit" aria-label="Search">&#128269;</button>
+</form>
 
   <!-- Category dropdown (second item) -->
   <select id="categoryFilter" onchange="filterProducts()">
