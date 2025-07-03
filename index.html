@@ -1,272 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
+  <!-- Banner Image -->
+<div class="banner-container">
+<img src="https://raw.githubusercontent.com/borhanauto/borhan-auto-parts/main/banner.png" alt="Borhan Auto Parts Banner" class="banner-image" />
+</div>
+</div>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Modern Online Shop</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Roboto', sans-serif;
-      background: linear-gradient(135deg, #ff7e5f, #feb47b);
-      color: #333;
-      line-height: 1.6;
-    }
-    header {
-      background: #333;
-      color: white;
-      padding: 20px;
-      text-align: center;
-      font-size: 2rem;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
-    nav {
-      background: #444;
-      padding: 10px;
-      text-align: center;
-    }
-    nav a {
-      color: white;
-      margin: 0 15px;
-      text-decoration: none;
-      font-size: 1.2rem;
-    }
-    nav a:hover {
-      color: #ff7e5f;
-    }
-    .shop-container {
-      max-width: 1200px;
-      margin: 20px auto;
-      padding: 20px;
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    }
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 20px;
-      justify-content: center;
-    }
-    .product {
-      background: #fff;
-      border: 2px solid #feb47b;
-      border-radius: 10px;
-      text-align: center;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .product:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-    }
-    .product img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-bottom: 2px solid #feb47b;
-      border-radius: 10px 10px 0 0;
-    }
-    .product h3 {
-      font-size: 1.5rem;
-      margin: 15px 0;
-      color: #333;
-    }
-    .product p {
-      font-size: 1.2rem;
-      margin: 10px 0;
-      color: #feb47b;
-    }
-    .product button {
-      background: #ff7e5f;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 1rem;
-      margin-bottom: 20px;
-      transition: background 0.3s ease;
-    }
-    .product button:hover {
-      background: #feb47b;
-    }
-    footer {
-      background: #333;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      margin-top: 40px;
-      font-size: 1rem;
-    }
-  </style>
-</head>
-<body>
+  <!-- ✅ Google site verification tag -->
+  <meta name="google-site-verification" content="abc123def456..." />
 
+  <meta name="description" content="Borhan Auto Parts Centre in Jessore, Bangladesh. Genuine motorcycle spare parts, engine oil, and accessories.">
+  <meta name="keywords" content="motorcycle parts Bangladesh, bike accessories, Jessore auto parts, Borhan Auto">
+  <meta name="author" content="Borhan Auto Parts Centre">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Original motorcycle spare parts at Borhan Auto Parts Centre, RN Road, Jessore. Buy brake pads, engine oil, spark plugs and more."/>
+  <title>Borhan Auto Parts Centre</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+</head>
+  
+  <head>
+  </head>
+  <meta name="description" content="Borhan Auto Parts Centre - Genuine motorcycle parts in Jessore, Bangladesh.">
+<meta name="keywords" content="motorcycle parts, bike accessories, Borhan Auto, Jessore, original spare parts, BD">
+<meta name="author" content="Borhan Auto Parts Centre">
+<body>
   <header>
-    Modern Online Shop
+    <h1>Borhan Auto Parts Centre</h1>
+    <p>Original Motorcycle Spare Parts in RN Road, Jessore</p>
+
+    <!-- Home Button -->
+    <a href="index.html" class="home-button">🏠 Home</a>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/8801707659954" class="whatsapp-button" target="_blank" rel="noopener noreferrer">
+      Contact on WhatsApp
+    </a>
   </header>
 
-  <nav>
-    <a href="#">Home</a>
-    <a href="#">Products</a>
-    <a href="#">Cart</a>
-    <a href="#">Contact</a>
-  </nav>
-
-  <div class="shop-container">
-    <h2>Featured Products</h2>
-    <div class="product-grid">
-      <div class="product">
-        <img src="https://via.placeholder.com/250x180?text=Product+1" alt="Product 1">
-        <h3>Product 1</h3>
-        <p>$25.00</p>
-        <button>Add to Cart</button>
-      </div>
-      <div class="product">
-        <img src="https://via.placeholder.com/250x180?text=Product+2" alt="Product 2">
-        <h3>Product 2</h3>
-        <p>$45.00</p>
-        <button>Add to Cart</button>
-      </div>
-      <div class="product">
-        <img src="https://via.placeholder.com/250x180?text=Product+3" alt="Product 3">
-        <h3>Product 3</h3>
-        <p>$10.00</p>
-        <button>Add to Cart</button>
-      </div>
-      <div class="product">
-        <img src="https://via.placeholder.com/250x180?text=Product+4" alt="Product 4">
-        <h3>Product 4</h3>
-        <p>$30.00</p>
-        <button>Add to Cart</button>
-      </div>
+  <main class="container">
+    <!-- 🔍 Enhanced Search Box -->
+    <div class="search-bar-container enhanced-search">
+      <form action="search.html" method="GET" class="search-form">
+        <input
+          type="search"
+          name="q"
+          id="searchInput"
+          class="search-input"
+          placeholder="Search for motorcycle parts..."
+          required
+          aria-label="Search Products"
+        />
+        <button type="submit" class="search-button" aria-label="Search">🔍</button>
+      </form>
     </div>
-  </div>
+
+    <!-- Category Filter -->
+    <div style="text-align:center; margin-bottom:1rem;">
+      <select id="categoryFilter" onchange="filterProducts()">
+        <option value="all">All Categories</option>
+        <option value="brake">Brake</option>
+        <option value="engine">Engine</option>
+        <option value="electrical">Electrical</option>
+        <option value="transmission">Transmission</option>
+        <option value="air">Air Intake</option>
+      </select>
+    </div>
+
+    <section class="products">
+      <h2>🔥 Featured Products</h2>
+      <div class="product-grid">
+
+        <a href="brake-pad.html" class="product-card" data-category="brake">
+          <img src="https://raw.githubusercontent.com/borhanauto/borhan-auto-parts/main/Photoroom-20250620_125134674.png"
+               alt="Brake Pad"
+               loading="lazy"
+               width="150"
+               height="150"
+               style="border-radius:10px; box-shadow: 0 2px 10px rgba(0,0,0,0.6);" />
+          <h3>Brake Pad</h3>
+          <p>Original quality for top performance.</p>
+          <p class="price">৳350</p>
+          <button class="buy-button" onclick="event.stopPropagation(); window.location.href='https://wa.me/8801707659954?text=I want to buy Brake Pad'">Buy Now</button>
+        </a>
+
+        <a href="engine-oil.html" class="product-card" data-category="engine">
+          <img src="https://raw.githubusercontent.com/borhanauto/borhan-auto-parts/main/Photoroom-20250620_125134674.png"
+               alt="Engine Oil"
+               loading="lazy"
+               width="150"
+               height="150"
+               style="border-radius:10px; box-shadow: 0 2px 10px rgba(0,0,0,0.6);" />
+          <h3>Engine Oil</h3>
+          <p>Premium oil for long-lasting engine life.</p>
+          <p class="price">৳800</p>
+          <button class="buy-button" onclick="event.stopPropagation(); window.location.href='https://wa.me/8801707659954?text=I want to buy Engine Oil'">Buy Now</button>
+        </a>
+
+        <a href="spark-plug.html" class="product-card" data-category="electrical">
+          <img src="https://raw.githubusercontent.com/borhanauto/borhan-auto-parts/main/Photoroom-20250620_125134674.png"
+               alt="Spark Plug"
+               loading="lazy"
+               width="150"
+               height="150"
+               style="border-radius:10px; box-shadow: 0 2px 10px rgba(0,0,0,0.6);" />
+          <h3>Spark Plug</h3>
+          <p>Efficient ignition for better fuel economy.</p>
+          <p class="price">৳120</p>
+          <button class="buy-button" onclick="event.stopPropagation(); window.location.href='https://wa.me/8801707659954?text=I want to buy Spark Plug'">Buy Now</button>
+        </a>
+
+        <a href="chain-sprocket.html" class="product-card" data-category="transmission">
+          <img src="https://raw.githubusercontent.com/borhanauto/borhan-auto-parts/main/Photoroom-20250620_125134674.png"
+               alt="Chain Sprocket"
+               loading="lazy"
+               width="150"
+               height="150"
+               style="border-radius:10px; box-shadow: 0 2px 10px rgba(0,0,0,0.6);" />
+          <h3>Chain Sprocket</h3>
+          <p>Durable and perfect for smooth riding.</p>
+          <p class="price">৳450</p>
+          <button class="buy-button" onclick="event.stopPropagation(); window.location.href='https://wa.me/8801707659954?text=I want to buy Chain Sprocket'">Buy Now</button>
+        </a>
+
+        <a href="clutch-plate.html" class="product-card" data-category="transmission">
+          <img src="https://raw.githubusercontent.com/borhanauto/borhan-auto-parts/main/Photoroom-20250620_125134674.png"
+               alt="Clutch Plate"
+               loading="lazy"
+               width="150"
+               height="150"
+               style="border-radius:10px; box-shadow: 0 2px 10px rgba(0,0,0,0.6);" />
+          <h3>Clutch Plate</h3>
+          <p>High performance and long life guarantee.</p>
+          <p class="price">৳600</p>
+          <button class="buy-button" onclick="event.stopPropagation(); window.location.href='https://wa.me/8801707659954?text=I want to buy Clutch Plate'">Buy Now</button>
+        </a>
+
+        <a href="air-filter.html" class="product-card" data-category="air">
+          <img src="https://raw.githubusercontent.com/borhanauto/borhan-auto-parts/main/Photoroom-20250620_125134674.png"
+               alt="Air Filter"
+               loading="lazy"
+               width="150"
+               height="150"
+               style="border-radius:10px; box-shadow: 0 2px 10px rgba(0,0,0,0.6);" />
+          <h3>Air Filter</h3>
+          <p>Keep your engine breathing clean and strong.</p>
+          <p class="price">৳200</p>
+          <button class="buy-button" onclick="event.stopPropagation(); window.location.href='https://wa.me/8801707659954?text=I want to buy Air Filter'">Buy Now</button>
+        </a>
+
+      </div>
+    </section>
+
+    <section class="contact-info" style="text-align:center; margin-top:2rem; color:#aaa;">
+      <p>📍 Visit us at RN Road, Jessore, Bangladesh</p>
+      <p>📞 WhatsApp: <a href="https://wa.me/8801707659954" style="color:#1db954;">01707659954</a></p>
+    </section>
+  </main>
 
   <footer>
-    &copy; 2025 Modern Online Shop. All rights reserved.
+    <p>&copy; 2025 Borhan Auto Parts Centre. All rights reserved.</p>
   </footer>
-
 </body>
 </html>
-<html>
-  <body>
-/* styles.css */
-
-/* Global Styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-body {
-  font-family: 'Roboto', sans-serif;
-  background: linear-gradient(135deg, #ff7e5f, #feb47b);
-  color: #333;
-  line-height: 1.6;
-}
-
-/* Header */
-header {
-  background: #333;
-  color: white;
-  padding: 20px;
-  text-align: center;
-  font-size: 2rem;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
-
-/* Navigation */
-nav {
-  background: #444;
-  padding: 10px;
-  text-align: center;
-}
-nav a {
-  color: white;
-  margin: 0 15px;
-  text-decoration: none;
-  font-size: 1.2rem;
-}
-nav a:hover {
-  color: #ff7e5f;
-}
-
-/* Main Content */
-.shop-container {
-  max-width: 1200px;
-  margin: 20px auto;
-  padding: 20px;
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
-  justify-content: center;
-}
-.product {
-  background: #fff;
-  border: 2px solid #feb47b;
-  border-radius: 10px;
-  text-align: center;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.product:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-}
-.product img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  border-bottom: 2px solid #feb47b;
-  border-radius: 10px 10px 0 0;
-}
-.product h3 {
-  font-size: 1.5rem;
-  margin: 15px 0;
-  color: #333;
-}
-.product p {
-  font-size: 1.2rem;
-  margin: 10px 0;
-  color: #feb47b;
-}
-.product button {
-  background: #ff7e5f;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1rem;
-  margin-bottom: 20px;
-  transition: background 0.3s ease;
-}
-.product button:hover {
-  background: #feb47b;
-}
-
-/* Footer */
-footer {
-  background: #333;
-  color: white;
-  text-align: center;
-  padding: 20px;
-  margin-top: 40px;
-  font-size: 1rem;
-}
-    <body>
-  </html>
