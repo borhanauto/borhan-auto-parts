@@ -286,3 +286,46 @@ footer {
     gap: 1.5rem;
   }
 }
+.social-icons {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+}
+
+.social-icons a {
+  color: #1db954;
+  font-size: 0;
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #222;
+  box-shadow:
+    0 4px 8px rgba(29,185,84,0.7),
+    inset 0 0 8px rgba(29,185,84,0.2);
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+.social-icons a:hover,
+.social-icons a:focus {
+  background: #1db954;
+  color: #121212;
+  box-shadow:
+    0 8px 20px rgba(29,185,84,1),
+    inset 0 0 12px rgba(255,255,255,0.8);
+  outline: none;
+  transform: scale(1.2);
+}
+
+.social-icons svg.icon {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
