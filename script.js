@@ -58,3 +58,16 @@ function toggleSearch() {
     <a href="honda.html">Honda</a>
   </div>
 </div>
+function toggleMenu() {
+  const menu = document.getElementById("brandMenu");
+  menu.classList.toggle("show");
+}
+
+// Optional: close if clicked outside
+window.addEventListener("click", function (e) {
+  const menu = document.getElementById("brandMenu");
+  const button = document.querySelector(".menu-toggle");
+  if (!button.contains(e.target) && !menu.contains(e.target)) {
+    menu.classList.remove("show");
+  }
+});
