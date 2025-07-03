@@ -421,3 +421,16 @@ footer {
     max-height: 180px;
   }
 }
+.banner-container {
+  width: 100%;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.banner-image {
+  max-width: 800px;  /* Change this value to control the size */
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
