@@ -48,26 +48,17 @@ function filterProducts() {
 function toggleSearch() {
   document.getElementById('quickSearch').classList.toggle('hidden');
 }
-<div class="menu-dropdown">
-  <button class="menu-toggle" onclick="toggleMenu()">☰ Brands</button>
-  <div class="menu-content" id="brandMenu">
-    <a href="bajaj.html">Bajaj</a>
-    <a href="yamaha.html">Yamaha</a>
-    <a href="hero.html">Hero</a>
-    <a href="suzuki.html">Suzuki</a>
-    <a href="honda.html">Honda</a>
-  </div>
-</div>
+<script>
 function toggleMenu() {
-  const menu = document.getElementById("brandMenu");
-  menu.classList.toggle("show");
+  const menu = document.querySelector('.menu-dropdown');
+  menu.classList.toggle('show');
 }
 
-// Optional: close if clicked outside
-window.addEventListener("click", function (e) {
-  const menu = document.getElementById("brandMenu");
-  const button = document.querySelector(".menu-toggle");
-  if (!button.contains(e.target) && !menu.contains(e.target)) {
-    menu.classList.remove("show");
+// Close dropdown when clicking outside
+window.addEventListener('click', function(e) {
+  const menu = document.querySelector('.menu-dropdown');
+  if (!menu.contains(e.target)) {
+    menu.classList.remove('show');
   }
 });
+</script>
