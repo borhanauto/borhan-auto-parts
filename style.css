@@ -582,3 +582,19 @@ footer {
   margin-top: 4rem;
   box-shadow: 0 -4px 12px rgba(0,0,0,0.6);
 }
+.view-all-button {
+  background: #333;
+  color: #1db954;
+  font-size: 1.1rem;
+  padding: 12px 24px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 700;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.5);
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+.view-all-button:hover {
+  background: #1db954;
+  color: #121212;
+  transform: translateY(-2px) scale(1.05);
+}
