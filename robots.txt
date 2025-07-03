@@ -1,0 +1,18 @@
+# Allow all search engines to crawl everything
+User-agent: *
+Allow: /
+
+# Sitemap for search engines
+Sitemap: https://borhanauto.github.io/borhan-auto-parts/sitemap.xml
+
+# Extra instructions (optional but good for SEO)
+User-agent: Googlebot
+Disallow: /private/
+Allow: /
+
+User-agent: Bingbot
+Disallow:
+Allow: /
+
+# Delay crawling to reduce server strain (optional)
+Crawl-delay: 10
