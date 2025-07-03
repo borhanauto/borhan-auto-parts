@@ -48,3 +48,13 @@ function filterProducts() {
 function toggleSearch() {
   document.getElementById('quickSearch').classList.toggle('hidden');
 }
+<div class="menu-dropdown">
+  <button class="menu-toggle" onclick="toggleMenu()">☰ Brands</button>
+  <div class="menu-content" id="brandMenu">
+    <a href="bajaj.html">Bajaj</a>
+    <a href="yamaha.html">Yamaha</a>
+    <a href="hero.html">Hero</a>
+    <a href="suzuki.html">Suzuki</a>
+    <a href="honda.html">Honda</a>
+  </div>
+</div>
