@@ -4,14 +4,15 @@
 <header>
 <button class="menu-toggle" onclick="toggleMenu(event)">☰ Brands</button>
 
-<div id="menu" style="display:none; position: absolute; background: #fff; border: 1px solid #ccc; padding: 10px;">
-  <a href="bajaj.html">Bajaj</a>
-  <a href="yamaha.html">Yamaha</a>
-  <a href="hero.html">Hero</a>
-  <a href="suzuki.html">Suzuki</a>
-  <a href="honda.html">Honda</a>
+<div id="menu">
+  <ul class="menu-list">
+    <li><a href="bajaj.html">Bajaj</a></li>
+    <li><a href="yamaha.html">Yamaha</a></li>
+    <li><a href="hero.html">Hero</a></li>
+    <li><a href="suzuki.html">Suzuki</a></li>
+    <li><a href="honda.html">Honda</a></li>
+  </ul>
 </div>
-
 <script>
   const menu = document.getElementById('menu');
   const button = document.querySelector('.menu-toggle');
