@@ -656,3 +656,55 @@ footer {
   height: 24px;
   fill: #1db954;
 }
+/* Menu Dropdown */
+.menu-dropdown {
+  position: relative;
+  display: inline-block;
+  margin-top: 1rem;
+}
+
+.menu-toggle {
+  background-color: #1db954;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(29,185,84,0.5);
+  transition: background 0.3s ease;
+}
+
+.menu-toggle:hover {
+  background-color: #17a344;
+}
+
+.menu-content {
+  display: none;
+  position: absolute;
+  background-color: #1e1e1e;
+  min-width: 160px;
+  border-radius: 8px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  z-index: 1;
+  text-align: left;
+  top: 120%;
+}
+
+.menu-content a {
+  color: #eee;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  border-bottom: 1px solid #333;
+}
+
+.menu-content a:hover {
+  background-color: #2c2c2c;
+  color: #1db954;
+}
+
+.menu-dropdown:hover .menu-content {
+  display: block;
+}
