@@ -76,3 +76,18 @@ function toggleMenu() {
   }
 }
 </script>
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById('sideMenu');
+    menu.style.width = menu.style.width === '250px' ? '0' : '250px';
+  }
+
+  // Optional: Close menu when clicking outside
+  document.addEventListener('click', function(event) {
+    const menu = document.getElementById('sideMenu');
+    const toggleBtn = document.querySelector('.menu-toggle');
+    if (!menu.contains(event.target) && !toggleBtn.contains(event.target)) {
+      menu.style.width = '0';
+    }
+  });
+</script>
