@@ -433,3 +433,31 @@ footer {
     font-size: 2rem;
   }
 }
+/* Brand cards styling (mostly same as product cards) */
+.product-card img {
+  max-width: 120px; /* smaller logos */
+  height: auto;
+  margin: 0 auto 0.5rem;
+  display: block;
+  filter: brightness(1);
+  transition: filter 0.3s ease;
+}
+
+.product-card:hover img {
+  filter: brightness(1.2);
+}
+
+.product-card h3 {
+  margin: 0;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #1db954;
+}
+
+/* Optional: center text and card content */
+.product-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
