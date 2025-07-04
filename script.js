@@ -62,3 +62,7 @@ window.addEventListener('click', function(e) {
   }
 });
 </script>
+function toggleMenu(event) {
+  event.stopPropagation();
+  menu.classList.toggle('show');
+}
