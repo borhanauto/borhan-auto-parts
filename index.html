@@ -149,6 +149,13 @@
       font-weight: bold;
     }
 
+    .stock {
+      display: block;
+      color: #1db954;
+      margin-top: 5px;
+      font-size: 0.9rem;
+    }
+
     .contact-info {
       padding: 1rem;
       font-size: 0.9rem;
@@ -170,6 +177,35 @@
       height: 24px;
     }
 
+    .helpful-info {
+      background: #1e1e1e;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+
+    .helpful-info ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .helpful-info li {
+      margin: 0.5rem 0;
+      font-size: 0.95rem;
+    }
+
+    .floating-wa {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #1db954;
+      color: white;
+      padding: 12px 16px;
+      border-radius: 50px;
+      font-weight: bold;
+      text-decoration: none;
+      z-index: 9999;
+    }
+
     footer {
       text-align: center;
       color: #888;
@@ -180,10 +216,8 @@
 
 <body>
 
-  <!-- ☰ Menu Toggle -->
   <button class="menu-toggle" onclick="toggleMenu(event)">☰ Brands</button>
 
-  <!-- 🧾 Side Menu Drawer -->
   <div id="sideMenu" class="side-menu">
     <button class="close-btn" onclick="toggleMenu(event)">×</button>
     <ul>
@@ -195,12 +229,10 @@
     </ul>
   </div>
 
-  <!-- ✅ Banner -->
   <div class="banner-container">
     <img src="https://raw.githubusercontent.com/borhanauto/borhan-auto-parts/main/banner.png" alt="Borhan Auto Parts Banner" class="banner-image" />
   </div>
 
-  <!-- ✅ Header Info -->
   <header>
     <h1>Borhan Auto Parts Centre</h1>
     <p>Original Motorcycle Spare Parts in RN Road, Jessore</p>
@@ -208,7 +240,6 @@
     <a href="https://wa.me/8801707659954" class="whatsapp-button" target="_blank">WhatsApp</a>
   </header>
 
-  <!-- ✅ Search -->
   <div class="search-bar-container">
     <form action="search.html" method="GET" class="search-form">
       <input type="search" name="q" class="search-input" placeholder="Search for motorcycle parts..." required />
@@ -216,7 +247,6 @@
     </form>
   </div>
 
-  <!-- ✅ Category Filter -->
   <div style="text-align:center; margin-bottom:1rem;">
     <select id="categoryFilter" onchange="filterProducts()">
       <option value="all">All Categories</option>
@@ -228,34 +258,42 @@
     </select>
   </div>
 
-  <!-- ✅ Product Grid -->
   <section class="products">
     <h2>🔥 Featured Products</h2>
     <div class="product-grid">
-      <!-- Repeat this structure for all products -->
       <a href="brake-pad.html" class="product-card" data-category="brake">
         <img src="https://raw.githubusercontent.com/borhanauto/borhan-auto-parts/main/Photoroom-20250620_125134674.png" alt="Brake Pad" />
         <h3>Brake Pad</h3>
         <p>Original quality for top performance.</p>
+        <span class="stock">✅ In Stock</span>
         <p class="price">৳350</p>
         <button onclick="event.stopPropagation(); window.location.href='https://wa.me/8801707659954?text=I want to buy Brake Pad'">Buy Now</button>
       </a>
-      <!-- Add more product-cards below as needed (you already have the content!) -->
+      <!-- More product-cards can be added here -->
     </div>
   </section>
 
-  <!-- ✅ View All -->
   <div style="text-align:center; margin-top:2rem;">
     <a href="all-products.html" class="home-button">🔎 View All Products</a>
   </div>
 
-  <!-- ✅ Contact Info -->
   <section class="contact-info">
     <p>📍 RN Road, Jessore, Bangladesh</p>
     <p>📞 WhatsApp: <a href="https://wa.me/8801707659954" style="color:#1db954;">01707659954</a></p>
   </section>
 
-  <!-- ✅ Footer -->
+  <section class="helpful-info">
+    <h3>🛒 Why Buy From Us?</h3>
+    <ul>
+      <li>✅ 100% Original Spare Parts</li>
+      <li>📦 Fast Delivery in Jessore & Bangladesh</li>
+      <li>🔄 7-day Easy Return Policy</li>
+      <li>💬 Friendly WhatsApp Support</li>
+    </ul>
+  </section>
+
+  <a href="https://wa.me/8801707659954" class="floating-wa" target="_blank">💬 Chat with us</a>
+
   <footer>
     <div class="social-links">
       <a href="https://www.facebook.com/profile.php?id=100076160657724" target="_blank" aria-label="Facebook">
@@ -271,7 +309,6 @@
     <p>&copy; 2025 Borhan Auto Parts Centre. All rights reserved.</p>
   </footer>
 
-  <!-- ✅ Script for Menu -->
   <script>
     const menu = document.getElementById('sideMenu');
     const button = document.querySelector('.menu-toggle');
