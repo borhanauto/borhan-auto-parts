@@ -91,3 +91,19 @@ function toggleMenu() {
     }
   });
 </script>
+const menu = document.getElementById('sideMenu');
+<script>
+  const menu = document.getElementById('sideMenu');
+  const button = document.querySelector('.menu-toggle');
+
+  function toggleMenu(event) {
+    event.stopPropagation();
+    menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+  }
+
+  document.addEventListener('click', function (event) {
+    if (!menu.contains(event.target) && !button.contains(event.target)) {
+      menu.style.display = 'none';
+    }
+  });
+</script>
