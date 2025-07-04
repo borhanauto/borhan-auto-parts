@@ -2,10 +2,13 @@
 <html lang="en">
 <head>
 <header>
-<button class="menu-toggle" onclick="toggleMenu(event)">☰ Brands</button>
+<!-- ☰ Menu Toggle Button -->
+<button class="menu-toggle" onclick="toggleMenu()">☰ Brands</button>
 
-<div id="menu">
-  <ul class="menu-list">
+<!-- 🧾 Side Menu Drawer -->
+<div id="sideMenu" class="side-menu">
+  <button class="close-btn" onclick="toggleMenu()">×</button>
+  <ul>
     <li><a href="bajaj.html">Bajaj</a></li>
     <li><a href="yamaha.html">Yamaha</a></li>
     <li><a href="hero.html">Hero</a></li>
