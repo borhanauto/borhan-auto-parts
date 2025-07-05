@@ -251,3 +251,9 @@ document.addEventListener('DOMContentLoaded', () => {
     cards.forEach(card => grid.appendChild(card));
   });
 });
+document.querySelectorAll('.product-card button').forEach(button => {
+  button.addEventListener('click', () => {
+    const href = button.getAttribute('data-href') || button.getAttribute('onclick').match(/'(.*?)'/)[1];
+    if (href) window.location.href = href;
+  });
+});
