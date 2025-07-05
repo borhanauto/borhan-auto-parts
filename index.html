@@ -8,248 +8,95 @@
   <meta name="author" content="Borhan Auto Parts Centre" />
   <title>Borhan Auto Parts Centre</title>
 
-  <!-- ✅ Fonts & Styles -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.4.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <style>
     body {
-      font-family: 'Roboto', sans-serif;
-      margin: 0;
       background-color: #121212;
       color: #eee;
+      font-family: 'Roboto', sans-serif;
     }
-    .menu-toggle {
-      font-size: 1.5rem;
-      background: #1db954;
+    .bg-custom-green {
+      background-color: #1db954;
+    }
+    a.btn-custom-green {
+      background-color: #1db954;
       color: white;
-      border: none;
-      padding: 10px;
-      cursor: pointer;
-      width: 100%;
     }
-    .side-menu {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 200px;
-      background-color: #1e1e1e;
-      padding: 1rem;
-      box-shadow: 2px 0 5px rgba(0,0,0,0.5);
-      z-index: 1000;
+    a.btn-custom-green:hover {
+      background-color: #17a74a;
+      color: white;
     }
-    .side-menu ul {
-      list-style: none;
-      padding: 0;
-    }
-    .side-menu li {
-      margin: 10px 0;
-    }
-    .side-menu a {
-      color: #1db954;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .close-btn {
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      color: #fff;
-      float: right;
-    }
-
-    .banner-container {
-      text-align: center;
-      background: #111;
+    footer {
+      color: #888;
     }
     .banner-image {
       max-width: 100%;
       height: auto;
     }
-
-    header h1, header p {
-      text-align: center;
-      margin: 0.5rem 0;
-    }
-
-    .home-button, .whatsapp-button {
-      display: inline-block;
-      margin: 10px;
-      padding: 10px 20px;
-      background: #1db954;
-      color: white;
-      text-decoration: none;
-      border-radius: 4px;
-    }
-
-    .search-bar-container {
-      text-align: center;
-      margin: 1rem;
-    }
-
-    .search-form {
-      display: inline-flex;
-      max-width: 400px;
-      width: 90%;
-    }
-
-    .search-input {
-      flex: 1;
-      padding: 8px;
-    }
-
-    .search-button {
-      padding: 8px;
-      background: #1db954;
-      color: white;
-      border: none;
-    }
-
-    .products {
-      padding: 1rem;
-    }
-
-    .products h2 {
-      text-align: center;
-      margin-bottom: 1rem;
-    }
-
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1rem;
-    }
-
-    .product-card {
-      background: #1e1e1e;
-      border-radius: 8px;
-      padding: 1rem;
-      text-align: center;
-      text-decoration: none;
-      color: white;
-    }
-
-    .product-card img {
-      max-width: 100%;
-      height: auto;
-    }
-
-    .product-card button {
-      background-color: #1db954;
-      color: white;
-      padding: 8px 16px;
-      border: none;
-      margin-top: 0.5rem;
-      cursor: pointer;
-      border-radius: 4px;
-      font-weight: 700;
-    }
-
-    .price {
-      color: #1db954;
-      font-weight: bold;
-    }
-
-    .stock {
-      display: block;
-      color: #1db954;
-      margin-top: 5px;
-      font-size: 0.9rem;
-    }
-
-    .contact-info {
-      padding: 1rem;
-      font-size: 0.9rem;
-    }
-
-    .social-links {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin: 1rem;
-    }
-
-    .social-links a {
-      color: #1db954;
-    }
-
-    .icon {
+    .social-icon {
       width: 24px;
       height: 24px;
-    }
-
-    .helpful-info {
-      background: #1e1e1e;
-      padding: 1rem;
-      margin-top: 2rem;
-    }
-
-    .helpful-info ul {
-      list-style: none;
-      padding-left: 0;
-    }
-
-    .helpful-info li {
-      margin: 0.5rem 0;
-      font-size: 0.95rem;
-    }
-
-    .floating-wa {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #1db954;
-      color: white;
-      padding: 12px 16px;
-      border-radius: 50px;
-      font-weight: bold;
-      text-decoration: none;
-      z-index: 9999;
-    }
-
-    footer {
-      text-align: center;
-      color: #888;
-      padding-bottom: 2rem;
+      fill: currentColor;
     }
   </style>
 </head>
-
 <body>
 
-  <button class="menu-toggle" onclick="toggleMenu(event)">☰ Brands</button>
+  <!-- Navbar -->
+  <nav class="navbar navbar-dark bg-dark">
+    <div class="container">
+      <button class="btn btn-custom-green d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBrands" aria-controls="offcanvasBrands">
+        ☰ Brands
+      </button>
+      <a class="navbar-brand mx-auto mx-md-0" href="index.html">Borhan Auto Parts Centre</a>
+      <a href="https://wa.me/8801707659954" target="_blank" class="btn btn-custom-green d-none d-md-inline">WhatsApp</a>
+    </div>
+  </nav>
 
-  <div id="sideMenu" class="side-menu">
-    <button class="close-btn" onclick="toggleMenu(event)">×</button>
-    <ul>
-      <li><a href="bajaj.html">Bajaj</a></li>
-      <li><a href="yamaha.html">Yamaha</a></li>
-      <li><a href="hero.html">Hero</a></li>
-      <li><a href="suzuki.html">Suzuki</a></li>
-      <li><a href="honda.html">Honda</a></li>
-    </ul>
+  <!-- Offcanvas menu for brands -->
+  <div class="offcanvas offcanvas-start bg-dark text-light" tabindex="-1" id="offcanvasBrands" aria-labelledby="offcanvasBrandsLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasBrandsLabel">Brands</h5>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <ul class="list-unstyled">
+        <li><a href="bajaj.html" class="text-success fw-bold d-block py-2">Bajaj</a></li>
+        <li><a href="yamaha.html" class="text-success fw-bold d-block py-2">Yamaha</a></li>
+        <li><a href="hero.html" class="text-success fw-bold d-block py-2">Hero</a></li>
+        <li><a href="suzuki.html" class="text-success fw-bold d-block py-2">Suzuki</a></li>
+        <li><a href="honda.html" class="text-success fw-bold d-block py-2">Honda</a></li>
+      </ul>
+    </div>
   </div>
 
-  <div class="banner-container">
+  <!-- Banner -->
+  <div class="text-center bg-dark py-3">
     <img src="https://raw.githubusercontent.com/borhanauto/borhan-auto-parts/main/banner.png" alt="Borhan Auto Parts Banner" class="banner-image" />
   </div>
 
-  <header>
+  <!-- Header -->
+  <header class="container text-center my-4">
     <h1>Borhan Auto Parts Centre</h1>
-    <p>Original Motorcycle Spare Parts in RN Road, Jessore</p>
-    <a href="index.html" class="home-button">🏠 Home</a>
-    <a href="https://wa.me/8801707659954" class="whatsapp-button" target="_blank">WhatsApp</a>
+    <p class="lead">Original Motorcycle Spare Parts in RN Road, Jessore</p>
+    <div>
+      <a href="index.html" class="btn btn-custom-green me-2 mb-2">🏠 Home</a>
+      <a href="https://wa.me/8801707659954" target="_blank" class="btn btn-custom-green mb-2">WhatsApp</a>
+    </div>
   </header>
 
-  <div class="search-bar-container">
-    <form action="search.html" method="GET" class="search-form">
-      <input type="search" name="q" class="search-input" placeholder="Search for motorcycle parts..." required />
-      <button type="submit" class="search-button">🔍</button>
+  <!-- Search bar -->
+  <div class="container mb-4">
+    <form action="search.html" method="GET" class="d-flex justify-content-center" role="search" aria-label="Search for parts">
+      <input class="form-control me-2" type="search" name="q" placeholder="Search for motorcycle parts..." required style="max-width:400px;" />
+      <button class="btn btn-custom-green" type="submit">🔍</button>
     </form>
   </div>
 
-  <div style="text-align:center; margin-bottom:1rem;">
-    <select id="categoryFilter" onchange="filterProducts()">
+  <!-- Category filter -->
+  <div class="container mb-4 text-center">
+    <select id="categoryFilter" class="form-select w-auto mx-auto" onchange="filterProducts()">
       <option value="all">All Categories</option>
       <option value="brake">Brake</option>
       <option value="engine">Engine</option>
@@ -259,71 +106,104 @@
     </select>
   </div>
 
- <section class="products">
-  <h2>🔥 Brands Available</h2>
-  <div class="product-grid">
+  <!-- Products Grid -->
+  <section class="container mb-5">
+    <h2 class="text-center mb-4">🔥 Brands Available</h2>
+    <div class="row g-4" id="productGrid">
 
-    <div class="product-card" data-category="brand">
-      <img src="https://raw.githubusercontent.com/borhanauto/borhan-auto-parts/main/bajaj.png" alt="Bajaj" />
-      <h3>Bajaj</h3>
-      <button onclick="window.location.href='bajaj.html'">All Bajaj Parts</button>
+      <div class="col-12 col-md-6 col-lg-3 product-card" data-category="brand">
+        <div class="card bg-dark text-white h-100 text-center">
+          <img src="https://raw.githubusercontent.com/borhanauto/borhan-auto-parts/main/bajaj.png" class="card-img-top mx-auto pt-3" alt="Bajaj" style="max-width: 150px;" />
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Bajaj</h5>
+            <button class="btn btn-success mt-auto" onclick="window.location.href='bajaj.html'">All Bajaj Parts</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-3 product-card" data-category="brand">
+        <div class="card bg-dark text-white h-100 text-center">
+          <img src="https://raw.githubusercontent.com/borhanauto/borhan-auto-parts/main/yamaha.png" class="card-img-top mx-auto pt-3" alt="Yamaha" style="max-width: 150px;" />
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Yamaha</h5>
+            <button class="btn btn-success mt-auto" onclick="window.location.href='yamaha.html'">All Yamaha Parts</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-3 product-card" data-category="brand">
+        <div class="card bg-dark text-white h-100 text-center">
+          <img src="https://raw.githubusercontent.com/borhanauto/borhan-auto-parts/main/suzuki.png" class="card-img-top mx-auto pt-3" alt="Suzuki" style="max-width: 150px;" />
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Suzuki</h5>
+            <button class="btn btn-success mt-auto" onclick="window.location.href='suzuki.html'">All Suzuki Parts</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-3 product-card" data-category="brand">
+        <div class="card bg-dark text-white h-100 text-center">
+          <img src="https://raw.githubusercontent.com/borhanauto/borhan-auto-parts/main/tvs.png" class="card-img-top mx-auto pt-3" alt="TVS" style="max-width: 150px;" />
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">TVS</h5>
+            <button class="btn btn-success mt-auto" onclick="window.location.href='tvs.html'">All TVS Parts</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-3 product-card" data-category="brand">
+        <div class="card bg-dark text-white h-100 text-center">
+          <img src="https://raw.githubusercontent.com/borhanauto/borhan-auto-parts/main/hero.png" class="card-img-top mx-auto pt-3" alt="Hero" style="max-width: 150px;" />
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Hero</h5>
+            <button class="btn btn-success mt-auto" onclick="window.location.href='hero.html'">All Hero Parts</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-3 product-card" data-category="brand">
+        <div class="card bg-dark text-white h-100 text-center">
+          <img src="https://raw.githubusercontent.com/borhanauto/borhan-auto-parts/main/honda.png" class="card-img-top mx-auto pt-3" alt="Honda" style="max-width: 150px;" />
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Honda</h5>
+            <button class="btn btn-success mt-auto" onclick="window.location.href='honda.html'">All Honda Parts</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-3 product-card" data-category="brand">
+        <div class="card bg-dark text-white h-100 text-center">
+          <img src="https://raw.githubusercontent.com/borhanauto/borhan-auto-parts/main/pricol_varroc.png" class="card-img-top mx-auto pt-3" alt="Pricol Varroc" style="max-width: 150px;" />
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Pricol Varroc</h5>
+            <button class="btn btn-success mt-auto" onclick="window.location.href='pricol_varroc.html'">All Pricol Varroc Parts</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-3 product-card" data-category="brand">
+        <div class="card bg-dark text-white h-100 text-center">
+          <img src="https://raw.githubusercontent.com/borhanauto/borhan-auto-parts/main/lumax.png" class="card-img-top mx-auto pt-3" alt="Lumax" style="max-width: 150px;" />
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Lumax</h5>
+            <button class="btn btn-success mt-auto" onclick="window.location.href='lumax.html'">All Lumax Parts</button>
+          </div>
+        </div>
+      </div>
+
     </div>
-
-    <div class="product-card" data-category="brand">
-      <img src="https://raw.githubusercontent.com/borhanauto/borhan-auto-parts/main/yamaha.png" alt="Yamaha" />
-      <h3>Yamaha</h3>
-      <button onclick="window.location.href='yamaha.html'">All Yamaha Parts</button>
-    </div>
-
-    <div class="product-card" data-category="brand">
-      <img src="https://raw.githubusercontent.com/borhanauto/borhan-auto-parts/main/suzuki.png" alt="Suzuki" />
-      <h3>Suzuki</h3>
-      <button onclick="window.location.href='suzuki.html'">All Suzuki Parts</button>
-    </div>
-
-    <div class="product-card" data-category="brand">
-      <img src="https://raw.githubusercontent.com/borhanauto/borhan-auto-parts/main/tvs.png" alt="TVS" />
-      <h3>TVS</h3>
-      <button onclick="window.location.href='tvs.html'">All TVS Parts</button>
-    </div>
-
-    <div class="product-card" data-category="brand">
-      <img src="https://raw.githubusercontent.com/borhanauto/borhan-auto-parts/main/hero.png" alt="Hero" />
-      <h3>Hero</h3>
-      <button onclick="window.location.href='hero.html'">All Hero Parts</button>
-    </div>
-
-    <div class="product-card" data-category="brand">
-      <img src="https://raw.githubusercontent.com/borhanauto/borhan-auto-parts/main/honda.png" alt="Honda" />
-      <h3>Honda</h3>
-      <button onclick="window.location.href='honda.html'">All Honda Parts</button>
-    </div>
-
-    <div class="product-card" data-category="brand">
-      <img src="https://raw.githubusercontent.com/borhanauto/borhan-auto-parts/main/pricol_varroc.png" alt="Pricol Varroc" />
-      <h3>Pricol Varroc</h3>
-      <button onclick="window.location.href='pricol_varroc.html'">All Pricol Varroc Parts</button>
-    </div>
-
-    <div class="product-card" data-category="brand">
-      <img src="https://raw.githubusercontent.com/borhanauto/borhan-auto-parts/main/lumax.png" alt="Lumax" />
-      <h3>Lumax</h3>
-      <button onclick="window.location.href='lumax.html'">All Lumax Parts</button>
-    </div>
-
-  </div>
-</section>
-
-  <div style="text-align:center; margin-top:2rem;">
-    <a href="all-products.html" class="home-button">🔎 View All Products</a>
-  </div>
-
-  <section class="contact-info">
-    <p>📍 RN Road, Jessore, Bangladesh</p>
-    <p>📞 WhatsApp: <a href="https://wa.me/8801707659954" style="color:#1db954;">01707659954</a></p>
   </section>
 
-  <section class="helpful-info">
+  <div class="text-center mb-5">
+    <a href="all-products.html" class="btn btn-custom-green">🔎 View All Products</a>
+  </div>
+
+  <section class="container contact-info text-center mb-5">
+    <p>📍 RN Road, Jessore, Bangladesh</p>
+    <p>📞 WhatsApp: <a href="https://wa.me/8801707659954" class="text-success fw-bold">01707659954</a></p>
+  </section>
+
+  <section class="container helpful-info bg-dark rounded p-4 mb-5 text-light">
     <h3>🛒 Why Buy From Us?</h3>
     <ul>
       <li>✅ 100% Original Spare Parts</li>
@@ -333,38 +213,27 @@
     </ul>
   </section>
 
-  <a href="https://wa.me/8801707659954" class="floating-wa" target="_blank">💬 Chat with us</a>
+  <a href="https://wa.me/8801707659954" class="btn btn-custom-green position-fixed bottom-0 end-0 m-3 rounded-pill px-4 py-2 fw-bold" target="_blank" style="z-index:9999;">💬 Chat with us</a>
 
-  <footer>
-    <div class="social-links">
-      <a href="https://www.facebook.com/profile.php?id=100076160657724" target="_blank" aria-label="Facebook">
-        <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 10-11.5 9.9v-7H8v-3h2.5v-2.3c0-2.5 1.5-3.8 3.7-3.8 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.6v2h2.8l-.4 3H14v7A10 10 0 0022 12z"/></svg>
+  <footer class="text-center py-4">
+    <div class="d-flex justify-content-center gap-3 mb-3">
+      <a href="https://www.facebook.com/profile.php?id=100076160657724" target="_blank" aria-label="Facebook" class="text-success">
+        <svg class="social-icon" viewBox="0 0 24 24"><path d="M22 12a10 10 0 10-11.5 9.9v-7H8v-3h2.5v-2.3c0-2.5 1.5-3.8 3.7-3.8 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.6v2h2.8l-.4 3H14v7A10 10 0 0022 12z"/></svg>
       </a>
-      <a href="https://youtube.com/@borhan_auto_parts" target="_blank" aria-label="YouTube">
-        <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M19.8 7.2c-.2-.7-.8-1.3-1.5-1.5C16.8 5.5 12 5.5 12 5.5s-4.8 0-6.3.2c-.7.2-1.3.8-1.5 1.5C4 8.7 4 12 4 12s0 3.3.2 4.8c.2.7.8 1.3 1.5 1.5 1.5.2 6.3.2 6.3.2s4.8 0 6.3-.2c.7-.2 1.3-.8 1.5-1.5.2-1.5.2-4.8.2-4.8s0-3.3-.2-4.8zM10 15V9l5 3-5 3z"/></svg>
+      <a href="https://youtube.com/@borhan_auto_parts" target="_blank" aria-label="YouTube" class="text-success">
+        <svg class="social-icon" viewBox="0 0 24 24"><path d="M19.8 7.2c-.2-.7-.8-1.3-1.5-1.5C16.8 5.5 12 5.5 12 5.5s-4.8 0-6.3.2c-.7.2-1.3.8-1.5 1.5C4 8.7 4 12 4 12s0 3.3.2 4.8c.2.7.8 1.3 1.5 1.5 1.5.2 6.3.2 6.3.2s4.8 0 6.3-.2c.7-.2 1.3-.8 1.5-1.5.2-1.5.2-4.8.2-4.8s0-3.3-.2-4.8zM10 15V9l5 3-5 3z"/></svg>
       </a>
-      <a href="https://wa.me/8801707659954" target="_blank" aria-label="WhatsApp">
-        <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 14.3c-.2-.1-1.2-.6-1.4-.7-.2-.1-.4 0-.6.2-.2.1-.9.7-1.1.9-.2.2-.3.2-.5.1-.2 0-.8-.3-1.5-.9-.6-.6-1-1.3-1-1.5 0-.2 0-.3.2-.5.2-.2.5-.4.7-.6.2-.2.3-.3.5-.5.1-.1 0-.3 0-.4 0-.1-.7-1.5-.9-2-.2-.5-.4-.4-.6-.4h-.6c-.2 0-.5.1-.7.4-.2.2-.8.8-.8 1.9s.9 2.3 1 2.5c.2.3 1.7 2.6 4.1 3.7.6.3 1 .5 1.4.6.6.2 1.2.2 1.7.1.5-.1 1.2-.5 1.4-1 .2-.5.2-.9.1-1 .1 0-.2-.1-.4-.2z"/><path d="M12 2a10 10 0 1010 10A10.011 10.011 0 0012 2zm0 18.2a8.2 8.2 0 118.2-8.2 8.21 8.21 0 01-8.2 8.2z"/></svg>
+      <a href="https://wa.me/8801707659954" target="_blank" aria-label="WhatsApp" class="text-success">
+        <svg class="social-icon" viewBox="0 0 24 24"><path d="M16.6 14.3c-.2-.1-1.2-.6-1.4-.7-.2-.1-.4 0-.6.2-.2.1-.9.7-1.1.9-.2.2-.3.2-.5.1-.2 0-.8-.3-1.5-.9-.6-.6-1-1.3-1-1.5 0-.2 0-.3.2-.5.2-.2.5-.4.7-.6.2-.2.3-.3.5-.5.1-.1 0-.3 0-.4 0-.1-.7-1.5-.9-2-.2-.5-.4-.4-.6-.4h-.6c-.2 0-.5.1-.7.4-.2.2-.8.8-.8 1.9s.9 2.3 1 2.5c.2.3 1.7 2.6 4.1 3.7.6.3 1 .5 1.4.6.6.2 1.2.2 1.7.1.5-.1 1.2-.5 1.4-1 .2-.5.2-.9.1-1 .1 0-.2-.1-.4-.2z"/><path d="M12 2a10 10 0 1010 10A10.011 10.011 0 0012 2zm0 18.2a8.2 8.2 0 118.2-8.2 8.21 8.21 0 01-8.2 8.2z"/></svg>
       </a>
     </div>
     <p>&copy; 2025 Borhan Auto Parts Centre. All rights reserved.</p>
   </footer>
 
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.4.3/dist/js/bootstrap.bundle.min.js"></script>
+
   <script>
-    const menu = document.getElementById('sideMenu');
-    const button = document.querySelector('.menu-toggle');
-
-    function toggleMenu(event) {
-      event.stopPropagation();
-      menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
-    }
-
-    document.addEventListener('click', function (event) {
-      if (!menu.contains(event.target) && !button.contains(event.target)) {
-        menu.style.display = 'none';
-      }
-    });
-
     function filterProducts() {
       const category = document.getElementById("categoryFilter").value;
       const cards = document.querySelectorAll(".product-card");
