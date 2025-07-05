@@ -49,11 +49,16 @@ button:hover,
   background-color: #17a347;
   box-shadow: 0 6px 12px rgba(23, 163, 71, 0.5);
 }
-button:focus,
-.home-button:focus,
-.whatsapp-button:focus {
+button:focus-visible,
+.home-button:focus-visible,
+.whatsapp-button:focus-visible {
   outline: 3px solid #17a347;
   outline-offset: 2px;
+}
+button:focus:not(:focus-visible),
+.home-button:focus:not(:focus-visible),
+.whatsapp-button:focus:not(:focus-visible) {
+  outline: none;
 }
 
 /* Menu Toggle */
@@ -68,8 +73,10 @@ button:focus,
   box-shadow: 0 3px 10px rgba(29, 185, 84, 0.7);
   transition: background-color 0.3s ease;
 }
-.menu-toggle:hover {
+.menu-toggle:hover,
+.menu-toggle:focus {
   background-color: #17a347;
+  outline: none;
 }
 
 /* Side Menu */
@@ -105,8 +112,10 @@ button:focus,
   border-bottom: 1px solid rgba(29, 185, 84, 0.2);
   transition: color 0.3s ease;
 }
-.side-menu a:hover {
+.side-menu a:hover,
+.side-menu a:focus {
   color: #17a347;
+  outline: none;
 }
 
 /* Close Button */
@@ -121,8 +130,22 @@ button:focus,
   cursor: pointer;
   transition: color 0.3s ease;
 }
-.close-btn:hover {
+.close-btn:hover,
+.close-btn:focus {
   color: #1db954;
+  outline: none;
+}
+
+/* Scrollbar for Side Menu */
+.side-menu::-webkit-scrollbar {
+  width: 8px;
+}
+.side-menu::-webkit-scrollbar-track {
+  background: #1e1e1e;
+}
+.side-menu::-webkit-scrollbar-thumb {
+  background-color: #1db954;
+  border-radius: 4px;
 }
 
 /* Banner */
@@ -196,8 +219,10 @@ header p {
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
-.search-button:hover {
+.search-button:hover,
+.search-button:focus {
   background-color: #17a347;
+  outline: none;
 }
 
 /* Category Filter */
@@ -253,6 +278,7 @@ header p {
   justify-content: space-between;
   text-decoration: none;
   user-select: none;
+  align-items: center;
 }
 .product-card:hover,
 .product-card:focus-within {
@@ -262,23 +288,28 @@ header p {
 
 /* Product Image */
 .product-card img {
-  max-width: 180px;
-  margin: 0 auto 1rem;
+  max-width: 120px;
+  height: auto;
+  margin: 0 auto 0.5rem;
+  display: block;
+  filter: brightness(1);
+  transition: filter 0.3s ease, transform 0.3s ease;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-  transition: transform 0.3s ease;
 }
 .product-card:hover img {
+  filter: brightness(1.2);
   transform: scale(1.05);
 }
 
 /* Product Title */
 .product-card h3 {
+  margin: 0;
   font-weight: 700;
-  font-size: 1.25rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
   color: #1db954;
   text-shadow: 0 0 5px #1db954bb;
+  margin-bottom: 0.75rem;
 }
 
 /* Product Description */
@@ -314,11 +345,16 @@ header p {
   font-size: 1rem;
   border: none;
   color: white;
+  width: 100%;
+  max-width: 200px;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
 }
-.product-card button:hover {
+.product-card button:hover,
+.product-card button:focus {
   background-color: #17a347;
   box-shadow: 0 8px 20px rgba(23, 163, 71, 0.6);
+  outline: none;
 }
 
 /* Contact Info */
@@ -332,8 +368,10 @@ header p {
   font-weight: 600;
   color: #1db954;
 }
-.contact-info a:hover {
+.contact-info a:hover,
+.contact-info a:focus {
   color: #17a347;
+  outline: none;
 }
 
 /* Helpful Info Section */
@@ -385,8 +423,10 @@ header p {
   font-size: 1.6rem;
   transition: color 0.3s ease;
 }
-.social-links a:hover {
+.social-links a:hover,
+.social-links a:focus {
   color: #17a347;
+  outline: none;
 }
 
 /* Footer */
@@ -417,8 +457,10 @@ footer {
   align-items: center;
   gap: 10px;
 }
-.floating-wa:hover {
+.floating-wa:hover,
+.floating-wa:focus {
   background-color: #128c3f;
+  outline: none;
 }
 
 /* Responsive Adjustments */
@@ -432,32 +474,4 @@ footer {
   header h1 {
     font-size: 2rem;
   }
-}
-/* Brand cards styling (mostly same as product cards) */
-.product-card img {
-  max-width: 120px; /* smaller logos */
-  height: auto;
-  margin: 0 auto 0.5rem;
-  display: block;
-  filter: brightness(1);
-  transition: filter 0.3s ease;
-}
-
-.product-card:hover img {
-  filter: brightness(1.2);
-}
-
-.product-card h3 {
-  margin: 0;
-  font-weight: 700;
-  font-size: 1.1rem;
-  color: #1db954;
-}
-
-/* Optional: center text and card content */
-.product-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
