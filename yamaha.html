@@ -1,14 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Same head content & styles as bajaj.html -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Yamaha Parts - Borhan Auto Parts Centre</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    /* Same CSS as above */
-    /* ... */
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #121212;
+      color: #eee;
+      margin: 0;
+      padding: 1rem;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    header h1 {
+      margin: 0 0 0.5rem;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+    .product-card {
+      background: #1e1e1e;
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+      color: white;
+    }
+    .product-card img {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 0.5rem;
+      border-radius: 6px;
+    }
+    .product-card h3 {
+      margin: 0.5rem 0;
+    }
+    .price {
+      color: #1db954;
+      font-weight: bold;
+      margin: 0.5rem 0;
+    }
+    .product-card button {
+      background-color: #1db954;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      cursor: pointer;
+      border-radius: 4px;
+      font-weight: 700;
+      transition: background-color 0.3s ease;
+    }
+    .product-card button:hover {
+      background-color: #17a44d;
+    }
+    #cart {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #1db954;
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      max-width: 320px;
+      width: 90vw;
+      z-index: 10000;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+    #cart h2 {
+      margin: 0 0 0.5rem;
+      font-size: 1.2rem;
+    }
+    #cart ul {
+      list-style: none;
+      padding-left: 0;
+      max-height: 200px;
+      overflow-y: auto;
+      margin: 0 0 1rem;
+    }
+    #cart li {
+      margin-bottom: 0.5rem;
+    }
+    #cart button.remove-item {
+      background: #121212;
+      color: #1db954;
+      border: none;
+      padding: 3px 7px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-left: 0.5rem;
+      border-radius: 4px;
+      font-size: 0.9rem;
+    }
+    #cart button#order-btn {
+      background-color: #121212;
+      color: #1db954;
+      width: 100%;
+      padding: 10px;
+      border: none;
+      font-weight: 700;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    @media (max-width: 500px) {
+      #cart {
+        max-width: 100vw;
+        right: 0;
+        border-radius: 0;
+      }
+    }
   </style>
 </head>
 <body>
@@ -17,42 +123,108 @@
     <p>Borhan Auto Parts Centre - RN Road, Jessore</p>
     <a href="index.html" style="color:#1db954; text-decoration:none;">← Back to Home</a>
   </header>
+
   <section class="product-grid">
     <div class="product-card">
-      <img src="https://raw.githubusercontent.com/borhanauto/borhan-auto-parts/main/yamaha_clutch_lever.jpg" alt="Yamaha Clutch Lever" />
-      <h3>Yamaha Clutch Lever</h3>
-      <p class="price">৳550</p>
-      <button onclick="addToCart('yamaha-clutchlever', 'Yamaha Clutch Lever', 550)">Add to Cart</button>
-    </div>
-    <div class="product-card">
-      <img src="https://raw.githubusercontent.com/borhanauto/borhan-auto-parts/main/yamaha_brake_cable.jpg" alt="Yamaha Brake Cable" />
-      <h3>Yamaha Brake Cable</h3>
+      <img src="https://raw.githubusercontent.com/borhanauto/borhan-auto-parts/main/yamaha_oil_filter.jpg" alt="Yamaha Oil Filter" />
+      <h3>Yamaha Oil Filter</h3>
       <p class="price">৳350</p>
-      <button onclick="addToCart('yamaha-brakecable', 'Yamaha Brake Cable', 350)">Add to Cart</button>
+      <button onclick="addToCart('yamaha-oilfilter', 'Yamaha Oil Filter', 350)">Add to Cart</button>
     </div>
+
     <div class="product-card">
-      <img src="https://raw.githubusercontent.com/borhanauto/borhan-auto-parts/main/yamaha_spark_plug.jpg" alt="Yamaha Spark Plug" />
-      <h3>Yamaha Spark Plug</h3>
-      <p class="price">৳300</p>
-      <button onclick="addToCart('yamaha-sparkplug', 'Yamaha Spark Plug', 300)">Add to Cart</button>
+      <img src="https://raw.githubusercontent.com/borhanauto/borhan-auto-parts/main/yamaha_brake_pad.jpg" alt="Yamaha Brake Pad" />
+      <h3>Yamaha Brake Pad</h3>
+      <p class="price">৳480</p>
+      <button onclick="addToCart('yamaha-brakepad', 'Yamaha Brake Pad', 480)">Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+      <img src="https://raw.githubusercontent.com/borhanauto/borhan-auto-parts/main/yamaha_clutch_plate.jpg" alt="Yamaha Clutch Plate" />
+      <h3>Yamaha Clutch Plate</h3>
+      <p class="price">৳650</p>
+      <button onclick="addToCart('yamaha-clutchplate', 'Yamaha Clutch Plate', 650)">Add to Cart</button>
     </div>
   </section>
+
   <div id="cart">
     <h2>Your Cart (<span id="cart-count">0</span> items)</h2>
     <div id="cart-items"><p>Your cart is empty.</p></div>
     <button id="order-btn" onclick="orderViaWhatsApp()">Order via WhatsApp</button>
   </div>
+
   <script>
-    // Same JS as bajaj.html
     const cartKey = 'borhanAutoCart';
-    function loadCart() { const cart = localStorage.getItem(cartKey); return cart ? JSON.parse(cart) : []; }
-    function saveCart(cart) { localStorage.setItem(cartKey, JSON.stringify(cart)); }
-    function updateCartCount() { const cart = loadCart(); const count = cart.reduce((sum, item) => sum + item.qty, 0); const cartCountElem = document.getElementById('cart-count'); if (cartCountElem) cartCountElem.textContent = count; }
-    function addToCart(id, name, price) { let cart = loadCart(); const existing = cart.find(item => item.id === id); if (existing) existing.qty++; else cart.push({ id, name, price, qty: 1 }); saveCart(cart); alert(`Added ${name} to cart.`); updateCartCount(); renderCart(); }
-    function removeFromCart(id) { let cart = loadCart(); cart = cart.filter(item => item.id !== id); saveCart(cart); updateCartCount(); renderCart(); }
-    function renderCart() { const cart = loadCart(); const cartContainer = document.getElementById('cart-items'); if (!cartContainer) return; if (cart.length === 0) { cartContainer.innerHTML = '<p>Your cart is empty.</p>'; return; } let html = '<ul>'; cart.forEach(item => { html += `<li>${item.name} x ${item.qty} = ৳${item.price * item.qty} <button class="remove-item" onclick="removeFromCart('${item.id}')">Remove</button></li>`; }); html += '</ul>'; cartContainer.innerHTML = html; }
-    function orderViaWhatsApp() { const cart = loadCart(); if (cart.length === 0) { alert('Your cart is empty.'); return; } const phone = '8801707659954'; let message = `Hello, I want to order these products from Borhan Auto Parts Centre:\n\n`; cart.forEach(item => { message += `- ${item.name} x ${item.qty} = ৳${item.price * item.qty}\n`; }); message += `\nPlease contact me for further details.`; const url = `https://wa.me/${phone}?text=` + encodeURIComponent(message); window.open(url, '_blank'); }
-    document.addEventListener('DOMContentLoaded', () => { updateCartCount(); renderCart(); });
+
+    function loadCart() {
+      const cart = localStorage.getItem(cartKey);
+      return cart ? JSON.parse(cart) : [];
+    }
+
+    function saveCart(cart) {
+      localStorage.setItem(cartKey, JSON.stringify(cart));
+    }
+
+    function updateCartCount() {
+      const cart = loadCart();
+      const count = cart.reduce((sum, item) => sum + item.qty, 0);
+      document.getElementById('cart-count').textContent = count;
+    }
+
+    function addToCart(id, name, price) {
+      let cart = loadCart();
+      const existing = cart.find(item => item.id === id);
+      if (existing) existing.qty++;
+      else cart.push({ id, name, price, qty: 1 });
+      saveCart(cart);
+      alert(`Added ${name} to cart.`);
+      updateCartCount();
+      renderCart();
+    }
+
+    function removeFromCart(id) {
+      let cart = loadCart();
+      cart = cart.filter(item => item.id !== id);
+      saveCart(cart);
+      updateCartCount();
+      renderCart();
+    }
+
+    function renderCart() {
+      const cart = loadCart();
+      const container = document.getElementById('cart-items');
+      if (cart.length === 0) {
+        container.innerHTML = '<p>Your cart is empty.</p>';
+        return;
+      }
+      let html = '<ul>';
+      cart.forEach(item => {
+        html += `<li>${item.name} x ${item.qty} = ৳${item.price * item.qty} <button class="remove-item" onclick="removeFromCart('${item.id}')">Remove</button></li>`;
+      });
+      html += '</ul>';
+      container.innerHTML = html;
+    }
+
+    function orderViaWhatsApp() {
+      const cart = loadCart();
+      if (cart.length === 0) {
+        alert('Your cart is empty.');
+        return;
+      }
+      const phone = '8801707659954';
+      let message = `Hello, I want to order these Yamaha parts from Borhan Auto Parts Centre:\n\n`;
+      cart.forEach(item => {
+        message += `- ${item.name} x ${item.qty} = ৳${item.price * item.qty}\n`;
+      });
+      message += `\nPlease contact me for delivery details.`;
+      const url = `https://wa.me/${phone}?text=` + encodeURIComponent(message);
+      window.open(url, '_blank');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      updateCartCount();
+      renderCart();
+    });
   </script>
 </body>
 </html>
