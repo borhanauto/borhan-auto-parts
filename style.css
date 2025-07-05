@@ -337,7 +337,7 @@ header p {
 }
 
 /* Buy Button */
-..product-card button {
+ .product-card button {
   background-color: #1db954;
   color: white;
   border: none;
@@ -347,7 +347,6 @@ header p {
   border-radius: 4px;
   font-weight: 600;
   transition: background-color 0.3s ease;
-  cursor: pointer;
 }
 .product-card button:hover,
 .product-card button:focus {
