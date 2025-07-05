@@ -1,9 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>TVS Parts - Borhan Auto Parts Centre</title>
+  <title>Suzuki Parts - Borhan Auto Parts Centre</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     body { font-family: 'Roboto', sans-serif; background-color: #121212; color: #eee; margin: 0; padding: 1rem; }
@@ -20,92 +19,103 @@
     }
     .product-card button:hover { background-color: #17a44d; }
     #cart {
-  display: none;
-  position: fixed;
-  bottom: 16px;
-  right: 16px;
-  background: rgba(29, 185, 84, 0.85); /* transparent green */
-  color: white;
-  padding: 0.75rem;
-  border-radius: 8px;
-  max-width: 260px;
-  width: 90vw;
-  z-index: 10000;
-  font-family: 'Roboto', sans-serif;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  font-size: 0.85rem;
-}
+      display: none;
+      position: fixed;
+      bottom: 16px;
+      right: 16px;
+      background: rgba(255, 255, 255, 0.05);
+      color: #fff;
+      padding: 0.75rem;
+      border-radius: 12px;
+      max-width: 260px;
+      width: 90vw;
+      z-index: 10000;
+      font-family: 'Roboto', sans-serif;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+      font-size: 0.85rem;
+      transition: all 0.3s ease-in-out;
+    }
+    #cart h2 { margin: 0 0 0.5rem; font-size: 1.2rem; }
+    #cart ul { list-style: none; padding-left: 0; max-height: 200px; overflow-y: auto; margin: 0 0 1rem; }
+    #cart li { margin-bottom: 0.5rem; }
+    #cart button.remove-item {
+      background: #121212; color: #1db954; border: none; padding: 3px 7px; cursor: pointer;
+      font-weight: bold; margin-left: 0.5rem; border-radius: 4px; font-size: 0.9rem;
+    }
+    #cart button#order-btn {
+      background-color: #121212; color: #1db954; width: 100%; padding: 10px; border: none;
+      font-weight: 700; border-radius: 6px; cursor: pointer; font-size: 1rem;
+    }
+    #cart button#order-btn:hover { background-color: #0e0e0e; }
+    @media (max-width: 500px) { #cart { max-width: 100vw; right: 0; border-radius: 0; } }
+    #toggle-cart {
+      position: fixed;
+      bottom: 16px;
+      left: 16px;
+      z-index: 10001;
+      background: rgba(255,255,255,0.1);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.2);
+      backdrop-filter: blur(8px);
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      font-size: 1.3rem;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
   </style>
 </head>
 <body>
-<button id="toggle-cart" style="
-  position: fixed;
-  bottom: 16px;
-  left: 16px;
-  z-index: 10001;
-  background: rgba(255,255,255,0.1);
-  color: white;
-  border: 1px solid rgba(255,255,255,0.2);
-  backdrop-filter: blur(8px);
-  border-radius: 50%;
-  width: 48px;
-  height: 48px;
-  font-size: 1.3rem;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-">🛒</button>
+  <button id="toggle-cart">🛒</button>
   <header>
-    <h1>TVS Motorcycle Spare Parts</h1>
+    <h1>Suzuki Motorcycle Spare Parts</h1>
     <p>Borhan Auto Parts Centre - RN Road, Jessore</p>
     <a href="index.html" style="color:#1db954; text-decoration:none;">← Back to Home</a>
   </header>
-
   <section class="product-grid">
     <div class="product-card">
-      <img src="https://raw.githubusercontent.com/borhanauto/borhan-auto-parts/main/tvs_brakepad.jpg" alt="TVS Brake Pad" />
-      <h3>TVS Brake Pad</h3>
-      <p class="price">৳460</p>
-      <button onclick="addToCart('tvs-brakepad', 'TVS Brake Pad', 460)">Add to Cart</button>
+      <img src="https://raw.githubusercontent.com/borhanauto/borhan-auto-parts/main/suzuki_brake_pad.jpg" alt="Suzuki Brake Pad" />
+      <h3>Suzuki Brake Pad</h3>
+      <p class="price">৳450</p>
+      <button onclick="addToCart('suzuki-brakepad', 'Suzuki Brake Pad', 450)">Add to Cart</button>
     </div>
     <div class="product-card">
-      <img src="https://raw.githubusercontent.com/borhanauto/borhan-auto-parts/main/tvs_airfilter.jpg" alt="TVS Air Filter" />
-      <h3>TVS Air Filter</h3>
+      <img src="https://raw.githubusercontent.com/borhanauto/borhan-auto-parts/main/suzuki_air_filter.jpg" alt="Suzuki Air Filter" />
+      <h3>Suzuki Air Filter</h3>
       <p class="price">৳420</p>
-      <button onclick="addToCart('tvs-airfilter', 'TVS Air Filter', 420)">Add to Cart</button>
+      <button onclick="addToCart('suzuki-airfilter', 'Suzuki Air Filter', 420)">Add to Cart</button>
     </div>
     <div class="product-card">
-      <img src="https://raw.githubusercontent.com/borhanauto/borhan-auto-parts/main/tvs_sparkplug.jpg" alt="TVS Spark Plug" />
-      <h3>TVS Spark Plug</h3>
-      <p class="price">৳340</p>
-      <button onclick="addToCart('tvs-sparkplug', 'TVS Spark Plug', 340)">Add to Cart</button>
+      <img src="https://raw.githubusercontent.com/borhanauto/borhan-auto-parts/main/suzuki_spark_plug.jpg" alt="Suzuki Spark Plug" />
+      <h3>Suzuki Spark Plug</h3>
+      <p class="price">৳310</p>
+      <button onclick="addToCart('suzuki-sparkplug', 'Suzuki Spark Plug', 310)">Add to Cart</button>
     </div>
   </section>
-
   <div id="cart">
     <h2>Your Cart (<span id="cart-count">0</span> items)</h2>
     <div id="cart-items"><p>Your cart is empty.</p></div>
     <button id="order-btn" onclick="orderViaWhatsApp()">Order via WhatsApp</button>
   </div>
-
   <script>
     const cartKey = 'borhanAutoCart';
-
     function loadCart() {
       const cart = localStorage.getItem(cartKey);
       return cart ? JSON.parse(cart) : [];
     }
-
     function saveCart(cart) {
       localStorage.setItem(cartKey, JSON.stringify(cart));
     }
-
     function updateCartCount() {
       const cart = loadCart();
       const count = cart.reduce((sum, item) => sum + item.qty, 0);
       const cartCountElem = document.getElementById('cart-count');
       if (cartCountElem) cartCountElem.textContent = count;
     }
-
     function addToCart(id, name, price) {
       let cart = loadCart();
       const existing = cart.find(item => item.id === id);
@@ -116,7 +126,6 @@
       updateCartCount();
       renderCart();
     }
-
     function removeFromCart(id) {
       let cart = loadCart();
       cart = cart.filter(item => item.id !== id);
@@ -124,7 +133,6 @@
       updateCartCount();
       renderCart();
     }
-
     function renderCart() {
       const cart = loadCart();
       const cartContainer = document.getElementById('cart-items');
@@ -140,7 +148,6 @@
       html += '</ul>';
       cartContainer.innerHTML = html;
     }
-
     function orderViaWhatsApp() {
       const cart = loadCart();
       if (cart.length === 0) {
@@ -156,10 +163,25 @@
       const url = `https://wa.me/${phone}?text=` + encodeURIComponent(message);
       window.open(url, '_blank');
     }
-
     document.addEventListener('DOMContentLoaded', () => {
       updateCartCount();
       renderCart();
+    });
+    const cart = document.getElementById('cart');
+    const toggleButton = document.getElementById('toggle-cart');
+    toggleButton.addEventListener('click', function (e) {
+      e.stopPropagation();
+      cart.style.display = (cart.style.display === 'block') ? 'none' : 'block';
+    });
+    document.addEventListener('click', function (e) {
+      const isClickInsideCart = cart.contains(e.target);
+      const isClickOnToggle = toggleButton.contains(e.target);
+      if (!isClickInsideCart && !isClickOnToggle) {
+        cart.style.display = 'none';
+      }
+    });
+    cart.addEventListener('click', function (e) {
+      e.stopPropagation();
     });
   </script>
 </body>
