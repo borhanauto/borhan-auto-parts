@@ -224,5 +224,40 @@
       renderCart();
     });
   </script>
+<script>
+  document.getElementById('toggle-cart').addEventListener('click', function () {
+    const cart = document.getElementById('cart');
+    if (cart.style.display === 'none' || cart.style.display === '') {
+      cart.style.display = 'block';
+    } else {
+      cart.style.display = 'none';
+    }
+  });
+</script>
+  <script>
+  const cart = document.getElementById('cart');
+  const toggleButton = document.getElementById('toggle-cart');
+
+  // Toggle visibility on cart button click
+  toggleButton.addEventListener('click', function (e) {
+    e.stopPropagation(); // prevent immediate close on button click
+    cart.style.display = (cart.style.display === 'block') ? 'none' : 'block';
+  });
+
+  // Close cart when clicking outside
+  document.addEventListener('click', function (e) {
+    const isClickInsideCart = cart.contains(e.target);
+    const isClickOnToggle = toggleButton.contains(e.target);
+
+    if (!isClickInsideCart && !isClickOnToggle) {
+      cart.style.display = 'none';
+    }
+  });
+
+  // Prevent cart clicks from closing itself
+  cart.addEventListener('click', function (e) {
+    e.stopPropagation();
+  });
+</script>
 </body>
 </html>
