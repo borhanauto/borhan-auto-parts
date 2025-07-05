@@ -257,13 +257,3 @@ document.querySelectorAll('.product-card button').forEach(button => {
     if (href) window.location.href = href;
   });
 });
-<script>
-  document.getElementById('toggle-cart').addEventListener('click', function () {
-    const cart = document.getElementById('cart');
-    if (cart.style.display === 'none' || cart.style.display === '') {
-      cart.style.display = 'block';
-    } else {
-      cart.style.display = 'none';
-    }
-  });
-</script>
