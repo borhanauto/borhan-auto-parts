@@ -337,17 +337,16 @@ header p {
 }
 
 /* Buy Button */
-.product-card button {
+..product-card button {
   background-color: #1db954;
-  padding: 12px 0;
-  border-radius: 50px;
-  font-weight: 700;
-  font-size: 1rem;
-  border: none;
   color: white;
-  width: 100%;
-  max-width: 200px;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  border: none;
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
   cursor: pointer;
 }
 .product-card button:hover,
