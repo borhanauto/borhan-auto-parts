@@ -8,66 +8,108 @@
   <style>
     :root {
       --primary: #1db954;
+      --primary-hover: #17a44d;
       --bg: #121212;
       --card-bg: #1e1e1e;
+      --text-light: #eee;
+      --text-muted: #bbb;
+      --shadow: rgba(0, 0, 0, 0.4);
+    }
+    * {
+      box-sizing: border-box;
     }
     body {
       margin: 0;
       padding: 1rem;
       font-family: 'Roboto', sans-serif;
       background-color: var(--bg);
-      color: #eee;
+      color: var(--text-light);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
     header {
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      padding: 1rem 0;
       text-align: center;
       margin-bottom: 1rem;
+      border-bottom: 1px solid #222;
+      z-index: 100;
     }
     header h1 {
+      margin: 0 0 0.25rem;
+      font-weight: 700;
+      font-size: 1.8rem;
+    }
+    header p {
       margin: 0 0 0.5rem;
+      color: var(--text-muted);
+      font-size: 1rem;
     }
     a {
       color: var(--primary);
       text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.3s ease;
     }
+    a:hover {
+      color: var(--primary-hover);
+      text-decoration: underline;
+    }
+
     .product-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 1rem;
+      flex-grow: 1;
     }
     .product-card {
       background: var(--card-bg);
       border-radius: 10px;
       padding: 1rem;
       text-align: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      transition: transform 0.3s ease;
+      box-shadow: 0 6px 15px var(--shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: default;
     }
     .product-card:hover {
-      transform: translateY(-3px);
+      transform: translateY(-5px) scale(1.03);
+      box-shadow: 0 10px 25px var(--shadow);
     }
     .product-card img {
       max-width: 100%;
       height: auto;
-      border-radius: 6px;
-      margin-bottom: 0.5rem;
+      border-radius: 8px;
+      margin-bottom: 0.6rem;
+      transition: transform 0.3s ease;
+    }
+    .product-card:hover img {
+      transform: scale(1.1);
     }
     .price {
       color: var(--primary);
-      font-weight: bold;
-      margin: 0.5rem 0;
+      font-weight: 700;
+      margin: 0.6rem 0 1rem;
+      font-size: 1.1rem;
     }
     .product-card button {
       background-color: var(--primary);
       border: none;
       color: white;
-      padding: 10px 16px;
+      padding: 12px 18px;
       font-weight: 700;
-      border-radius: 6px;
+      border-radius: 8px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      font-size: 1rem;
+      box-shadow: 0 4px 10px rgba(29, 185, 84, 0.6);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
     }
     .product-card button:hover {
-      background-color: #17a44d;
+      background-color: var(--primary-hover);
+      box-shadow: 0 6px 14px rgba(23, 164, 77, 0.8);
     }
 
     #toggle-cart {
@@ -78,14 +120,23 @@
       background: rgba(255,255,255,0.1);
       color: white;
       border: 1px solid rgba(255,255,255,0.2);
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(10px);
       border-radius: 50%;
-      width: 52px;
-      height: 52px;
-      font-size: 1.4rem;
+      width: 56px;
+      height: 56px;
+      font-size: 1.6rem;
       cursor: pointer;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-      position: fixed;
+      box-shadow: 0 6px 18px var(--shadow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    #toggle-cart.active {
+      background: var(--primary);
+      color: #121212;
+      border-color: var(--primary);
+      box-shadow: 0 8px 24px rgba(29, 185, 84, 0.7);
     }
     #cart-badge {
       position: absolute;
@@ -94,10 +145,11 @@
       background: red;
       color: white;
       font-size: 0.75rem;
-      padding: 2px 6px;
+      padding: 2px 7px;
       border-radius: 50%;
       display: none;
       animation: pop 0.3s ease;
+      user-select: none;
     }
     @keyframes pop {
       0% { transform: scale(0); }
@@ -107,42 +159,103 @@
 
     #cart {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
+      bottom: 0;
+      right: 0;
       background: var(--primary);
       color: white;
-      padding: 1rem;
-      border-radius: 12px;
-      max-width: 320px;
-      width: 90vw;
+      padding: 1rem 1.2rem;
+      border-radius: 12px 0 0 0;
+      max-width: 350px;
+      width: 100vw;
+      max-height: 75vh;
       z-index: 10000;
       font-family: 'Roboto', sans-serif;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      display: none;
+      box-shadow: -2px 0 14px var(--shadow);
+      transform: translateX(110%);
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    #cart.show {
+      transform: translateX(0);
     }
     #cart h2 {
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
+      font-size: 1.4rem;
+      margin-bottom: 0.75rem;
+      user-select: none;
+      font-weight: 700;
     }
     #cart ul {
       list-style: none;
       padding: 0;
       margin: 0 0 1rem;
-      max-height: 200px;
       overflow-y: auto;
+      flex-grow: 1;
+      scrollbar-width: thin;
+      scrollbar-color: #17a44d transparent;
+    }
+    #cart ul::-webkit-scrollbar {
+      width: 6px;
+    }
+    #cart ul::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    #cart ul::-webkit-scrollbar-thumb {
+      background-color: #17a44d;
+      border-radius: 10px;
     }
     #cart li {
-      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.6rem;
+      font-size: 1rem;
+      user-select: none;
+    }
+    #cart .item-info {
+      flex: 1 1 auto;
+      overflow-wrap: anywhere;
+    }
+    #cart .qty-controls {
+      display: flex;
+      align-items: center;
+      margin-left: 0.75rem;
+    }
+    #cart .qty-controls button {
+      background: rgba(18, 18, 18, 0.9);
+      border: none;
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 1.2rem;
+      padding: 0 10px;
+      cursor: pointer;
+      border-radius: 4px;
+      user-select: none;
+      transition: background-color 0.2s ease;
+    }
+    #cart .qty-controls button:hover {
+      background-color: rgba(23, 164, 77, 0.9);
+      color: white;
+    }
+    #cart .qty-display {
+      padding: 0 8px;
+      font-weight: 700;
+      min-width: 20px;
+      text-align: center;
+      color: white;
     }
     #cart .remove-item {
       background: #121212;
       color: var(--primary);
       border: none;
-      padding: 3px 7px;
-      margin-left: 0.5rem;
-      border-radius: 4px;
+      padding: 4px 8px;
+      margin-left: 0.75rem;
+      border-radius: 6px;
       cursor: pointer;
       font-size: 0.9rem;
+      transition: background-color 0.3s ease;
+      user-select: none;
     }
     #cart .remove-item:hover {
       background: #0e0e0e;
@@ -151,60 +264,103 @@
       background: #121212;
       color: var(--primary);
       width: 100%;
-      padding: 10px;
+      padding: 12px;
       border: none;
-      font-weight: bold;
-      font-size: 1rem;
-      border-radius: 8px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      border-radius: 10px;
       cursor: pointer;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+      transition: background-color 0.3s ease;
+      user-select: none;
     }
     #order-btn:hover {
       background: #0e0e0e;
     }
+    #cart-empty {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #ccc;
+      font-style: italic;
+      font-size: 1.1rem;
+      user-select: none;
+    }
+    #cart-empty svg {
+      margin-bottom: 10px;
+      width: 60px;
+      height: 60px;
+      opacity: 0.5;
+    }
     @media (max-width: 500px) {
+      body {
+        padding: 0.8rem;
+      }
       #cart {
         max-width: 100vw;
-        right: 0;
         border-radius: 0;
+        padding: 1rem;
+      }
+      #cart li {
+        font-size: 0.95rem;
+      }
+      .product-card {
+        padding: 0.8rem;
+      }
+      .product-card button {
+        font-size: 0.9rem;
+        padding: 10px 14px;
       }
     }
   </style>
 </head>
 <body>
 
-<button id="toggle-cart">🛒<span id="cart-badge">0</span></button>
+<button id="toggle-cart" aria-label="Toggle shopping cart">🛒<span id="cart-badge" aria-live="polite">0</span></button>
 
 <header>
   <h1>Hero Motorcycle Spare Parts</h1>
   <p>Borhan Auto Parts Centre - RN Road, Jessore</p>
-  <a href="index.html">← Back to Home</a>
+  <a href="index.html" aria-label="Back to Home Page">← Back to Home</a>
 </header>
 
-<section class="product-grid">
-  <div class="product-card">
+<section class="product-grid" aria-label="Product List">
+  <article class="product-card" role="listitem">
     <img src="https://raw.githubusercontent.com/borhanauto/borhan-auto-parts/main/hero_cable.jpg" alt="Hero Brake Cable" />
     <h3>Hero Brake Cable</h3>
     <p class="price">৳390</p>
-    <button onclick="addToCart('hero-cable', 'Hero Brake Cable', 390)">Add to Cart</button>
-  </div>
-  <div class="product-card">
+    <button onclick="addToCart('hero-cable', 'Hero Brake Cable', 390)" aria-label="Add Hero Brake Cable to cart">Add to Cart</button>
+  </article>
+  <article class="product-card" role="listitem">
     <img src="https://raw.githubusercontent.com/borhanauto/borhan-auto-parts/main/hero_airfilter.jpg" alt="Hero Air Filter" />
     <h3>Hero Air Filter</h3>
     <p class="price">৳410</p>
-    <button onclick="addToCart('hero-airfilter', 'Hero Air Filter', 410)">Add to Cart</button>
-  </div>
-  <div class="product-card">
+    <button onclick="addToCart('hero-airfilter', 'Hero Air Filter', 410)" aria-label="Add Hero Air Filter to cart">Add to Cart</button>
+  </article>
+  <article class="product-card" role="listitem">
     <img src="https://raw.githubusercontent.com/borhanauto/borhan-auto-parts/main/hero_sparkplug.jpg" alt="Hero Spark Plug" />
     <h3>Hero Spark Plug</h3>
     <p class="price">৳330</p>
-    <button onclick="addToCart('hero-sparkplug', 'Hero Spark Plug', 330)">Add to Cart</button>
-  </div>
+    <button onclick="addToCart('hero-sparkplug', 'Hero Spark Plug', 330)" aria-label="Add Hero Spark Plug to cart">Add to Cart</button>
+  </article>
 </section>
 
-<div id="cart">
+<div id="cart" role="region" aria-label="Shopping cart" aria-live="polite">
   <h2>Your Cart (<span id="cart-count">0</span> items)</h2>
-  <div id="cart-items"><p>Your cart is empty.</p></div>
-  <button id="order-btn" onclick="orderViaWhatsApp()">Order via WhatsApp</button>
+  <div id="cart-items">
+    <div id="cart-empty" aria-live="assertive" role="alert">
+      <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="32" cy="32" r="30" stroke="#bbb" stroke-width="2"/>
+        <path d="M20 24h24l-4 16H24l-4-16z" fill="#bbb"/>
+        <circle cx="24" cy="48" r="4" fill="#bbb"/>
+        <circle cx="40" cy="48" r="4" fill="#bbb"/>
+      </svg>
+      <p>Your cart is empty.</p>
+    </div>
+  </div>
+  <button id="order-btn" onclick="orderViaWhatsApp()" aria-label="Order via WhatsApp">Order via WhatsApp</button>
 </div>
 
 <script>
@@ -223,11 +379,14 @@
     const count = cart.reduce((sum, item) => sum + item.qty, 0);
     document.getElementById('cart-count').textContent = count;
     const badge = document.getElementById('cart-badge');
+    const toggleBtn = document.getElementById('toggle-cart');
     if (count > 0) {
       badge.textContent = count;
       badge.style.display = 'inline';
+      toggleBtn.classList.add('active');
     } else {
       badge.style.display = 'none';
+      toggleBtn.classList.remove('active');
     }
   }
 
@@ -235,12 +394,27 @@
     const cart = loadCart();
     const container = document.getElementById('cart-items');
     if (!cart.length) {
-      container.innerHTML = '<p>Your cart is empty.</p>';
+      container.innerHTML = `<div id="cart-empty" aria-live="assertive" role="alert">
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="32" cy="32" r="30" stroke="#bbb" stroke-width="2"/>
+          <path d="M20 24h24l-4 16H24l-4-16z" fill="#bbb"/>
+          <circle cx="24" cy="48" r="4" fill="#bbb"/>
+          <circle cx="40" cy="48" r="4" fill="#bbb"/>
+        </svg>
+        <p>Your cart is empty.</p>
+      </div>`;
       return;
     }
-    container.innerHTML = '<ul>' + cart.map(item =>
-      `<li>${item.name} x ${item.qty} = ৳${item.qty * item.price} <button class="remove-item" onclick="removeFromCart('${item.id}')">Remove</button></li>`
-    ).join('') + '</ul>';
+    container.innerHTML = '<ul role="list">' + cart.map(item => `
+      <li>
+        <div class="item-info">${item.name} = ৳${item.price} each</div>
+        <div class="qty-controls" aria-label="Quantity controls for ${item.name}">
+          <button aria-label="Decrease quantity" onclick="changeQuantity('${item.id}', -1)">−</button>
+          <div class="qty-display" aria-live="polite">${item.qty}</div>
+          <button aria-label="Increase quantity" onclick="changeQuantity('${item.id}', 1)">+</button>
+          <button class="remove-item" aria-label="Remove ${item.name} from cart" onclick="removeFromCart('${item.id}')">✕</button>
+        </div>
+      </li>`).join('') + '</ul>';
   }
 
   function addToCart(id, name, price) {
@@ -252,8 +426,23 @@
     updateCartCount();
     renderCart();
     const badge = document.getElementById('cart-badge');
-    if (badge) badge.style.animation = 'pop 0.3s ease';
-    setTimeout(() => badge.style.animation = '', 300);
+    if (badge) {
+      badge.style.animation = 'pop 0.3s ease';
+      setTimeout(() => badge.style.animation = '', 300);
+    }
+  }
+
+  function changeQuantity(id, delta) {
+    let cart = loadCart();
+    const item = cart.find(i => i.id === id);
+    if (!item) return;
+    item.qty += delta;
+    if (item.qty <= 0) {
+      cart = cart.filter(i => i.id !== id);
+    }
+    saveCart(cart);
+    updateCartCount();
+    renderCart();
   }
 
   function removeFromCart(id) {
@@ -270,32 +459,3 @@
     const phone = '8801707659954';
     let message = 'Hello, I want to order:\n\n';
     cart.forEach(item => {
-      message += `- ${item.name} x ${item.qty} = ৳${item.qty * item.price}\n`;
-    });
-    message += '\nPlease contact me.';
-    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
-  }
-
-  // Toggle Cart
-  document.getElementById('toggle-cart').addEventListener('click', (e) => {
-    e.stopPropagation();
-    const cartBox = document.getElementById('cart');
-    cartBox.style.display = cartBox.style.display === 'block' ? 'none' : 'block';
-  });
-
-  document.addEventListener('click', (e) => {
-    const cart = document.getElementById('cart');
-    const toggle = document.getElementById('toggle-cart');
-    if (!cart.contains(e.target) && !toggle.contains(e.target)) {
-      cart.style.display = 'none';
-    }
-  });
-
-  document.addEventListener('DOMContentLoaded', () => {
-    updateCartCount();
-    renderCart();
-  });
-</script>
-
-</body>
-</html>
