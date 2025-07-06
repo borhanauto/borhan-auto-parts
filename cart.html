@@ -1,24 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Daraz Clone - Cart</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <header class="navbar">
-    <div class="logo">Daraz</div>
-    <input type="text" placeholder="Search for products" class="search-bar">
-    <nav>
-      <a href="cart.html">Cart</a>
-      <a href="login.html">Login</a>
-    </nav>
-  </header>
-  <main class="main-content">
-    <h2>Your Cart</h2>
-    <p>Smartphone X - ৳12,999</p>
-    <button>Proceed to Checkout</button>
-  </main>
-</body>
-</html>
+<!-- Cart Toggle Button -->
+<button id="toggle-cart">
+  🛒<span id="cart-badge" style="display:none;">0</span>
+</button>
+
+<!-- Cart Panel -->
+<div id="cart">
+  <h2>Your Cart (<span id="cart-count">0</span> items)</h2>
+  <div id="cart-items">
+    <p>Your cart is empty.</p>
+  </div>
+  <button id="order-btn" onclick="orderViaWhatsApp()">Order via WhatsApp</button>
+</div>
+
+<!-- Toggle & Close Behavior -->
+<script>
+  document.getElementById('toggle-cart').addEventListener('click', function (e) {
+    e.stopPropagation();
+    const cart = document.getElementById('cart');
+    cart.style.display = cart.style.display === 'block' ? 'none' : 'block';
+  });
+
+  document.addEventListener('click', function (e) {
+    const cart = document.getElementById('cart');
+    if (!cart.contains(e.target) && e.target.id !== 'toggle-cart') {
+      cart.style.display = 'none';
+    }
+  });
+</script>
