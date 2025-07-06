@@ -459,3 +459,32 @@
     const phone = '8801707659954';
     let message = 'Hello, I want to order:\n\n';
     cart.forEach(item => {
+cart.forEach(item => {
+      message += `- ${item.name} x ${item.qty} = ৳${item.qty * item.price}\n`;
+    });
+    message += '\nPlease contact me.';
+    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
+  }
+
+  // Toggle Cart with slide animation
+  document.getElementById('toggle-cart').addEventListener('click', (e) => {
+    e.stopPropagation();
+    const cartBox = document.getElementById('cart');
+    cartBox.classList.toggle('show');
+  });
+
+  // Close cart if clicking outside
+  document.addEventListener('click', (e) => {
+    const cart = document.getElementById('cart');
+    const toggle = document.getElementById('toggle-cart');
+    if (!cart.contains(e.target) && !toggle.contains(e.target)) {
+      cart.classList.remove('show');
+    }
+  });
+
+  // Initialize on page load
+  document.addEventListener('DOMContentLoaded', () => {
+    updateCartCount();
+    renderCart();
+  });
+</script>
