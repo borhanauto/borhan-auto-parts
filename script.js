@@ -257,3 +257,23 @@ document.querySelectorAll('.product-card button').forEach(button => {
     if (href) window.location.href = href;
   });
 });
+function updateCartCount() {
+  const cart = loadCart();
+  const count = cart.reduce((sum, item) => sum + item.qty, 0);
+
+  const cartCountElem = document.getElementById('cart-count');
+  const cartBadgeElem = document.getElementById('cart-badge');
+
+  if (cartCountElem) {
+    cartCountElem.textContent = count;
+  }
+
+  if (cartBadgeElem) {
+    if (count > 0) {
+      cartBadgeElem.textContent = count;
+      cartBadgeElem.style.display = 'inline-block'; // Show badge
+    } else {
+      cartBadgeElem.style.display = 'none'; // Hide badge
+    }
+  }
+}
