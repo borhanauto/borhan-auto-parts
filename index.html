@@ -209,6 +209,15 @@ footer {
 
   </style>  
 </head>
+<button id="toggle-cart" aria-label="Toggle shopping cart">
+  🛒<span id="cart-badge" style="display:none;">0</span>
+</button>
+
+<div id="cart">
+  <h2>Your Cart (<span id="cart-count">0</span> items)</h2>
+  <div id="cart-items"><p>Your cart is empty.</p></div>
+  <button id="order-btn" onclick="orderViaWhatsApp()">Order via WhatsApp</button>
+</div>
   <button id="toggle-cart" style="
   position: fixed;
   bottom: 20px;
