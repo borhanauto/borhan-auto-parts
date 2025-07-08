@@ -6,14 +6,214 @@
   <title>Suzuki Parts - Borhan Auto Parts Centre</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    /* SAME CSS AS BEFORE — Already optimized, no need to repeat here */
+    /* Same styling as other brand pages */
+    :root {
+      --primary: #1db954;
+      --bg: #121212;
+      --card-bg: #1e1e1e;
+      --error: #e74c3c;
+      --success: #27ae60;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 1rem;
+      font-family: 'Roboto', sans-serif;
+      background-color: var(--bg);
+      color: #eee;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header {
+      background: var(--card-bg);
+      padding: 1rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.7);
+    }
+    header h1 { margin: 0 0 0.3rem; font-size: 1.8rem; }
+    header p { margin: 0 0 0.5rem; color: #bbb; }
+    a {
+      color: var(--primary);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    a:hover { text-decoration: underline; }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      flex-grow: 1;
+    }
+    .product-card {
+      background: var(--card-bg);
+      padding: 1rem;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+      transition: 0.3s;
+    }
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(29, 185, 84, 0.8);
+    }
+    .product-card img {
+      max-width: 100%;
+      border-radius: 6px;
+      margin-bottom: 0.75rem;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      border: 1px solid #333;
+      filter: brightness(0.9);
+      transition: filter 0.3s;
+    }
+    .product-card img:hover {
+      filter: brightness(1);
+    }
+    .price {
+      color: var(--primary);
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin: 0.5rem 0;
+    }
+    .product-card button {
+      background-color: var(--primary);
+      border: none;
+      padding: 10px 16px;
+      color: #fff;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .product-card button:hover {
+      background-color: #17a44d;
+      box-shadow: 0 0 8px var(--primary);
+    }
+    #toggle-cart {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      backdrop-filter: blur(8px);
+      color: white;
+      border-radius: 50%;
+      width: 56px;
+      height: 56px;
+      font-size: 1.6rem;
+      cursor: pointer;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.6);
+      z-index: 10003;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #cart-badge {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      background: var(--error);
+      color: white;
+      font-size: 0.75rem;
+      padding: 2px 7px;
+      border-radius: 50%;
+      display: none;
+      font-weight: 700;
+    }
+    #cart {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--primary);
+      color: white;
+      padding: 1rem;
+      border-radius: 14px;
+      width: 90vw;
+      max-width: 360px;
+      max-height: 80vh;
+      overflow: auto;
+      transform: translateX(110%);
+      transition: 0.35s;
+      z-index: 10002;
+    }
+    #cart.show { transform: translateX(0); }
+    #cart h2 { text-align: center; }
+    #cart ul { list-style: none; padding: 0; margin: 0 0 1rem; }
+    #cart li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      padding: 0.5rem 0;
+    }
+    .qty-controls { display: flex; gap: 6px; align-items: center; }
+    .qty-btn {
+      background: rgba(0,0,0,0.2);
+      border: none;
+      color: white;
+      font-weight: bold;
+      width: 28px;
+      height: 28px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .item-total {
+      font-weight: 700;
+      color: #fff;
+    }
+    #total-price {
+      text-align: right;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #d1f7d1;
+      margin-bottom: 1rem;
+    }
+    #order-btn, #clear-cart-btn {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      margin-bottom: 0.5rem;
+    }
+    #order-btn {
+      background: #121212;
+      color: var(--primary);
+    }
+    #clear-cart-btn {
+      background: transparent;
+      color: #fff;
+      text-decoration: underline;
+    }
+    #toast {
+      position: fixed;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--success);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 25px;
+      font-weight: 600;
+      opacity: 0;
+      pointer-events: none;
+      transition: 0.3s ease;
+      z-index: 10005;
+    }
+    #toast.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
   </style>
 </head>
 <body>
 
-<button id="toggle-cart" aria-label="Toggle cart">
-  🛒<span id="cart-badge" aria-live="polite">0</span>
-</button>
+<button id="toggle-cart">🛒<span id="cart-badge">0</span></button>
 
 <header>
   <h1>Suzuki Motorcycle Spare Parts</h1>
@@ -21,39 +221,38 @@
   <a href="index.html">← Back to Home</a>
 </header>
 
-<section class="product-grid" aria-label="Product list">
-  <article class="product-card" tabindex="0">
-    <img src="https://raw.githubusercontent.com/borhanauto/borhan-auto-parts/main/suzuki_chain.jpg" alt="Suzuki Chain" loading="lazy" />
+<section class="product-grid">
+  <article class="product-card">
+    <img src="https://raw.githubusercontent.com/borhanauto/borhan-auto-parts/main/suzuki_chain.jpg" alt="Suzuki Chain" />
     <h3>Suzuki Chain</h3>
     <p class="price">৳620</p>
-    <button onclick="addToCart('suzuki-chain', 'Suzuki Chain', 620)" aria-label="Add Suzuki Chain to cart">Add to Cart</button>
+    <button onclick="addToCart('suzuki-chain', 'Suzuki Chain', 620)">Add to Cart</button>
   </article>
-  <article class="product-card" tabindex="0">
-    <img src="https://raw.githubusercontent.com/borhanauto/borhan-auto-parts/main/suzuki_brake_pad.jpg" alt="Suzuki Brake Pad" loading="lazy" />
+  <article class="product-card">
+    <img src="https://raw.githubusercontent.com/borhanauto/borhan-auto-parts/main/suzuki_brake_pad.jpg" alt="Suzuki Brake Pad" />
     <h3>Suzuki Brake Pad</h3>
     <p class="price">৳470</p>
-    <button onclick="addToCart('suzuki-brake-pad', 'Suzuki Brake Pad', 470)" aria-label="Add Suzuki Brake Pad to cart">Add to Cart</button>
+    <button onclick="addToCart('suzuki-brake-pad', 'Suzuki Brake Pad', 470)">Add to Cart</button>
   </article>
-  <article class="product-card" tabindex="0">
-    <img src="https://raw.githubusercontent.com/borhanauto/borhan-auto-parts/main/suzuki_spark_plug.jpg" alt="Suzuki Spark Plug" loading="lazy" />
+  <article class="product-card">
+    <img src="https://raw.githubusercontent.com/borhanauto/borhan-auto-parts/main/suzuki_spark_plug.jpg" alt="Suzuki Spark Plug" />
     <h3>Suzuki Spark Plug</h3>
     <p class="price">৳340</p>
-    <button onclick="addToCart('suzuki-spark-plug', 'Suzuki Spark Plug', 340)" aria-label="Add Suzuki Spark Plug to cart">Add to Cart</button>
+    <button onclick="addToCart('suzuki-spark-plug', 'Suzuki Spark Plug', 340)">Add to Cart</button>
   </article>
 </section>
 
-<div id="cart" aria-live="polite" aria-label="Shopping cart">
+<div id="cart">
   <h2>Your Cart (<span id="cart-count">0</span> items)</h2>
-  <button id="clear-cart-btn" aria-label="Clear cart">Clear Cart</button>
+  <button id="clear-cart-btn" onclick="clearCart()">Clear Cart</button>
   <div id="cart-items"><p>Your cart is empty.</p></div>
-  <div id="total-price" aria-label="Total price"></div>
-  <button id="order-btn" onclick="orderViaWhatsApp()" aria-label="Order via WhatsApp">Order via WhatsApp</button>
+  <div id="total-price"></div>
+  <button id="order-btn" onclick="orderViaWhatsApp()">Order via WhatsApp</button>
 </div>
 
-<div id="toast" role="alert" aria-live="assertive"></div>
+<div id="toast"></div>
 
 <script>
-  // SAME SCRIPT AS YOUR YAMAHA PAGE — Optimized and working for all pages
   const cartKey = 'borhanAutoCart';
   const toastEl = document.getElementById('toast');
 
@@ -75,13 +274,8 @@
     const cart = loadCart();
     const count = cart.reduce((sum, item) => sum + item.qty, 0);
     document.getElementById('cart-count').textContent = count;
-    const badge = document.getElementById('cart-badge');
-    if (count > 0) {
-      badge.textContent = count;
-      badge.style.display = 'inline';
-    } else {
-      badge.style.display = 'none';
-    }
+    document.getElementById('cart-badge').style.display = count ? 'inline' : 'none';
+    document.getElementById('cart-badge').textContent = count;
   }
 
   function calculateTotal(cart) {
@@ -100,15 +294,14 @@
     container.innerHTML = '<ul>' + cart.map(item => `
       <li>
         <span>${item.name}</span>
-        <div class="qty-controls" aria-label="Quantity controls for ${item.name}">
-          <button class="qty-btn" aria-label="Decrease quantity" onclick="changeQty('${item.id}', -1)">−</button>
-          <span aria-live="polite" aria-atomic="true">${item.qty}</span>
-          <button class="qty-btn" aria-label="Increase quantity" onclick="changeQty('${item.id}', 1)">+</button>
+        <div class="qty-controls">
+          <button class="qty-btn" onclick="changeQty('${item.id}', -1)">−</button>
+          <span>${item.qty}</span>
+          <button class="qty-btn" onclick="changeQty('${item.id}', 1)">+</button>
           <span class="item-total">৳${item.price * item.qty}</span>
-          <button class="remove-item" aria-label="Remove ${item.name}" onclick="removeFromCart('${item.id}')">×</button>
+          <button class="qty-btn" onclick="removeFromCart('${item.id}')">×</button>
         </div>
-      </li>
-    `).join('') + '</ul>';
+      </li>`).join('') + '</ul>';
     totalPriceEl.textContent = `Total: ৳${calculateTotal(cart)}`;
   }
 
@@ -120,14 +313,13 @@
     saveCart(cart);
     updateCartCount();
     renderCart();
-    animateBadge();
     showToast(`Added ${name} to cart.`);
   }
 
   function removeFromCart(id) {
     let cart = loadCart();
     const item = cart.find(i => i.id === id);
-    cart = cart.filter(item => item.id !== id);
+    cart = cart.filter(i => i.id !== id);
     saveCart(cart);
     updateCartCount();
     renderCart();
@@ -152,10 +344,7 @@
 
   function orderViaWhatsApp() {
     const cart = loadCart();
-    if (!cart.length) {
-      alert('Your cart is empty.');
-      return;
-    }
+    if (!cart.length) return alert('Your cart is empty.');
     const phone = '8801707659954';
     let message = 'Hello, I want to order:\n\n';
     cart.forEach(item => {
@@ -166,7 +355,7 @@
   }
 
   function clearCart() {
-    if (confirm('Are you sure you want to clear your cart?')) {
+    if (confirm('Clear all items from your cart?')) {
       saveCart([]);
       updateCartCount();
       renderCart();
@@ -174,23 +363,13 @@
     }
   }
 
-  function animateBadge() {
-    const badge = document.getElementById('cart-badge');
-    badge.style.animation = 'pop 0.3s ease';
-    setTimeout(() => {
-      badge.style.animation = '';
-    }, 300);
-  }
-
-  const toggleBtn = document.getElementById('toggle-cart');
-  const cartBox = document.getElementById('cart');
-
-  toggleBtn.addEventListener('click', e => {
-    e.stopPropagation();
-    cartBox.classList.toggle('show');
+  document.getElementById('toggle-cart').addEventListener('click', () => {
+    document.getElementById('cart').classList.toggle('show');
   });
 
-  document.addEventListener('click', e => {
+  document.addEventListener('click', (e) => {
+    const cartBox = document.getElementById('cart');
+    const toggleBtn = document.getElementById('toggle-cart');
     if (!cartBox.contains(e.target) && !toggleBtn.contains(e.target)) {
       cartBox.classList.remove('show');
     }
@@ -200,8 +379,7 @@
     updateCartCount();
     renderCart();
   });
-
-  document.getElementById('clear-cart-btn').addEventListener('click', clearCart);
 </script>
+
 </body>
 </html>
