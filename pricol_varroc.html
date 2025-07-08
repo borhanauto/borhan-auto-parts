@@ -6,228 +6,530 @@
   <title>Pricol Varroc Parts - Borhan Auto Parts Centre</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
   <style>
+    /* Same styles as Yamaha and TVS pages */
+    :root {
+      --primary: #1db954;
+      --bg: #121212;
+      --card-bg: #1e1e1e;
+      --error: #e74c3c;
+      --success: #27ae60;
+    }
+    * {
+      box-sizing: border-box;
+    }
     body {
-      font-family: 'Roboto', sans-serif;
-      background-color: #121212;
-      color: #eee;
       margin: 0;
       padding: 1rem;
+      font-family: 'Roboto', sans-serif;
+      background-color: var(--bg);
+      color: #eee;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
     header {
+      position: sticky;
+      top: 0;
+      background: var(--card-bg);
+      padding: 1rem;
       text-align: center;
-      margin-bottom: 1rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.7);
+      z-index: 10002;
     }
     header h1 {
+      margin: 0 0 0.3rem;
+      font-weight: 700;
+      font-size: 1.8rem;
+    }
+    header p {
       margin: 0 0 0.5rem;
+      color: #bbb;
+    }
+    a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    a:hover,
+    a:focus {
+      text-decoration: underline;
+      outline: none;
     }
     .product-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 1rem;
+      flex-grow: 1;
+      padding-bottom: 5rem;
     }
     .product-card {
-      background: #1e1e1e;
-      border-radius: 8px;
+      background: var(--card-bg);
+      border-radius: 10px;
       padding: 1rem;
       text-align: center;
-      color: white;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .product-card:hover,
+    .product-card:focus-within {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(29, 185, 84, 0.8);
     }
     .product-card img {
       max-width: 100%;
       height: auto;
-      margin-bottom: 0.5rem;
       border-radius: 6px;
+      margin-bottom: 0.75rem;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border: 1px solid #333;
+      filter: brightness(0.9);
+      transition: filter 0.3s ease;
     }
-    .product-card h3 {
-      margin: 0.5rem 0;
+    .product-card img:hover,
+    .product-card img:focus {
+      filter: brightness(1);
+      outline: none;
+    }
+    h3 {
+      font-size: 1.1rem;
+      margin: 0 0 0.4rem;
+      color: #fff;
     }
     .price {
-      color: #1db954;
-      font-weight: bold;
-      margin: 0.5rem 0;
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-bottom: 0.8rem;
     }
     .product-card button {
-      background-color: #1db954;
-      color: white;
+      background-color: var(--primary);
       border: none;
+      color: white;
       padding: 10px 16px;
-      cursor: pointer;
-      border-radius: 4px;
       font-weight: 700;
-      transition: background-color 0.3s ease;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      user-select: none;
     }
-    .product-card button:hover {
+    .product-card button:hover,
+    .product-card button:focus {
       background-color: #17a44d;
+      outline: none;
+      box-shadow: 0 0 8px var(--primary);
+    }
+    #toggle-cart {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      z-index: 10003;
+      background: rgba(255,255,255,0.15);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.3);
+      backdrop-filter: blur(8px);
+      border-radius: 50%;
+      width: 56px;
+      height: 56px;
+      font-size: 1.6rem;
+      cursor: pointer;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+    }
+    #toggle-cart:focus {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+    }
+    #cart-badge {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      background: var(--error);
+      color: white;
+      font-size: 0.75rem;
+      padding: 2px 7px;
+      border-radius: 50%;
+      display: none;
+      animation: pop 0.3s ease;
+      user-select: none;
+      pointer-events: none;
+      font-weight: 700;
+    }
+    @keyframes pop {
+      0% { transform: scale(0); }
+      80% { transform: scale(1.3); }
+      100% { transform: scale(1); }
     }
     #cart {
-  display: none;
-  position: fixed;
-  bottom: 16px;
-  right: 16px;
-  background: rgba(29, 185, 84, 0.85); /* transparent green */
-  color: white;
-  padding: 0.75rem;
-  border-radius: 8px;
-  max-width: 260px;
-  width: 90vw;
-  z-index: 10000;
-  font-family: 'Roboto', sans-serif;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  font-size: 0.85rem;
-}
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--primary);
+      color: white;
+      padding: 1rem 1.2rem;
+      border-radius: 14px;
+      max-width: 360px;
+      width: 90vw;
+      z-index: 10002;
+      font-family: 'Roboto', sans-serif;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.7);
+      display: flex;
+      flex-direction: column;
+      max-height: 80vh;
+      overflow: hidden;
+      transform: translateX(110%);
+      transition: transform 0.35s ease;
+    }
+    #cart.show {
+      transform: translateX(0);
+    }
     #cart h2 {
-      margin: 0 0 0.5rem;
-      font-size: 1.2rem;
+      font-size: 1.4rem;
+      margin-bottom: 0.6rem;
+      text-align: center;
     }
     #cart ul {
       list-style: none;
-      padding-left: 0;
-      max-height: 200px;
-      overflow-y: auto;
+      padding: 0;
       margin: 0 0 1rem;
+      overflow-y: auto;
+      flex-grow: 1;
+      border-top: 1px solid rgba(255,255,255,0.2);
+      border-bottom: 1px solid rgba(255,255,255,0.2);
     }
     #cart li {
-      margin-bottom: 0.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0.5rem 0;
+      font-size: 1rem;
+      padding: 0.25rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
     }
-    #cart button.remove-item {
-      background: #121212;
-      color: #1db954;
+    #cart li:last-child {
+      border-bottom: none;
+    }
+    #cart .remove-item {
+      background: transparent;
+      color: var(--error);
       border: none;
-      padding: 3px 7px;
+      font-size: 1.1rem;
       cursor: pointer;
-      font-weight: bold;
-      margin-left: 0.5rem;
+      padding: 0 6px;
       border-radius: 4px;
-      font-size: 0.9rem;
+      user-select: none;
+      transition: color 0.2s ease;
     }
-    #cart button#order-btn {
-      background-color: #121212;
-      color: #1db954;
-      width: 100%;
-      padding: 10px;
+    #cart .remove-item:hover,
+    #cart .remove-item:focus {
+      color: #ff4c4c;
+      outline: none;
+    }
+    #cart .qty-controls {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    #cart .qty-btn {
+      background: rgba(0,0,0,0.2);
       border: none;
+      color: white;
       font-weight: 700;
-      border-radius: 6px;
       cursor: pointer;
+      border-radius: 4px;
+      width: 28px;
+      height: 28px;
+      font-size: 1.1rem;
+      user-select: none;
+      transition: background-color 0.2s ease;
+    }
+    #cart .qty-btn:hover,
+    #cart .qty-btn:focus {
+      background: rgba(0,0,0,0.5);
+      outline: none;
+    }
+    #cart .item-total {
+      min-width: 80px;
+      text-align: right;
+      font-weight: 700;
+      color: #cceedd;
+    }
+    #total-price {
+      font-size: 1.3rem;
+      font-weight: 700;
+      text-align: right;
+      margin-bottom: 1rem;
+      color: #d1f7d1;
+    }
+    #order-btn {
+      background: #121212;
+      color: var(--primary);
+      width: 100%;
+      padding: 12px;
+      border: none;
+      font-weight: bold;
+      font-size: 1.1rem;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      user-select: none;
+    }
+    #order-btn:hover,
+    #order-btn:focus {
+      background: #0e0e0e;
+      outline: none;
+    }
+    #clear-cart-btn {
+      background: transparent;
+      color: var(--error);
+      border: none;
+      font-size: 0.9rem;
+      cursor: pointer;
+      margin-bottom: 1rem;
+      align-self: flex-end;
+      user-select: none;
+      text-decoration: underline;
+    }
+    #clear-cart-btn:hover,
+    #clear-cart-btn:focus {
+      color: #ff6666;
+      outline: none;
+    }
+    @media (max-width: 600px) {
+      #cart {
+        max-width: 100vw;
+        right: 0;
+        border-radius: 0;
+        bottom: 0;
+        max-height: 60vh;
+      }
+      .product-card {
+        padding: 0.75rem;
+      }
+    }
+    #toast {
+      position: fixed;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--success);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 25px;
+      font-weight: 600;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      z-index: 10005;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    }
+    #toast.show {
+      opacity: 1;
+      pointer-events: auto;
     }
   </style>
 </head>
 <body>
-<button id="toggle-cart" style="
-  position: fixed;
-  bottom: 16px;
-  left: 16px;
-  z-index: 10001;
-  background: rgba(255,255,255,0.1);
-  color: white;
-  border: 1px solid rgba(255,255,255,0.2);
-  backdrop-filter: blur(8px);
-  border-radius: 50%;
-  width: 48px;
-  height: 48px;
-  font-size: 1.3rem;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-">🛒</button>
-  <header>
-    <h1>Pricol & Varroc Motorcycle Parts</h1>
-    <p>Borhan Auto Parts Centre - RN Road, Jessore</p>
-    <a href="index.html" style="color:#1db954; text-decoration:none;">← Back to Home</a>
-  </header>
 
-  <section class="product-grid">
-    <div class="product-card">
-      <img src="https://raw.githubusercontent.com/borhanauto/borhan-auto-parts/main/pricol_speedometer.jpg" alt="Pricol Speedometer" />
-      <h3>Pricol Speedometer</h3>
-      <p class="price">৳850</p>
-      <button onclick="addToCart('pricol-speedometer', 'Pricol Speedometer', 850)">Add to Cart</button>
-    </div>
-    <div class="product-card">
-      <img src="https://raw.githubusercontent.com/borhanauto/borhan-auto-parts/main/varroc_headlight.jpg" alt="Varroc Headlight Assembly" />
-      <h3>Varroc Headlight Assembly</h3>
-      <p class="price">৳1450</p>
-      <button onclick="addToCart('varroc-headlight', 'Varroc Headlight', 1450)">Add to Cart</button>
-    </div>
-    <div class="product-card">
-      <img src="https://raw.githubusercontent.com/borhanauto/borhan-auto-parts/main/pricol_fuel_gauge.jpg" alt="Pricol Fuel Gauge" />
-      <h3>Pricol Fuel Gauge</h3>
-      <p class="price">৳620</p>
-      <button onclick="addToCart('pricol-fuelgauge', 'Pricol Fuel Gauge', 620)">Add to Cart</button>
-    </div>
-  </section>
+<button id="toggle-cart" aria-label="Toggle cart">
+  🛒<span id="cart-badge" aria-live="polite">0</span>
+</button>
 
-  <div id="cart">
-    <h2>Your Cart (<span id="cart-count">0</span> items)</h2>
-    <div id="cart-items"><p>Your cart is empty.</p></div>
-    <button id="order-btn" onclick="orderViaWhatsApp()">Order via WhatsApp</button>
-  </div>
+<header>
+  <h1>Pricol Varroc Spare Parts</h1>
+  <p>Borhan Auto Parts Centre - RN Road, Jessore</p>
+  <a href="index.html">← Back to Home</a>
+</header>
 
-  <script>
-    const cartKey = 'borhanAutoCart';
-    function loadCart() {
-      const cart = localStorage.getItem(cartKey);
-      return cart ? JSON.parse(cart) : [];
+<section class="product-grid" aria-label="Product list">
+  <article class="product-card" tabindex="0">
+    <img src="https://raw.githubusercontent.com/borhanauto/borhan-auto-parts/main/pricol_varroc_brake_pad.jpg" alt="Pricol Varroc Brake Pad" loading="lazy" />
+    <h3>Pricol Varroc Brake Pad</h3>
+    <p class="price">৳850</p>
+    <button onclick="addToCart('pricol-varroc-brake-pad', 'Pricol Varroc Brake Pad', 850)" aria-label="Add Pricol Varroc Brake Pad to cart">Add to Cart</button>
+  </article>
+  <article class="product-card" tabindex="0">
+    <img src="https://raw.githubusercontent.com/borhanauto/borhan-auto-parts/main/pricol_varroc_headlamp.jpg" alt="Pricol Varroc Headlamp" loading="lazy" />
+    <h3>Pricol Varroc Headlamp</h3>
+    <p class="price">৳1500</p>
+    <button onclick="addToCart('pricol-varroc-headlamp', 'Pricol Varroc Headlamp', 1500)" aria-label="Add Pricol Varroc Headlamp to cart">Add to Cart</button>
+  </article>
+  <article class="product-card" tabindex="0">
+    <img src="https://raw.githubusercontent.com/borhanauto/borhan-auto-parts/main/pricol_varroc_tail_lamp.jpg" alt="Pricol Varroc Tail Lamp" loading="lazy" />
+    <h3>Pricol Varroc Tail Lamp</h3>
+    <p class="price">৳1100</p>
+    <button onclick="addToCart('pricol-varroc-tail-lamp', 'Pricol Varroc Tail Lamp', 1100)" aria-label="Add Pricol Varroc Tail Lamp to cart">Add to Cart</button>
+  </article>
+</section>
+
+<div id="cart" aria-live="polite" aria-label="Shopping cart">
+  <h2>Your Cart (<span id="cart-count">0</span> items)</h2>
+  <button id="clear-cart-btn" aria-label="Clear cart">Clear Cart</button>
+  <div id="cart-items"><p>Your cart is empty.</p></div>
+  <div id="total-price" aria-label="Total price"></div>
+  <button id="order-btn" onclick="orderViaWhatsApp()" aria-label="Order via WhatsApp">Order via WhatsApp</button>
+</div>
+
+<div id="toast" role="alert" aria-live="assertive"></div>
+
+<script>
+  const cartKey = 'borhanAutoCart';
+  const toastEl = document.getElementById('toast');
+
+  function loadCart() {
+    return JSON.parse(localStorage.getItem(cartKey) || '[]');
+  }
+
+  function saveCart(cart) {
+    localStorage.setItem(cartKey, JSON.stringify(cart));
+  }
+
+  function showToast(message) {
+    toastEl.textContent = message;
+    toastEl.classList.add('show');
+    setTimeout(() => toastEl.classList.remove('show'), 2000);
+  }
+
+  function updateCartCount() {
+    const cart = loadCart();
+    const count = cart.reduce((sum, item) => sum + item.qty, 0);
+    document.getElementById('cart-count').textContent = count;
+    const badge = document.getElementById('cart-badge');
+    if (count > 0) {
+      badge.textContent = count;
+      badge.style.display = 'inline';
+    } else {
+      badge.style.display = 'none';
     }
-    function saveCart(cart) {
-      localStorage.setItem(cartKey, JSON.stringify(cart));
+  }
+
+  function calculateTotal(cart) {
+    return cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+  }
+
+  function renderCart() {
+    const cart = loadCart();
+    const container = document.getElementById('cart-items');
+    const totalPriceEl = document.getElementById('total-price');
+    if (!cart.length) {
+      container.innerHTML = '<p>Your cart is empty.</p>';
+      totalPriceEl.textContent = '';
+      return;
     }
-    function updateCartCount() {
-      const cart = loadCart();
-      const count = cart.reduce((sum, item) => sum + item.qty, 0);
-      const cartCountElem = document.getElementById('cart-count');
-      if (cartCountElem) cartCountElem.textContent = count;
+    container.innerHTML = '<ul>' + cart.map(item => `
+      <li>
+        <span>${item.name}</span>
+        <div class="qty-controls" aria-label="Quantity controls for ${item.name}">
+          <button class="qty-btn" aria-label="Decrease quantity" onclick="changeQty('${item.id}', -1)">−</button>
+          <span aria-live="polite" aria-atomic="true">${item.qty}</span>
+          <button class="qty-btn" aria-label="Increase quantity" onclick="changeQty('${item.id}', 1)">+</button>
+          <span class="item-total">৳${item.price * item.qty}</span>
+          <button class="remove-item" aria-label="Remove ${item.name}" onclick="removeFromCart('${item.id}')">×</button>
+        </div>
+      </li>
+    `).join('') + '</ul>';
+    totalPriceEl.textContent = `Total: ৳${calculateTotal(cart)}`;
+  }
+
+  function addToCart(id, name, price) {
+    let cart = loadCart();
+    const existing = cart.find(item => item.id === id);
+    if (existing) existing.qty++;
+    else cart.push({ id, name, price, qty: 1 });
+    saveCart(cart);
+    updateCartCount();
+    renderCart();
+    animateBadge();
+    showToast(`Added ${name} to cart.`);
+  }
+
+  function removeFromCart(id) {
+    let cart = loadCart();
+    const item = cart.find(i => i.id === id);
+    cart = cart.filter(item => item.id !== id);
+    saveCart(cart);
+    updateCartCount();
+    renderCart();
+    showToast(`Removed ${item.name} from cart.`);
+  }
+
+  function changeQty(id, delta) {
+    let cart = loadCart();
+    const item = cart.find(i => i.id === id);
+    if (!item) return;
+    item.qty += delta;
+    if (item.qty < 1) {
+      cart = cart.filter(i => i.id !== id);
+      showToast(`Removed ${item.name} from cart.`);
+    } else {
+      showToast(`Updated quantity of ${item.name} to ${item.qty}.`);
     }
-    function addToCart(id, name, price) {
-      let cart = loadCart();
-      const existing = cart.find(item => item.id === id);
-      if (existing) existing.qty++;
-      else cart.push({ id, name, price, qty: 1 });
-      saveCart(cart);
-      alert(`Added ${name} to cart.`);
-      updateCartCount();
-      renderCart();
+    saveCart(cart);
+    updateCartCount();
+    renderCart();
+  }
+
+  function orderViaWhatsApp() {
+    const cart = loadCart();
+    if (!cart.length) {
+      alert('Your cart is empty.');
+      return;
     }
-    function removeFromCart(id) {
-      let cart = loadCart();
-      cart = cart.filter(item => item.id !== id);
-      saveCart(cart);
-      updateCartCount();
-      renderCart();
-    }
-    function renderCart() {
-      const cart = loadCart();
-      const cartContainer = document.getElementById('cart-items');
-      if (!cartContainer) return;
-      if (cart.length === 0) {
-        cartContainer.innerHTML = '<p>Your cart is empty.</p>';
-        return;
-      }
-      let html = '<ul>';
-      cart.forEach(item => {
-        html += `<li>${item.name} x ${item.qty} = ৳${item.price * item.qty} <button class="remove-item" onclick="removeFromCart('${item.id}')">Remove</button></li>`;
-      });
-      html += '</ul>';
-      cartContainer.innerHTML = html;
-    }
-    function orderViaWhatsApp() {
-      const cart = loadCart();
-      if (cart.length === 0) {
-        alert('Your cart is empty.');
-        return;
-      }
-      const phone = '8801707659954';
-      let message = `Hello, I want to order these products from Borhan Auto Parts Centre:\n\n`;
-      cart.forEach(item => {
-        message += `- ${item.name} x ${item.qty} = ৳${item.price * item.qty}\n`;
-      });
-      message += `\nPlease contact me for further details.`;
-      const url = `https://wa.me/${phone}?text=` + encodeURIComponent(message);
-      window.open(url, '_blank');
-    }
-    document.addEventListener('DOMContentLoaded', () => {
-      updateCartCount();
-      renderCart();
+    const phone = '8801707659954';
+    let message = 'Hello, I want to order:\n\n';
+    cart.forEach(item => {
+      message += `- ${item.name} x ${item.qty} = ৳${item.qty * item.price}\n`;
     });
-  </script>
+    message += `\nTotal: ৳${calculateTotal(cart)}\n\nPlease contact me.`;
+    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
+  }
+
+  function clearCart() {
+    if (confirm('Are you sure you want to clear the cart?')) {
+      localStorage.removeItem(cartKey);
+      updateCartCount();
+      renderCart();
+      showToast('Cart cleared.');
+    }
+  }
+
+  function animateBadge() {
+    const badge = document.getElementById('cart-badge');
+    badge.style.animation = 'pop 0.3s ease';
+    setTimeout(() => {
+      badge.style.animation = '';
+    }, 300);
+  }
+
+  // Toggle Cart slide
+  const toggleBtn = document.getElementById('toggle-cart');
+  const cartBox = document.getElementById('cart');
+
+  toggleBtn.addEventListener('click', e => {
+    e.stopPropagation();
+    cartBox.classList.toggle('show');
+  });
+
+  document.addEventListener('click', e => {
+    if (!cartBox.contains(e.target) && !toggleBtn.contains(e.target)) {
+      cartBox.classList.remove('show');
+    }
+  });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    updateCartCount();
+    renderCart();
+  });
+
+  // Clear Cart button
+  document.getElementById('clear-cart-btn').addEventListener('click', clearCart);
+</script>
+
 </body>
 </html>
