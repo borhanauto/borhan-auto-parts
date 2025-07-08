@@ -283,3 +283,24 @@ function updateCartCount() {
     menu.classList.toggle('show');
   }
 </script>
+<script>
+  // Sample cart logic
+  const cartBadge = document.getElementById('cart-badge');
+  const toggleCart = document.getElementById('toggle-cart');
+
+  let cartCount = 0;
+
+  // Simulate adding items to cart
+  function addToCart() {
+    cartCount++;
+    cartBadge.textContent = cartCount;
+    cartBadge.style.display = 'inline-block';
+  }
+
+  toggleCart.addEventListener('click', () => {
+    alert("Cart clicked! Items: " + cartCount);
+  });
+
+  // Example: simulate adding an item after 3 seconds
+  setTimeout(addToCart, 3000);
+</script>
