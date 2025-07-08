@@ -6,7 +6,333 @@
   <title>TVS Parts - Borhan Auto Parts Centre</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    /* SAME CSS AS YOUR OTHER PAGES */
+    /* Same styles as Yamaha page */
+    :root {
+      --primary: #1db954;
+      --bg: #121212;
+      --card-bg: #1e1e1e;
+      --error: #e74c3c;
+      --success: #27ae60;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      padding: 1rem;
+      font-family: 'Roboto', sans-serif;
+      background-color: var(--bg);
+      color: #eee;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      background: var(--card-bg);
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.7);
+      z-index: 10002;
+    }
+    header h1 {
+      margin: 0 0 0.3rem;
+      font-weight: 700;
+      font-size: 1.8rem;
+    }
+    header p {
+      margin: 0 0 0.5rem;
+      color: #bbb;
+    }
+    a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    a:hover,
+    a:focus {
+      text-decoration: underline;
+      outline: none;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      flex-grow: 1;
+      padding-bottom: 5rem;
+    }
+    .product-card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .product-card:hover,
+    .product-card:focus-within {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(29, 185, 84, 0.8);
+    }
+    .product-card img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 6px;
+      margin-bottom: 0.75rem;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border: 1px solid #333;
+      filter: brightness(0.9);
+      transition: filter 0.3s ease;
+    }
+    .product-card img:hover,
+    .product-card img:focus {
+      filter: brightness(1);
+      outline: none;
+    }
+    h3 {
+      font-size: 1.1rem;
+      margin: 0 0 0.4rem;
+      color: #fff;
+    }
+    .price {
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-bottom: 0.8rem;
+    }
+    .product-card button {
+      background-color: var(--primary);
+      border: none;
+      color: white;
+      padding: 10px 16px;
+      font-weight: 700;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      user-select: none;
+    }
+    .product-card button:hover,
+    .product-card button:focus {
+      background-color: #17a44d;
+      outline: none;
+      box-shadow: 0 0 8px var(--primary);
+    }
+    #toggle-cart {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      z-index: 10003;
+      background: rgba(255,255,255,0.15);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.3);
+      backdrop-filter: blur(8px);
+      border-radius: 50%;
+      width: 56px;
+      height: 56px;
+      font-size: 1.6rem;
+      cursor: pointer;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+    }
+    #toggle-cart:focus {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+    }
+    #cart-badge {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      background: var(--error);
+      color: white;
+      font-size: 0.75rem;
+      padding: 2px 7px;
+      border-radius: 50%;
+      display: none;
+      animation: pop 0.3s ease;
+      user-select: none;
+      pointer-events: none;
+      font-weight: 700;
+    }
+    @keyframes pop {
+      0% { transform: scale(0); }
+      80% { transform: scale(1.3); }
+      100% { transform: scale(1); }
+    }
+    #cart {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--primary);
+      color: white;
+      padding: 1rem 1.2rem;
+      border-radius: 14px;
+      max-width: 360px;
+      width: 90vw;
+      z-index: 10002;
+      font-family: 'Roboto', sans-serif;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.7);
+      display: flex;
+      flex-direction: column;
+      max-height: 80vh;
+      overflow: hidden;
+      transform: translateX(110%);
+      transition: transform 0.35s ease;
+    }
+    #cart.show {
+      transform: translateX(0);
+    }
+    #cart h2 {
+      font-size: 1.4rem;
+      margin-bottom: 0.6rem;
+      text-align: center;
+    }
+    #cart ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1rem;
+      overflow-y: auto;
+      flex-grow: 1;
+      border-top: 1px solid rgba(255,255,255,0.2);
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+    #cart li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0.5rem 0;
+      font-size: 1rem;
+      padding: 0.25rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    #cart li:last-child {
+      border-bottom: none;
+    }
+    #cart .remove-item {
+      background: transparent;
+      color: var(--error);
+      border: none;
+      font-size: 1.1rem;
+      cursor: pointer;
+      padding: 0 6px;
+      border-radius: 4px;
+      user-select: none;
+      transition: color 0.2s ease;
+    }
+    #cart .remove-item:hover,
+    #cart .remove-item:focus {
+      color: #ff4c4c;
+      outline: none;
+    }
+    #cart .qty-controls {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    #cart .qty-btn {
+      background: rgba(0,0,0,0.2);
+      border: none;
+      color: white;
+      font-weight: 700;
+      cursor: pointer;
+      border-radius: 4px;
+      width: 28px;
+      height: 28px;
+      font-size: 1.1rem;
+      user-select: none;
+      transition: background-color 0.2s ease;
+    }
+    #cart .qty-btn:hover,
+    #cart .qty-btn:focus {
+      background: rgba(0,0,0,0.5);
+      outline: none;
+    }
+    #cart .item-total {
+      min-width: 80px;
+      text-align: right;
+      font-weight: 700;
+      color: #cceedd;
+    }
+    #total-price {
+      font-size: 1.3rem;
+      font-weight: 700;
+      text-align: right;
+      margin-bottom: 1rem;
+      color: #d1f7d1;
+    }
+    #order-btn {
+      background: #121212;
+      color: var(--primary);
+      width: 100%;
+      padding: 12px;
+      border: none;
+      font-weight: bold;
+      font-size: 1.1rem;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      user-select: none;
+    }
+    #order-btn:hover,
+    #order-btn:focus {
+      background: #0e0e0e;
+      outline: none;
+    }
+    #clear-cart-btn {
+      background: transparent;
+      color: var(--error);
+      border: none;
+      font-size: 0.9rem;
+      cursor: pointer;
+      margin-bottom: 1rem;
+      align-self: flex-end;
+      user-select: none;
+      text-decoration: underline;
+    }
+    #clear-cart-btn:hover,
+    #clear-cart-btn:focus {
+      color: #ff6666;
+      outline: none;
+    }
+    @media (max-width: 600px) {
+      #cart {
+        max-width: 100vw;
+        right: 0;
+        border-radius: 0;
+        bottom: 0;
+        max-height: 60vh;
+      }
+      .product-card {
+        padding: 0.75rem;
+      }
+    }
+    #toast {
+      position: fixed;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--success);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 25px;
+      font-weight: 600;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      z-index: 10005;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    }
+    #toast.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
   </style>
 </head>
 <body>
@@ -23,22 +349,22 @@
 
 <section class="product-grid" aria-label="Product list">
   <article class="product-card" tabindex="0">
-    <img src="https://raw.githubusercontent.com/borhanauto/borhan-auto-parts/main/tvs_chain.jpg" alt="TVS Chain" loading="lazy" />
-    <h3>TVS Chain</h3>
-    <p class="price">৳600</p>
-    <button onclick="addToCart('tvs-chain', 'TVS Chain', 600)" aria-label="Add TVS Chain to cart">Add to Cart</button>
+    <img src="https://raw.githubusercontent.com/borhanauto/borhan-auto-parts/main/tvs_clutch_plate.jpg" alt="TVS Clutch Plate" loading="lazy" />
+    <h3>TVS Clutch Plate</h3>
+    <p class="price">৳700</p>
+    <button onclick="addToCart('tvs-clutch-plate', 'TVS Clutch Plate', 700)" aria-label="Add TVS Clutch Plate to cart">Add to Cart</button>
   </article>
   <article class="product-card" tabindex="0">
-    <img src="https://raw.githubusercontent.com/borhanauto/borhan-auto-parts/main/tvs_brake_pad.jpg" alt="TVS Brake Pad" loading="lazy" />
-    <h3>TVS Brake Pad</h3>
-    <p class="price">৳450</p>
-    <button onclick="addToCart('tvs-brake-pad', 'TVS Brake Pad', 450)" aria-label="Add TVS Brake Pad to cart">Add to Cart</button>
+    <img src="https://raw.githubusercontent.com/borhanauto/borhan-auto-parts/main/tvs_gear_set.jpg" alt="TVS Gear Set" loading="lazy" />
+    <h3>TVS Gear Set</h3>
+    <p class="price">৳1200</p>
+    <button onclick="addToCart('tvs-gear-set', 'TVS Gear Set', 1200)" aria-label="Add TVS Gear Set to cart">Add to Cart</button>
   </article>
   <article class="product-card" tabindex="0">
-    <img src="https://raw.githubusercontent.com/borhanauto/borhan-auto-parts/main/tvs_spark_plug.jpg" alt="TVS Spark Plug" loading="lazy" />
-    <h3>TVS Spark Plug</h3>
-    <p class="price">৳320</p>
-    <button onclick="addToCart('tvs-spark-plug', 'TVS Spark Plug', 320)" aria-label="Add TVS Spark Plug to cart">Add to Cart</button>
+    <img src="https://raw.githubusercontent.com/borhanauto/borhan-auto-parts/main/tvs_air_filter.jpg" alt="TVS Air Filter" loading="lazy" />
+    <h3>TVS Air Filter</h3>
+    <p class="price">৳400</p>
+    <button onclick="addToCart('tvs-air-filter', 'TVS Air Filter', 400)" aria-label="Add TVS Air Filter to cart">Add to Cart</button>
   </article>
 </section>
 
@@ -53,7 +379,6 @@
 <div id="toast" role="alert" aria-live="assertive"></div>
 
 <script>
-  // SAME SCRIPT LOGIC AS ALL OTHER PAGES
   const cartKey = 'borhanAutoCart';
   const toastEl = document.getElementById('toast');
 
@@ -182,6 +507,7 @@
     }, 300);
   }
 
+  // Toggle Cart slide
   const toggleBtn = document.getElementById('toggle-cart');
   const cartBox = document.getElementById('cart');
 
@@ -201,7 +527,9 @@
     renderCart();
   });
 
+  // Clear Cart button
   document.getElementById('clear-cart-btn').addEventListener('click', clearCart);
 </script>
+
 </body>
 </html>
