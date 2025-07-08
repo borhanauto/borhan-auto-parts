@@ -6,6 +6,9 @@
   margin: 0;
   padding: 0;
 }
+html {
+  scroll-behavior: smooth;
+}
 body {
   font-family: 'Roboto', sans-serif;
   background-color: #121212;
@@ -40,7 +43,7 @@ button,
   font-size: 1rem;
   border-radius: 30px;
   cursor: pointer;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.1s ease;
   user-select: none;
 }
 button:hover,
@@ -59,6 +62,11 @@ button:focus:not(:focus-visible),
 .home-button:focus:not(:focus-visible),
 .whatsapp-button:focus:not(:focus-visible) {
   outline: none;
+}
+button:active,
+.home-button:active,
+.whatsapp-button:active {
+  transform: scale(0.96);
 }
 
 /* Menu Toggle */
@@ -279,6 +287,17 @@ header p {
   text-decoration: none;
   user-select: none;
   align-items: center;
+
+  opacity: 0;
+  transform: translateY(15px);
+  animation: fadeInUp 0.6s forwards ease-out;
+  animation-delay: 0.15s;
+}
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 .product-card:hover,
 .product-card:focus-within {
@@ -315,7 +334,7 @@ header p {
 /* Product Description */
 .product-card p {
   font-size: 0.95rem;
-  color: #bbb;
+  color: #ddd;
   margin-bottom: 0.75rem;
   flex-grow: 1;
 }
@@ -337,7 +356,7 @@ header p {
 }
 
 /* Buy Button */
- .product-card button {
+.product-card button {
   background-color: #1db954;
   color: white;
   border: none;
