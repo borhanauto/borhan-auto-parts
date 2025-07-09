@@ -214,25 +214,127 @@
   </style>
 </head>
 <body>
- <nav class="navbar">
-  <div class="logo">Borhan Auto Parts</div>
+ <style>
+    /* Basic Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  <button class="menu-toggle" aria-label="Toggle nav menu" onclick="toggleMenu()">
-    <span></span><span></span><span></span>
-  </button>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #121212;
+      color: #fff;
+    }
 
-  <ul id="menu">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="hero.html">Hero Parts</a></li>
-    <li><a href="yamaha.html">Yamaha Parts</a></li>
-    <li><a href="bajaj.html">Bajaj Parts</a></li>
-    <li><a href="suzuki.html">Suzuki Parts</a></li>
-    <li><a href="contact.html">Contact</a></li>
-  </ul>
-</nav>
-  <button id="toggle-cart" aria-label="Toggle shopping cart">
-    🛒<span id="cart-badge" style="display:none;">0</span>
-  </button>
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #000;
+      position: relative;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    /* Menu Toggle (Hamburger) */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    .menu-toggle span {
+      width: 25px;
+      height: 3px;
+      background: white;
+      transition: 0.3s ease;
+    }
+
+    /* Navigation Links */
+    ul#menu {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    ul#menu li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    ul#menu li a:hover {
+      color: #ffcc00;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: flex;
+      }
+
+      ul#menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background-color: #000;
+        width: 200px;
+        padding: 1rem;
+        z-index: 10;
+      }
+
+      ul#menu.show {
+        display: flex;
+      }
+
+      ul#menu li {
+        margin-bottom: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">Borhan Auto Parts</div>
+
+    <!-- Hamburger Button -->
+    <button class="menu-toggle" aria-label="Toggle menu" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <!-- Menu Items -->
+    <ul id="menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="hero.html">Hero Parts</a></li>
+      <li><a href="yamaha.html">Yamaha Parts</a></li>
+      <li><a href="bajaj.html">Bajaj Parts</a></li>
+      <li><a href="suzuki.html">Suzuki Parts</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- JavaScript -->
+  <script>
+    function toggleMenu() {
+      document.getElementById("menu").classList.toggle("show");
+    }
+  </script
   <div class="banner-container">
     <img src="https://raw.githubusercontent.com/borhanauto/borhan-auto-parts/main/banner.png" alt="Borhan Auto Parts Banner" class="banner-image" />
   </div>
