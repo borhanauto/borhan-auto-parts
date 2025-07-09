@@ -304,3 +304,6 @@ function updateCartCount() {
   // Example: simulate adding an item after 3 seconds
   setTimeout(addToCart, 3000);
 </script>
+ul#menu li a:hover {
+  color: #ffcc00;
+}
