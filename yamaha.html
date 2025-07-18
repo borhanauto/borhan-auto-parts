@@ -3,7 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Yamaha Parts - Borhan Auto Parts Centre</title>
+  <title>Yamaha Spare Parts - Borhan Auto Parts Centre</title>
+  <meta name="description" content="Buy genuine Yamaha motorcycle spare parts including brake pads, spark plugs and more. Fast delivery from Borhan Auto Parts Centre in Bangladesh." />
+  <meta name="keywords" content="Yamaha parts, motorcycle parts, brake pads, spark plug, bKash payment, Bangladesh, Borhan Auto" />
+  <meta name="author" content="Borhan Auto Parts Centre" />
+  <link rel="icon" href="favicon.ico" />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     body {
@@ -33,6 +37,10 @@
       padding: 16px;
       display: flex;
       flex-direction: column;
+      transition: transform 0.2s ease;
+    }
+    .product-card:hover {
+      transform: scale(1.02);
     }
     .product-card img {
       width: 100%;
@@ -40,11 +48,27 @@
       object-fit: contain;
       max-height: 200px;
     }
+    .badge {
+      display: inline-block;
+      background: #facc15;
+      color: #1e293b;
+      font-size: 0.75em;
+      font-weight: bold;
+      padding: 2px 8px;
+      border-radius: 6px;
+      margin-bottom: 6px;
+      width: fit-content;
+    }
     .product-title {
       font-size: 1.2em;
       margin: 12px 0 6px;
       font-weight: bold;
       color: #1e293b;
+    }
+    .product-description {
+      font-size: 0.9em;
+      color: #4b5563;
+      margin-top: 6px;
     }
     .price {
       color: #16a34a;
@@ -56,42 +80,43 @@
       font-size: 0.95em;
       color: #ef4444;
     }
-    .btns {
-      margin-top: 12px;
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
+    .advance-info {
+      margin-top: 10px;
+      background: #f1f5f9;
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 0.95em;
     }
-    .btns a {
-      flex: 1 1 140px;
-      text-align: center;
-      padding: 12px;
-      border-radius: 6px;
-      text-decoration: none;
+    .advance-info button {
+      margin-top: 8px;
+      padding: 6px 12px;
       font-weight: bold;
-      transition: background 0.3s ease;
-      color: white;
-    }
-    .whatsapp {
-      background: #25d366;
-    }
-    .whatsapp:hover {
-      background: #128c4a;
-    }
-    .bkash {
       background: #e2136e;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
     }
-    .bkash:hover {
+    .advance-info button:hover {
       background: #a61158;
+    }
+    .bkash-qr {
+      margin-top: 12px;
+      max-width: 180px;
+      border-radius: 8px;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #1e293b;
+      color: white;
+      font-size: 0.9em;
     }
     @media (min-width: 600px) {
       .product-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 24px;
-      }
-      .product-card {
-        max-width: 100%;
       }
     }
   </style>
@@ -103,47 +128,70 @@
 
       <!-- Product Card 1 -->
       <div class="product-card" data-price="450">
-        <img src="images/yamaha-brake-pad.jpg" alt="Yamaha Brake Pad" />
+        <img src="images/yamaha-brake-pad.jpg" alt="Yamaha Brake Pad for FZS, R15" />
+        <span class="badge">New</span>
         <div class="product-title">Yamaha Brake Pad</div>
+        <div class="product-description">High-quality brake pad compatible with Yamaha FZS, R15, and Fazer series. Reliable grip and long life.</div>
         <div class="price">৳450</div>
         <div class="advance">Advance: ৳<span class="advance-amount">0</span></div>
-        <div class="btns">
-          <a class="whatsapp" href="#" target="_blank" rel="noopener noreferrer">Order on WhatsApp</a>
-          <a class="bkash" href="https://www.bkash.com/sendmoney" target="_blank" rel="noopener noreferrer">Pay Advance</a>
+        <div class="advance-info">
+          <strong>Send Advance via bKash</strong><br />
+          Number: <span class="bkash-number">01707659954</span><br />
+          Amount: ৳<span class="advance-amount">0</span><br />
+          <button onclick="copyBkash(this)">Copy Number</button><br />
+          <small style="color:#6b7280;">Use the bKash app → Tap "Send Money" → Enter number and amount</small>
+          <br />
+          <img src="images/bkash-qr.png" alt="bKash QR Code for Payment" class="bkash-qr" />
         </div>
       </div>
 
       <!-- Product Card 2 -->
       <div class="product-card" data-price="1250">
-        <img src="images/yamaha-spark-plug.jpg" alt="Yamaha Spark Plug" />
+        <img src="images/yamaha-spark-plug.jpg" alt="Yamaha Spark Plug Iridium" />
+        <span class="badge">Popular</span>
         <div class="product-title">Yamaha Spark Plug</div>
+        <div class="product-description">Genuine iridium spark plug suitable for Yamaha bikes – improves ignition, mileage, and engine performance.</div>
         <div class="price">৳1250</div>
         <div class="advance">Advance: ৳<span class="advance-amount">0</span></div>
-        <div class="btns">
-          <a class="whatsapp" href="#" target="_blank" rel="noopener noreferrer">Order on WhatsApp</a>
-          <a class="bkash" href="https://www.bkash.com/sendmoney" target="_blank" rel="noopener noreferrer">Pay Advance</a>
+        <div class="advance-info">
+          <strong>Send Advance via bKash</strong><br />
+          Number: <span class="bkash-number">01707659954</span><br />
+          Amount: ৳<span class="advance-amount">0</span><br />
+          <button onclick="copyBkash(this)">Copy Number</button><br />
+          <small style="color:#6b7280;">Use the bKash app → Tap "Send Money" → Enter number and amount</small>
+          <br />
+          <img src="images/bkash-qr.png" alt="bKash QR Code for Payment" class="bkash-qr" />
         </div>
       </div>
-
-      <!-- Add more product cards here as needed -->
 
     </div>
   </div>
 
+  <footer>
+    © 2025 Borhan Auto Parts Centre. All rights reserved.<br />
+    For orders & inquiries, call or bKash: 01707659954
+  </footer>
+
   <script>
-    // Automatically calculate advance and set WhatsApp link per product
+    // Calculate advance
     document.querySelectorAll('.product-card').forEach(card => {
       const price = parseInt(card.getAttribute('data-price'));
       const advance = Math.ceil(price / 1000) * 100;
-      card.querySelector('.advance-amount').textContent = advance;
-
-      const title = card.querySelector('.product-title').textContent.trim();
-
-      const whatsappMessage = `Hello, I want to buy ${title} (Price: ৳${price}, Advance: ৳${advance}). Please assist me.`;
-      const whatsappUrl = `https://wa.me/8801707659954?text=${encodeURIComponent(whatsappMessage)}`;
-
-      card.querySelector('.whatsapp').setAttribute('href', whatsappUrl);
+      card.querySelectorAll('.advance-amount').forEach(el => {
+        el.textContent = advance;
+      });
     });
+
+    // Copy bKash number
+    function copyBkash(button) {
+      const number = button.parentElement.querySelector('.bkash-number').textContent;
+      navigator.clipboard.writeText(number).then(() => {
+        button.textContent = 'Copied!';
+        setTimeout(() => {
+          button.textContent = 'Copy Number';
+        }, 2000);
+      });
+    }
   </script>
 </body>
 </html>
