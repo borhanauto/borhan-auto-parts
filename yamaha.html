@@ -26,6 +26,7 @@
       display: flex;
       gap: 15px;
       justify-content: center;
+      flex-wrap: wrap;
     }
     nav a {
       color: white;
@@ -132,6 +133,7 @@
     @media (max-width: 600px) {
       nav {
         flex-direction: column;
+        align-items: center;
       }
     }
   </style>
@@ -155,18 +157,18 @@
   <h1>Yamaha Motorcycle Spare Parts</h1>
   <div class="product-grid">
 
-    <!-- Product Card 1 -->
+    <!-- Product 1 -->
     <div class="product-card">
       <img src="images/yamaha-brake-pad.jpg" alt="Yamaha Brake Pad" />
       <h3>Yamaha Brake Pad</h3>
-      <p class="price">৳450</p>
+      <p class="price">৳<span class="product-price">450</span></p>
 
       <div class="payment-info">
         <h4>🔐 Cash on Delivery with Advance</h4>
         <ul>
           <li><strong>Bkash:</strong> 017XXXXXXXX</li>
           <li><strong>Nagad:</strong> 018XXXXXXXX</li>
-          <li><strong>Advance:</strong> 100৳</li>
+          <li><strong>Advance:</strong> <span class="advance-amount">Calculating...</span></li>
         </ul>
         <p>Please pay the advance and send your payment screenshot with delivery address.</p>
       </div>
@@ -175,22 +177,21 @@
         href="https://wa.me/8801707659954?text=Hi%2C%20I%20have%20paid%20an%20advance%20for%20the%20Yamaha%20Brake%20Pad.%20Here%20is%20my%20payment%20screenshot%20and%20delivery%20address..."
         target="_blank"
         class="whatsapp-button"
-        >📲 Confirm Order on WhatsApp</a
-      >
+      >📲 Confirm Order on WhatsApp</a>
     </div>
 
-    <!-- Product Card 2 -->
+    <!-- Product 2 -->
     <div class="product-card">
       <img src="images/yamaha-spark-plug.jpg" alt="Yamaha Spark Plug" />
       <h3>Yamaha Spark Plug</h3>
-      <p class="price">৳250</p>
+      <p class="price">৳<span class="product-price">1250</span></p>
 
       <div class="payment-info">
         <h4>🔐 Cash on Delivery with Advance</h4>
         <ul>
           <li><strong>Bkash:</strong> 017XXXXXXXX</li>
           <li><strong>Nagad:</strong> 018XXXXXXXX</li>
-          <li><strong>Advance:</strong> 100৳</li>
+          <li><strong>Advance:</strong> <span class="advance-amount">Calculating...</span></li>
         </ul>
         <p>Please pay the advance and send your payment screenshot with delivery address.</p>
       </div>
@@ -199,11 +200,10 @@
         href="https://wa.me/8801707659954?text=Hi%2C%20I%20have%20paid%20an%20advance%20for%20the%20Yamaha%20Spark%20Plug.%20Here%20is%20my%20payment%20screenshot%20and%20delivery%20address..."
         target="_blank"
         class="whatsapp-button"
-        >📲 Confirm Order on WhatsApp</a
-      >
+      >📲 Confirm Order on WhatsApp</a>
     </div>
 
-    <!-- Add more products below in the same structure -->
+    <!-- Add more products below in same format -->
 
   </div>
 </main>
@@ -211,6 +211,22 @@
 <footer>
   &copy; 2025 Borhan Auto Parts Centre - RN Road, Jessore | Contact: 01707659954 (WhatsApp Available)
 </footer>
+
+<!-- ✅ Auto Advance Calculation Script -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const products = document.querySelectorAll('.product-card');
+    products.forEach(card => {
+      const priceSpan = card.querySelector('.product-price');
+      const advanceSpan = card.querySelector('.advance-amount');
+      if (priceSpan && advanceSpan) {
+        const price = parseInt(priceSpan.textContent.trim());
+        const advance = Math.ceil(price / 1000) * 100;
+        advanceSpan.textContent = advance + '৳';
+      }
+    });
+  });
+</script>
 
 </body>
 </html>
