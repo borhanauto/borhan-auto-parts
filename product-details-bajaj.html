@@ -2,72 +2,77 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Product Details - Borhan Auto</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <title>Product Detail</title>
   <style>
-    body { font-family: 'Roboto', sans-serif; margin: 0; padding: 0; background: #f9f9f9; }
-    header { background: #1e293b; color: white; padding: 16px; text-align: center; font-size: 1.5em; font-weight: 700; }
-    .container { max-width: 900px; margin: auto; padding: 24px; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin-top: 32px; border-radius: 12px; }
-    .product-image { max-width: 100%; max-height: 300px; object-fit: contain; border-radius: 8px; }
-    .product-title { font-size: 1.5em; margin-top: 16px; font-weight: bold; color: #1e293b; }
-    .price { font-size: 1.2em; color: #16a34a; font-weight: bold; margin-top: 8px; }
-    .description { margin-top: 12px; color: #4b5563; }
-    .models { margin-top: 16px; }
-    .models ul { padding-left: 20px; color: #374151; }
-    .back-link { display: inline-block; margin-top: 24px; text-decoration: none; color: #1e40af; }
-    footer { text-align: center; padding: 20px; background: #1e293b; color: white; font-size: 0.9em; margin-top: 40px; }
+    body { font-family: Roboto, sans-serif; background: #f9f9f9; margin: 0; }
+    header { background: #1e293b; color: white; text-align: center; padding: 16px; font-size: 1.4em; }
+    .container { max-width: 800px; margin: auto; padding: 20px; }
+    .product {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    img {
+      width: 100%;
+      max-height: 250px;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+    .title {
+      font-size: 1.3em;
+      font-weight: bold;
+      margin: 16px 0 8px;
+      color: #1e293b;
+    }
+    .desc { color: #4b5563; margin-bottom: 12px; }
+    .price { font-size: 1.1em; color: #16a34a; font-weight: bold; }
   </style>
 </head>
 <body>
   <header>Product Details</header>
-  <div class="container" id="product-container"></div>
-  <footer>© 2025 Borhan Auto Parts Centre. All rights reserved.</footer>
+  <div class="container">
+    <div class="product" id="product-info"></div>
+  </div>
   <script>
     const params = new URLSearchParams(window.location.search);
-    const productId = params.get("product");
+    const product = params.get('product');
+    const model = params.get('model');
     const products = {
       "bajaj-clutch-cable": {
-        name: "Bajaj Clutch Cable",
-        description: "Durable clutch cable for Pulsar and Discover. Smooth control and longer life.",
-        price: "৳450",
+        name: "Clutch Cable",
         image: "images/bajaj-clutch-cable.jpg",
-        models: ["Pulsar 150", "Pulsar 180", "Discover 125", "CT 100"]
+        price: "৳450",
+        description: "Durable clutch cable for Pulsar and Discover. Smooth control and longer life."
       },
       "bajaj-air-filter": {
-        name: "Bajaj Air Filter",
-        description: "High-quality air filter that improves airflow and engine performance.",
-        price: "৳420",
+        name: "Air Filter",
         image: "images/bajaj-air-filter.jpg",
-        models: ["Pulsar NS160", "Avenger 220", "Discover 110", "Platina 100"]
+        price: "৳420",
+        description: "High-quality air filter that improves airflow and engine performance."
       },
       "bajaj-spark-plug": {
-        name: "Bajaj Spark Plug",
-        description: "OEM spark plug designed for Bajaj motorcycles. Smooth ignition guaranteed.",
-        price: "৳350",
+        name: "Spark Plug",
         image: "images/bajaj-spark-plug.jpg",
-        models: ["Pulsar 135", "Boxer 150", "CT 100", "Discover 150"]
+        price: "৳350",
+        description: "OEM spark plug designed for Bajaj motorcycles. Smooth ignition guaranteed."
       }
     };
-    const container = document.getElementById("product-container");
-    if (productId && products[productId]) {
-      const p = products[productId];
-      const modelName = params.get("model");
-      container.innerHTML = `<div><strong>Selected Model:</strong> ${modelName || "Not specified"}</div><br />
-        <img class="product-image" src="${p.image}" alt="${p.name}" />
-        <div class="product-title">${p.name}</div>
-        <div class="price">${p.price}</div>
-        <div class="description">${p.description}</div>
-        <div class="models">
-          <strong>Compatible with:</strong>
-          <ul>${p.models.map(model => `<li>${model}</li>`).join('')}</ul>
-        </div>
-        <a class="back-link" href="bajaj.html">← Back to Products</a>
+
+    const data = products[product];
+    const productDiv = document.getElementById('product-info');
+
+    if (data) {
+      const modelDisplay = model ? `for Bajaj ${model}` : "(Model not specified)";
+      productDiv.innerHTML = `
+        <img src="${data.image}" alt="${data.name} ${modelDisplay}" />
+        <div class="title">${data.name} ${modelDisplay}</div>
+        <div class="desc">${data.description}</div>
+        <div class="price">${data.price}</div>
       `;
     } else {
-      const modelName = params.get("model");
-      container.innerHTML = `<div><strong>Selected Model:</strong> ${modelName || "Not specified"}</div><br /><p style="color: #dc2626; font-weight: bold;">Product not found or invalid URL.</p>
-      <a class="back-link" href="bajaj.html">← Back to Products</a>`;
+      productDiv.innerHTML = `<p style="color:#dc2626; font-weight:bold;">Product not found.</p>`;
     }
   </script>
 </body>
