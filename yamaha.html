@@ -4,229 +4,75 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Yamaha Parts - Borhan Auto Parts Centre</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
-  <style>
-    body {
-      font-family: 'Roboto', sans-serif;
-      margin: 0; padding: 0;
-      background: #fafafa;
-      color: #333;
-    }
-    header {
-      background: #004d40;
-      color: white;
-      padding: 15px 20px;
-      text-align: center;
-      font-weight: 700;
-      font-size: 24px;
-    }
-    nav {
-      background: #00796b;
-      padding: 10px 20px;
-      display: flex;
-      gap: 15px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-      padding: 8px 12px;
-      border-radius: 5px;
-      background: #004d40;
-    }
-    nav a:hover {
-      background: #00332e;
-    }
-    main {
-      max-width: 1200px;
-      margin: 20px auto;
-      padding: 0 15px;
-    }
-    h1 {
-      text-align: center;
-      margin-bottom: 20px;
-      color: #00796b;
-    }
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-    .product-card {
-      background: white;
-      padding: 15px;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgb(0 0 0 / 0.1);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .product-card img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 5px;
-      margin-bottom: 10px;
-    }
-    .product-card h3 {
-      margin: 10px 0 5px;
-      font-size: 18px;
-      text-align: center;
-      color: #004d40;
-    }
-    .product-card p.price {
-      font-weight: 700;
-      font-size: 16px;
-      margin: 0 0 10px;
-      color: #00796b;
-    }
-    .payment-info {
-      background:#f0f8ff;
-      padding:10px;
-      border-radius:8px;
-      margin-top: 10px;
-      width: 100%;
-      font-size: 14px;
-      color: #444;
-    }
-    .payment-info h4 {
-      margin: 0 0 5px;
-      color: #333;
-      font-weight: 700;
-    }
-    .payment-info ul {
-      padding-left: 20px;
-      margin: 0;
-    }
-    .payment-info p {
-      margin-top: 5px;
-      font-size: 13px;
-      color: #555;
-    }
-    .whatsapp-button {
-      display: inline-block;
-      margin-top: 12px;
-      background: #25D366;
-      color: white !important;
-      padding: 10px 18px;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: 700;
-      text-align: center;
-      width: 100%;
-      box-sizing: border-box;
-      transition: background 0.3s ease;
-    }
-    .whatsapp-button:hover {
-      background: #128c4a;
-    }
-    footer {
-      margin-top: 40px;
-      padding: 20px;
-      background: #004d40;
-      color: white;
-      text-align: center;
-      font-size: 14px;
-    }
-
-    @media (max-width: 600px) {
-      nav {
-        flex-direction: column;
-        align-items: center;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="cart.css" />
 </head>
 <body>
+  <header>
+    <h1>🛵 Borhan Auto Parts Centre</h1>
+    <p>Original Yamaha Motorcycle Spare Parts</p>
+  </header>
 
-<header>
-  Borhan Auto Parts Centre - Yamaha Spare Parts
-</header>
+  <main>
+    <h2>Yamaha Motorcycle Spare Parts</h2>
+    <div class="product-grid">
 
-<nav>
-  <a href="index.html">Home</a>
-  <a href="hero.html">Hero</a>
-  <a href="suzuki.html">Suzuki</a>
-  <a href="yamaha.html" style="background:#00332e;">Yamaha</a>
-  <a href="honda.html">Honda</a>
-  <a href="bajaj.html">Bajaj</a>
-</nav>
+      <!-- 🔧 Product Card -->
+      <div class="product-card">
+        <img src="images/yamaha-brake-pad.jpg" alt="Yamaha Brake Pad" />
+        <h3>Yamaha Brake Pad</h3>
+        <p class="price">৳<span class="product-price">450</span></p>
 
-<main>
-  <h1>Yamaha Motorcycle Spare Parts</h1>
-  <div class="product-grid">
+        <div class="payment-info">
+          <h4>🔐 Cash on Delivery with Advance</h4>
+          <ul>
+            <li><strong>Bkash:</strong> 01707659954</li>
+            <li><strong>Nagad:</strong> 018XXXXXXXX</li>
+            <li><strong>Advance:</strong> <span class="advance-amount">Calculating...</span></li>
+          </ul>
 
-    <!-- Product 1 -->
-    <div class="product-card">
-      <img src="images/yamaha-brake-pad.jpg" alt="Yamaha Brake Pad" />
-      <h3>Yamaha Brake Pad</h3>
-      <p class="price">৳<span class="product-price">450</span></p>
+          <!-- ✅ Send Money Button -->
+          <a href="https://www.bkash.com/sendmoney" target="_blank"
+             style="display:inline-block;margin:8px 0;background:#e2136e;color:white;
+                    padding:10px 15px;border-radius:6px;font-weight:700;
+                    text-align:center;text-decoration:none;">
+            <b>Send Money Only</b>
+          </a>
 
-      <div class="payment-info">
-        <h4>🔐 Cash on Delivery with Advance</h4>
-        <ul>
-          <li><strong>Bkash:</strong> 017XXXXXXXX</li>
-          <li><strong>Nagad:</strong> 018XXXXXXXX</li>
-          <li><strong>Advance:</strong> <span class="advance-amount">Calculating...</span></li>
-        </ul>
-        <p>Please pay the advance and send your payment screenshot with delivery address.</p>
+          <p>Please pay the advance and send your payment screenshot with delivery address.</p>
+        </div>
+
+        <!-- ✅ WhatsApp Order Button -->
+        <a href="https://wa.me/8801707659954?text=Hi%2C%20I%20have%20paid%20an%20advance%20for%20the%20Yamaha%20Brake%20Pad.%20Here%20is%20my%20payment%20screenshot%20and%20delivery%20address..."
+           target="_blank"
+           class="whatsapp-button">
+          📲 Confirm Order on WhatsApp
+        </a>
       </div>
 
-      <a
-        href="https://wa.me/8801707659954?text=Hi%2C%20I%20have%20paid%20an%20advance%20for%20the%20Yamaha%20Brake%20Pad.%20Here%20is%20my%20payment%20screenshot%20and%20delivery%20address..."
-        target="_blank"
-        class="whatsapp-button"
-      >📲 Confirm Order on WhatsApp</a>
+      <!-- You can duplicate the product card above and change info for more products -->
+
     </div>
+  </main>
 
-    <!-- Product 2 -->
-    <div class="product-card">
-      <img src="images/yamaha-spark-plug.jpg" alt="Yamaha Spark Plug" />
-      <h3>Yamaha Spark Plug</h3>
-      <p class="price">৳<span class="product-price">1250</span></p>
+  <footer>
+    <p>&copy; 2025 Borhan Auto Parts Centre | RN Road, Jessore | 01707659954 (WhatsApp Available)</p>
+  </footer>
 
-      <div class="payment-info">
-        <h4>🔐 Cash on Delivery with Advance</h4>
-        <ul>
-          <li><strong>Bkash:</strong> 017XXXXXXXX</li>
-          <li><strong>Nagad:</strong> 018XXXXXXXX</li>
-          <li><strong>Advance:</strong> <span class="advance-amount">Calculating...</span></li>
-        </ul>
-        <p>Please pay the advance and send your payment screenshot with delivery address.</p>
-      </div>
-
-      <a
-        href="https://wa.me/8801707659954?text=Hi%2C%20I%20have%20paid%20an%20advance%20for%20the%20Yamaha%20Spark%20Plug.%20Here%20is%20my%20payment%20screenshot%20and%20delivery%20address..."
-        target="_blank"
-        class="whatsapp-button"
-      >📲 Confirm Order on WhatsApp</a>
-    </div>
-
-    <!-- Add more products below in same format -->
-
-  </div>
-</main>
-
-<footer>
-  &copy; 2025 Borhan Auto Parts Centre - RN Road, Jessore | Contact: 01707659954 (WhatsApp Available)
-</footer>
-
-<!-- ✅ Auto Advance Calculation Script -->
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const products = document.querySelectorAll('.product-card');
-    products.forEach(card => {
-      const priceSpan = card.querySelector('.product-price');
-      const advanceSpan = card.querySelector('.advance-amount');
-      if (priceSpan && advanceSpan) {
-        const price = parseInt(priceSpan.textContent.trim());
-        const advance = Math.ceil(price / 1000) * 100;
-        advanceSpan.textContent = advance + '৳';
-      }
+  <!-- ✅ Advance Calculator Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const products = document.querySelectorAll('.product-card');
+      products.forEach(card => {
+        const priceSpan = card.querySelector('.product-price');
+        const advanceSpan = card.querySelector('.advance-amount');
+        if (priceSpan && advanceSpan) {
+          const price = parseInt(priceSpan.textContent.trim());
+          const advance = Math.ceil(price / 1000) * 100;
+          advanceSpan.textContent = advance + '৳';
+        }
+      });
     });
-  });
-</script>
-
+  </script>
 </body>
 </html>
