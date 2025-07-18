@@ -39,6 +39,7 @@
     const params = new URLSearchParams(window.location.search);
     const product = params.get('product');
     const model = params.get('model');
+
     const products = {
       "bajaj-clutch-cable": {
         name: "Clutch Cable",
@@ -64,15 +65,15 @@
     const productDiv = document.getElementById('product-info');
 
     if (data) {
-      const modelDisplay = model ? `for Bajaj ${model}` : "(Model not specified)";
+      const modelText = model ? `for Bajaj ${model}` : "(Model not specified)";
       productDiv.innerHTML = `
-        <img src="${data.image}" alt="${data.name} ${modelDisplay}" />
-        <div class="title">${data.name} ${modelDisplay}</div>
+        <img src="${data.image}" alt="${data.name} ${modelText}" />
+        <div class="title">${data.name} ${modelText}</div>
         <div class="desc">${data.description}</div>
         <div class="price">${data.price}</div>
       `;
     } else {
-      productDiv.innerHTML = `<p style="color:#dc2626; font-weight:bold;">Product not found.</p>`;
+      productDiv.innerHTML = `<p style="color:#dc2626; font-weight:bold;">Product not found or invalid URL.</p>`;
     }
   </script>
 </body>
