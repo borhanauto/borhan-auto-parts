@@ -1,9 +1,76 @@
-
 <!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8" /><title>Bajaj Product Detail</title></head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bajaj Product Detail</title>
+  <style>
+    body { font-family: Roboto, sans-serif; background: #f9f9f9; margin: 0; }
+    header { background: #1e293b; color: white; text-align: center; padding: 16px; font-size: 1.4em; }
+    .container { max-width: 800px; margin: auto; padding: 20px; }
+    .product {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    img {
+      width: 100%;
+      max-height: 250px;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+    .title {
+      font-size: 1.3em;
+      font-weight: bold;
+      margin: 16px 0 8px;
+      color: #1e293b;
+    }
+    .desc { color: #4b5563; margin-bottom: 12px; }
+    .price { font-size: 1.1em; color: #16a34a; font-weight: bold; }
+  </style>
+</head>
 <body>
-<h2>Product Details</h2>
-<p>Detailed specs and compatibility information for Bajaj spare parts. Useful for selecting the right component.</p>
+  <header>Bajaj Product Details</header>
+  <div class="container">
+    <div class="product" id="product-info"></div>
+  </div>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const product = params.get('product');
+    const model = params.get('model');
+    const products = {
+      "bajaj-clutch-cable": {
+        name: "Clutch Cable",
+        image: "https://raw.githubusercontent.com/borhanauto/borhan-auto-parts/main/bajaj_clutch_cable.jpg",
+        price: "৳450",
+        description: "Durable and flexible clutch cable for Bajaj bikes. Ensures smooth gear shifting."
+      },
+      "bajaj-airfilter": {
+        name: "Air Filter",
+        image: "https://raw.githubusercontent.com/borhanauto/borhan-auto-parts/main/bajaj_airfilter.jpg",
+        price: "৳420",
+        description: "Genuine air filter designed for optimal airflow and engine protection."
+      },
+      "bajaj-sparkplug": {
+        name: "Spark Plug",
+        image: "https://raw.githubusercontent.com/borhanauto/borhan-auto-parts/main/bajaj_sparkplug.jpg",
+        price: "৳350",
+        description: "High-performance spark plug for Bajaj bikes. Enhances combustion and mileage."
+      }
+    };
+    const data = products[product];
+    const productDiv = document.getElementById('product-info');
+    if (data) {
+      productDiv.innerHTML = `
+        <img src="${data.image}" alt="${data.name} for ${model}" />
+        <div class="title">${data.name} for Bajaj ${model}</div>
+        <div class="desc">${data.description}</div>
+        <div class="price">${data.price}</div>
+      `;
+    } else {
+      productDiv.innerHTML = `<p>Product not found.</p>`;
+    }
+  </script>
 </body>
 </html>
