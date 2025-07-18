@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Product Detail</title>
+  <title>Bajaj Product Detail</title>
   <style>
     body { font-family: Roboto, sans-serif; background: #f9f9f9; margin: 0; }
     header { background: #1e293b; color: white; text-align: center; padding: 16px; font-size: 1.4em; }
@@ -42,22 +42,22 @@
 
     const products = {
       "bajaj-clutch-cable": {
-        name: "Clutch Cable",
+        name: "Bajaj Clutch Cable",
         image: "images/bajaj-clutch-cable.jpg",
         price: "৳450",
-        description: "Durable clutch cable for Pulsar and Discover. Smooth control and longer life."
+        description: "Durable clutch cable compatible with multiple Bajaj bikes including Pulsar and Discover."
       },
       "bajaj-air-filter": {
-        name: "Air Filter",
+        name: "Bajaj Air Filter",
         image: "images/bajaj-air-filter.jpg",
         price: "৳420",
-        description: "High-quality air filter that improves airflow and engine performance."
+        description: "Premium air filter to ensure clean airflow and boost performance for Bajaj models."
       },
       "bajaj-spark-plug": {
-        name: "Spark Plug",
+        name: "Bajaj Spark Plug",
         image: "images/bajaj-spark-plug.jpg",
         price: "৳350",
-        description: "OEM spark plug designed for Bajaj motorcycles. Smooth ignition guaranteed."
+        description: "OEM quality spark plug for reliable ignition and long life in all Bajaj motorcycles."
       }
     };
 
@@ -65,15 +65,14 @@
     const productDiv = document.getElementById('product-info');
 
     if (data) {
-      const modelText = model ? `for Bajaj ${model}` : "(Model not specified)";
       productDiv.innerHTML = `
-        <img src="${data.image}" alt="${data.name} ${modelText}" />
-        <div class="title">${data.name} ${modelText}</div>
+        <img src="${data.image}" alt="${data.name} for ${model}" />
+        <div class="title">${data.name} for ${model}</div>
         <div class="desc">${data.description}</div>
         <div class="price">${data.price}</div>
       `;
     } else {
-      productDiv.innerHTML = `<p style="color:#dc2626; font-weight:bold;">Product not found or invalid URL.</p>`;
+      productDiv.innerHTML = `<p>Product not found.</p>`;
     }
   </script>
 </body>
