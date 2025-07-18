@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Select Bajaj Bike Model</title>
+  <title>Select Bajaj Model</title>
   <style>
     body { font-family: Roboto, sans-serif; background: #f9f9f9; margin: 0; }
     header { background: #1e293b; color: white; text-align: center; padding: 16px; font-size: 1.4em; }
@@ -32,14 +32,14 @@
   <script>
     const urlParams = new URLSearchParams(window.location.search);
     const product = urlParams.get('product');
-    const models = ['Pulsar', 'Avenger', 'Dominar', 'CT 100', 'Platina'];
+    const models = ['Pulsar 150', 'Discover 125', 'CT 100'];
     const list = document.getElementById('model-list');
     models.forEach(model => {
       const div = document.createElement('div');
       div.className = 'model-card';
       div.textContent = model;
       div.onclick = () => {
-        window.location.href = `product-detail.html?product=${product}&model=${model}`;
+        window.location.href = `bajaj-product-detail.html?product=${product}&model=${encodeURIComponent(model)}`;
       };
       list.appendChild(div);
     });
