@@ -4,74 +4,145 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Yamaha Parts - Borhan Auto Parts Centre</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="cart.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9f9f9;
+    }
+    header {
+      background: #1e293b;
+      color: white;
+      padding: 16px;
+      text-align: center;
+      font-size: 1.5em;
+      font-weight: 700;
+    }
+    .container {
+      padding: 16px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .product-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      margin-bottom: 24px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+    }
+    .product-card img {
+      width: 100%;
+      border-radius: 8px;
+      object-fit: contain;
+      max-height: 200px;
+    }
+    .product-title {
+      font-size: 1.2em;
+      margin: 12px 0 6px;
+      font-weight: bold;
+      color: #1e293b;
+    }
+    .price {
+      color: #16a34a;
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+    .advance {
+      margin-top: 6px;
+      font-size: 0.95em;
+      color: #ef4444;
+    }
+    .btns {
+      margin-top: 12px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .btns a {
+      flex: 1 1 140px;
+      text-align: center;
+      padding: 12px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s ease;
+      color: white;
+    }
+    .whatsapp {
+      background: #25d366;
+    }
+    .whatsapp:hover {
+      background: #128c4a;
+    }
+    .bkash {
+      background: #e2136e;
+    }
+    .bkash:hover {
+      background: #a61158;
+    }
+    @media (min-width: 600px) {
+      .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 24px;
+      }
+      .product-card {
+        max-width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>🛵 Borhan Auto Parts Centre</h1>
-    <p>Original Yamaha Motorcycle Spare Parts</p>
-  </header>
-
-  <main>
-    <h2>Yamaha Motorcycle Spare Parts</h2>
+  <header>Yamaha Spare Parts - Borhan Auto Parts Centre</header>
+  <div class="container">
     <div class="product-grid">
 
-      <!-- 🔧 Product Card -->
-      <div class="product-card">
+      <!-- Product Card 1 -->
+      <div class="product-card" data-price="450">
         <img src="images/yamaha-brake-pad.jpg" alt="Yamaha Brake Pad" />
-        <h3>Yamaha Brake Pad</h3>
-        <p class="price">৳<span class="product-price">450</span></p>
-
-        <div class="payment-info">
-          <h4>🔐 Cash on Delivery with Advance</h4>
-          <ul>
-            <li><strong>Bkash:</strong> 01707659954</li>
-            <li><strong>Nagad:</strong> 018XXXXXXXX</li>
-            <li><strong>Advance:</strong> <span class="advance-amount">Calculating...</span></li>
-          </ul>
-
-          <!-- ✅ Send Money Button -->
-          <a href="https://www.bkash.com/sendmoney" target="_blank"
-             style="display:inline-block;margin:8px 0;background:#e2136e;color:white;
-                    padding:10px 15px;border-radius:6px;font-weight:700;
-                    text-align:center;text-decoration:none;">
-            <b>Send Money Only</b>
-          </a>
-
-          <p>Please pay the advance and send your payment screenshot with delivery address.</p>
+        <div class="product-title">Yamaha Brake Pad</div>
+        <div class="price">৳450</div>
+        <div class="advance">Advance: ৳<span class="advance-amount">0</span></div>
+        <div class="btns">
+          <a class="whatsapp" href="#" target="_blank" rel="noopener noreferrer">Order on WhatsApp</a>
+          <a class="bkash" href="https://www.bkash.com/sendmoney" target="_blank" rel="noopener noreferrer">Pay Advance</a>
         </div>
-
-        <!-- ✅ WhatsApp Order Button -->
-        <a href="https://wa.me/8801707659954?text=Hi%2C%20I%20have%20paid%20an%20advance%20for%20the%20Yamaha%20Brake%20Pad.%20Here%20is%20my%20payment%20screenshot%20and%20delivery%20address..."
-           target="_blank"
-           class="whatsapp-button">
-          📲 Confirm Order on WhatsApp
-        </a>
       </div>
 
-      <!-- You can duplicate the product card above and change info for more products -->
+      <!-- Product Card 2 -->
+      <div class="product-card" data-price="1250">
+        <img src="images/yamaha-spark-plug.jpg" alt="Yamaha Spark Plug" />
+        <div class="product-title">Yamaha Spark Plug</div>
+        <div class="price">৳1250</div>
+        <div class="advance">Advance: ৳<span class="advance-amount">0</span></div>
+        <div class="btns">
+          <a class="whatsapp" href="#" target="_blank" rel="noopener noreferrer">Order on WhatsApp</a>
+          <a class="bkash" href="https://www.bkash.com/sendmoney" target="_blank" rel="noopener noreferrer">Pay Advance</a>
+        </div>
+      </div>
+
+      <!-- Add more product cards here as needed -->
 
     </div>
-  </main>
+  </div>
 
-  <footer>
-    <p>&copy; 2025 Borhan Auto Parts Centre | RN Road, Jessore | 01707659954 (WhatsApp Available)</p>
-  </footer>
-
-  <!-- ✅ Advance Calculator Script -->
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const products = document.querySelectorAll('.product-card');
-      products.forEach(card => {
-        const priceSpan = card.querySelector('.product-price');
-        const advanceSpan = card.querySelector('.advance-amount');
-        if (priceSpan && advanceSpan) {
-          const price = parseInt(priceSpan.textContent.trim());
-          const advance = Math.ceil(price / 1000) * 100;
-          advanceSpan.textContent = advance + '৳';
-        }
-      });
+    // Automatically calculate advance and set WhatsApp link per product
+    document.querySelectorAll('.product-card').forEach(card => {
+      const price = parseInt(card.getAttribute('data-price'));
+      const advance = Math.ceil(price / 1000) * 100;
+      card.querySelector('.advance-amount').textContent = advance;
+
+      const title = card.querySelector('.product-title').textContent.trim();
+
+      const whatsappMessage = `Hello, I want to buy ${title} (Price: ৳${price}, Advance: ৳${advance}). Please assist me.`;
+      const whatsappUrl = `https://wa.me/8801707659954?text=${encodeURIComponent(whatsappMessage)}`;
+
+      card.querySelector('.whatsapp').setAttribute('href', whatsappUrl);
     });
   </script>
 </body>
