@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Product Details - Borhan Auto</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family: 'Roboto', sans-serif; margin: 0; padding: 0; background: #f9f9f9; }
+    header { background: #1e293b; color: white; padding: 16px; text-align: center; font-size: 1.5em; font-weight: 700; }
+    .container { max-width: 900px; margin: auto; padding: 24px; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin-top: 32px; border-radius: 12px; }
+    .product-image { max-width: 100%; max-height: 300px; object-fit: contain; border-radius: 8px; }
+    .product-title { font-size: 1.5em; margin-top: 16px; font-weight: bold; color: #1e293b; }
+    .price { font-size: 1.2em; color: #16a34a; font-weight: bold; margin-top: 8px; }
+    .description { margin-top: 12px; color: #4b5563; }
+    .models { margin-top: 16px; }
+    .models ul { padding-left: 20px; color: #374151; }
+    .back-link { display: inline-block; margin-top: 24px; text-decoration: none; color: #1e40af; }
+    footer { text-align: center; padding: 20px; background: #1e293b; color: white; font-size: 0.9em; margin-top: 40px; }
+  </style>
+</head>
+<body>
+  <header>Product Details</header>
+  <div class="container" id="product-container"></div>
+  <footer>© 2025 Borhan Auto Parts Centre. All rights reserved.</footer>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const productId = params.get("product");
+    const products = {
+      "bajaj-clutch-cable": {
+        name: "Hero Clutch Cable",
+        description: "Durable clutch cable for Pulsar and Discover. Smooth control and longer life.",
+        price: "৳450",
+        image: "images/bajaj-clutch-cable.jpg",
+        models: ["Pulsar 150", "Pulsar 180", "Discover 125", "CT 100"]
+      },
+      "bajaj-air-filter": {
+        name: "Hero Air Filter",
+        description: "High-quality air filter that improves airflow and engine performance.",
+        price: "৳420",
+        image: "images/bajaj-air-filter.jpg",
+        models: ["Pulsar NS160", "Avenger 220", "Discover 110", "Platina 100"]
+      },
+      "bajaj-spark-plug": {
+        name: "Hero Spark Plug",
+        description: "OEM spark plug designed for Hero motorcycles. Smooth ignition guaranteed.",
+        price: "৳350",
+        image: "images/bajaj-spark-plug.jpg",
+        models: ["Pulsar 135", "Boxer 150", "CT 100", "Discover 150"]
+      }
+    };
+    const container = document.getElementById("product-container");
+    if (productId && products[productId]) {
+      const p = products[productId];
+      const modelName = params.get("model");
+      container.innerHTML = `<div><strong>Selected Model:</strong> ${modelName || "Not specified"}</div><br />
+        <img class="product-image" src="${p.image}" alt="${p.name}" />
+        <div class="product-title">${p.name}</div>
+        <div class="price">${p.price}</div>
+        <div class="description">${p.description}</div>
+        <div class="models">
+          <strong>Compatible with:</strong>
+          <ul>${p.models.map(model => `<li>${model}</li>`).join('')}</ul>
+        </div>
+        <a class="back-link" href="hero.html">← Back to Products</a>
+      `;
+    } else {
+      const modelName = params.get("model");
+      container.innerHTML = `<div><strong>Selected Model:</strong> ${modelName || "Not specified"}</div><br /><p style="color: #dc2626; font-weight: bold;">Product not found or invalid URL.</p>
+      <a class="back-link" href="hero.html">← Back to Products</a>`;
+    }
+  </script>
+</body>
+</html>
