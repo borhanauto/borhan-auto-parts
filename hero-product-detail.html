@@ -4,98 +4,81 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Hero Product Detail</title>
-  <meta name="description" content="View Hero motorcycle spare part details based on bike model. Original Hero parts from Borhan Auto Parts Centre." />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    body { font-family: 'Roboto', sans-serif; background: #f9f9f9; margin: 0; }
+    body { font-family: Roboto, sans-serif; background: #f9f9f9; margin: 0; }
     header { background: #1e293b; color: white; text-align: center; padding: 16px; font-size: 1.4em; }
     .container { max-width: 800px; margin: auto; padding: 20px; }
-    .card {
+    .product {
       background: white;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       padding: 20px;
-      text-align: center;
+      border-radius: 12px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
-    .card img {
+    img {
       width: 100%;
       max-height: 250px;
       object-fit: contain;
       border-radius: 8px;
     }
-    .product-name {
-      font-size: 1.5em;
+    .title {
+      font-size: 1.3em;
       font-weight: bold;
-      margin-top: 16px;
+      margin: 16px 0 8px;
       color: #1e293b;
     }
-    .model-name {
-      font-size: 1em;
-      margin-top: 8px;
-      color: #475569;
-    }
-    .price {
-      color: #16a34a;
-      font-weight: bold;
-      font-size: 1.2em;
-      margin-top: 10px;
-    }
-    .order-btn {
-      margin-top: 16px;
-      padding: 10px 20px;
-      background-color: #1e293b;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-size: 1em;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-block;
-    }
-    .order-btn:hover {
-      background-color: #334155;
-    }
+    .desc { color: #4b5563; margin-bottom: 12px; }
+    .price { font-size: 1.1em; color: #16a34a; font-weight: bold; }
   </style>
 </head>
 <body>
-  <header>Hero Product Detail</header>
+  <header>Hero Product Details</header>
   <div class="container">
-    <div class="card" id="product-detail"></div>
+    <div class="product" id="product-info"></div>
   </div>
-
   <script>
-    const query = new URLSearchParams(window.location.search);
-    const product = query.get('product');
-    const model = query.get('model');
+    const params = new URLSearchParams(window.location.search);
+    const product = params.get('product');
+    const model = params.get('model');
 
     const products = {
-      'hero-brake-shoe': {
-        name: 'Hero Brake Shoe',
-        img: 'images/hero-brake-shoe.jpg',
-        price: '৳500',
-        desc: 'Durable brake shoe for Hero Splendor, Glamour, Hunk, and Ignitor.'
+      "hero-brake-pad": {
+        name: "Hero Brake Pad",
+        image: "images/hero-brake-pad.jpg",
+        price: "৳380",
+        description: "High-quality brake pad for Hero Splendor, HF Deluxe and other models."
       },
-      'hero-air-filter': {
-        name: 'Hero Air Filter',
-        img: 'images/hero-air-filter.jpg',
-        price: '৳480',
-        desc: 'Genuine Hero air filter that ensures clean airflow and optimal engine performance.'
+      "hero-clutch-cable": {
+        name: "Hero Clutch Cable",
+        image: "images/hero-clutch-cable.jpg",
+        price: "৳360",
+        description: "Durable clutch cable for smooth gear shifting in Hero motorcycles."
+      },
+      "hero-air-filter": {
+        name: "Hero Air Filter",
+        image: "images/hero-air-filter.jpg",
+        price: "৳300",
+        description: "OEM air filter for optimum engine performance in Hero bikes."
       }
     };
 
-    const detail = document.getElementById('product-detail');
-    if (products[product]) {
-      const p = products[product];
-      detail.innerHTML = `
-        <img src="${p.img}" alt="${p.name}" />
-        <div class="product-name">${p.name}</div>
-        <div class="model-name">Model: ${model}</div>
-        <div class="price">${p.price}</div>
-        <p style="margin-top: 12px; color: #475569;">${p.desc}</p>
-        <a class="order-btn" href="https://wa.me/8801707659954?text=I want to buy ${p.name} for ${model}">Order on WhatsApp</a>
+    const data = products[product];
+    const productDiv = document.getElementById('product-info');
+
+    if (data) {
+      productDiv.innerHTML = `
+        <img src="${data.image}" alt="${data.name} for ${model}" />
+        <div class="title">${data.name} for ${model}</div>
+        <div class="desc">${data.description}</div>
+        <div class="price">${data.price}</div>
+        <div style="margin-top: 20px;">
+          <a href="https://wa.me/8801707659954?text=I want to order ${data.name} for ${model}" target="_blank"
+             style="display:inline-block;background:#25D366;color:#fff;padding:10px 16px;border-radius:8px;text-decoration:none;">
+            📦 Order on WhatsApp
+          </a>
+        </div>
       `;
     } else {
-      detail.innerHTML = `<p>Product not found. Please go back and try again.</p>`;
+      productDiv.innerHTML = `<p>Product not found.</p>`;
     }
   </script>
 </body>
