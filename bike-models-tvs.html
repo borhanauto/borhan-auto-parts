@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Select TVS Model</title>
+  <style>
+    body { font-family: Roboto, sans-serif; background: #f9f9f9; margin: 0; }
+    header { background: #1e293b; color: white; text-align: center; padding: 16px; font-size: 1.4em; }
+    .container { max-width: 800px; margin: auto; padding: 20px; }
+    .model-card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      margin: 16px 0;
+      padding: 20px;
+      text-align: center;
+      font-weight: bold;
+      color: #1e293b;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .model-card:hover {
+      transform: scale(1.03);
+      background: #f1f5f9;
+    }
+  </style>
+</head>
+<body>
+  <header>Select Your TVS Bike Model</header>
+  <div class="container" id="model-list"></div>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const product = urlParams.get('product');
+    const models = ['Apache RTR 160', 'Apache RTR 180', 'Raider 125', 'Metro Plus'];
+    const list = document.getElementById('model-list');
+    models.forEach(model => {
+      const div = document.createElement('div');
+      div.className = 'model-card';
+      div.textContent = model;
+      div.onclick = () => {
+        window.location.href = `tvs-product-detail.html?product=${product}&model=${encodeURIComponent(model)}`;
+      };
+      list.appendChild(div);
+    });
+  </script>
+</body>
+</html>
