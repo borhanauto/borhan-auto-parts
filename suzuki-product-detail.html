@@ -40,13 +40,14 @@
   <header>Suzuki Product Details</header>
   <div class="container">
     <div class="product" id="product-info"></div>
-    <a href="suzuki.html" class="back-link">← Back to Suzuki Parts</a>
+    <a id="back-link" class="back-link">← Back to Suzuki Models</a>
   </div>
   <script>
     const params = new URLSearchParams(window.location.search);
     const product = params.get('product');
     const model = params.get('model');
     const formattedModel = model ? model.toUpperCase() : '';
+
     const products = {
       "brake-pad": {
         name: "Brake Pad",
@@ -67,8 +68,12 @@
         description: "High-efficiency air filter for Suzuki bikes. Helps keep your engine clean."
       }
     };
-    const data = products[product];
+
     const productDiv = document.getElementById('product-info');
+    const backLink = document.getElementById('back-link');
+    backLink.href = `suzuki-models.html?product=${product}`;
+
+    const data = products[product];
     if (data) {
       productDiv.innerHTML = `
         <img src="${data.image}" alt="${data.name} for Suzuki ${formattedModel}" onerror="this.src='images/default.jpg'" />
