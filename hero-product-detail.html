@@ -35,29 +35,24 @@
   <div class="container">
     <div class="product" id="product-info"></div>
   </div>
+
   <script>
     const params = new URLSearchParams(window.location.search);
     const product = params.get('product');
     const model = params.get('model');
 
     const products = {
-      "hero-brake-pad": {
-        name: "Hero Brake Pad",
-        image: "images/hero-brake-pad.jpg",
-        price: "৳380",
-        description: "High-quality brake pad compatible with Hero Splendor, HF Deluxe and Passion."
+      "hero-brake-shoe": {
+        name: "Hero Brake Shoe",
+        image: "images/hero-brake-shoe.jpg",
+        price: "৳500",
+        description: "High-quality brake shoe compatible with Hero Splendor, HF Deluxe, and Passion Pro."
       },
       "hero-air-filter": {
         name: "Hero Air Filter",
         image: "images/hero-air-filter.jpg",
-        price: "৳300",
-        description: "OEM air filter to ensure proper airflow and engine performance in Hero motorcycles."
-      },
-      "hero-clutch-cable": {
-        name: "Hero Clutch Cable",
-        image: "images/hero-clutch-cable.jpg",
-        price: "৳360",
-        description: "Strong and flexible clutch cable ideal for smooth riding experience on Hero bikes."
+        price: "৳480",
+        description: "Genuine air filter for Hero Glamour, Xtreme, and Hunk. Enhances engine efficiency."
       }
     };
 
