@@ -3,88 +3,114 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Suzuki Product Detail</title>
+  <title>Suzuki Product Detail - Borhan Auto Parts Centre</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    body { font-family: Roboto, sans-serif; background: #f9f9f9; margin: 0; }
-    header { background: #1e293b; color: white; text-align: center; padding: 16px; font-size: 1.4em; }
-    .container { max-width: 800px; margin: auto; padding: 20px; }
-    .product {
-      background: white;
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #f9f9f9;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #1e293b;
+      color: white;
+      text-align: center;
+      padding: 16px;
+      font-size: 1.5em;
+      font-weight: 700;
+    }
+    .container {
+      max-width: 900px;
+      margin: 20px auto;
       padding: 20px;
+      background: white;
       border-radius: 12px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
     img {
       width: 100%;
-      max-height: 250px;
+      max-height: 300px;
       object-fit: contain;
       border-radius: 8px;
+      margin-bottom: 20px;
     }
     .title {
-      font-size: 1.3em;
-      font-weight: bold;
-      margin: 16px 0 8px;
+      font-size: 1.6em;
+      font-weight: 700;
       color: #1e293b;
+      margin-bottom: 10px;
     }
-    .desc { color: #4b5563; margin-bottom: 12px; }
-    .price { font-size: 1.1em; color: #16a34a; font-weight: bold; }
+    .description {
+      font-size: 1em;
+      color: #4b5563;
+      margin-bottom: 15px;
+    }
+    .price {
+      font-size: 1.3em;
+      font-weight: 700;
+      color: #16a34a;
+      margin-bottom: 20px;
+    }
     .back-link {
       display: inline-block;
-      margin: 16px 0;
       color: #2563eb;
       text-decoration: underline;
+      cursor: pointer;
+      margin-bottom: 10px;
     }
   </style>
 </head>
 <body>
-  <header>Suzuki Product Details</header>
+  <header>Suzuki Product Detail</header>
   <div class="container">
-    <div class="product" id="product-info"></div>
-    <a href="suzuki-models.html?product=" id="back-link" class="back-link">← Back to Suzuki Models</a>
+    <a id="back-link" class="back-link">← Back to Suzuki Models</a>
+    <div id="product-info"></div>
   </div>
 
   <script>
+    // Parse query parameters
     const params = new URLSearchParams(window.location.search);
-    const product = params.get('product');
+    const productKey = params.get('product');
     const model = params.get('model');
-
     const formattedModel = model ? model.toUpperCase() : '';
+
+    // Product data for Suzuki parts
     const products = {
-      "brake-pad": {
-        name: "Brake Pad",
-        image: "images/suzuki-brake-pad.jpg",
-        price: "৳420",
-        description: "Durable brake pad for Suzuki motorcycles. Reliable stopping power and performance."
+      "suzuki-brake-shoe": {
+        name: "Suzuki Brake Shoe",
+        image: "images/suzuki-brake-shoe.jpg",
+        price: "৳500",
+        description: "High-quality brake shoe compatible with Suzuki Gixxer, Hayate, and Access 125. Reliable stopping power and long-lasting durability."
       },
-      "spark-plug": {
-        name: "Spark Plug",
-        image: "images/suzuki-spark-plug.jpg",
-        price: "৳1150",
-        description: "Suzuki-compatible spark plug for better combustion and smooth ride."
-      },
-      "air-filter": {
-        name: "Air Filter",
+      "suzuki-air-filter": {
+        name: "Suzuki Air Filter",
         image: "images/suzuki-air-filter.jpg",
-        price: "৳300",
-        description: "High-efficiency air filter for Suzuki bikes. Helps keep your engine clean."
+        price: "৳480",
+        description: "Genuine air filter for Suzuki Gixxer SF, Burgman, and GS150R. Improves engine performance and fuel efficiency."
       }
     };
 
-    const productDiv = document.getElementById('product-info');
+    const productInfoDiv = document.getElementById('product-info');
     const backLink = document.getElementById('back-link');
-    backLink.href = `suzuki-models.html?product=${product}`;
+    
+    // Set back link to Suzuki model selection page with product query
+    if (productKey) {
+      backLink.href = `bike-models-suzuki.html?product=${encodeURIComponent(productKey)}`;
+    } else {
+      backLink.href = "suzuki.html";
+    }
 
-    const data = products[product];
-    if (data) {
-      productDiv.innerHTML = `
-        <img src="${data.image}" alt="${data.name} for Suzuki ${formattedModel}" onerror="this.src='images/default.jpg'" />
-        <div class="title">${data.name} for Suzuki ${formattedModel}</div>
-        <div class="desc">${data.description}</div>
-        <div class="price">${data.price}</div>
+    if (productKey && products[productKey]) {
+      const product = products[productKey];
+      productInfoDiv.innerHTML = `
+        <img src="${product.image}" alt="${product.name} for Suzuki ${formattedModel}" onerror="this.src='images/default.jpg'">
+        <div class="title">${product.name} for Suzuki ${formattedModel}</div>
+        <div class="description">${product.description}</div>
+        <div class="price">${product.price}</div>
       `;
     } else {
-      productDiv.innerHTML = `<p style="color:red;">Product not found.</p>`;
+      productInfoDiv.innerHTML = `<p style="color:red;">Sorry, the product was not found.</p>`;
     }
   </script>
 </body>
