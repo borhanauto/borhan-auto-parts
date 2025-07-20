@@ -3,22 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>TVS Product Detail</title>
+  <title>TVS Product Detail - Borhan Auto Parts Centre</title>
+  <meta name="description" content="Buy genuine TVS motorcycle spare parts including brake shoes, air filters, and more. Fast delivery from Borhan Auto Parts Centre in Bangladesh." />
+  <meta name="keywords" content="TVS parts, motorcycle parts, brake shoe, air filter, Bangladesh, Borhan Auto" />
+  <meta name="author" content="Borhan Auto Parts Centre" />
+  <link rel="icon" href="favicon.ico" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    body { font-family: Roboto, sans-serif; background: #f9f9f9; margin: 0; }
-    header { background: #1e293b; color: white; text-align: center; padding: 16px; font-size: 1.4em; }
+    body { font-family: 'Roboto', sans-serif; background: #f9f9f9; margin: 0; }
+    header { background: #1e293b; color: white; text-align: center; padding: 16px; font-size: 1.4em; font-weight: 700; }
     .container { max-width: 800px; margin: auto; padding: 20px; }
     .product {
       background: white;
       padding: 20px;
       border-radius: 12px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      text-align: center;
     }
     img {
       width: 100%;
       max-height: 250px;
       object-fit: contain;
       border-radius: 8px;
+      margin-bottom: 16px;
     }
     .title {
       font-size: 1.3em;
@@ -26,13 +33,24 @@
       margin: 16px 0 8px;
       color: #1e293b;
     }
-    .desc { color: #4b5563; margin-bottom: 12px; }
-    .price { font-size: 1.1em; color: #16a34a; font-weight: bold; }
+    .desc {
+      color: #4b5563;
+      margin-bottom: 12px;
+      font-size: 1em;
+    }
+    .price {
+      font-size: 1.2em;
+      color: #16a34a;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
     .back-link {
       display: inline-block;
-      margin: 16px 0;
+      margin-top: 10px;
       color: #2563eb;
       text-decoration: underline;
+      font-weight: 600;
+      cursor: pointer;
     }
   </style>
 </head>
@@ -40,49 +58,46 @@
   <header>TVS Product Details</header>
   <div class="container">
     <div class="product" id="product-info"></div>
-    <a id="back-link" class="back-link">← Back to TVS Models</a>
+    <a href="bike-models-tvs.html?product=" class="back-link" id="back-link">← Back to TVS Parts</a>
   </div>
+
   <script>
     const params = new URLSearchParams(window.location.search);
     const product = params.get('product');
-    const model = params.get('model');
-    const formattedModel = model ? model.toUpperCase() : '';
+    const model = params.get('model') || '';
 
+    // Products data
     const products = {
-      "brake-pad": {
-        name: "Brake Pad",
-        image: "images/tvs-brake-pad.jpg",
-        price: "৳380",
-        description: "Durable brake pad for TVS bikes. Reliable stopping and high-temperature resistance."
+      "tvs-brake-shoe": {
+        name: "TVS Brake Shoe",
+        image: "images/tvs-brake-shoe.jpg",
+        price: "৳500",
+        description: "High-quality brake shoe compatible with TVS Apache RTR, Star City+, and Radeon. Smooth braking performance."
       },
-      "spark-plug": {
-        name: "Spark Plug",
-        image: "images/tvs-spark-plug.jpg",
-        price: "৳980",
-        description: "Original TVS spark plug for smooth engine performance and fuel efficiency."
-      },
-      "air-filter": {
-        name: "Air Filter",
+      "tvs-air-filter": {
+        name: "TVS Air Filter",
         image: "images/tvs-air-filter.jpg",
-        price: "৳260",
-        description: "High-quality air filter for TVS motorcycles to keep your engine clean."
+        price: "৳480",
+        description: "Genuine air filter suitable for TVS Ntorq, Jupiter, and XL100. Better engine efficiency."
       }
     };
 
     const productDiv = document.getElementById('product-info');
     const backLink = document.getElementById('back-link');
-    backLink.href = `tvs-models.html?product=${product}`;
 
-    const data = products[product];
-    if (data) {
+    if (product && products[product]) {
+      const data = products[product];
       productDiv.innerHTML = `
-        <img src="${data.image}" alt="${data.name} for TVS ${formattedModel}" onerror="this.src='images/default.jpg'" />
-        <div class="title">${data.name} for TVS ${formattedModel}</div>
+        <img src="${data.image}" alt="${data.name} for ${model}" onerror="this.src='images/default.jpg'" />
+        <div class="title">${data.name}${model ? ' for ' + model : ''}</div>
         <div class="desc">${data.description}</div>
         <div class="price">${data.price}</div>
       `;
+      // Update back link URL to keep product param (so user returns to model selection of this product)
+      backLink.href = `bike-models-tvs.html?product=${encodeURIComponent(product)}`;
     } else {
-      productDiv.innerHTML = `<p>Product not found.</p>`;
+      productDiv.innerHTML = `<p>Sorry, the product details you requested could not be found.</p>`;
+      backLink.style.display = 'none';
     }
   </script>
 </body>
