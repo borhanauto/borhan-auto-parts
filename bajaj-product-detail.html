@@ -27,7 +27,20 @@
       color: #1e293b;
     }
     .desc { color: #4b5563; margin-bottom: 12px; }
-    .price { font-size: 1.1em; color: #16a34a; font-weight: bold; }
+    .price { font-size: 1.1em; color: #16a34a; font-weight: bold; margin-bottom: 20px; }
+    .buy-btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background: #1e40af;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+    .buy-btn:hover {
+      background: #1e3a8a;
+    }
   </style>
 </head>
 <body>
@@ -35,6 +48,7 @@
   <div class="container">
     <div class="product" id="product-info"></div>
   </div>
+
   <script>
     const params = new URLSearchParams(window.location.search);
     const product = params.get('product');
@@ -70,6 +84,8 @@
         <div class="title">${data.name} for ${model}</div>
         <div class="desc">${data.description}</div>
         <div class="price">${data.price}</div>
+        <a href="payment.html?product=${encodeURIComponent(data.name)}&price=${encodeURIComponent(data.price)}&model=${encodeURIComponent(model)}" 
+           class="buy-btn">Buy Now</a>
       `;
     } else {
       productDiv.innerHTML = `<p>Product not found.</p>`;
