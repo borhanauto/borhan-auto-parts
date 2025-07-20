@@ -31,7 +31,7 @@
   </style>
 </head>
 <body>
-  <header>Hero Product Details</header>
+  <header>Product Details</header>
   <div class="container">
     <div class="product" id="product-info"></div>
   </div>
@@ -45,19 +45,19 @@
         name: "Hero Brake Pad",
         image: "images/hero-brake-pad.jpg",
         price: "৳380",
-        description: "High-quality brake pad for Hero Splendor, HF Deluxe and other models."
-      },
-      "hero-clutch-cable": {
-        name: "Hero Clutch Cable",
-        image: "images/hero-clutch-cable.jpg",
-        price: "৳360",
-        description: "Durable clutch cable for smooth gear shifting in Hero motorcycles."
+        description: "High-quality brake pad compatible with Hero Splendor, HF Deluxe and Passion."
       },
       "hero-air-filter": {
         name: "Hero Air Filter",
         image: "images/hero-air-filter.jpg",
         price: "৳300",
-        description: "OEM air filter for optimum engine performance in Hero bikes."
+        description: "OEM air filter to ensure proper airflow and engine performance in Hero motorcycles."
+      },
+      "hero-clutch-cable": {
+        name: "Hero Clutch Cable",
+        image: "images/hero-clutch-cable.jpg",
+        price: "৳360",
+        description: "Strong and flexible clutch cable ideal for smooth riding experience on Hero bikes."
       }
     };
 
@@ -70,12 +70,6 @@
         <div class="title">${data.name} for ${model}</div>
         <div class="desc">${data.description}</div>
         <div class="price">${data.price}</div>
-        <div style="margin-top: 20px;">
-          <a href="https://wa.me/8801707659954?text=I want to order ${data.name} for ${model}" target="_blank"
-             style="display:inline-block;background:#25D366;color:#fff;padding:10px 16px;border-radius:8px;text-decoration:none;">
-            📦 Order on WhatsApp
-          </a>
-        </div>
       `;
     } else {
       productDiv.innerHTML = `<p>Product not found.</p>`;
