@@ -1,58 +1,156 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Payment - Borhan Auto Parts Centre</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    body { font-family: sans-serif; max-width: 600px; margin: 40px auto; padding: 20px; background-color: #f9f9f9; }
-    input, select, button { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; }
-    h2 { text-align: center; color: #333; }
-    button { background-color: #4CAF50; color: white; border: none; cursor: pointer; }
-    button:hover { background-color: #45a049; }
-    label { font-weight: bold; }
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: #eef2f3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .form-container {
+      background: #ffffff;
+      max-width: 500px;
+      width: 100%;
+      padding: 30px 25px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
+      animation: slideIn 0.6s ease;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #333333;
+    }
+
+    label {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 5px;
+      color: #444;
+    }
+
+    input, select, button {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+      transition: border 0.2s ease, box-shadow 0.3s ease;
+    }
+
+    input:focus, select:focus {
+      border-color: #4CAF50;
+      box-shadow: 0 0 8px rgba(76, 175, 80, 0.4);
+      outline: none;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      font-size: 17px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      animation: pulse 0.3s ease-in-out;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes shake {
+      0% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      50% { transform: translateX(5px); }
+      75% { transform: translateX(-5px); }
+      100% { transform: translateX(0); }
+    }
+
+    .shake {
+      animation: shake 0.4s;
+    }
+
+    @media screen and (max-width: 600px) {
+      .form-container {
+        padding: 20px 15px;
+      }
+    }
   </style>
 </head>
 <body>
-  <h2>Confirm Product & Submit Payment</h2>
+  <div class="form-container" id="form-box">
+    <h2>Confirm & Submit Payment</h2>
 
-  <form method="POST" accept-charset="UTF-8" id="payment-form">
-    <label>Product</label>
-    <input type="text" name="product" id="product" readonly>
+    <form method="POST" accept-charset="UTF-8" id="payment-form">
+      <label>Product</label>
+      <input type="text" name="product" id="product" readonly>
 
-    <label>Price</label>
-    <input type="text" name="price" id="price" required>
+      <label>Price</label>
+      <input type="text" name="price" id="price" required>
 
-    <label>Amount to Pay</label>
-    <input type="text" id="amount-to-pay" name="amount-to-pay" readonly>
+      <label>Amount to Pay</label>
+      <input type="text" id="amount-to-pay" name="amount-to-pay" readonly>
 
-    <label>Your Email</label>
-    <input type="email" name="email" required>
+      <label>Your Email</label>
+      <input type="email" name="email" required>
 
-    <label>Full Name</label>
-    <input type="text" name="full-name" required>
+      <label>Full Name</label>
+      <input type="text" name="full-name" required>
 
-    <label>Mobile Number</label>
-    <input type="text" name="mobile-number" required>
+      <label>Mobile Number</label>
+      <input type="text" name="mobile-number" required>
 
-    <label>Payment Method</label>
-    <select name="payment-method" required>
-      <option value="">Select Method</option>
-      <option>bKash</option>
-      <option>Nagad</option>
-      <option>Rocket</option>
-      <option>Islami Bank</option>
-      <option>Dutch-Bangla Bank</option>
-    </select>
+      <label>Payment Method</label>
+      <select name="payment-method" required>
+        <option value="">Select Method</option>
+        <option>bKash</option>
+        <option>Nagad</option>
+        <option>Rocket</option>
+        <option>Islami Bank</option>
+        <option>Dutch-Bangla Bank</option>
+      </select>
 
-    <label>Transaction ID</label>
-    <input type="text" name="transaction-id" required>
+      <label>Transaction ID</label>
+      <input type="text" name="transaction-id" required>
 
-    <input type="hidden" name="_gotcha" style="display:none !important">
+      <input type="hidden" name="_gotcha" style="display:none !important">
 
-    <button type="submit">Submit Payment</button>
-  </form>
+      <button type="submit">Submit Payment</button>
+    </form>
+  </div>
 
   <script>
     const productInput = document.getElementById("product");
@@ -82,6 +180,8 @@
     priceInput.addEventListener("input", updateAmountToPay);
 
     const form = document.getElementById("payment-form");
+    const formBox = document.getElementById("form-box");
+
     form.addEventListener("submit", function(e) {
       e.preventDefault();
       const formData = new FormData(form);
@@ -97,11 +197,15 @@
           form.reset();
           amountInput.value = '';
         } else {
+          formBox.classList.add("shake");
+          setTimeout(() => formBox.classList.remove("shake"), 400);
           alert("❌ Error. Please try again.");
         }
       })
       .catch(error => {
         console.error(error);
+        formBox.classList.add("shake");
+        setTimeout(() => formBox.classList.remove("shake"), 400);
         alert("⚠️ Submission failed.");
       });
     });
