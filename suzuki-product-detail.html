@@ -3,114 +3,99 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Suzuki Product Detail - Borhan Auto Parts Centre</title>
+  <title>TVS Product Detail</title>
+  <meta name="description" content="View TVS motorcycle spare part details based on bike model. Genuine parts available at Borhan Auto Parts Centre." />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    body {
-      font-family: 'Roboto', sans-serif;
-      background: #f9f9f9;
-      margin: 0;
-      padding: 0;
-    }
-    header {
-      background: #1e293b;
-      color: white;
-      text-align: center;
-      padding: 16px;
-      font-size: 1.5em;
-      font-weight: 700;
-    }
-    .container {
-      max-width: 900px;
-      margin: 20px auto;
-      padding: 20px;
+    body { font-family: 'Roboto', sans-serif; background: #f9f9f9; margin: 0; }
+    header { background: #1e293b; color: white; text-align: center; padding: 16px; font-size: 1.4em; }
+    .container { max-width: 800px; margin: auto; padding: 20px; }
+    .card {
       background: white;
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      padding: 20px;
+      text-align: center;
     }
-    img {
+    .card img {
       width: 100%;
-      max-height: 300px;
+      max-height: 250px;
       object-fit: contain;
       border-radius: 8px;
-      margin-bottom: 20px;
     }
-    .title {
-      font-size: 1.6em;
-      font-weight: 700;
+    .product-name {
+      font-size: 1.5em;
+      font-weight: bold;
+      margin-top: 16px;
       color: #1e293b;
-      margin-bottom: 10px;
     }
-    .description {
+    .model-name {
       font-size: 1em;
-      color: #4b5563;
-      margin-bottom: 15px;
+      margin-top: 8px;
+      color: #475569;
     }
     .price {
-      font-size: 1.3em;
-      font-weight: 700;
       color: #16a34a;
-      margin-bottom: 20px;
+      font-weight: bold;
+      font-size: 1.2em;
+      margin-top: 10px;
     }
-    .back-link {
-      display: inline-block;
-      color: #2563eb;
-      text-decoration: underline;
+    .order-btn {
+      margin-top: 16px;
+      padding: 10px 20px;
+      background-color: #1e293b;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1em;
       cursor: pointer;
-      margin-bottom: 10px;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .order-btn:hover {
+      background-color: #334155;
     }
   </style>
 </head>
 <body>
-  <header>Suzuki Product Detail</header>
+  <header>TVS Product Detail</header>
   <div class="container">
-    <a id="back-link" class="back-link">← Back to Suzuki Models</a>
-    <div id="product-info"></div>
+    <div class="card" id="product-detail"></div>
   </div>
 
   <script>
-    // Parse query parameters
-    const params = new URLSearchParams(window.location.search);
-    const productKey = params.get('product');
-    const model = params.get('model');
-    const formattedModel = model ? model.toUpperCase() : '';
+    const query = new URLSearchParams(window.location.search);
+    const product = query.get('product');
+    const model = query.get('model');
 
-    // Product data for Suzuki parts
     const products = {
-      "suzuki-brake-shoe": {
-        name: "Suzuki Brake Shoe",
-        image: "images/suzuki-brake-shoe.jpg",
-        price: "৳500",
-        description: "High-quality brake shoe compatible with Suzuki Gixxer, Hayate, and Access 125. Reliable stopping power and long-lasting durability."
+      'tvs-brake-shoe': {
+        name: 'TVS Brake Shoe',
+        img: 'images/tvs-brake-shoe.jpg',
+        price: '৳500',
+        desc: 'High-quality brake shoe for TVS models including Apache, Metro, and XL.'
       },
-      "suzuki-air-filter": {
-        name: "Suzuki Air Filter",
-        image: "images/suzuki-air-filter.jpg",
-        price: "৳480",
-        description: "Genuine air filter for Suzuki Gixxer SF, Burgman, and GS150R. Improves engine performance and fuel efficiency."
+      'tvs-air-filter': {
+        name: 'TVS Air Filter',
+        img: 'images/tvs-air-filter.jpg',
+        price: '৳480',
+        desc: 'Genuine air filter compatible with TVS Raider, Star City, and more.'
       }
     };
 
-    const productInfoDiv = document.getElementById('product-info');
-    const backLink = document.getElementById('back-link');
-    
-    // Set back link to Suzuki model selection page with product query
-    if (productKey) {
-      backLink.href = `bike-models-suzuki.html?product=${encodeURIComponent(productKey)}`;
-    } else {
-      backLink.href = "suzuki.html";
-    }
-
-    if (productKey && products[productKey]) {
-      const product = products[productKey];
-      productInfoDiv.innerHTML = `
-        <img src="${product.image}" alt="${product.name} for Suzuki ${formattedModel}" onerror="this.src='images/default.jpg'">
-        <div class="title">${product.name} for Suzuki ${formattedModel}</div>
-        <div class="description">${product.description}</div>
-        <div class="price">${product.price}</div>
+    const detail = document.getElementById('product-detail');
+    if (products[product]) {
+      const p = products[product];
+      detail.innerHTML = `
+        <img src="${p.img}" alt="${p.name}" />
+        <div class="product-name">${p.name}</div>
+        <div class="model-name">Model: ${model}</div>
+        <div class="price">${p.price}</div>
+        <p style="margin-top: 12px; color: #475569;">${p.desc}</p>
+        <a class="order-btn" href="https://wa.me/8801707659954?text=I want to buy ${p.name} for ${model}">Order on WhatsApp</a>
       `;
     } else {
-      productInfoDiv.innerHTML = `<p style="color:red;">Sorry, the product was not found.</p>`;
+      detail.innerHTML = `<p>Product not found. Please go back and try again.</p>`;
     }
   </script>
 </body>
