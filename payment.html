@@ -1,107 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Payment - Borhan Auto Parts</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>Payment - Borhan Auto Parts Centre</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
+    :root {
+      --main-bg: #f5f5f5;
+      --card-bg: #ffffff;
+      --accent: #1db954;
+      --text-color: #333;
+      --input-border: #ccc;
+    }
+
     body {
-      font-family: 'Roboto', sans-serif;
-      background-color: #f3f4f6;
-      padding: 20px;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: var(--main-bg);
+      color: var(--text-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
     }
-    .container {
+
+    .payment-card {
+      background: var(--card-bg);
       max-width: 500px;
-      margin: auto;
-      background: white;
-      border-radius: 10px;
-      padding: 25px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      width: 100%;
+      padding: 30px 25px;
+      border-radius: 15px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.1);
     }
-    h2 {
+
+    .payment-card h2 {
       text-align: center;
-      color: #333;
+      color: var(--accent);
+      margin-bottom: 30px;
     }
+
     label {
       display: block;
-      margin-top: 15px;
-      font-weight: bold;
+      margin-bottom: 5px;
+      font-weight: 600;
     }
-    input, select, textarea {
-      width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-    button {
-      margin-top: 20px;
+
+    input, select {
       width: 100%;
       padding: 12px;
-      background: #1e40af;
-      color: white;
-      border: none;
-      border-radius: 5px;
+      margin-bottom: 20px;
+      border: 1px solid var(--input-border);
+      border-radius: 8px;
+      transition: border-color 0.3s ease;
       font-size: 16px;
+    }
+
+    input:focus, select:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 2px rgba(29, 185, 84, 0.2);
+    }
+
+    button {
+      background: linear-gradient(135deg, #1db954, #159b45);
+      color: #fff;
+      padding: 14px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      width: 100%;
+    }
+
+    button:hover {
+      background: linear-gradient(135deg, #159b45, #12803a);
+    }
+
+    @media (max-width: 600px) {
+      .payment-card {
+        margin: 20px;
+        padding: 20px;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h2>Complete Your Order</h2>
-    <form id="paymentForm" onsubmit="submitForm(event)">
-      <label for="product">Product</label>
-      <input type="text" id="product" name="product" readonly>
 
-      <label for="price">Price</label>
-      <input type="text" id="price" name="price" readonly>
+  <div class="payment-card">
+    <h2>Confirm Product & Submit Payment</h2>
+    <form method="POST" accept-charset="UTF-8" id="payment-form">
+      <label>Product</label>
+      <input type="text" name="product" id="product" readonly>
 
-      <label for="model">Bike Model</label>
-      <input type="text" id="model" name="model" readonly>
+      <label>Price</label>
+      <input type="text" name="price" id="price" readonly>
 
-      <label for="name">Your Name</label>
-      <input type="text" name="name" required>
+      <label>Your Email</label>
+      <input type="email" name="email" required>
 
-      <label for="phone">Phone Number</label>
-      <input type="tel" name="phone" required>
+      <label>Full Name</label>
+      <input type="text" name="full-name" required>
 
-      <label for="address">Delivery Address</label>
-      <textarea name="address" required rows="3"></textarea>
+      <label>Mobile Number</label>
+      <input type="text" name="mobile-number" required>
 
-      <button type="submit">Submit Order</button>
+      <label>Payment Method</label>
+      <select name="payment-method" required>
+        <option value="">Select Method</option>
+        <option>bKash</option>
+        <option>Nagad</option>
+        <option>Rocket</option>
+        <option>Islami Bank</option>
+        <option>Dutch-Bangla Bank</option>
+      </select>
+
+      <label>Transaction ID</label>
+      <input type="text" name="transaction-id" required>
+
+      <input type="hidden" name="_gotcha" style="display:none !important">
+
+      <button type="submit">Submit Payment</button>
     </form>
   </div>
 
   <script>
-    // Autofill product, price, model from URL
+    // Prefill product & price from URL
     const params = new URLSearchParams(window.location.search);
-    document.getElementById('product').value = params.get('product') || '';
-    document.getElementById('price').value = params.get('price') || '';
-    document.getElementById('model').value = params.get('model') || '';
+    document.getElementById("product").value = params.get("product") || '';
+    document.getElementById("price").value = params.get("price") || '';
 
-    function submitForm(e) {
+    // Handle form submission
+    const form = document.getElementById("payment-form");
+    form.addEventListener("submit", function(e) {
       e.preventDefault();
-      const form = new FormData(document.getElementById('paymentForm'));
-      const name = form.get('name');
-      const phone = form.get('phone');
-      const address = form.get('address');
-      const product = form.get('product');
-      const price = form.get('price');
-      const model = form.get('model');
-
-      const msg = `Order Details:
-Product: ${product}
-Model: ${model}
-Price: ${price}
-
-Name: ${name}
-Phone: ${phone}
-Address: ${address}`;
-
-      // Open WhatsApp with message
-      window.open(`https://wa.me/8801XXXXXXXXX?text=${encodeURIComponent(msg)}`);
-    }
+      const formData = new FormData(form);
+      fetch("https://getform.io/f/aoloedkb", {
+        method: "POST",
+        body: formData,
+        headers: { "Accept": "application/json" }
+      })
+      .then(response => {
+        if (response.ok) {
+          alert("✅ Payment submitted successfully!");
+          form.reset();
+        } else {
+          alert("❌ Error. Please try again.");
+        }
+      })
+      .catch(error => {
+        console.error(error);
+        alert("⚠️ Submission failed.");
+      });
+    });
   </script>
+
 </body>
 </html>
