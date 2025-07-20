@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Hero Product Detail</title>
+  <title>Bajaj Product Detail</title>
   <style>
     body { font-family: Roboto, sans-serif; background: #f9f9f9; margin: 0; }
     header { background: #1e293b; color: white; text-align: center; padding: 16px; font-size: 1.4em; }
@@ -31,7 +31,7 @@
   </style>
 </head>
 <body>
-  <header>Hero Product Details</header>
+  <header>Product Details</header>
   <div class="container">
     <div class="product" id="product-info"></div>
   </div>
@@ -41,23 +41,23 @@
     const model = params.get('model');
 
     const products = {
-      "hero-brake-pad": {
-        name: "Hero Brake Pad",
-        image: "images/hero-brake-pad.jpg",
-        price: "৳380",
-        description: "High-quality brake pad for Hero Splendor, HF Deluxe and other models."
+      "bajaj-clutch-cable": {
+        name: "Bajaj Clutch Cable",
+        image: "images/bajaj-clutch-cable.jpg",
+        price: "৳450",
+        description: "Durable clutch cable compatible with multiple Bajaj bikes including Pulsar and Discover."
       },
-      "hero-clutch-cable": {
-        name: "Hero Clutch Cable",
-        image: "images/hero-clutch-cable.jpg",
-        price: "৳360",
-        description: "Durable clutch cable for smooth gear shifting in Hero motorcycles."
+      "bajaj-air-filter": {
+        name: "Bajaj Air Filter",
+        image: "images/bajaj-air-filter.jpg",
+        price: "৳420",
+        description: "Premium air filter to ensure clean airflow and boost performance for Bajaj models."
       },
-      "hero-air-filter": {
-        name: "Hero Air Filter",
-        image: "images/hero-air-filter.jpg",
-        price: "৳300",
-        description: "OEM air filter for optimum engine performance in Hero bikes."
+      "bajaj-spark-plug": {
+        name: "Bajaj Spark Plug",
+        image: "images/bajaj-spark-plug.jpg",
+        price: "৳350",
+        description: "OEM quality spark plug for reliable ignition and long life in all Bajaj motorcycles."
       }
     };
 
@@ -70,12 +70,6 @@
         <div class="title">${data.name} for ${model}</div>
         <div class="desc">${data.description}</div>
         <div class="price">${data.price}</div>
-        <div style="margin-top: 20px;">
-          <a href="https://wa.me/8801707659954?text=I want to order ${data.name} for ${model}" target="_blank"
-             style="display:inline-block;background:#25D366;color:#fff;padding:10px 16px;border-radius:8px;text-decoration:none;">
-            📦 Order on WhatsApp
-          </a>
-        </div>
       `;
     } else {
       productDiv.innerHTML = `<p>Product not found.</p>`;
