@@ -2,57 +2,63 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Select Bike Model - Borhan Auto</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <title>Select Honda Bike Model - Borhan Auto Parts Centre</title>
   <style>
-    body { font-family: 'Roboto', sans-serif; background: #f9f9f9; padding: 16px; max-width: 800px; margin: auto; }
-    header { text-align: center; padding: 16px; background: #1e293b; color: white; font-size: 1.5em; font-weight: bold; margin-bottom: 20px; }
-    .models { background: white; padding: 24px; border-radius: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
-    h2 { color: #1e293b; font-size: 1.2em; margin-bottom: 8px; }
-    ul { padding-left: 20px; color: #334155; }
-    li { margin: 8px 0; }
-    .model-link { color: #1e40af; text-decoration: none; font-weight: bold; }
-    .back-link { display: inline-block; margin-top: 20px; text-decoration: none; color: #1e40af; }
-    .not-found { color: #dc2626; font-weight: bold; }
-    footer { text-align: center; padding: 20px; background: #1e293b; color: white; font-size: 0.9em; margin-top: 40px; }
+    body { font-family: Roboto, sans-serif; background: #f9f9f9; margin: 0; }
+    header { background: #1e293b; color: white; text-align: center; padding: 16px; font-size: 1.4em; }
+    .container { max-width: 800px; margin: auto; padding: 20px; }
+    .model-card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      margin: 16px 0;
+      padding: 20px;
+      text-align: center;
+      font-weight: bold;
+      color: #1e293b;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+      user-select: none;
+    }
+    .model-card:hover {
+      transform: scale(1.03);
+      background: #f1f5f9;
+    }
   </style>
 </head>
 <body>
-  <header>Select Your Bike Model</header>
-  <div class="models">
-    <div id="product-info"></div>
-  </div>
-  <a href="honda.html" class="back-link">← Back to Products</a>
-  <footer>© 2025 Borhan Auto Parts Centre. All rights reserved.</footer>
+  <header>Select Your Honda Bike Model</header>
+  <div class="container" id="model-list"></div>
+
   <script>
-    const params = new URLSearchParams(window.location.search);
-    const productId = params.get('product');
-    const products = {
-      "honda-brake-pad": {
-        name: "Honda Clutch Cable",
-        models: ["CB Shine", "CB Hornet", "Unicorn 160", "Dio"]
-      },
-      "honda-air-filter": {
-        name: "Honda Air Filter",
-        models: ["Activa 6G", "Livo", "XBlade", "CD 110 Dream"]
-      },
-      "honda-spark-plug": {
-        name: "Honda Spark Plug",
-        models: ["CB Trigger", "Dream Yuga", "Dio", "SP 125"]
-      }
-    };
-    const container = document.getElementById("product-info");
-    if (productId && products[productId]) {
-      const { name, models } = products[productId];
-      const title = `<h2>Product: ${name}</h2>`;
-      const links = models.map(model => 
-        `<li><a class="model-link" href="product-details-honda.html?product=${productId}&model=${encodeURIComponent(model)}">${model}</a></li>`
-      ).join('');
-      container.innerHTML = title + `<p>Choose a compatible model:</p><ul>${links}</ul>`;
-    } else {
-      container.innerHTML = `<p class="not-found">Product not found or invalid URL.</p>`;
-    }
+    const urlParams = new URLSearchParams(window.location.search);
+    const product = urlParams.get('product');
+
+    const models = [
+      'CB Shine',
+      'Dio',
+      'Unicorn',
+      'Activa',
+      'CB Hornet',
+      'SP125'
+    ];
+
+    const container = document.getElementById('model-list');
+
+    models.forEach(model => {
+      const card = document.createElement('div');
+      card.className = 'model-card';
+      card.textContent = model;
+      card.onclick = () => {
+        if(product) {
+          window.location.href = `honda-product-detail.html?product=${encodeURIComponent(product)}&model=${encodeURIComponent(model)}`;
+        } else {
+          alert('Product not specified.');
+        }
+      };
+      container.appendChild(card);
+    });
   </script>
 </body>
 </html>
