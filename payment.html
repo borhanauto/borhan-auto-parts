@@ -108,6 +108,14 @@
         padding: 20px 15px;
       }
     }
+
+    #price-display {
+      padding: 12px;
+      background: #f5f5f5;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-bottom: 20px;
+    }
   </style>
 </head>
 <body>
@@ -119,7 +127,8 @@
       <input type="text" name="product" id="product" readonly>
 
       <label>Price</label>
-      <input type="text" name="price" id="price" required>
+      <div id="price-display"></div>
+      <input type="hidden" name="price" id="price">
 
       <label>Amount to Pay</label>
       <input type="text" id="amount-to-pay" name="amount-to-pay" readonly>
@@ -155,6 +164,7 @@
   <script>
     const productInput = document.getElementById("product");
     const priceInput = document.getElementById("price");
+    const priceDisplay = document.getElementById("price-display");
     const amountInput = document.getElementById("amount-to-pay");
 
     function updateAmountToPay() {
@@ -175,9 +185,9 @@
 
     productInput.value = productFromURL;
     priceInput.value = priceFromURL;
+    priceDisplay.innerText = priceFromURL;
 
     updateAmountToPay();
-    priceInput.addEventListener("input", updateAmountToPay);
 
     const form = document.getElementById("payment-form");
     const formBox = document.getElementById("form-box");
