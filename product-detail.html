@@ -3,11 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Product Detail</title>
+  <title>Yamaha Product Detail</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    body { font-family: Roboto, sans-serif; background: #f9f9f9; margin: 0; }
-    header { background: #1e293b; color: white; text-align: center; padding: 16px; font-size: 1.4em; }
-    .container { max-width: 800px; margin: auto; padding: 20px; }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #f9f9f9;
+      margin: 0;
+    }
+    header {
+      background: #0f172a;
+      color: white;
+      text-align: center;
+      padding: 16px;
+      font-size: 1.4em;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+    }
     .product {
       background: white;
       padding: 20px;
@@ -24,10 +39,31 @@
       font-size: 1.3em;
       font-weight: bold;
       margin: 16px 0 8px;
-      color: #1e293b;
+      color: #0f172a;
     }
-    .desc { color: #4b5563; margin-bottom: 12px; }
-    .price { font-size: 1.1em; color: #16a34a; font-weight: bold; }
+    .desc {
+      color: #4b5563;
+      margin-bottom: 12px;
+    }
+    .price {
+      font-size: 1.1em;
+      color: #16a34a;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    .buy-btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background: #1d4ed8;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+    .buy-btn:hover {
+      background: #1e40af;
+    }
   </style>
 </head>
 <body>
@@ -35,35 +71,51 @@
   <div class="container">
     <div class="product" id="product-info"></div>
   </div>
+
   <script>
     const params = new URLSearchParams(window.location.search);
     const product = params.get('product');
     const model = params.get('model');
+
     const products = {
-      "brake-pad": {
-        name: "Brake Pad",
+      "yamaha-brake-pad": {
+        name: "Yamaha Brake Pad",
         image: "images/yamaha-brake-pad.jpg",
-        price: "৳450",
-        description: "High-quality brake pad for Yamaha models. Reliable stopping power and long-lasting."
+        price: "৳480",
+        description: "High-quality front brake pad compatible with Yamaha FZ, R15, and other models."
       },
-      "spark-plug": {
-        name: "Spark Plug",
-        image: "images/yamaha-spark-plug.jpg",
-        price: "৳1250",
-        description: "Iridium spark plug that enhances engine performance and fuel efficiency."
+      "yamaha-air-filter": {
+        name: "Yamaha Air Filter",
+        image: "images/yamaha-air-filter.jpg",
+        price: "৳500",
+        description: "OEM Yamaha air filter that ensures maximum airflow and engine protection."
+      },
+      "yamaha-clutch-plate": {
+        name: "Yamaha Clutch Plate",
+        image: "images/yamaha-clutch-plate.jpg",
+        price: "৳850",
+        description: "Durable clutch plate for smooth transmission and high performance on Yamaha bikes."
       }
     };
+
     const data = products[product];
     const productDiv = document.getElementById('product-info');
+
     if (data) {
       productDiv.innerHTML = `
         <img src="${data.image}" alt="${data.name} for ${model}" />
-        <div class="title">${data.name} for Yamaha ${model}</div>
+        <div class="title">${data.name} for ${model}</div>
         <div class="desc">${data.description}</div>
         <div class="price">${data.price}</div>
+        <a href="payment.html?product=${encodeURIComponent(data.name)}&price=${encodeURIComponent(data.price)}&model=${encodeURIComponent(model)}" 
+           class="buy-btn">Buy Now</a>
       `;
     } else {
-      productDiv.innerHTML = `<p>Product not found.</p>`;
+      productDiv.innerHTML = `
+        <div style="padding: 20px; background: #fee2e2; color: #b91c1c; border-radius: 8px;">
+          ❌ Product not found. Please check the URL or try again.
+        </div>
+      `;
     }
   </script>
 </body>
