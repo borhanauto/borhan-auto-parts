@@ -6,11 +6,7 @@
   <title>Yamaha Product Detail</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    body {
-      font-family: 'Roboto', sans-serif;
-      background: #f9f9f9;
-      margin: 0;
-    }
+    body { font-family: 'Roboto', sans-serif; background: #f9f9f9; margin: 0; }
     header {
       background: #0f172a;
       color: white;
@@ -18,11 +14,7 @@
       padding: 16px;
       font-size: 1.4em;
     }
-    .container {
-      max-width: 800px;
-      margin: auto;
-      padding: 20px;
-    }
+    .container { max-width: 800px; margin: auto; padding: 20px; }
     .product {
       background: white;
       padding: 20px;
@@ -41,10 +33,7 @@
       margin: 16px 0 8px;
       color: #0f172a;
     }
-    .desc {
-      color: #4b5563;
-      margin-bottom: 12px;
-    }
+    .desc { color: #4b5563; margin-bottom: 12px; }
     .price {
       font-size: 1.1em;
       color: #16a34a;
@@ -107,13 +96,13 @@
         <div class="title">${data.name} for ${model}</div>
         <div class="desc">${data.description}</div>
         <div class="price">${data.price}</div>
-        <a href="payment.html?product=${encodeURIComponent(data.name)}&price=${encodeURIComponent(data.price)}&model=${encodeURIComponent(model)}" 
+        <a href="payment.html?product=${encodeURIComponent(data.name)}&price=${encodeURIComponent(data.price)}&model=${encodeURIComponent(model)}"
            class="buy-btn">Buy Now</a>
       `;
     } else {
       productDiv.innerHTML = `
         <div style="padding: 20px; background: #fee2e2; color: #b91c1c; border-radius: 8px;">
-          ❌ Product not found. Please check the URL or try again.
+          ❌ Product not found. Please check the URL or select from the Yamaha model list.
         </div>
       `;
     }
