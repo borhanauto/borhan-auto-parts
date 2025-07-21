@@ -4,16 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Yamaha Product Detail</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <meta name="description" content="View details of Yamaha motorcycle spare parts like brake pads and spark plugs. Genuine quality from Borhan Auto Parts Centre." />
+  <meta name="keywords" content="Yamaha spare parts, brake pad, spark plug, Yamaha bike parts, FZS, R15, Borhan Auto" />
+  <meta name="author" content="Borhan Auto Parts Centre" />
+  <link rel="icon" href="favicon.ico" />
   <style>
-    body { font-family: 'Roboto', sans-serif; background: #f9f9f9; margin: 0; }
-    header {
-      background: #0f172a;
-      color: white;
-      text-align: center;
-      padding: 16px;
-      font-size: 1.4em;
-    }
+    body { font-family: Roboto, sans-serif; background: #f9f9f9; margin: 0; }
+    header { background: #1e293b; color: white; text-align: center; padding: 16px; font-size: 1.4em; }
     .container { max-width: 800px; margin: auto; padding: 20px; }
     .product {
       background: white;
@@ -31,19 +28,14 @@
       font-size: 1.3em;
       font-weight: bold;
       margin: 16px 0 8px;
-      color: #0f172a;
+      color: #1e293b;
     }
     .desc { color: #4b5563; margin-bottom: 12px; }
-    .price {
-      font-size: 1.1em;
-      color: #16a34a;
-      font-weight: bold;
-      margin-bottom: 20px;
-    }
+    .price { font-size: 1.1em; color: #16a34a; font-weight: bold; margin-bottom: 20px; }
     .buy-btn {
       display: inline-block;
       padding: 10px 20px;
-      background: #1d4ed8;
+      background: #1e40af;
       color: white;
       text-decoration: none;
       border-radius: 6px;
@@ -51,7 +43,7 @@
       transition: background 0.3s ease;
     }
     .buy-btn:hover {
-      background: #1e40af;
+      background: #1e3a8a;
     }
   </style>
 </head>
@@ -70,39 +62,34 @@
       "yamaha-brake-pad": {
         name: "Yamaha Brake Pad",
         image: "images/yamaha-brake-pad.jpg",
-        price: "৳480",
-        description: "High-quality front brake pad compatible with Yamaha FZ, R15, and other models."
+        price: "৳450",
+        description: "High-quality brake pad compatible with Yamaha FZS, R15, and Fazer series. Provides superior stopping power and extended durability."
       },
-      "yamaha-air-filter": {
-        name: "Yamaha Air Filter",
-        image: "images/yamaha-air-filter.jpg",
-        price: "৳500",
-        description: "OEM Yamaha air filter that ensures maximum airflow and engine protection."
-      },
-      "yamaha-clutch-plate": {
-        name: "Yamaha Clutch Plate",
-        image: "images/yamaha-clutch-plate.jpg",
-        price: "৳850",
-        description: "Durable clutch plate for smooth transmission and high performance on Yamaha bikes."
+      "yamaha-spark-plug": {
+        name: "Yamaha Spark Plug",
+        image: "images/yamaha-spark-plug.jpg",
+        price: "৳1250",
+        description: "Premium iridium spark plug for Yamaha motorcycles. Enhances ignition performance, fuel efficiency, and engine life."
       }
     };
 
     const data = products[product];
     const productDiv = document.getElementById('product-info');
+    const modelName = model ? ` for ${model}` : '';
 
     if (data) {
       productDiv.innerHTML = `
-        <img src="${data.image}" alt="${data.name} for ${model}" />
-        <div class="title">${data.name} for ${model}</div>
+        <img src="${data.image}" alt="${data.name}${modelName}" loading="lazy" />
+        <div class="title">${data.name}${modelName}</div>
         <div class="desc">${data.description}</div>
         <div class="price">${data.price}</div>
-        <a href="payment.html?product=${encodeURIComponent(data.name)}&price=${encodeURIComponent(data.price)}&model=${encodeURIComponent(model)}"
+        <a href="payment.html?product=${encodeURIComponent(data.name)}&price=${encodeURIComponent(data.price)}&model=${encodeURIComponent(model || '')}" 
            class="buy-btn">Buy Now</a>
       `;
     } else {
       productDiv.innerHTML = `
-        <div style="padding: 20px; background: #fee2e2; color: #b91c1c; border-radius: 8px;">
-          ❌ Product not found. Please check the URL or select from the Yamaha model list.
+        <div style="padding:20px; background:#fee2e2; border-radius:8px; color:#991b1b;">
+          <strong>Product not found.</strong> Please go back and select a valid Yamaha part.
         </div>
       `;
     }
