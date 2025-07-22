@@ -2,149 +2,205 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title id="meta-title">Suzuki Spare Part | Genuine Parts for Gixxer, GSX-R - Borhan Auto Parts</title>
-
-  <meta name="description" content="Buy genuine Suzuki motorcycle spare parts like brake pads, air filters and spark plugs for Gixxer, GSX-R150, Access 125. Fast delivery from Borhan Auto Parts Centre in Bangladesh.">
-  <meta name="keywords" content="Suzuki spare parts, Suzuki Gixxer brake pad, Suzuki spark plug, Borhan Auto Parts, motorcycle parts Bangladesh">
-  <meta name="author" content="Borhan Auto Parts Centre">
-  <meta name="robots" content="index, follow" />
-
-  <!-- Open Graph (OG) tags -->
-  <meta property="og:title" content="Suzuki Spare Parts - Gixxer, GSX-R | Borhan Auto Parts" />
-  <meta property="og:description" content="Buy genuine Suzuki motorcycle parts with delivery in Bangladesh." />
-  <meta property="og:image" content="https://borhanauto.github.io/borhan-auto-parts/images/suzuki-brake-pad.jpg" />
-  <meta property="og:url" content="https://borhanauto.github.io/borhan-auto-parts/suzuki-product-detail.html" />
-  <meta property="og:type" content="website" />
-
-  <link rel="canonical" href="https://borhanauto.github.io/borhan-auto-parts/suzuki-product-detail.html" />
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
-
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Suzuki Brake Shoe - Borhan Auto Parts Centre</title>
+  <meta name="description" content="Buy genuine Suzuki Brake Shoe compatible with Gixxer, Hayate, and Access 125. Durable, high-quality motorcycle spare parts from Borhan Auto Parts Centre, Bangladesh." />
+  <meta name="keywords" content="Suzuki Brake Shoe, Suzuki spare parts, motorcycle brake shoe, Gixxer brake shoe, Hayate parts, Access 125 parts, Borhan Auto" />
+  <meta name="author" content="Borhan Auto Parts Centre" />
+  <link rel="icon" href="favicon.ico" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "name": "Suzuki Brake Shoe",
+    "image": "https://yourdomain.com/images/suzuki-brake-shoe.jpg",
+    "description": "High-quality brake shoe compatible with Suzuki Gixxer, Hayate, and Access 125.",
+    "brand": {
+      "@type": "Brand",
+      "name": "Suzuki"
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": "https://yourdomain.com/suzuki-product-detail.html?product=suzuki-brake-shoe",
+      "priceCurrency": "BDT",
+      "price": "500",
+      "availability": "https://schema.org/InStock",
+      "seller": {
+        "@type": "Organization",
+        "name": "Borhan Auto Parts Centre"
+      }
+    }
+  }
+  </script>
   <style>
     body {
       font-family: 'Roboto', sans-serif;
-      margin: 0;
+      margin: 0; padding: 0;
       background: #f9f9f9;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
       color: #1e293b;
     }
     header {
       background: #1e293b;
       color: white;
+      padding: 20px 16px;
       text-align: center;
-      padding: 20px;
       font-size: 1.6em;
-      font-weight: bold;
+      font-weight: 700;
+      user-select: none;
     }
-    .container {
+    main {
       max-width: 900px;
-      margin: 30px auto;
-      padding: 20px;
-    }
-    .card-3d {
+      margin: 24px auto;
+      padding: 16px;
       background: white;
       border-radius: 16px;
-      padding: 24px;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-      perspective: 1000px;
+      box-shadow:
+        0 10px 20px rgba(0,0,0,0.1),
+        0 6px 6px rgba(0,0,0,0.08);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
       transform-style: preserve-3d;
+      perspective: 1200px;
+      transition: transform 0.3s ease;
     }
-    .card-3d:hover {
-      transform: rotateY(6deg) rotateX(4deg) translateZ(20px);
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
+    main:hover {
+      transform: translateZ(30px) rotateX(8deg) rotateY(6deg);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.2);
     }
-    .card-3d img {
+    .product-image {
+      flex: 1 1 320px;
+      max-width: 400px;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      background: #fff;
+      perspective: 1000px;
+    }
+    .product-image img {
       width: 100%;
-      max-height: 280px;
+      height: auto;
+      display: block;
       object-fit: contain;
+      border-radius: 14px;
+      transition: box-shadow 0.3s ease;
+      backface-visibility: hidden;
+    }
+    main:hover .product-image img {
+      box-shadow: 0 12px 32px rgba(0,0,0,0.25);
+      transform: scale(1.03);
+    }
+    .product-info {
+      flex: 1 1 400px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .product-title {
+      font-size: 2em;
+      font-weight: 900;
+      margin-bottom: 12px;
+      color: #0f172a;
+    }
+    .badge {
+      display: inline-block;
+      background: #facc15;
+      color: #1e293b;
+      font-weight: 700;
+      padding: 6px 14px;
       border-radius: 12px;
-      margin-bottom: 20px;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-    }
-    .product-name {
-      font-size: 1.6em;
-      font-weight: bold;
-      margin-bottom: 8px;
-    }
-    .model-name {
-      color: #64748b;
-      font-size: 1.1em;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
       margin-bottom: 16px;
+      font-size: 0.85em;
+      width: fit-content;
+      user-select: none;
+      box-shadow: 0 2px 6px rgba(250, 204, 21, 0.35);
     }
-    .description {
-      font-size: 1em;
-      line-height: 1.6;
+    .product-description {
+      font-size: 1.1em;
+      line-height: 1.5;
+      color: #475569;
       margin-bottom: 20px;
+      user-select: text;
     }
     .price {
-      font-size: 1.4em;
+      font-size: 1.8em;
+      font-weight: 900;
       color: #16a34a;
-      font-weight: bold;
+      margin-bottom: 30px;
+      user-select: text;
     }
-    .back-link {
-      display: inline-block;
-      margin-top: 30px;
+    .cta-button {
+      background-color: #1e293b;
+      color: white;
+      font-weight: 700;
+      font-size: 1.1em;
+      padding: 14px 30px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
       text-decoration: none;
-      color: #1e40af;
-      font-weight: bold;
+      text-align: center;
+      width: fit-content;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+      transition: background-color 0.3s ease;
+      user-select: none;
+    }
+    .cta-button:hover {
+      background-color: #334155;
+    }
+    footer {
+      text-align: center;
+      padding: 24px 16px;
+      background: #1e293b;
+      color: white;
+      font-size: 0.95em;
+      user-select: none;
+      letter-spacing: 0.02em;
+      margin-top: 60px;
+    }
+    @media (max-width: 720px) {
+      main {
+        flex-direction: column;
+        padding: 12px;
+      }
+      .product-image, .product-info {
+        max-width: 100%;
+      }
+      .product-title {
+        font-size: 1.6em;
+      }
+      .price {
+        font-size: 1.5em;
+      }
     }
   </style>
 </head>
 <body>
-  <header>Suzuki Spare Part Detail</header>
-  <div class="container">
-    <div class="card-3d" id="product-card">
-      <img id="product-image" src="images/suzuki-placeholder.jpg" alt="Suzuki Spare Part" />
-      <h1 class="product-name" id="product-title">Suzuki Spare Part</h1>
-      <div class="model-name" id="model-name"></div>
-      <div class="description" id="product-description">Genuine spare part for Suzuki motorcycles. Ensures safety, durability, and performance.</div>
-      <div class="price" id="price">৳450</div>
+  <header>Suzuki Brake Shoe - Borhan Auto Parts Centre</header>
+  <main>
+    <div class="product-image">
+      <img src="images/suzuki-brake-shoe.jpg" alt="Suzuki Brake Shoe" loading="lazy" />
     </div>
-    <a class="back-link" href="javascript:history.back()">← Back to Model Selection</a>
-  </div>
-
-  <script>
-    const params = new URLSearchParams(window.location.search);
-    const product = params.get('product');
-    const model = params.get('model');
-
-    const productInfo = {
-      'suzuki-brake-pad': {
-        title: 'Suzuki Brake Pad',
-        img: 'images/suzuki-brake-pad.jpg',
-        description: 'High-quality brake pad for Suzuki Gixxer, GSX-R150, and Access 125. Smooth braking performance.',
-        price: '৳450'
-      },
-      'suzuki-air-filter': {
-        title: 'Suzuki Air Filter',
-        img: 'images/suzuki-air-filter.jpg',
-        description: 'Performance-grade air filter for better airflow and fuel efficiency.',
-        price: '৳400'
-      },
-      'suzuki-spark-plug': {
-        title: 'Suzuki Spark Plug',
-        img: 'images/suzuki-spark-plug.jpg',
-        description: 'Reliable ignition and fuel combustion for all Suzuki models.',
-        price: '৳320'
-      }
-    };
-
-    const data = productInfo[product];
-    if (data) {
-      document.getElementById('product-title').textContent = data.title;
-      document.getElementById('product-image').src = data.img;
-      document.getElementById('product-image').alt = data.title;
-      document.getElementById('product-description').textContent = data.description;
-      document.getElementById('price').textContent = data.price;
-      document.title = `${data.title} | Genuine Suzuki Parts - Borhan Auto Parts`;
-      document.querySelector('meta[name="description"]').setAttribute("content", data.description + " Available now at Borhan Auto Parts Centre, Bangladesh.");
-      document.querySelector('meta[property="og:title"]').setAttribute("content", `${data.title} | Borhan Auto Parts`);
-      document.querySelector('meta[property="og:image"]').setAttribute("content", `https://borhanauto.github.io/borhan-auto-parts/${data.img}`);
-    }
-
-    if (model) {
-      document.getElementById('model-name').textContent = `Model: ${decodeURIComponent(model)}`;
-    }
-  </script>
+    <div class="product-info">
+      <span class="badge">New</span>
+      <h1 class="product-title">Suzuki Brake Shoe</h1>
+      <p class="product-description">
+        High-quality brake shoe compatible with Suzuki Gixxer, Hayate, and Access 125. Engineered for superior stopping power and durability to keep your motorcycle safe and reliable.
+      </p>
+      <div class="price">৳500</div>
+      <a href="tel:+8801707659954" class="cta-button" aria-label="Call Borhan Auto Parts Centre to order Suzuki Brake Shoe">
+        Call to Order: 01707659954
+      </a>
+    </div>
+  </main>
+  <footer>
+    © 2025 Borhan Auto Parts Centre. All rights reserved.<br />
+    For inquiries and orders, call: 01707659954
+  </footer>
 </body>
 </html>
