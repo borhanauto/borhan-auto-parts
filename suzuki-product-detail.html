@@ -134,7 +134,13 @@
       margin-bottom: 30px;
       user-select: text;
     }
-    .cta-button {
+    .buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .buy-button {
       background-color: #1e293b;
       color: white;
       font-weight: 700;
@@ -149,9 +155,17 @@
       box-shadow: 0 6px 12px rgba(0,0,0,0.15);
       transition: background-color 0.3s ease;
       user-select: none;
+      display: inline-block;
     }
-    .cta-button:hover {
+    .buy-button:hover {
       background-color: #334155;
+    }
+    .confirmation {
+      margin-top: 20px;
+      color: #16a34a;
+      font-weight: 700;
+      font-size: 1.2em;
+      display: none;
     }
     footer {
       text-align: center;
@@ -177,6 +191,10 @@
       .price {
         font-size: 1.5em;
       }
+      .buttons {
+        flex-direction: column;
+        gap: 12px;
+      }
     }
   </style>
 </head>
@@ -193,14 +211,30 @@
         High-quality brake shoe compatible with Suzuki Gixxer, Hayate, and Access 125. Engineered for superior stopping power and durability to keep your motorcycle safe and reliable.
       </p>
       <div class="price">৳500</div>
-      <a href="tel:+8801707659954" class="cta-button" aria-label="Call Borhan Auto Parts Centre to order Suzuki Brake Shoe">
-        Call to Order: 01707659954
-      </a>
+      <div class="buttons">
+        <button class="buy-button" id="buyBtn" aria-label="Buy Suzuki Brake Shoe now">
+          Buy Now
+        </button>
+      </div>
+      <div class="confirmation" id="confirmationMsg">Thank you for your purchase! We will contact you soon.</div>
     </div>
   </main>
   <footer>
     © 2025 Borhan Auto Parts Centre. All rights reserved.<br />
     For inquiries and orders, call: 01707659954
   </footer>
+
+  <script>
+    const buyBtn = document.getElementById('buyBtn');
+    const confirmationMsg = document.getElementById('confirmationMsg');
+
+    buyBtn.addEventListener('click', () => {
+      buyBtn.style.display = 'none';
+      confirmationMsg.style.display = 'block';
+
+      // Place for real payment integration or redirect
+      // e.g. window.location.href = "payment-gateway-url";
+    });
+  </script>
 </body>
 </html>
