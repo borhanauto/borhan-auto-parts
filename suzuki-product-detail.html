@@ -2,100 +2,148 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>TVS Product Detail</title>
-  <meta name="description" content="View TVS motorcycle spare part details based on bike model. Genuine parts available at Borhan Auto Parts Centre." />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title id="meta-title">Suzuki Spare Part | Genuine Parts for Gixxer, GSX-R - Borhan Auto Parts</title>
+
+  <meta name="description" content="Buy genuine Suzuki motorcycle spare parts like brake pads, air filters and spark plugs for Gixxer, GSX-R150, Access 125. Fast delivery from Borhan Auto Parts Centre in Bangladesh.">
+  <meta name="keywords" content="Suzuki spare parts, Suzuki Gixxer brake pad, Suzuki spark plug, Borhan Auto Parts, motorcycle parts Bangladesh">
+  <meta name="author" content="Borhan Auto Parts Centre">
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph (OG) tags -->
+  <meta property="og:title" content="Suzuki Spare Parts - Gixxer, GSX-R | Borhan Auto Parts" />
+  <meta property="og:description" content="Buy genuine Suzuki motorcycle parts with delivery in Bangladesh." />
+  <meta property="og:image" content="https://borhanauto.github.io/borhan-auto-parts/images/suzuki-brake-pad.jpg" />
+  <meta property="og:url" content="https://borhanauto.github.io/borhan-auto-parts/suzuki-product-detail.html" />
+  <meta property="og:type" content="website" />
+
+  <link rel="canonical" href="https://borhanauto.github.io/borhan-auto-parts/suzuki-product-detail.html" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
   <style>
-    body { font-family: 'Roboto', sans-serif; background: #f9f9f9; margin: 0; }
-    header { background: #1e293b; color: white; text-align: center; padding: 16px; font-size: 1.4em; }
-    .container { max-width: 800px; margin: auto; padding: 20px; }
-    .card {
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      padding: 20px;
-      text-align: center;
-    }
-    .card img {
-      width: 100%;
-      max-height: 250px;
-      object-fit: contain;
-      border-radius: 8px;
-    }
-    .product-name {
-      font-size: 1.5em;
-      font-weight: bold;
-      margin-top: 16px;
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      background: #f9f9f9;
       color: #1e293b;
     }
+    header {
+      background: #1e293b;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 1.6em;
+      font-weight: bold;
+    }
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 20px;
+    }
+    .card-3d {
+      background: white;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      perspective: 1000px;
+      transform-style: preserve-3d;
+    }
+    .card-3d:hover {
+      transform: rotateY(6deg) rotateX(4deg) translateZ(20px);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
+    }
+    .card-3d img {
+      width: 100%;
+      max-height: 280px;
+      object-fit: contain;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    }
+    .product-name {
+      font-size: 1.6em;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
     .model-name {
+      color: #64748b;
+      font-size: 1.1em;
+      margin-bottom: 16px;
+    }
+    .description {
       font-size: 1em;
-      margin-top: 8px;
-      color: #475569;
+      line-height: 1.6;
+      margin-bottom: 20px;
     }
     .price {
+      font-size: 1.4em;
       color: #16a34a;
       font-weight: bold;
-      font-size: 1.2em;
-      margin-top: 10px;
     }
-    .order-btn {
-      margin-top: 16px;
-      padding: 10px 20px;
-      background-color: #1e293b;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-size: 1em;
-      cursor: pointer;
-      text-decoration: none;
+    .back-link {
       display: inline-block;
-    }
-    .order-btn:hover {
-      background-color: #334155;
+      margin-top: 30px;
+      text-decoration: none;
+      color: #1e40af;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
-  <header>TVS Product Detail</header>
+  <header>Suzuki Spare Part Detail</header>
   <div class="container">
-    <div class="card" id="product-detail"></div>
+    <div class="card-3d" id="product-card">
+      <img id="product-image" src="images/suzuki-placeholder.jpg" alt="Suzuki Spare Part" />
+      <h1 class="product-name" id="product-title">Suzuki Spare Part</h1>
+      <div class="model-name" id="model-name"></div>
+      <div class="description" id="product-description">Genuine spare part for Suzuki motorcycles. Ensures safety, durability, and performance.</div>
+      <div class="price" id="price">৳450</div>
+    </div>
+    <a class="back-link" href="javascript:history.back()">← Back to Model Selection</a>
   </div>
 
   <script>
-    const query = new URLSearchParams(window.location.search);
-    const product = query.get('product');
-    const model = query.get('model');
+    const params = new URLSearchParams(window.location.search);
+    const product = params.get('product');
+    const model = params.get('model');
 
-    const products = {
-      'tvs-brake-shoe': {
-        name: 'TVS Brake Shoe',
-        img: 'images/tvs-brake-shoe.jpg',
-        price: '৳500',
-        desc: 'High-quality brake shoe for TVS models including Apache, Metro, and XL.'
+    const productInfo = {
+      'suzuki-brake-pad': {
+        title: 'Suzuki Brake Pad',
+        img: 'images/suzuki-brake-pad.jpg',
+        description: 'High-quality brake pad for Suzuki Gixxer, GSX-R150, and Access 125. Smooth braking performance.',
+        price: '৳450'
       },
-      'tvs-air-filter': {
-        name: 'TVS Air Filter',
-        img: 'images/tvs-air-filter.jpg',
-        price: '৳480',
-        desc: 'Genuine air filter compatible with TVS Raider, Star City, and more.'
+      'suzuki-air-filter': {
+        title: 'Suzuki Air Filter',
+        img: 'images/suzuki-air-filter.jpg',
+        description: 'Performance-grade air filter for better airflow and fuel efficiency.',
+        price: '৳400'
+      },
+      'suzuki-spark-plug': {
+        title: 'Suzuki Spark Plug',
+        img: 'images/suzuki-spark-plug.jpg',
+        description: 'Reliable ignition and fuel combustion for all Suzuki models.',
+        price: '৳320'
       }
     };
 
-    const detail = document.getElementById('product-detail');
-    if (products[product]) {
-      const p = products[product];
-      detail.innerHTML = `
-        <img src="${p.img}" alt="${p.name}" />
-        <div class="product-name">${p.name}</div>
-        <div class="model-name">Model: ${model}</div>
-        <div class="price">${p.price}</div>
-        <p style="margin-top: 12px; color: #475569;">${p.desc}</p>
-        <a class="order-btn" href="https://wa.me/8801707659954?text=I want to buy ${p.name} for ${model}">Order on WhatsApp</a>
-      `;
-    } else {
-      detail.innerHTML = `<p>Product not found. Please go back and try again.</p>`;
+    const data = productInfo[product];
+    if (data) {
+      document.getElementById('product-title').textContent = data.title;
+      document.getElementById('product-image').src = data.img;
+      document.getElementById('product-image').alt = data.title;
+      document.getElementById('product-description').textContent = data.description;
+      document.getElementById('price').textContent = data.price;
+      document.title = `${data.title} | Genuine Suzuki Parts - Borhan Auto Parts`;
+      document.querySelector('meta[name="description"]').setAttribute("content", data.description + " Available now at Borhan Auto Parts Centre, Bangladesh.");
+      document.querySelector('meta[property="og:title"]').setAttribute("content", `${data.title} | Borhan Auto Parts`);
+      document.querySelector('meta[property="og:image"]').setAttribute("content", `https://borhanauto.github.io/borhan-auto-parts/${data.img}`);
+    }
+
+    if (model) {
+      document.getElementById('model-name').textContent = `Model: ${decodeURIComponent(model)}`;
     }
   </script>
 </body>
