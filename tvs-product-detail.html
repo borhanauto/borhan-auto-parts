@@ -66,19 +66,19 @@
     const product = params.get('product');
     const model = params.get('model') || '';
 
-    // Products data
+    // Products base data
     const products = {
       "tvs-brake-shoe": {
         name: "TVS Brake Shoe",
         image: "images/tvs-brake-shoe.jpg",
         price: "৳500",
-        description: "High-quality brake shoe compatible with TVS Apache RTR, Star City+, and Radeon. Smooth braking performance."
+        descBase: "High-quality brake shoe designed for smooth and reliable braking performance.",
       },
       "tvs-air-filter": {
         name: "TVS Air Filter",
         image: "images/tvs-air-filter.jpg",
         price: "৳480",
-        description: "Genuine air filter suitable for TVS Ntorq, Jupiter, and XL100. Better engine efficiency."
+        descBase: "Genuine air filter that improves engine airflow and efficiency for better riding.",
       }
     };
 
@@ -87,13 +87,16 @@
 
     if (product && products[product]) {
       const data = products[product];
+      const bikeName = model ? ` Specifically compatible with ${model}.` : '';
+      const description = data.descBase + bikeName;
+
       productDiv.innerHTML = `
         <img src="${data.image}" alt="${data.name} for ${model}" onerror="this.src='images/default.jpg'" />
         <div class="title">${data.name}${model ? ' for ' + model : ''}</div>
-        <div class="desc">${data.description}</div>
+        <div class="desc">${description}</div>
         <div class="price">${data.price}</div>
       `;
-      // Update back link URL to keep product param (so user returns to model selection of this product)
+
       backLink.href = `bike-models-tvs.html?product=${encodeURIComponent(product)}`;
     } else {
       productDiv.innerHTML = `<p>Sorry, the product details you requested could not be found.</p>`;
