@@ -3,43 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Suzuki Brake Shoe - Borhan Auto Parts Centre</title>
-  <meta name="description" content="Buy genuine Suzuki Brake Shoe compatible with Gixxer, Hayate, and Access 125. Durable, high-quality motorcycle spare parts from Borhan Auto Parts Centre, Bangladesh." />
-  <meta name="keywords" content="Suzuki Brake Shoe, Suzuki spare parts, motorcycle brake shoe, Gixxer brake shoe, Hayate parts, Access 125 parts, Borhan Auto" />
+  <title>Suzuki Product Detail - Borhan Auto Parts Centre</title>
+  <meta name="description" content="Buy genuine Suzuki motorcycle spare parts including brake shoe, compatible with Gixxer, Hayate, Access 125. Fast delivery from Borhan Auto Parts Centre, Bangladesh." />
+  <meta name="keywords" content="Suzuki spare parts, Suzuki brake shoe, Gixxer parts, Hayate parts, Access 125, Borhan Auto" />
   <meta name="author" content="Borhan Auto Parts Centre" />
   <link rel="icon" href="favicon.ico" />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org/",
-    "@type": "Product",
-    "name": "Suzuki Brake Shoe",
-    "image": "https://yourdomain.com/images/suzuki-brake-shoe.jpg",
-    "description": "High-quality brake shoe compatible with Suzuki Gixxer, Hayate, and Access 125.",
-    "brand": {
-      "@type": "Brand",
-      "name": "Suzuki"
-    },
-    "offers": {
-      "@type": "Offer",
-      "url": "https://yourdomain.com/suzuki-product-detail.html?product=suzuki-brake-shoe",
-      "priceCurrency": "BDT",
-      "price": "500",
-      "availability": "https://schema.org/InStock",
-      "seller": {
-        "@type": "Organization",
-        "name": "Borhan Auto Parts Centre"
-      }
-    }
-  }
-  </script>
   <style>
     body {
       font-family: 'Roboto', sans-serif;
-      margin: 0; padding: 0;
+      margin: 0;
       background: #f9f9f9;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
       color: #1e293b;
     }
     header {
@@ -86,7 +60,7 @@
       display: block;
       object-fit: contain;
       border-radius: 14px;
-      transition: box-shadow 0.3s ease;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
       backface-visibility: hidden;
     }
     main:hover .product-image img {
@@ -199,24 +173,20 @@
   </style>
 </head>
 <body>
-  <header>Suzuki Brake Shoe - Borhan Auto Parts Centre</header>
+  <header id="page-header">Suzuki Brake Shoe - Borhan Auto Parts Centre</header>
   <main>
     <div class="product-image">
-      <img src="images/suzuki-brake-shoe.jpg" alt="Suzuki Brake Shoe" loading="lazy" />
+      <img id="product-img" src="" alt="Product Image" loading="lazy" />
     </div>
     <div class="product-info">
-      <span class="badge">New</span>
-      <h1 class="product-title">Suzuki Brake Shoe</h1>
-      <p class="product-description">
-        High-quality brake shoe compatible with Suzuki Gixxer, Hayate, and Access 125. Engineered for superior stopping power and durability to keep your motorcycle safe and reliable.
-      </p>
-      <div class="price">৳500</div>
+      <span class="badge" id="badge-text">New</span>
+      <h1 class="product-title" id="product-title">Loading...</h1>
+      <p class="product-description" id="product-desc"></p>
+      <div class="price" id="product-price"></div>
       <div class="buttons">
-        <button class="buy-button" id="buyBtn" aria-label="Buy Suzuki Brake Shoe now">
-          Buy Now
-        </button>
+        <a id="buy-btn" class="buy-button" href="#" target="_blank" rel="noopener noreferrer">Buy Now</a>
       </div>
-      <div class="confirmation" id="confirmationMsg">Thank you for your purchase! We will contact you soon.</div>
+      <div class="confirmation" id="confirmation-msg">Thank you for your purchase! We will contact you soon.</div>
     </div>
   </main>
   <footer>
@@ -225,16 +195,40 @@
   </footer>
 
   <script>
-    const buyBtn = document.getElementById('buyBtn');
-    const confirmationMsg = document.getElementById('confirmationMsg');
+    const params = new URLSearchParams(window.location.search);
+    const model = params.get('model') || 'Gixxer';
+    const productKey = params.get('product') || 'suzuki-brake-shoe';
 
-    buyBtn.addEventListener('click', () => {
-      buyBtn.style.display = 'none';
-      confirmationMsg.style.display = 'block';
+    // Example product data, can be extended for more Suzuki parts
+    const products = {
+      'suzuki-brake-shoe': {
+        name: 'Suzuki Brake Shoe',
+        image: 'images/suzuki-brake-shoe.jpg',
+        description: 'High-quality brake shoe compatible with Suzuki Gixxer, Hayate, and Access 125. Engineered for superior stopping power and durability to keep your motorcycle safe and reliable.',
+        price: '৳500',
+        badge: 'New',
+        header: 'Suzuki Brake Shoe - Borhan Auto Parts Centre'
+      },
+      // Add other Suzuki products here if needed
+    };
 
-      // Place for real payment integration or redirect
-      // e.g. window.location.href = "payment-gateway-url";
-    });
+    const product = products[productKey];
+
+    if (product) {
+      document.getElementById('product-img').src = product.image;
+      document.getElementById('product-img').alt = `${product.name} for ${model}`;
+      document.getElementById('product-title').textContent = `${product.name} for ${model}`;
+      document.getElementById('product-desc').textContent = product.description;
+      document.getElementById('product-price').textContent = product.price;
+      document.getElementById('badge-text').textContent = product.badge;
+      document.getElementById('page-header').textContent = product.header;
+
+      // Buy link: you can customize this to your preferred payment or order flow
+      document.getElementById('buy-btn').href = `payment.html?product=${encodeURIComponent(product.name)}&model=${encodeURIComponent(model)}&price=${encodeURIComponent(product.price)}`;
+    } else {
+      // Fallback if product not found
+      document.querySelector('main').innerHTML = `<p style="padding: 40px; font-size: 1.2em; color: #b91c1c; text-align: center;">Product not found. Please go back and select a valid product.</p>`;
+    }
   </script>
 </body>
 </html>
