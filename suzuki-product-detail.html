@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Suzuki Product Detail - Borhan Auto Parts Centre</title>
-  <meta name="description" content="Buy genuine Suzuki motorcycle spare parts including brake shoe, air filter and more. Compatible with Gixxer, Hayate, Access 125. Fast delivery from Borhan Auto Parts Centre, Bangladesh." />
+  <meta name="description" content="Buy genuine Suzuki motorcycle spare parts including brake shoe, air filter and more. Fast delivery from Borhan Auto Parts Centre, Bangladesh." />
   <meta name="keywords" content="Suzuki spare parts, Suzuki brake shoe, Suzuki air filter, Gixxer parts, Hayate parts, Access 125, Borhan Auto" />
   <meta name="author" content="Borhan Auto Parts Centre" />
   <link rel="icon" href="favicon.ico" />
@@ -34,13 +34,6 @@
       display: flex;
       flex-wrap: wrap;
       gap: 24px;
-      transform-style: preserve-3d;
-      perspective: 1200px;
-      transition: transform 0.3s ease;
-    }
-    main:hover {
-      transform: translateZ(30px) rotateX(8deg) rotateY(6deg);
-      box-shadow: 0 30px 60px rgba(0,0,0,0.2);
     }
     .product-image {
       flex: 1 1 320px;
@@ -49,7 +42,6 @@
       overflow: hidden;
       box-shadow: 0 8px 20px rgba(0,0,0,0.1);
       background: #fff;
-      perspective: 1000px;
     }
     .product-image img {
       width: 100%;
@@ -57,7 +49,6 @@
       object-fit: contain;
       border-radius: 14px;
       transition: box-shadow 0.3s ease, transform 0.3s ease;
-      backface-visibility: hidden;
     }
     main:hover .product-image img {
       box-shadow: 0 12px 32px rgba(0,0,0,0.25);
@@ -120,13 +111,6 @@
     .buy-button:hover {
       background-color: #334155;
     }
-    .confirmation {
-      margin-top: 20px;
-      color: #16a34a;
-      font-weight: 700;
-      font-size: 1.2em;
-      display: none;
-    }
     footer {
       text-align: center;
       padding: 24px 16px;
@@ -170,7 +154,6 @@
       <div class="buttons">
         <a id="buy-btn" class="buy-button" href="#" target="_blank" rel="noopener noreferrer">Buy Now</a>
       </div>
-      <div class="confirmation" id="confirmation-msg">Thank you for your purchase! We will contact you soon.</div>
     </div>
   </main>
   <footer>
@@ -187,7 +170,7 @@
       'suzuki-brake-shoe': {
         name: 'Suzuki Brake Shoe',
         image: 'images/suzuki-brake-shoe.jpg',
-        description: 'High-quality brake shoe compatible with Suzuki Gixxer, Hayate, and Access 125. Engineered for superior stopping power and durability to keep your motorcycle safe and reliable.',
+        description: (model) => `High-quality brake shoe compatible with Suzuki ${model}. Engineered for superior stopping power and durability to keep your motorcycle safe and reliable.`,
         price: '৳500',
         badge: 'New',
         header: 'Suzuki Brake Shoe - Borhan Auto Parts Centre'
@@ -195,7 +178,7 @@
       'suzuki-air-filter': {
         name: 'Suzuki Air Filter',
         image: 'images/suzuki-air-filter.jpg',
-        description: 'Genuine Suzuki air filter for improved airflow and engine performance. Compatible with Suzuki Gixxer, Hayate, and Access 125. Ensures optimal fuel efficiency and smooth riding.',
+        description: (model) => `Genuine Suzuki air filter designed specifically for ${model}. Provides improved airflow and engine performance, ensuring optimal fuel efficiency and smooth riding.`,
         price: '৳400',
         badge: 'Popular',
         header: 'Suzuki Air Filter - Borhan Auto Parts Centre'
@@ -208,7 +191,7 @@
       document.getElementById('product-img').src = product.image;
       document.getElementById('product-img').alt = `${product.name} for ${model}`;
       document.getElementById('product-title').textContent = `${product.name} for ${model}`;
-      document.getElementById('product-desc').textContent = product.description;
+      document.getElementById('product-desc').textContent = product.description(model);
       document.getElementById('product-price').textContent = product.price;
       document.getElementById('badge-text').textContent = product.badge;
       document.getElementById('page-header').textContent = product.header;
