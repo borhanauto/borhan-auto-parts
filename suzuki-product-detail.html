@@ -3,86 +3,231 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Suzuki Product Detail</title>
+  <title>Suzuki Product Detail - Borhan Auto Parts Centre</title>
+  <meta name="description" content="Buy genuine Suzuki motorcycle spare parts including brake shoe, compatible with Gixxer, Hayate, Access 125. Fast delivery from Borhan Auto Parts Centre, Bangladesh." />
+  <meta name="keywords" content="Suzuki spare parts, Suzuki brake shoe, Gixxer parts, Hayate parts, Access 125, Borhan Auto" />
+  <meta name="author" content="Borhan Auto Parts Centre" />
+  <link rel="icon" href="favicon.ico" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    body { font-family: Roboto, sans-serif; background: #f9f9f9; margin: 0; }
-    header { background: #1e293b; color: white; text-align: center; padding: 16px; font-size: 1.4em; }
-    .container { max-width: 800px; margin: auto; padding: 20px; }
-    .product {
-      background: white;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    img {
-      width: 100%;
-      max-height: 250px;
-      object-fit: contain;
-      border-radius: 8px;
-    }
-    .title {
-      font-size: 1.3em;
-      font-weight: bold;
-      margin: 16px 0 8px;
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      background: #f9f9f9;
       color: #1e293b;
     }
-    .desc { color: #4b5563; margin-bottom: 12px; }
-    .price { font-size: 1.1em; color: #16a34a; font-weight: bold; margin-bottom: 20px; }
-    .buy-btn {
-      display: inline-block;
-      padding: 10px 20px;
-      background: #1e40af;
+    header {
+      background: #1e293b;
       color: white;
-      text-decoration: none;
-      border-radius: 6px;
-      font-weight: bold;
-      transition: background 0.3s ease;
+      padding: 20px 16px;
+      text-align: center;
+      font-size: 1.6em;
+      font-weight: 700;
+      user-select: none;
     }
-    .buy-btn:hover {
-      background: #1e3a8a;
+    main {
+      max-width: 900px;
+      margin: 24px auto;
+      padding: 16px;
+      background: white;
+      border-radius: 16px;
+      box-shadow:
+        0 10px 20px rgba(0,0,0,0.1),
+        0 6px 6px rgba(0,0,0,0.08);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      transform-style: preserve-3d;
+      perspective: 1200px;
+      transition: transform 0.3s ease;
+    }
+    main:hover {
+      transform: translateZ(30px) rotateX(8deg) rotateY(6deg);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+    }
+    .product-image {
+      flex: 1 1 320px;
+      max-width: 400px;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      background: #fff;
+      perspective: 1000px;
+    }
+    .product-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain;
+      border-radius: 14px;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      backface-visibility: hidden;
+    }
+    main:hover .product-image img {
+      box-shadow: 0 12px 32px rgba(0,0,0,0.25);
+      transform: scale(1.03);
+    }
+    .product-info {
+      flex: 1 1 400px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .product-title {
+      font-size: 2em;
+      font-weight: 900;
+      margin-bottom: 12px;
+      color: #0f172a;
+    }
+    .badge {
+      display: inline-block;
+      background: #facc15;
+      color: #1e293b;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 12px;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      font-size: 0.85em;
+      width: fit-content;
+      user-select: none;
+      box-shadow: 0 2px 6px rgba(250, 204, 21, 0.35);
+    }
+    .product-description {
+      font-size: 1.1em;
+      line-height: 1.5;
+      color: #475569;
+      margin-bottom: 20px;
+      user-select: text;
+    }
+    .price {
+      font-size: 1.8em;
+      font-weight: 900;
+      color: #16a34a;
+      margin-bottom: 30px;
+      user-select: text;
+    }
+    .buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .buy-button {
+      background-color: #1e293b;
+      color: white;
+      font-weight: 700;
+      font-size: 1.1em;
+      padding: 14px 30px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      text-decoration: none;
+      text-align: center;
+      width: fit-content;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+      transition: background-color 0.3s ease;
+      user-select: none;
+      display: inline-block;
+    }
+    .buy-button:hover {
+      background-color: #334155;
+    }
+    .confirmation {
+      margin-top: 20px;
+      color: #16a34a;
+      font-weight: 700;
+      font-size: 1.2em;
+      display: none;
+    }
+    footer {
+      text-align: center;
+      padding: 24px 16px;
+      background: #1e293b;
+      color: white;
+      font-size: 0.95em;
+      user-select: none;
+      letter-spacing: 0.02em;
+      margin-top: 60px;
+    }
+    @media (max-width: 720px) {
+      main {
+        flex-direction: column;
+        padding: 12px;
+      }
+      .product-image, .product-info {
+        max-width: 100%;
+      }
+      .product-title {
+        font-size: 1.6em;
+      }
+      .price {
+        font-size: 1.5em;
+      }
+      .buttons {
+        flex-direction: column;
+        gap: 12px;
+      }
     }
   </style>
 </head>
 <body>
-  <header>Product Details</header>
-  <div class="container">
-    <div class="product" id="product-info"></div>
-  </div>
+  <header id="page-header">Suzuki Brake Shoe - Borhan Auto Parts Centre</header>
+  <main>
+    <div class="product-image">
+      <img id="product-img" src="" alt="Product Image" loading="lazy" />
+    </div>
+    <div class="product-info">
+      <span class="badge" id="badge-text">New</span>
+      <h1 class="product-title" id="product-title">Loading...</h1>
+      <p class="product-description" id="product-desc"></p>
+      <div class="price" id="product-price"></div>
+      <div class="buttons">
+        <a id="buy-btn" class="buy-button" href="#" target="_blank" rel="noopener noreferrer">Buy Now</a>
+      </div>
+      <div class="confirmation" id="confirmation-msg">Thank you for your purchase! We will contact you soon.</div>
+    </div>
+  </main>
+  <footer>
+    © 2025 Borhan Auto Parts Centre. All rights reserved.<br />
+    For inquiries and orders, call: 01707659954
+  </footer>
 
   <script>
     const params = new URLSearchParams(window.location.search);
-    const product = params.get('product');
-    const model = params.get('model') || 'Your Suzuki Model';  // optional model info
+    const model = params.get('model') || 'Gixxer';
+    const productKey = params.get('product') || 'suzuki-brake-shoe';
 
+    // Example product data, can be extended for more Suzuki parts
     const products = {
-      "suzuki-brake-shoe": {
-        name: "Suzuki Brake Shoe",
-        image: "images/suzuki-brake-shoe.jpg",
-        price: "৳500",
-        description: "High-quality brake shoe compatible with Suzuki Gixxer, Hayate, and Access 125. Engineered for superior stopping power and durability."
+      'suzuki-brake-shoe': {
+        name: 'Suzuki Brake Shoe',
+        image: 'images/suzuki-brake-shoe.jpg',
+        description: 'High-quality brake shoe compatible with Suzuki Gixxer, Hayate, and Access 125. Engineered for superior stopping power and durability to keep your motorcycle safe and reliable.',
+        price: '৳500',
+        badge: 'New',
+        header: 'Suzuki Brake Shoe - Borhan Auto Parts Centre'
       },
-      "suzuki-air-filter": {
-        name: "Suzuki Air Filter",
-        image: "images/suzuki-air-filter.jpg",
-        price: "৳480",
-        description: "Genuine air filter for Suzuki Gixxer SF, Burgman, and GS150R. Improved engine performance and engine life."
-      }
+      // Add other Suzuki products here if needed
     };
 
-    const data = products[product];
-    const productDiv = document.getElementById('product-info');
+    const product = products[productKey];
 
-    if (data) {
-      productDiv.innerHTML = `
-        <img src="${data.image}" alt="${data.name} for ${model}" />
-        <div class="title">${data.name} for ${model}</div>
-        <div class="desc">${data.description}</div>
-        <div class="price">${data.price}</div>
-        <a href="payment.html?product=${encodeURIComponent(data.name)}&price=${encodeURIComponent(data.price)}&model=${encodeURIComponent(model)}" 
-           class="buy-btn">Buy Now</a>
-      `;
+    if (product) {
+      document.getElementById('product-img').src = product.image;
+      document.getElementById('product-img').alt = `${product.name} for ${model}`;
+      document.getElementById('product-title').textContent = `${product.name} for ${model}`;
+      document.getElementById('product-desc').textContent = product.description;
+      document.getElementById('product-price').textContent = product.price;
+      document.getElementById('badge-text').textContent = product.badge;
+      document.getElementById('page-header').textContent = product.header;
+
+      // Buy link: you can customize this to your preferred payment or order flow
+      document.getElementById('buy-btn').href = `payment.html?product=${encodeURIComponent(product.name)}&model=${encodeURIComponent(model)}&price=${encodeURIComponent(product.price)}`;
     } else {
-      productDiv.innerHTML = `<p>Product not found.</p>`;
+      // Fallback if product not found
+      document.querySelector('main').innerHTML = `<p style="padding: 40px; font-size: 1.2em; color: #b91c1c; text-align: center;">Product not found. Please go back and select a valid product.</p>`;
     }
   </script>
 </body>
