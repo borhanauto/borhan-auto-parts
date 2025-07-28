@@ -307,3 +307,4 @@ function updateCartCount() {
 ul#menu li a:hover {
   color: #ffcc00;
 }
+window.location.href = `bajaj-product-detail.html?product=fuel-tank&model=${encodeURIComponent(model)}`;
