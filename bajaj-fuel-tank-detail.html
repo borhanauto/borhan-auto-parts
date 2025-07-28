@@ -50,18 +50,27 @@
       margin-bottom: 20px;
       font-size: 1em;
     }
-    .buy-btn {
+    .buy-btn, .whatsapp-btn {
       display: inline-block;
       padding: 10px 20px;
-      background: #1e40af;
       color: white;
       text-decoration: none;
       border-radius: 6px;
       font-weight: bold;
       transition: background 0.3s ease;
+      margin: 5px 10px 0 10px;
+    }
+    .buy-btn {
+      background: #1e40af;
     }
     .buy-btn:hover {
       background: #1e3a8a;
+    }
+    .whatsapp-btn {
+      background: #25D366;
+    }
+    .whatsapp-btn:hover {
+      background: #1ebe56;
     }
   </style>
 </head>
@@ -72,7 +81,12 @@
       <img src="https://via.placeholder.com/500x300?text=Fuel+Tank+Image" alt="Bajaj Fuel Tank" />
       <div class="model-name" id="modelText">Model: Loading...</div>
       <p class="description">Get the original Bajaj fuel tank for your <strong id="modelName">bike model</strong>. 100% genuine part, imported from India. Fast delivery across Bangladesh.</p>
-      <a id="buyBtn" class="buy-btn" href="#" target="_blank">Buy on WhatsApp</a>
+      
+      <!-- WhatsApp button -->
+      <a id="whatsappBtn" class="whatsapp-btn" href="#" target="_blank" rel="noopener noreferrer">Buy on WhatsApp</a>
+
+      <!-- Payment button -->
+      <a id="paymentBtn" class="buy-btn" href="#" target="_blank" rel="noopener noreferrer">Buy Now (Online Payment)</a>
     </div>
   </div>
 
@@ -83,9 +97,25 @@
     document.getElementById('modelText').textContent = `Model: ${model}`;
     document.getElementById('modelName').textContent = model;
 
-    const message = `Hello, I want to buy a genuine Bajaj Fuel Tank for ${model} from Borhan Auto Parts.`;
-    const whatsappLink = `https://wa.me/8801707659954?text=${encodeURIComponent(message)}`;
-    document.getElementById('buyBtn').href = whatsappLink;
+    // WhatsApp link
+    const whatsappMessage = `Hello, I want to buy a genuine Bajaj Fuel Tank for ${model} from Borhan Auto Parts.`;
+    const whatsappLink = `https://wa.me/8801707659954?text=${encodeURIComponent(whatsappMessage)}`;
+    document.getElementById('whatsappBtn').href = whatsappLink;
+
+    // Product price lookup for payment link
+    const prices = {
+      "Pulsar 150": "৳4,000",
+      "Discover 125": "৳3,800",
+      "CT 100": "৳3,500"
+    };
+
+    const productName = `Bajaj ${model} Fuel Tank`;
+    const productPrice = prices[model] || "৳4,000";
+
+    // Payment link URL with parameters
+    const paymentLink = `payment.html?product=${encodeURIComponent(productName)}&price=${encodeURIComponent(productPrice)}&model=${encodeURIComponent(model)}`;
+    const paymentBtn = document.getElementById('paymentBtn');
+    paymentBtn.href = paymentLink;
   </script>
 </body>
 </html>
