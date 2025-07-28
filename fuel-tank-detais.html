@@ -3,13 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Bajaj Fuel Tank - Product Details</title>
-  <meta name="description" content="Buy genuine Bajaj fuel tanks for Pulsar 150, Discover 125, CT 100 from Borhan Auto Parts Centre in Bangladesh." />
+  <title>Buy Bajaj Fuel Tank - Borhan Auto Parts Centre</title>
+  <meta name="description" content="Buy genuine Bajaj motorcycle fuel tanks like Pulsar 150, Discover 125, and CT 100 from Borhan Auto Parts Centre in Bangladesh." />
+  <meta name="keywords" content="Bajaj fuel tank, Pulsar 150 tank, Discover 125 parts, CT 100 spare parts, motorcycle parts Bangladesh" />
   <style>
     body {
-      margin: 0;
       font-family: 'Segoe UI', Roboto, sans-serif;
-      background: #f9fafb;
+      margin: 0;
+      background-color: #f9fafb;
       color: #1e293b;
     }
     header {
@@ -21,83 +22,90 @@
     }
     .container {
       max-width: 800px;
-      margin: 30px auto;
-      padding: 20px;
+      margin: 2rem auto;
       background: white;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    .product-title {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      text-align: center;
     }
     .product-image {
       width: 100%;
-      max-width: 300px;
-      border-radius: 8px;
+      max-width: 320px;
+      display: block;
+      margin: 0 auto 1rem;
+      border-radius: 10px;
+    }
+    .product-info {
+      text-align: center;
       margin-bottom: 20px;
     }
     .price {
-      color: #dc2626;
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       font-weight: bold;
+      color: #16a34a;
     }
     .buy-button {
-      display: inline-block;
-      margin-top: 20px;
+      display: block;
+      margin: 0 auto;
       background-color: #dc2626;
       color: white;
-      padding: 12px 24px;
       border: none;
-      border-radius: 8px;
+      padding: 12px 20px;
       font-size: 1rem;
+      border-radius: 8px;
       cursor: pointer;
+      transition: 0.3s ease;
       text-decoration: none;
+      text-align: center;
+      width: 220px;
+    }
+    .buy-button:hover {
+      background-color: #b91c1c;
+    }
+    .back-link {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .back-link a {
+      text-decoration: none;
+      color: #1d4ed8;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
   <header>Fuel Tank Details</header>
-  <div class="container" id="product-details"></div>
+  <div class="container">
+    <div class="product-title" id="product-title">Loading...</div>
+    <img src="https://via.placeholder.com/320x200?text=Fuel+Tank" alt="Fuel Tank Image" class="product-image" />
+    <div class="product-info">
+      <p id="model-info">Model: ...</p>
+      <p class="price">৳3,800</p>
+    </div>
+    <a id="buy-button" class="buy-button" target="_blank">Buy Now on WhatsApp</a>
+    <div class="back-link">
+      <a href="bajaj-models.html?product=fuel-tank">← Choose Another Model</a>
+    </div>
+  </div>
 
   <script>
-    const urlParams = new URLSearchParams(window.location.search);
-    const product = urlParams.get('product');
-    const model = urlParams.get('model');
+    const params = new URLSearchParams(window.location.search);
+    const product = params.get("product") || "fuel-tank";
+    const model = params.get("model") || "Unknown Model";
 
-    const products = {
-      "fuel-tank": {
-        "Pulsar 150": {
-          name: "Bajaj Pulsar 150 Fuel Tank (Genuine)",
-          price: "৳5,500",
-          image: "https://via.placeholder.com/300x200?text=Pulsar+150+Fuel+Tank",
-          description: "Original fuel tank for Bajaj Pulsar 150. Durable, factory-painted and 100% genuine."
-        },
-        "Discover 125": {
-          name: "Bajaj Discover 125 Fuel Tank (Genuine)",
-          price: "৳4,800",
-          image: "https://via.placeholder.com/300x200?text=Discover+125+Fuel+Tank",
-          description: "High-quality fuel tank for Discover 125. Direct fit and imported from India."
-        },
-        "CT 100": {
-          name: "Bajaj CT 100 Fuel Tank (Original)",
-          price: "৳4,200",
-          image: "https://via.placeholder.com/300x200?text=CT+100+Fuel+Tank",
-          description: "Genuine CT 100 tank, black/red finish available. Rust-free and brand new."
-        }
-      }
-    };
+    const productTitle = `${model} Fuel Tank`;
+    const buyText = `Hello Borhan Auto Parts,\nI want to buy a ${model} ${product.replace("-", " ")}. Please share details.`;
+    const whatsappNumber = "8801707659954"; // 88 added for international format
 
-    const container = document.getElementById('product-details');
-
-    if (product && model && products[product] && products[product][model]) {
-      const data = products[product][model];
-      container.innerHTML = `
-        <h2>${data.name}</h2>
-        <img src="${data.image}" alt="${data.name}" class="product-image" />
-        <p class="price">${data.price}</p>
-        <p>${data.description}</p>
-        <a href="https://wa.me/8801707659954?text=I want to buy ${encodeURIComponent(data.name)} from Borhan Auto Parts." class="buy-button">Buy on WhatsApp</a>
-      `;
-    } else {
-      container.innerHTML = `<p style="text-align: center;">Product not found for <strong>${model || ''}</strong>.</p>`;
-    }
+    // Set dynamic content
+    document.getElementById("product-title").textContent = productTitle;
+    document.getElementById("model-info").textContent = `Compatible Model: ${model}`;
+    document.getElementById("buy-button").href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(buyText)}`;
   </script>
 </body>
 </html>
