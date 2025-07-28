@@ -3,80 +3,72 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Bajaj Bike Models - Borhan Auto Parts Centre</title>
-  <meta name="description" content="Select your Bajaj bike model to view genuine spare parts like fuel tanks, side covers, and more at Borhan Auto Parts Centre in Bangladesh." />
-  <meta name="keywords" content="Bajaj spare parts, Pulsar 150, Discover 125, CT 100, motorcycle parts Bangladesh" />
+  <title>Select Bajaj Bike Model - Borhan Auto Parts Centre</title>
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', Roboto, sans-serif;
+      font-family: 'Segoe UI', sans-serif;
       background: #f9fafb;
+      color: #1f2937;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
     }
     header {
       background-color: #dc2626;
       color: white;
+      padding: 1rem 0;
+      width: 100%;
       text-align: center;
-      padding: 1rem;
       font-size: 1.5rem;
+      margin-bottom: 30px;
     }
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 20px;
+    .models-list {
+      list-style: none;
+      padding: 0;
+      max-width: 400px;
+      width: 100%;
     }
-    .model-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 16px;
-      margin-top: 20px;
-    }
-    .model-card {
+    .models-list li {
       background: white;
-      padding: 16px;
-      border-radius: 12px;
-      text-align: center;
-      font-weight: bold;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      cursor: pointer;
-      transition: 0.3s ease;
-      border: 2px solid transparent;
+      margin-bottom: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
-    .model-card:hover {
-      transform: translateY(-3px);
-      border-color: #dc2626;
-      background: #fef2f2;
-    }
-    .note {
+    .models-list a {
+      display: block;
+      padding: 20px;
+      text-decoration: none;
+      color: #dc2626;
+      font-weight: 600;
+      font-size: 1.2rem;
       text-align: center;
-      font-size: 1.05rem;
-      color: #334155;
+      border-radius: 10px;
+      transition: background-color 0.3s ease;
+    }
+    .models-list a:hover {
+      background-color: #dc2626;
+      color: white;
+    }
+    footer {
+      margin-top: 40px;
+      font-size: 0.9rem;
+      color: #64748b;
+      text-align: center;
+      width: 100%;
     }
   </style>
 </head>
 <body>
   <header>Select Your Bajaj Bike Model</header>
-  <div class="container">
-    <p class="note">Choose a model to see genuine Bajaj spare parts</p>
-    <div class="model-grid" id="model-list"></div>
-  </div>
 
-  <script>
-    const urlParams = new URLSearchParams(window.location.search);
-    const product = urlParams.get('product') || 'fuel-tank';
+  <ul class="models-list">
+    <li><a href="product-detail.html?model=Pulsar%20150">Pulsar 150</a></li>
+    <li><a href="product-detail.html?model=Discover%20125">Discover 125</a></li>
+    <li><a href="product-detail.html?model=CT%20100">CT 100</a></li>
+  </ul>
 
-    const models = ['Pulsar 150', 'Discover 125', 'CT 100'];
-    const modelList = document.getElementById('model-list');
-
-    models.forEach(model => {
-      const card = document.createElement('div');
-      card.className = 'model-card';
-      card.textContent = model;
-      card.onclick = () => {
-        // ✅ Use the correct product detail HTML name
-        window.location.href = `bajaj-fuel-tank.html?product=${product}&model=${encodeURIComponent(model)}`;
-      };
-      modelList.appendChild(card);
-    });
-  </script>
+  <footer>© 2025 Borhan Auto Parts Centre, Jessore, Bangladesh</footer>
 </body>
 </html>
