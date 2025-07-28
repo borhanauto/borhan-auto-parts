@@ -62,7 +62,7 @@
 
   <script>
     const urlParams = new URLSearchParams(window.location.search);
-    const product = urlParams.get('product') || 'fuel-tank'; // Default to fuel-tank if none
+    const product = urlParams.get('product') || 'fuel-tank';
 
     const models = ['Pulsar 150', 'Discover 125', 'CT 100'];
     const modelList = document.getElementById('model-list');
@@ -72,9 +72,10 @@
       card.className = 'model-card';
       card.textContent = model;
       card.onclick = () => {
-        window.location.href = `${product}-details.html?product=${product}&model=${encodeURIComponent(model)}`;
+        // ✅ Use the correct product detail HTML name
+        window.location.href = `bajaj-fuel-tank.html?product=${product}&model=${encodeURIComponent(model)}`;
       };
-      modelList.appendChild(card); // ✅ THIS WAS MISSING
+      modelList.appendChild(card);
     });
   </script>
 </body>
