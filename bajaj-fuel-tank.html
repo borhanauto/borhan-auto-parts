@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Select Bajaj Model</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Select Bajaj Bike Model</title>
   <style>
     body { font-family: Roboto, sans-serif; background: #f9f9f9; margin: 0; }
     header { background: #1e293b; color: white; text-align: center; padding: 16px; font-size: 1.4em; }
@@ -29,18 +29,27 @@
 <body>
   <header>Select Your Bajaj Bike Model</header>
   <div class="container" id="model-list"></div>
+
   <script>
+    // Read product param from URL (e.g., "fuel-tank")
     const urlParams = new URLSearchParams(window.location.search);
-    const product = urlParams.get('product');
-    const models = ['Pulsar 150', 'Discover 125', 'CT 100'];
+    const product = urlParams.get('product') || 'fuel-tank'; // default to fuel-tank if missing
+
+    // List of bike models
+    const models = ['Pulsar 150', 'Discover 125', 'CT 100', 'Pulsar 135', 'Avenger 160', 'Platina 100'];
+
     const list = document.getElementById('model-list');
     models.forEach(model => {
       const div = document.createElement('div');
       div.className = 'model-card';
       div.textContent = model;
+
+      // On click, open product detail page with product and model params
       div.onclick = () => {
-        window.location.href = `bajaj-product-detail.html?product=${product}&model=${encodeURIComponent(model)}`;
+        const url = `bajaj-product-detail.html?product=${encodeURIComponent(product)}&model=${encodeURIComponent(model)}`;
+        window.location.href = url;
       };
+
       list.appendChild(div);
     });
   </script>
