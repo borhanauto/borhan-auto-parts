@@ -171,9 +171,8 @@
       const raw = priceInput.value.replace(/[^\d.]/g, '');
       const price = parseFloat(raw) || 0;
 
-      if (price > 1000) {
-        const advance = Math.round(price * 0.5);
-        amountInput.value = `${advance} BDT (50% Advance)`;
+      if (price >= 1000) {
+        amountInput.value = `1000 BDT (Advance Payment)`;
       } else {
         amountInput.value = `${price} BDT (Full Payment)`;
       }
