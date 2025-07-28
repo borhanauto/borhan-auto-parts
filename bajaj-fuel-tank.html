@@ -2,73 +2,55 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Select Bajaj Bike Model - Borhan Auto Parts Centre</title>
   <style>
     body {
+      font-family: Roboto, sans-serif;
+      background: #f9f9f9;
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: #f9fafb;
-      color: #1f2937;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 40px 20px;
     }
     header {
-      background-color: #dc2626;
+      background: #1e293b;
       color: white;
-      padding: 1rem 0;
-      width: 100%;
       text-align: center;
-      font-size: 1.5rem;
-      margin-bottom: 30px;
+      padding: 16px;
+      font-size: 1.4em;
     }
-    .models-list {
-      list-style: none;
-      padding: 0;
-      max-width: 400px;
-      width: 100%;
-    }
-    .models-list li {
-      background: white;
-      margin-bottom: 15px;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    .models-list a {
-      display: block;
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
       padding: 20px;
-      text-decoration: none;
-      color: #dc2626;
-      font-weight: 600;
-      font-size: 1.2rem;
-      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .model-card {
+      background: white;
       border-radius: 10px;
-      transition: background-color 0.3s ease;
-    }
-    .models-list a:hover {
-      background-color: #dc2626;
-      color: white;
-    }
-    footer {
-      margin-top: 40px;
-      font-size: 0.9rem;
-      color: #64748b;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      padding: 20px;
       text-align: center;
-      width: 100%;
+      font-weight: bold;
+      color: #1e293b;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.2s;
+      text-decoration: none;
+      user-select: none;
+    }
+    .model-card:hover {
+      transform: scale(1.03);
+      background: #f1f5f9;
+      text-decoration: none;
     }
   </style>
 </head>
 <body>
   <header>Select Your Bajaj Bike Model</header>
-
-  <ul class="models-list">
-    <li><a href="bajaj-fuel-tank-detail.html?model=Pulsar%20150">Pulsar 150</a></li>
-    <li><a href="bajaj-fuel-tank-detail.html?model=Discover%20125">Discover 125</a></li>
-    <li><a href="bajaj-fuel-tank-detail.html?model=CT%20100">CT 100</a></li>
-  </ul>
-
-  <footer>© 2025 Borhan Auto Parts Centre, Jessore, Bangladesh</footer>
+  <div class="container">
+    <a href="bajaj-fuel-tank-detail.html?model=Pulsar%20150" class="model-card">Pulsar 150</a>
+    <a href="bajaj-fuel-tank-detail.html?model=Discover%20125" class="model-card">Discover 125</a>
+    <a href="bajaj-fuel-tank-detail.html?model=CT%20100" class="model-card">CT 100</a>
+  </div>
 </body>
 </html>
