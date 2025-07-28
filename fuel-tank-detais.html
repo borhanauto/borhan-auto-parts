@@ -3,93 +3,74 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Buy Genuine Bajaj Fuel Tank - Borhan Auto Parts Bangladesh</title>
-  <meta name="description" content="Buy original Bajaj motorcycle fuel tanks for Pulsar 150, Discover 125, CT 100 and more. Fast delivery from Borhan Auto Parts Centre in Jessore, Bangladesh." />
-  <meta name="keywords" content="Bajaj fuel tank, Pulsar 150 fuel tank, Discover 125 tank, CT 100 parts, motorcycle parts Bangladesh, Borhan Auto Parts" />
-  <meta name="author" content="Borhan Auto Parts Centre" />
-
+  <title>Buy Bajaj Fuel Tank for Your Model | Borhan Auto Parts Bangladesh</title>
+  <meta name="description" content="Buy original Bajaj fuel tank for Pulsar 150, Discover 125, CT 100 and other models. Fast delivery from Borhan Auto Parts Centre in Bangladesh." />
+  <meta name="keywords" content="Bajaj fuel tank, Pulsar 150, Discover 125, CT 100, motorcycle parts Bangladesh" />
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', Roboto, sans-serif;
       background: #f9fafb;
-      color: #1f2937;
+      color: #1e293b;
     }
     header {
-      background: #dc2626;
+      background-color: #dc2626;
       color: white;
       padding: 1rem;
       text-align: center;
-      font-size: 1.4rem;
+      font-size: 1.5rem;
     }
     .container {
       max-width: 900px;
       margin: 0 auto;
       padding: 20px;
     }
-    .product-box {
+    .product-card {
       background: white;
       border-radius: 12px;
       padding: 20px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
       text-align: center;
     }
-    .product-box img {
+    .product-card img {
       max-width: 100%;
       height: auto;
-      border-radius: 8px;
-    }
-    .product-name {
-      font-size: 1.8rem;
-      font-weight: bold;
-      margin: 16px 0;
-      color: #111827;
+      border-radius: 10px;
+      margin-bottom: 16px;
     }
     .model-name {
-      font-size: 1.2rem;
-      margin: 4px 0 20px;
-      color: #6b7280;
-    }
-    .price {
-      font-size: 1.5rem;
-      color: #dc2626;
+      font-size: 1.3rem;
+      font-weight: bold;
       margin: 10px 0;
+      color: #dc2626;
     }
     .description {
       font-size: 1rem;
-      margin: 16px 0;
-      color: #374151;
+      margin-bottom: 20px;
     }
     .buy-btn {
-      background-color: #16a34a;
-      color: white;
-      padding: 12px 20px;
-      font-size: 1.1rem;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-      text-decoration: none;
       display: inline-block;
-      margin-top: 20px;
+      padding: 12px 24px;
+      background-color: #22c55e;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background 0.3s;
     }
     .buy-btn:hover {
-      background-color: #15803d;
+      background-color: #16a34a;
     }
   </style>
 </head>
 <body>
-  <header>Fuel Tank for Bajaj Bikes</header>
+  <header>Genuine Bajaj Fuel Tank</header>
   <div class="container">
-    <div class="product-box">
-      <img src="images/fuel-tank.jpg" alt="Bajaj Fuel Tank" />
-      <div class="product-name">Bajaj Fuel Tank</div>
-      <div class="model-name" id="modelName">Model: </div>
-      <div class="price">৳ 3,500 BDT</div>
-      <div class="description">
-        Get 100% genuine Bajaj fuel tanks compatible with your selected model. Durable and imported directly from India. Fits perfectly on <span id="modelText">your bike</span>.
-      </div>
-      <a class="buy-btn" id="buyBtn" href="#">Buy Now on WhatsApp</a>
+    <div class="product-card">
+      <img src="https://via.placeholder.com/500x300?text=Fuel+Tank+Image" alt="Bajaj Fuel Tank">
+      <div class="model-name" id="modelText">Model: Loading...</div>
+      <p class="description">Get the original Bajaj fuel tank for your <strong id="modelName">bike model</strong>. 100% genuine part, imported from India. Fast delivery across Bangladesh.</p>
+      <a id="buyBtn" class="buy-btn" href="#" target="_blank">Buy on WhatsApp</a>
     </div>
   </div>
 
@@ -97,8 +78,8 @@
     const urlParams = new URLSearchParams(window.location.search);
     const model = urlParams.get('model') || 'Pulsar 150';
 
-    document.getElementById('modelName').textContent = `Model: ${model}`;
-    document.getElementById('modelText').textContent = model;
+    document.getElementById('modelText').textContent = `Model: ${model}`;
+    document.getElementById('modelName').textContent = model;
 
     const message = `Hello, I want to buy a genuine Bajaj Fuel Tank for ${model} from Borhan Auto Parts.`;
     const whatsappLink = `https://wa.me/8801707659954?text=${encodeURIComponent(message)}`;
