@@ -2,70 +2,47 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Select Your Bajaj Bike Model | Fuel Tanks - Borhan Auto Parts</title>
-  <meta name="description" content="Choose your Bajaj motorcycle model to view available genuine fuel tanks at Borhan Auto Parts Centre, Bangladesh.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Select Bajaj Model</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f5f5f5;
+    body { font-family: Roboto, sans-serif; background: #f9f9f9; margin: 0; }
+    header { background: #1e293b; color: white; text-align: center; padding: 16px; font-size: 1.4em; }
+    .container { max-width: 800px; margin: auto; padding: 20px; }
+    .model-card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      margin: 16px 0;
       padding: 20px;
       text-align: center;
+      font-weight: bold;
+      color: #1e293b;
+      cursor: pointer;
+      transition: transform 0.2s;
     }
-    h1 {
-      color: #b20000;
-    }
-    select {
-      padding: 10px;
-      font-size: 16px;
-      margin-top: 20px;
-    }
-    .model-box {
-      max-width: 400px;
-      margin: 0 auto;
-      background: white;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    a.button {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 10px 20px;
-      background-color: #b20000;
-      color: white;
-      text-decoration: none;
-      border-radius: 5px;
+    .model-card:hover {
+      transform: scale(1.03);
+      background: #f1f5f9;
     }
   </style>
-  <script>
-    function goToModelPage() {
-      const model = document.getElementById('bike-model').value;
-      if (model) {
-        window.location.href = model + ".html";
-      }
-    }
-  </script>
 </head>
 <body>
-
-  <div class="model-box">
-    <h1>Select Your Bajaj Bike Model</h1>
-    <p>To find the right fuel tank, select your model below:</p>
-
-    <select id="bike-model">
-      <option value="">-- Choose Model --</option>
-      <option value="pulsar-150">Bajaj Pulsar 150</option>
-      <option value="pulsar-135">Bajaj Pulsar 135</option>
-      <option value="discover-125">Bajaj Discover 125</option>
-      <option value="discover-110">Bajaj Discover 110</option>
-      <option value="platina-100">Bajaj Platina 100</option>
-      <option value="avenger-160">Bajaj Avenger 160</option>
-    </select>
-
-    <br/>
-    <a class="button" onclick="goToModelPage()">View Fuel Tank</a>
-  </div>
-
+  <header>Select Your Bajaj Bike Model</header>
+  <div class="container" id="model-list"></div>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const product = urlParams.get('product');
+    const models = ['Pulsar 150', 'Discover 125', 'CT 100'];
+    const list = document.getElementById('model-list');
+    models.forEach(model => {
+      const div = document.createElement('div');
+      div.className = 'model-card';
+      div.textContent = model;
+      div.onclick = () => {
+        window.location.href = `bajaj-product-detail.html?product=${product}&model=${encodeURIComponent(model)}`;
+      };
+      list.appendChild(div);
+    });
+  </script>
 </body>
 </html>
