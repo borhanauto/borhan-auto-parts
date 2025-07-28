@@ -74,7 +74,7 @@
       <div class="model-name" id="modelText">Model: Loading...</div>
       <p class="description">Get the original Bajaj fuel tank for your <strong id="modelName">bike model</strong>. 100% genuine part, imported from India. Fast delivery across Bangladesh.</p>
       
-      <a id="buyBtn" class="buy-btn" href="#" target="_blank" rel="noopener noreferrer">Buy Now</a>
+      <a id="buyBtn" class="buy-btn" href="#" target="_blank" rel="noopener noreferrer" aria-label="Buy Bajaj Fuel Tank">Buy Now</a>
     </div>
   </div>
 
@@ -82,23 +82,40 @@
     const urlParams = new URLSearchParams(window.location.search);
     const model = urlParams.get('model') || 'Pulsar 150';
 
-    document.getElementById('modelText').textContent = `Model: ${model}`;
-    document.getElementById('modelName').textContent = model;
-
     const prices = {
       "Pulsar 150": "৳4,000",
       "Discover 125": "৳3,800",
       "CT 100": "৳3,500"
     };
 
-    const productName = `Bajaj ${model} Fuel Tank`;
-    const productPrice = prices[model] || "৳4,000";
+    const images = {
+      "Pulsar 150": "images/bajaj-pulsar-150-tank.jpg",
+      "Discover 125": "images/bajaj-discover-125-tank.jpg",
+      "CT 100": "images/bajaj-ct-100-tank.jpg"
+    };
 
-    // Build payment URL (or your form page)
+    const productName = `Bajaj ${model} Fuel Tank`;
+    const productPrice = prices[model] || prices["Pulsar 150"];
+
+    // Update texts
+    document.getElementById('modelText').textContent = `Model: ${model}`;
+    document.getElementById('modelName').textContent = model;
+
+    // Update image
+    const productImage = document.querySelector('.product-card img');
+    productImage.src = images[model] || images["Pulsar 150"];
+    productImage.alt = productName;
+
+    // Build payment URL
     const paymentUrl = `payment.html?product=${encodeURIComponent(productName)}&price=${encodeURIComponent(productPrice)}&model=${encodeURIComponent(model)}`;
 
+    // Update buy button
     const buyBtn = document.getElementById('buyBtn');
     buyBtn.href = paymentUrl;
+    buyBtn.setAttribute('aria-label', `Buy ${productName} for ${productPrice}`);
+
+    // Update page title for SEO
+    document.title = `Buy ${productName} | Borhan Auto Parts Bangladesh`;
   </script>
 </body>
 </html>
