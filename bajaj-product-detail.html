@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Bajaj Product Detail</title>
+  <title>Borhan Auto Parts - Product Detail</title>
   <style>
     body { font-family: Roboto, sans-serif; background: #f9f9f9; margin: 0; }
     header { background: #1e293b; color: white; text-align: center; padding: 16px; font-size: 1.4em; }
@@ -54,7 +54,28 @@
     const product = params.get('product');
     const model = params.get('model');
 
+    // Products data, including model-specific ones inside 'fuel-tank'
     const products = {
+      "fuel-tank": {
+        "Pulsar 150": {
+          name: "Bajaj Pulsar 150 Fuel Tank",
+          image: "images/bajaj-pulsar-150-tank.jpg",
+          price: "৳4,000",
+          description: "Genuine OEM fuel tank with anti-rust coating and perfect fit for Bajaj Pulsar 150."
+        },
+        "Discover 125": {
+          name: "Bajaj Discover 125 Fuel Tank",
+          image: "images/bajaj-discover-125-tank.jpg",
+          price: "৳3,800",
+          description: "OEM quality fuel tank designed for Bajaj Discover 125 models."
+        },
+        "CT 100": {
+          name: "Bajaj CT 100 Fuel Tank",
+          image: "images/bajaj-ct-100-tank.jpg",
+          price: "৳3,500",
+          description: "Durable and corrosion-resistant fuel tank for Bajaj CT 100."
+        }
+      },
       "bajaj-clutch-cable": {
         name: "Bajaj Clutch Cable",
         image: "images/bajaj-clutch-cable.jpg",
@@ -75,18 +96,32 @@
       }
     };
 
-    const data = products[product];
     const productDiv = document.getElementById('product-info');
 
-    if (data) {
-      productDiv.innerHTML = `
-        <img src="${data.image}" alt="${data.name} for ${model}" />
-        <div class="title">${data.name} for ${model}</div>
-        <div class="desc">${data.description}</div>
-        <div class="price">${data.price}</div>
-        <a href="payment.html?product=${encodeURIComponent(data.name)}&price=${encodeURIComponent(data.price)}&model=${encodeURIComponent(model)}" 
-           class="buy-btn">Buy Now</a>
-      `;
+    if (products[product]) {
+      if (typeof products[product] === 'object' && products[product][model]) {
+        // Product with models, e.g. fuel tank
+        const data = products[product][model];
+        productDiv.innerHTML = `
+          <img src="${data.image}" alt="${data.name}" />
+          <div class="title">${data.name}</div>
+          <div class="desc">${data.description}</div>
+          <div class="price">${data.price}</div>
+          <a href="payment.html?product=${encodeURIComponent(data.name)}&price=${encodeURIComponent(data.price)}&model=${encodeURIComponent(model)}" 
+             class="buy-btn">Buy Now</a>
+        `;
+      } else {
+        // Product without models
+        const data = products[product];
+        productDiv.innerHTML = `
+          <img src="${data.image}" alt="${data.name}${model ? ' for ' + model : ''}" />
+          <div class="title">${data.name}${model ? ' for ' + model : ''}</div>
+          <div class="desc">${data.description}</div>
+          <div class="price">${data.price}</div>
+          <a href="payment.html?product=${encodeURIComponent(data.name)}&price=${encodeURIComponent(data.price)}&model=${encodeURIComponent(model || '')}" 
+             class="buy-btn">Buy Now</a>
+        `;
+      }
     } else {
       productDiv.innerHTML = `<p>Product not found.</p>`;
     }
