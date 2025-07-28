@@ -73,6 +73,9 @@
       card.textContent = model;
       card.onclick = () => {
         window.location.href = `${product}-details.html?product=${product}&model=${encodeURIComponent(model)}`;
+      };
+      modelList.appendChild(card); // ✅ THIS WAS MISSING
+    });
   </script>
 </body>
 </html>
