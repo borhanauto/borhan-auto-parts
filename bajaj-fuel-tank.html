@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Bajaj Bike Models - Borhan Auto Parts Centre</title>
-  <meta name="description" content="Select your Bajaj bike model to browse compatible spare parts like fuel tanks, side covers, and more at Borhan Auto Parts Centre in Bangladesh." />
+  <meta name="description" content="Select your Bajaj bike model to view genuine spare parts like fuel tanks, side covers, and more at Borhan Auto Parts Centre in Bangladesh." />
   <meta name="keywords" content="Bajaj spare parts, Pulsar 150, Discover 125, CT 100, motorcycle parts Bangladesh" />
   <style>
     body {
@@ -46,18 +46,24 @@
       border-color: #dc2626;
       background: #fef2f2;
     }
+    .note {
+      text-align: center;
+      font-size: 1.05rem;
+      color: #334155;
+    }
   </style>
 </head>
 <body>
   <header>Select Your Bajaj Bike Model</header>
   <div class="container">
-    <p style="text-align: center; font-size: 1.1rem;">Choose a model to see genuine Bajaj spare parts</p>
+    <p class="note">Choose a model to see genuine Bajaj spare parts</p>
     <div class="model-grid" id="model-list"></div>
   </div>
 
   <script>
     const urlParams = new URLSearchParams(window.location.search);
-    const product = urlParams.get('product'); // like "fuel-tank"
+    const product = urlParams.get('product') || 'fuel-tank'; // Default to fuel-tank if none
+
     const models = ['Pulsar 150', 'Discover 125', 'CT 100'];
     const modelList = document.getElementById('model-list');
 
