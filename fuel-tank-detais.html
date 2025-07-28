@@ -3,109 +3,106 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Buy Bajaj Fuel Tank - Borhan Auto Parts Centre</title>
-  <meta name="description" content="Buy genuine Bajaj motorcycle fuel tanks like Pulsar 150, Discover 125, and CT 100 from Borhan Auto Parts Centre in Bangladesh." />
-  <meta name="keywords" content="Bajaj fuel tank, Pulsar 150 tank, Discover 125 parts, CT 100 spare parts, motorcycle parts Bangladesh" />
+  <title>Buy Genuine Bajaj Fuel Tank - Borhan Auto Parts Bangladesh</title>
+  <meta name="description" content="Buy original Bajaj motorcycle fuel tanks for Pulsar 150, Discover 125, CT 100 and more. Fast delivery from Borhan Auto Parts Centre in Jessore, Bangladesh." />
+  <meta name="keywords" content="Bajaj fuel tank, Pulsar 150 fuel tank, Discover 125 tank, CT 100 parts, motorcycle parts Bangladesh, Borhan Auto Parts" />
+  <meta name="author" content="Borhan Auto Parts Centre" />
+
   <style>
     body {
-      font-family: 'Segoe UI', Roboto, sans-serif;
       margin: 0;
-      background-color: #f9fafb;
-      color: #1e293b;
+      font-family: 'Segoe UI', Roboto, sans-serif;
+      background: #f9fafb;
+      color: #1f2937;
     }
     header {
-      background-color: #dc2626;
+      background: #dc2626;
       color: white;
       padding: 1rem;
       text-align: center;
-      font-size: 1.5rem;
+      font-size: 1.4rem;
     }
     .container {
-      max-width: 800px;
-      margin: 2rem auto;
-      background: white;
+      max-width: 900px;
+      margin: 0 auto;
       padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
-    .product-title {
-      font-size: 1.5rem;
-      margin-bottom: 10px;
+    .product-box {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       text-align: center;
     }
-    .product-image {
-      width: 100%;
-      max-width: 320px;
-      display: block;
-      margin: 0 auto 1rem;
-      border-radius: 10px;
+    .product-box img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
     }
-    .product-info {
-      text-align: center;
-      margin-bottom: 20px;
+    .product-name {
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin: 16px 0;
+      color: #111827;
+    }
+    .model-name {
+      font-size: 1.2rem;
+      margin: 4px 0 20px;
+      color: #6b7280;
     }
     .price {
-      font-size: 1.3rem;
-      font-weight: bold;
-      color: #16a34a;
+      font-size: 1.5rem;
+      color: #dc2626;
+      margin: 10px 0;
     }
-    .buy-button {
-      display: block;
-      margin: 0 auto;
-      background-color: #dc2626;
-      color: white;
-      border: none;
-      padding: 12px 20px;
+    .description {
       font-size: 1rem;
+      margin: 16px 0;
+      color: #374151;
+    }
+    .buy-btn {
+      background-color: #16a34a;
+      color: white;
+      padding: 12px 20px;
+      font-size: 1.1rem;
+      border: none;
       border-radius: 8px;
       cursor: pointer;
-      transition: 0.3s ease;
+      transition: background-color 0.3s;
       text-decoration: none;
-      text-align: center;
-      width: 220px;
-    }
-    .buy-button:hover {
-      background-color: #b91c1c;
-    }
-    .back-link {
-      text-align: center;
+      display: inline-block;
       margin-top: 20px;
     }
-    .back-link a {
-      text-decoration: none;
-      color: #1d4ed8;
-      font-weight: bold;
+    .buy-btn:hover {
+      background-color: #15803d;
     }
   </style>
 </head>
 <body>
-  <header>Fuel Tank Details</header>
+  <header>Fuel Tank for Bajaj Bikes</header>
   <div class="container">
-    <div class="product-title" id="product-title">Loading...</div>
-    <img src="https://via.placeholder.com/320x200?text=Fuel+Tank" alt="Fuel Tank Image" class="product-image" />
-    <div class="product-info">
-      <p id="model-info">Model: ...</p>
-      <p class="price">৳3,800</p>
-    </div>
-    <a id="buy-button" class="buy-button" target="_blank">Buy Now on WhatsApp</a>
-    <div class="back-link">
-      <a href="bajaj-models.html?product=fuel-tank">← Choose Another Model</a>
+    <div class="product-box">
+      <img src="images/fuel-tank.jpg" alt="Bajaj Fuel Tank" />
+      <div class="product-name">Bajaj Fuel Tank</div>
+      <div class="model-name" id="modelName">Model: </div>
+      <div class="price">৳ 3,500 BDT</div>
+      <div class="description">
+        Get 100% genuine Bajaj fuel tanks compatible with your selected model. Durable and imported directly from India. Fits perfectly on <span id="modelText">your bike</span>.
+      </div>
+      <a class="buy-btn" id="buyBtn" href="#">Buy Now on WhatsApp</a>
     </div>
   </div>
 
   <script>
-    const params = new URLSearchParams(window.location.search);
-    const product = params.get("product") || "fuel-tank";
-    const model = params.get("model") || "Unknown Model";
+    const urlParams = new URLSearchParams(window.location.search);
+    const model = urlParams.get('model') || 'Pulsar 150';
 
-    const productTitle = `${model} Fuel Tank`;
-    const buyText = `Hello Borhan Auto Parts,\nI want to buy a ${model} ${product.replace("-", " ")}. Please share details.`;
-    const whatsappNumber = "8801707659954"; // 88 added for international format
+    document.getElementById('modelName').textContent = `Model: ${model}`;
+    document.getElementById('modelText').textContent = model;
 
-    // Set dynamic content
-    document.getElementById("product-title").textContent = productTitle;
-    document.getElementById("model-info").textContent = `Compatible Model: ${model}`;
-    document.getElementById("buy-button").href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(buyText)}`;
+    const message = `Hello, I want to buy a genuine Bajaj Fuel Tank for ${model} from Borhan Auto Parts.`;
+    const whatsappLink = `https://wa.me/8801707659954?text=${encodeURIComponent(message)}`;
+    document.getElementById('buyBtn').href = whatsappLink;
   </script>
 </body>
 </html>
