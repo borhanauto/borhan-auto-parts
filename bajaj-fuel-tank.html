@@ -72,10 +72,7 @@
       card.className = 'model-card';
       card.textContent = model;
       card.onclick = () => {
-        window.location.href = `fuel-tank-details.html?product=${product}&model=${encodeURIComponent(model)}`;
-      };
-      modelList.appendChild(card);
-    });
+        window.location.href = `${product}-details.html?product=${product}&model=${encodeURIComponent(model)}`;
   </script>
 </body>
 </html>
