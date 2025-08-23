@@ -3,30 +3,35 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Yamaha Spare Parts - Borhan Auto Parts Centre</title>
-  <meta name="description" content="Buy genuine Yamaha motorcycle spare parts including brake pads, air filters, and more. Fast delivery from Borhan Auto Parts Centre in Bangladesh." />
-  <meta name="keywords" content="Yamaha parts, motorcycle parts, brake pad, air filter, Bangladesh, Borhan Auto" />
+  <title>Yamaha Motorcycle Spare Parts | Borhan Auto Parts Centre</title>
+  <meta name="description" content="Buy genuine Yamaha motorcycle spare parts in Bangladesh at Borhan Auto Parts Centre. High-quality fuel tanks, clutch cables, spark plugs & more. Fast delivery & best prices." />
+  <meta name="keywords" content="Yamaha parts, Yamaha motorcycle spare parts, Yamaha fuel tank, Yamaha clutch cable, Yamaha spark plug, Borhan Auto Parts Centre, Bangladesh" />
   <meta name="author" content="Borhan Auto Parts Centre" />
+  <meta property="og:title" content="Yamaha Motorcycle Spare Parts | Borhan Auto Parts Centre" />
+  <meta property="og:description" content="Buy original Yamaha motorcycle spare parts in Bangladesh. Premium quality with fast delivery from Borhan Auto Parts Centre." />
+  <meta property="og:image" content="images/borhan-auto-banner.jpg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://borhanauto.github.io/borhan-auto-parts/yamaha.html" />
+  <meta name="twitter:card" content="summary_large_image" />
   <link rel="icon" href="favicon.ico" />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="cart.css" />
   <style>
     body {
       font-family: 'Roboto', sans-serif;
       margin: 0;
       padding: 0;
-      background: #f9f9f9;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
+      background: #f9fafb;
+      color: #1e293b;
     }
     header {
       background: #1e293b;
       color: white;
-      padding: 20px 16px;
+      padding: 16px;
       text-align: center;
       font-size: 1.6em;
       font-weight: 700;
-      letter-spacing: 1px;
-      user-select: none;
+      letter-spacing: 0.5px;
     }
     .container {
       padding: 16px;
@@ -35,100 +40,98 @@
     }
     .product-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 28px;
-      perspective: 1000px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 24px;
     }
     .product-card {
       background: white;
-      border-radius: 14px;
-      box-shadow: 0 8px 15px rgba(0,0,0,0.1);
-      padding: 18px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 16px;
       display: flex;
       flex-direction: column;
-      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
       text-decoration: none;
       color: inherit;
-      transition: transform 0.35s cubic-bezier(.03,.98,.52,.99), box-shadow 0.35s ease;
-      transform-style: preserve-3d;
-      will-change: transform;
-      backface-visibility: hidden;
     }
-    .product-card:hover,
-    .product-card:focus-visible {
-      transform: translateZ(30px) rotateX(8deg) rotateY(6deg);
-      box-shadow: 0 20px 35px rgba(0,0,0,0.2);
-      outline: none;
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.15);
     }
     .product-card img {
       width: 100%;
-      border-radius: 10px;
+      border-radius: 8px;
       object-fit: contain;
-      max-height: 210px;
-      margin-bottom: 14px;
-      box-shadow: 0 5px 12px rgba(0,0,0,0.07);
-      transition: box-shadow 0.3s ease;
-    }
-    .product-card:hover img {
-      box-shadow: 0 10px 24px rgba(0,0,0,0.15);
+      max-height: 200px;
     }
     .badge {
       display: inline-block;
       background: #facc15;
       color: #1e293b;
       font-size: 0.75em;
-      font-weight: 700;
-      padding: 4px 12px;
-      border-radius: 8px;
-      margin-bottom: 8px;
+      font-weight: bold;
+      padding: 4px 10px;
+      border-radius: 6px;
+      margin-top: 10px;
       width: fit-content;
-      user-select: none;
-      letter-spacing: 0.03em;
-      text-transform: uppercase;
-      box-shadow: 0 2px 6px rgba(250, 204, 21, 0.35);
-      transition: background 0.3s ease;
     }
     .product-title {
-      font-size: 1.3em;
-      margin: 10px 0 6px;
-      font-weight: 700;
+      font-size: 1.2em;
+      margin: 12px 0 6px;
+      font-weight: bold;
       color: #1e293b;
-      user-select: text;
     }
     .product-description {
-      font-size: 0.95em;
+      font-size: 0.9em;
       color: #4b5563;
-      margin-top: 6px;
-      flex-grow: 1;
-      user-select: text;
-      line-height: 1.4;
+      margin-bottom: 8px;
     }
     .price {
       color: #16a34a;
-      font-weight: 700;
-      font-size: 1.2em;
-      margin-top: 12px;
-      user-select: text;
+      font-weight: bold;
+      font-size: 1.1em;
+      margin-bottom: 10px;
     }
     footer {
       text-align: center;
-      padding: 24px 16px;
+      padding: 20px;
       background: #1e293b;
       color: white;
-      font-size: 0.95em;
-      user-select: none;
-      letter-spacing: 0.02em;
+      font-size: 0.9em;
+      margin-top: 40px;
     }
-    @media (max-width: 400px) {
-      header {
-        font-size: 1.3em;
-      }
-      .product-card {
-        padding: 14px;
-      }
-      .product-card img {
-        max-height: 180px;
-      }
+    /* Floating WhatsApp Cart Button */
+    .cart-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25D366;
+      color: white;
+      font-size: 16px;
+      padding: 12px 18px;
+      border-radius: 50px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.2s;
+    }
+    .cart-btn:hover {
+      background: #1ebe5c;
+    }
+    .cart-badge {
+      background: white;
+      color: #1e293b;
+      font-size: 13px;
+      font-weight: bold;
+      padding: 2px 7px;
+      border-radius: 50%;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      position: absolute;
+      top: -6px;
+      right: -6px;
     }
   </style>
 </head>
@@ -136,32 +139,50 @@
   <header>Yamaha Spare Parts - Borhan Auto Parts Centre</header>
   <div class="container">
     <div class="product-grid">
-      <a class="product-card" href="bike-models?product=yamaha-brake-pad" tabindex="0">
-        <img src="images/yamaha-brake-pad.jpg" alt="Yamaha Brake Pad" />
+      <a class="product-card" href="bike-models-yamaha.html?product=yamaha-clutch-cable">
+        <img src="images/yamaha-clutch-cable.jpg" alt="Yamaha Clutch Cable" />
         <span class="badge">New</span>
-        <div class="product-title">Yamaha Brake Pad</div>
-        <div class="product-description">Durable brake pad for Yamaha FZS, R15, and Fazer. Superior stopping power.</div>
-        <div class="price">৳480</div>
+        <div class="product-title">Yamaha Clutch Cable</div>
+        <div class="product-description">Durable clutch cable for Yamaha FZ, Fazer & R15. Smooth control guaranteed.</div>
+        <div class="price">৳550</div>
       </a>
-      <a class="product-card" href="bike-models?product=yamaha-air-filter" tabindex="0">
+
+      <a class="product-card" href="bike-models-yamaha.html?product=yamaha-air-filter">
         <img src="images/yamaha-air-filter.jpg" alt="Yamaha Air Filter" />
         <span class="badge">Popular</span>
         <div class="product-title">Yamaha Air Filter</div>
-        <div class="product-description">High-performance air filter for better engine breathing and mileage.</div>
-        <div class="price">৳400</div>
+        <div class="product-description">High-quality air filter for improved engine performance and longevity.</div>
+        <div class="price">৳500</div>
       </a>
-      <a class="product-card" href="bike-models?product=yamaha-spark-plug" tabindex="0">
+
+      <a class="product-card" href="bike-models-yamaha.html?product=yamaha-spark-plug">
         <img src="images/yamaha-spark-plug.jpg" alt="Yamaha Spark Plug" />
         <span class="badge">Best Seller</span>
         <div class="product-title">Yamaha Spark Plug</div>
-        <div class="product-description">OEM spark plug for Yamaha motorcycles. Smooth ignition and long life.</div>
-        <div class="price">৳360</div>
+        <div class="product-description">Genuine Yamaha spark plug designed for smooth ignition and better mileage.</div>
+        <div class="price">৳380</div>
+      </a>
+
+      <a class="product-card" href="yamaha-fuel-tank.html">
+        <img src="images/yamaha-fuel-tank.jpg" alt="Yamaha Fuel Tank" />
+        <span class="badge">Trending</span>
+        <div class="product-title">Yamaha Fuel Tank</div>
+        <div class="product-description">Original Yamaha FZ-S fuel tank. Premium paint finish & perfect fitting.</div>
+        <div class="price">৳4,200</div>
       </a>
     </div>
   </div>
+
+  <!-- Floating WhatsApp Cart Button -->
+  <a href="https://wa.me/8801707659954" class="cart-btn">
+    🛒 WhatsApp Cart <span class="cart-badge" id="cart-count">0</span>
+  </a>
+
   <footer>
     © 2025 Borhan Auto Parts Centre. All rights reserved.<br />
-    For orders & inquiries, call: 01707659954
+    For orders & inquiries, call: <a href="tel:01707659954" style="color:#fff; text-decoration:none;">01707659954</a>
   </footer>
+
+  <script src="cart.js"></script>
 </body>
 </html>
