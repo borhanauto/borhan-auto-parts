@@ -3,211 +3,86 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Bajaj Motorcycle Spare Parts - Borhan Auto Parts Centre</title>
+  <title>Bajaj Product Detail - Borhan Auto Parts Centre</title>
   <meta name="description" content="Buy genuine Bajaj motorcycle spare parts including fuel tanks, clutch cables, air filters, and spark plugs. Fast delivery across Bangladesh from Borhan Auto Parts Centre." />
   <meta name="keywords" content="Bajaj motorcycle parts, Bajaj Pulsar 150 tank, Bajaj Discover 125 tank, Bajaj CT 100 tank, Bajaj clutch cable, Bajaj air filter, Bajaj spark plug, Borhan Auto Parts Centre" />
   <meta name="author" content="Borhan Auto Parts Centre" />
-  
+  <link rel="icon" href="favicon.ico" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    body {
-      font-family: Roboto, Arial, sans-serif;
-      background: #f9f9f9;
-      margin: 0;
-      padding: 0;
-      line-height: 1.6;
-    }
-
-    header {
-      background: #1e293b;
-      color: #fff;
-      text-align: center;
-      padding: 16px;
-      font-size: 1.4em;
-      font-weight: bold;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.15);
-    }
-
-    .container {
-      max-width: 800px;
-      margin: 20px auto;
-      padding: 15px;
-    }
-
-    .product {
-      background: #fff;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      transition: transform 0.2s ease-in-out;
-    }
-
-    .product:hover {
-      transform: scale(1.01);
-    }
-
-    img {
-      width: 100%;
-      max-height: 250px;
-      object-fit: contain;
-      border-radius: 8px;
-      background: #f5f5f5;
-    }
-
-    .title {
-      font-size: 1.3em;
-      font-weight: bold;
-      margin: 16px 0 8px;
-      color: #1e293b;
-    }
-
-    .desc {
-      color: #4b5563;
-      margin-bottom: 12px;
-      font-size: 0.95em;
-    }
-
-    .price {
-      font-size: 1.1em;
-      color: #16a34a;
-      font-weight: bold;
-      margin-bottom: 20px;
-    }
-
-    .buy-btn {
-      display: inline-block;
-      padding: 12px 22px;
-      background: #1e40af;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 6px;
-      font-weight: bold;
-      font-size: 0.95em;
-      transition: background 0.3s ease;
-    }
-
-    .buy-btn:hover {
-      background: #1e3a8a;
-    }
-
-    .not-found {
-      text-align: center;
-      padding: 40px 20px;
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      font-size: 1.1em;
-      color: #ef4444;
-    }
-
-    /* Responsive Design */
-    @media (max-width: 600px) {
-      header {
-        font-size: 1.2em;
-        padding: 14px;
-      }
-      .container {
-        padding: 10px;
-      }
-      .product {
-        padding: 15px;
-      }
-      .title {
-        font-size: 1.1em;
-      }
-      .buy-btn {
-        width: 100%;
-        text-align: center;
-        padding: 14px;
-      }
-    }
+    body { font-family: 'Roboto', sans-serif; margin:0; background:#f9f9f9; color:#1e293b; }
+    header { background:#1e293b; color:white; padding:20px 16px; text-align:center; font-size:1.6em; font-weight:700; }
+    main { max-width:900px; margin:24px auto; padding:16px; background:white; border-radius:16px; box-shadow:0 10px 20px rgba(0,0,0,0.1),0 6px 6px rgba(0,0,0,0.08); display:flex; flex-wrap:wrap; gap:24px; }
+    .product-image { flex:1 1 320px; max-width:400px; border-radius:14px; overflow:hidden; box-shadow:0 8px 20px rgba(0,0,0,0.1); background:#fff; }
+    .product-image img { width:100%; height:auto; object-fit:contain; border-radius:14px; transition: box-shadow 0.3s ease, transform 0.3s ease; }
+    main:hover .product-image img { box-shadow:0 12px 32px rgba(0,0,0,0.25); transform:scale(1.03); }
+    .product-info { flex:1 1 400px; display:flex; flex-direction:column; justify-content:center; }
+    .product-title { font-size:2em; font-weight:900; margin-bottom:12px; color:#0f172a; }
+    .badge { display:inline-block; background:#facc15; color:#1e293b; font-weight:700; padding:6px 14px; border-radius:12px; text-transform:uppercase; margin-bottom:16px; font-size:0.85em; box-shadow:0 2px 6px rgba(250,204,21,0.35); }
+    .product-description { font-size:1.1em; line-height:1.5; color:#475569; margin-bottom:20px; }
+    .price { font-size:1.8em; font-weight:900; color:#16a34a; margin-bottom:30px; }
+    .buttons { display:flex; gap:16px; flex-wrap:wrap; align-items:center; }
+    .buy-button { background-color:#1e293b; color:white; font-weight:700; font-size:1.1em; padding:14px 30px; border:none; border-radius:10px; text-decoration:none; box-shadow:0 6px 12px rgba(0,0,0,0.15); transition: background-color 0.3s ease; }
+    .buy-button:hover { background-color:#334155; }
+    footer { text-align:center; padding:24px 16px; background:#1e293b; color:white; font-size:0.95em; margin-top:60px; }
+    @media (max-width:720px) { main { flex-direction:column; padding:12px; } .product-image, .product-info { max-width:100%; } .product-title { font-size:1.6em; } .price { font-size:1.5em; } .buttons { flex-direction:column; gap:12px; } }
   </style>
 </head>
 <body>
-  <header>Bajaj Product Details</header>
-  <div class="container">
-    <div class="product" id="product-info"></div>
-  </div>
+  <header id="page-header">Bajaj Product - Borhan Auto Parts Centre</header>
+  <main>
+    <div class="product-image">
+      <img id="product-img" src="" alt="Product Image" loading="lazy" />
+    </div>
+    <div class="product-info">
+      <span class="badge" id="badge-text">New</span>
+      <h1 class="product-title" id="product-title">Loading...</h1>
+      <p class="product-description" id="product-desc"></p>
+      <div class="price" id="product-price"></div>
+      <div class="buttons">
+        <a id="buy-btn" class="buy-button" href="#" target="_blank" rel="noopener noreferrer">Buy Now</a>
+      </div>
+    </div>
+  </main>
+  <footer>© 2025 Borhan Auto Parts Centre. All rights reserved.<br />For inquiries and orders, call: 01707659954</footer>
 
   <script>
     const params = new URLSearchParams(window.location.search);
-    const product = params.get('product');
-    const model = params.get('model');
+    const model = params.get('model') || '';
+    const productKey = params.get('product') || 'fuel-tank';
 
-    // Product data
     const products = {
       "fuel-tank": {
-        "Pulsar 150": {
-          name: "Bajaj Pulsar 150 Fuel Tank",
-          image: "images/bajaj-pulsar-150-tank.jpg",
-          price: "৳4,000",
-          description: "Genuine OEM fuel tank with anti-rust coating and perfect fit for Bajaj Pulsar 150."
-        },
-        "Discover 125": {
-          name: "Bajaj Discover 125 Fuel Tank",
-          image: "images/bajaj-discover-125-tank.jpg",
-          price: "৳3,800",
-          description: "OEM quality fuel tank designed for Bajaj Discover 125 models."
-        },
-        "CT 100": {
-          name: "Bajaj CT 100 Fuel Tank",
-          image: "images/bajaj-ct-100-tank.jpg",
-          price: "৳3,500",
-          description: "Durable and corrosion-resistant fuel tank for Bajaj CT 100."
-        }
+        "Pulsar 150": { name:"Bajaj Pulsar 150 Fuel Tank", image:"images/bajaj-pulsar-150-tank.jpg", price:"৳4,000", description:(m)=>`Genuine OEM fuel tank with anti-rust coating and perfect fit for ${m}.`, badge:"New", header:"Bajaj Pulsar 150 Fuel Tank - Borhan Auto Parts Centre" },
+        "Discover 125": { name:"Bajaj Discover 125 Fuel Tank", image:"images/bajaj-discover-125-tank.jpg", price:"৳3,800", description:(m)=>`OEM quality fuel tank designed for ${m}.`, badge:"Popular", header:"Bajaj Discover 125 Fuel Tank - Borhan Auto Parts Centre" },
+        "CT 100": { name:"Bajaj CT 100 Fuel Tank", image:"images/bajaj-ct-100-tank.jpg", price:"৳3,500", description:(m)=>`Durable and corrosion-resistant fuel tank for ${m}.`, badge:"New", header:"Bajaj CT 100 Fuel Tank - Borhan Auto Parts Centre" }
       },
-      "bajaj-clutch-cable": {
-        name: "Bajaj Clutch Cable",
-        image: "images/bajaj-clutch-cable.jpg",
-        price: "৳450",
-        description: "Durable clutch cable compatible with multiple Bajaj bikes including Pulsar and Discover."
-      },
-      "bajaj-air-filter": {
-        name: "Bajaj Air Filter",
-        image: "images/bajaj-air-filter.jpg",
-        price: "৳420",
-        description: "Premium air filter to ensure clean airflow and boost performance for Bajaj models."
-      },
-      "bajaj-spark-plug": {
-        name: "Bajaj Spark Plug",
-        image: "images/bajaj-spark-plug.jpg",
-        price: "৳350",
-        description: "OEM quality spark plug for reliable ignition and long life in all Bajaj motorcycles."
-      }
+      "bajaj-clutch-cable": { name:"Bajaj Clutch Cable", image:"images/bajaj-clutch-cable.jpg", price:"৳450", description:()=>`Durable clutch cable compatible with multiple Bajaj bikes including Pulsar and Discover.`, badge:"New", header:"Bajaj Clutch Cable - Borhan Auto Parts Centre" },
+      "bajaj-air-filter": { name:"Bajaj Air Filter", image:"images/bajaj-air-filter.jpg", price:"৳420", description:()=>`Premium air filter to ensure clean airflow and boost performance for Bajaj models.`, badge:"Popular", header:"Bajaj Air Filter - Borhan Auto Parts Centre" },
+      "bajaj-spark-plug": { name:"Bajaj Spark Plug", image:"images/bajaj-spark-plug.jpg", price:"৳350", description:()=>`OEM quality spark plug for reliable ignition and long life in all Bajaj motorcycles.`, badge:"New", header:"Bajaj Spark Plug - Borhan Auto Parts Centre" }
     };
 
-    const productDiv = document.getElementById('product-info');
-
-    if (products[product]) {
-      if (typeof products[product] === 'object' && products[product][model]) {
-        // Product with models, e.g. fuel tank
-        const data = products[product][model];
-        productDiv.innerHTML = `
-          <img src="${data.image}" alt="${data.name}" />
-          <div class="title">${data.name}</div>
-          <div class="desc">${data.description}</div>
-          <div class="price">${data.price}</div>
-          <a href="payment.html?product=${encodeURIComponent(data.name)}&price=${encodeURIComponent(data.price)}&model=${encodeURIComponent(model)}" 
-             class="buy-btn">Buy Now</a>
-        `;
-      } else {
-        // Product without models
-        const data = products[product];
-        productDiv.innerHTML = `
-          <img src="${data.image}" alt="${data.name}${model ? ' for ' + model : ''}" />
-          <div class="title">${data.name}${model ? ' for ' + model : ''}</div>
-          <div class="desc">${data.description}</div>
-          <div class="price">${data.price}</div>
-          <a href="payment.html?product=${encodeURIComponent(data.name)}&price=${encodeURIComponent(data.price)}&model=${encodeURIComponent(model || '')}" 
-             class="buy-btn">Buy Now</a>
-        `;
+    let product;
+    if(products[productKey]){
+      if(typeof products[productKey] === 'object' && products[productKey][model]){
+        product = products[productKey][model];
+      } else if(typeof products[productKey] === 'object' && !products[productKey][model]){
+        product = products[productKey];
       }
+    }
+
+    const productDiv = document.getElementById('product-info');
+    if(product){
+      document.getElementById('product-img').src = product.image;
+      document.getElementById('product-img').alt = `${product.name}${model ? ' for ' + model : ''}`;
+      document.getElementById('product-title').textContent = `${product.name}${model ? ' for ' + model : ''}`;
+      document.getElementById('product-desc').textContent = typeof product.description === 'function' ? product.description(model || '') : product.description;
+      document.getElementById('product-price').textContent = product.price;
+      document.getElementById('badge-text').textContent = product.badge;
+      document.getElementById('page-header').textContent = product.header;
+      document.getElementById('buy-btn').href = `payment.html?product=${encodeURIComponent(product.name)}&model=${encodeURIComponent(model)}&price=${encodeURIComponent(product.price)}`;
     } else {
-      productDiv.innerHTML = `
-        <div class="not-found">
-          <p>Sorry, this Bajaj product was not found.</p>
-          <p>Please go back and select another product.</p>
-        </div>
-      `;
+      productDiv.innerHTML = `<p style="padding:40px; font-size:1.2em; color:#b91c1c; text-align:center;">Product not found. Please go back and select a valid product.</p>`;
     }
   </script>
 </body>
