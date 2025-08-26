@@ -3,31 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Yamaha Product Detail</title>
+  <title>Yamaha Motorcycle Spare Parts - Borhan Auto Parts Centre</title>
   <style>
-    body { font-family: Roboto, sans-serif; background: #f9f9f9; margin: 0; color:#1e293b; }
-    header { background: #1e293b; color: white; text-align: center; padding: 16px; font-size: 1.4em; }
-    .container { max-width: 800px; margin: auto; padding: 20px; }
-    .product { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-    img { width: 100%; max-height: 250px; object-fit: contain; border-radius: 8px; }
+    body { font-family: Roboto, Arial, sans-serif; background: #f9f9f9; margin: 0; padding: 0; color: #1e293b; line-height: 1.6; }
+    header { background: #1e293b; color: #fff; text-align: center; padding: 16px; font-size: 1.4em; font-weight: bold; box-shadow: 0 2px 4px rgba(0,0,0,0.15); }
+    .container { max-width: 800px; margin: 20px auto; padding: 15px; }
+    .product { background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: transform 0.2s ease-in-out; }
+    .product:hover { transform: scale(1.01); }
+    img { width: 100%; max-height: 250px; object-fit: contain; border-radius: 8px; background: #f5f5f5; }
     .title { font-size: 1.3em; font-weight: bold; margin: 16px 0 8px; }
-    .desc { color: #4b5563; margin-bottom: 12px; }
+    .desc { color: #4b5563; margin-bottom: 12px; font-size: 0.95em; }
     .price { font-size: 1.1em; color: #16a34a; font-weight: bold; margin-bottom: 20px; }
-    .buy-btn {
-      display: inline-block;
-      padding: 10px 20px;
-      background: #1e40af;
-      color: white;
-      text-decoration: none;
-      border-radius: 6px;
-      font-weight: bold;
-      transition: background 0.3s ease;
-    }
+    .buy-btn { display: inline-block; padding: 12px 22px; background: #1e40af; color: #fff; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 0.95em; transition: background 0.3s ease; }
     .buy-btn:hover { background: #1e3a8a; }
+    .not-found { text-align: center; padding: 40px 20px; background: #fff; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); font-size: 1.1em; color: #ef4444; }
+    @media (max-width: 600px) {
+      header { font-size: 1.2em; padding: 14px; }
+      .container { padding: 10px; }
+      .buy-btn { width: 100%; text-align: center; padding: 14px; }
+    }
   </style>
 </head>
 <body>
-  <header>Product Details</header>
+  <header>Yamaha Product Details</header>
   <div class="container">
     <div class="product" id="product-info"></div>
   </div>
@@ -37,7 +35,6 @@
     const product = params.get('product');
     const model = params.get('model') || '';
 
-    // Include all Yamaha products from your product page
     const products = {
       "yamaha-clutch-cable": {
         name: "Yamaha Clutch Cable",
@@ -65,20 +62,25 @@
       }
     };
 
-    const data = products[product];
     const productDiv = document.getElementById('product-info');
+    const data = products[product];
 
     if (data) {
       productDiv.innerHTML = `
         <img src="${data.image}" alt="${data.name} for ${model}" />
-        <div class="title">${data.name} for ${model}</div>
+        <div class="title">${data.name}${model ? ' for ' + model : ''}</div>
         <div class="desc">${data.description}</div>
         <div class="price">Price: ${data.price}</div>
-        <a href="https://wa.me/8801707659954?text=${encodeURIComponent(`Hello, I want to buy ${data.name} for ${model}. I am sending ৳500 advance payment.`)}"
+        <a href="https://wa.me/8801707659954?text=${encodeURIComponent(`Hello, I want to buy ${data.name}${model ? ' for ' + model : ''}. I will pay ৳500 advance.`)}" 
            class="buy-btn">Buy Now (৳500 Advance)</a>
       `;
     } else {
-      productDiv.innerHTML = `<p>Product not found.</p>`;
+      productDiv.innerHTML = `
+        <div class="not-found">
+          <p>Sorry, this Yamaha product was not found.</p>
+          <p>Please go back and select another product.</p>
+        </div>
+      `;
     }
   </script>
 </body>
