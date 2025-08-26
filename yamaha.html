@@ -2,46 +2,80 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Select Bike Model</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Yamaha Spare Parts - Borhan Auto Parts Centre</title>
+  <meta name="description" content="Buy genuine Yamaha motorcycle spare parts in Bangladesh at Borhan Auto Parts Centre. High-quality fuel tanks, clutch cables, spark plugs & more. Fast delivery & best prices." />
+  <meta name="keywords" content="Yamaha parts, Yamaha motorcycle spare parts, Yamaha fuel tank, Yamaha clutch cable, Yamaha spark plug, Borhan Auto Parts Centre, Bangladesh" />
+  <meta name="author" content="Borhan Auto Parts Centre" />
+  <link rel="icon" href="favicon.ico" />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="cart.css" />
   <style>
-    body { font-family:'Roboto',sans-serif; background:#f9fafb; margin:0; color:#1e293b; }
-    header { background:#1e293b; color:white; text-align:center; padding:16px; font-size:1.4em; font-weight:700; }
-    .container { max-width:800px; margin:20px auto; padding:0 16px; display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px; }
-    .model-card { background:white; border-radius:12px; box-shadow:0 2px 6px rgba(0,0,0,0.1); padding:20px; text-align:center; font-weight:bold; cursor:pointer; transition:transform 0.2s, box-shadow 0.2s; }
-    .model-card:hover { transform:scale(1.03); box-shadow:0 4px 12px rgba(0,0,0,0.15); background:#f1f5f9; }
+    body { font-family: 'Roboto', sans-serif; margin:0; padding:0; background:#f9fafb; color:#1e293b; }
+    header { background:#1e293b; color:#fff; padding:16px; text-align:center; font-size:1.6em; font-weight:700; letter-spacing:0.5px; }
+    .container { padding:16px; max-width:1200px; margin:0 auto; }
+    .product-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:24px; }
+    .product-card { background:white; border-radius:12px; box-shadow:0 4px 10px rgba(0,0,0,0.1); padding:16px; display:flex; flex-direction:column; transition: transform 0.2s, box-shadow 0.2s; text-decoration:none; color:inherit; }
+    .product-card:hover { transform:translateY(-5px); box-shadow:0 6px 14px rgba(0,0,0,0.15); }
+    .product-card img { width:100%; border-radius:8px; object-fit:contain; max-height:200px; }
+    .badge { display:inline-block; background:#facc15; color:#1e293b; font-size:0.75em; font-weight:bold; padding:4px 10px; border-radius:6px; margin-top:10px; width:fit-content; }
+    .product-title { font-size:1.2em; margin:12px 0 6px; font-weight:bold; }
+    .product-description { font-size:0.9em; color:#4b5563; margin-bottom:8px; }
+    .price { color:#16a34a; font-weight:bold; font-size:1.1em; margin-bottom:10px; }
+    footer { text-align:center; padding:20px; background:#1e293b; color:white; font-size:0.9em; margin-top:40px; }
+    footer a { color:white; text-decoration:none; }
+    .cart-btn { position:fixed; bottom:20px; right:20px; background:#25D366; color:white; font-size:16px; padding:12px 18px; border-radius:50px; display:flex; align-items:center; gap:8px; text-decoration:none; font-weight:bold; transition:background 0.2s; }
+    .cart-btn:hover { background:#1ebe5c; }
+    .cart-badge { background:white; color:#1e293b; font-size:13px; font-weight:bold; padding:2px 7px; border-radius:50%; box-shadow:0 2px 6px rgba(0,0,0,0.2); position:absolute; top:-6px; right:-6px; }
   </style>
 </head>
 <body>
-  <header>Select Your Bike Model</header>
-  <div class="container" id="model-list"></div>
+  <header>Yamaha Spare Parts - Borhan Auto Parts Centre</header>
+  <div class="container">
+    <div class="product-grid">
+      <a class="product-card" href="bike-models.html?product=yamaha-clutch-cable">
+        <img src="images/yamaha-clutch-cable.jpg" alt="Yamaha Clutch Cable for FZ, R15, Fazer" loading="lazy" />
+        <span class="badge">New</span>
+        <div class="product-title">Yamaha Clutch Cable</div>
+        <div class="product-description">Durable clutch cable for Yamaha FZ, R15 & Fazer. Smooth control guaranteed.</div>
+        <div class="price">৳550</div>
+      </a>
 
-  <script>
-    const urlParams = new URLSearchParams(window.location.search);
-    const product = urlParams.get('product') || 'unknown-product';
+      <a class="product-card" href="bike-models.html?product=yamaha-air-filter">
+        <img src="images/yamaha-air-filter.jpg" alt="Yamaha Air Filter for FZ, Fazer" loading="lazy" />
+        <span class="badge">Popular</span>
+        <div class="product-title">Yamaha Air Filter</div>
+        <div class="product-description">High-quality air filter for improved engine performance and longevity.</div>
+        <div class="price">৳500</div>
+      </a>
 
-    const productModels = {
-      'yamaha-clutch-cable': ['FZ', 'R15', 'Fazer'],
-      'yamaha-air-filter': ['FZ', 'Fazer'],
-      'yamaha-spark-plug': ['FZ', 'R15'],
-      'yamaha-fuel-tank': ['FZ-S', 'FZ', 'Fazer'],
-      'suzuki-brake-shoe': ['Gixxer', 'Hayate', 'Access 125'],
-      'hero-brake-shoe': ['Splendor', 'HF Deluxe', 'Passion']
-    };
+      <a class="product-card" href="bike-models.html?product=yamaha-spark-plug">
+        <img src="images/yamaha-spark-plug.jpg" alt="Yamaha Spark Plug for FZ, R15" loading="lazy" />
+        <span class="badge">Best Seller</span>
+        <div class="product-title">Yamaha Spark Plug</div>
+        <div class="product-description">Genuine Yamaha spark plug designed for smooth ignition and better mileage.</div>
+        <div class="price">৳380</div>
+      </a>
 
-    const models = productModels[product] || ['Model 1', 'Model 2'];
-    const list = document.getElementById('model-list');
+      <a class="product-card" href="bike-models.html?product=yamaha-fuel-tank">
+        <img src="images/yamaha-fuel-tank.jpg" alt="Yamaha Fuel Tank for FZ-S, FZ, Fazer" loading="lazy" />
+        <span class="badge">Trending</span>
+        <div class="product-title">Yamaha Fuel Tank</div>
+        <div class="product-description">Original Yamaha FZ-S fuel tank. Premium paint finish & perfect fitting.</div>
+        <div class="price">৳4,200</div>
+      </a>
+    </div>
+  </div>
 
-    models.forEach(model => {
-      const div = document.createElement('div');
-      div.className = 'model-card';
-      div.textContent = model;
-      div.onclick = () => {
-        window.location.href = `product-detail.html?product=${product}&model=${model}`;
-      };
-      list.appendChild(div);
-    });
-  </script>
+  <!-- WhatsApp Cart -->
+  <a href="https://wa.me/8801707659954" class="cart-btn">
+    🛒 WhatsApp Cart <span class="cart-badge" id="cart-count">0</span>
+  </a>
+
+  <footer>
+    © 2025 Borhan Auto Parts Centre. All rights reserved.<br />
+    For orders & inquiries, call: <a href="tel:01707659954">01707659954</a>
+  </footer>
+  <script src="cart.js"></script>
 </body>
 </html>
