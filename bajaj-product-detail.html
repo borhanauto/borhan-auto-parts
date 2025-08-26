@@ -3,48 +3,127 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Borhan Auto Parts - Product Detail</title>
+  <title>Bajaj Motorcycle Spare Parts - Borhan Auto Parts Centre</title>
+  <meta name="description" content="Buy genuine Bajaj motorcycle spare parts including fuel tanks, clutch cables, air filters, and spark plugs. Fast delivery across Bangladesh from Borhan Auto Parts Centre." />
+  <meta name="keywords" content="Bajaj motorcycle parts, Bajaj Pulsar 150 tank, Bajaj Discover 125 tank, Bajaj CT 100 tank, Bajaj clutch cable, Bajaj air filter, Bajaj spark plug, Borhan Auto Parts Centre" />
+  <meta name="author" content="Borhan Auto Parts Centre" />
+  
   <style>
-    body { font-family: Roboto, sans-serif; background: #f9f9f9; margin: 0; }
-    header { background: #1e293b; color: white; text-align: center; padding: 16px; font-size: 1.4em; }
-    .container { max-width: 800px; margin: auto; padding: 20px; }
+    body {
+      font-family: Roboto, Arial, sans-serif;
+      background: #f9f9f9;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #1e293b;
+      color: #fff;
+      text-align: center;
+      padding: 16px;
+      font-size: 1.4em;
+      font-weight: bold;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 15px;
+    }
+
     .product {
-      background: white;
+      background: #fff;
       padding: 20px;
       border-radius: 12px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease-in-out;
     }
+
+    .product:hover {
+      transform: scale(1.01);
+    }
+
     img {
       width: 100%;
       max-height: 250px;
       object-fit: contain;
       border-radius: 8px;
+      background: #f5f5f5;
     }
+
     .title {
       font-size: 1.3em;
       font-weight: bold;
       margin: 16px 0 8px;
       color: #1e293b;
     }
-    .desc { color: #4b5563; margin-bottom: 12px; }
-    .price { font-size: 1.1em; color: #16a34a; font-weight: bold; margin-bottom: 20px; }
+
+    .desc {
+      color: #4b5563;
+      margin-bottom: 12px;
+      font-size: 0.95em;
+    }
+
+    .price {
+      font-size: 1.1em;
+      color: #16a34a;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
     .buy-btn {
       display: inline-block;
-      padding: 10px 20px;
+      padding: 12px 22px;
       background: #1e40af;
-      color: white;
+      color: #fff;
       text-decoration: none;
       border-radius: 6px;
       font-weight: bold;
+      font-size: 0.95em;
       transition: background 0.3s ease;
     }
+
     .buy-btn:hover {
       background: #1e3a8a;
+    }
+
+    .not-found {
+      text-align: center;
+      padding: 40px 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      font-size: 1.1em;
+      color: #ef4444;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 600px) {
+      header {
+        font-size: 1.2em;
+        padding: 14px;
+      }
+      .container {
+        padding: 10px;
+      }
+      .product {
+        padding: 15px;
+      }
+      .title {
+        font-size: 1.1em;
+      }
+      .buy-btn {
+        width: 100%;
+        text-align: center;
+        padding: 14px;
+      }
     }
   </style>
 </head>
 <body>
-  <header>Product Details</header>
+  <header>Bajaj Product Details</header>
   <div class="container">
     <div class="product" id="product-info"></div>
   </div>
@@ -54,7 +133,7 @@
     const product = params.get('product');
     const model = params.get('model');
 
-    // Products data, including model-specific ones inside 'fuel-tank'
+    // Product data
     const products = {
       "fuel-tank": {
         "Pulsar 150": {
@@ -123,7 +202,12 @@
         `;
       }
     } else {
-      productDiv.innerHTML = `<p>Product not found.</p>`;
+      productDiv.innerHTML = `
+        <div class="not-found">
+          <p>Sorry, this Bajaj product was not found.</p>
+          <p>Please go back and select another product.</p>
+        </div>
+      `;
     }
   </script>
 </body>
