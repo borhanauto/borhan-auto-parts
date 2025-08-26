@@ -7,6 +7,14 @@
   <meta name="description" content="Buy genuine Suzuki motorcycle spare parts including brake shoes, air filters and more. Fast delivery from Borhan Auto Parts Centre in Bangladesh." />
   <meta name="keywords" content="Suzuki parts, motorcycle parts, brake shoe, air filter, Bangladesh, Borhan Auto" />
   <meta name="author" content="Borhan Auto Parts Centre" />
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:title" content="Suzuki Spare Parts - Borhan Auto Parts Centre">
+  <meta property="og:description" content="Buy genuine Suzuki motorcycle spare parts including brake shoes, air filters, and more. Fast delivery in Bangladesh.">
+  <meta property="og:image" content="images/suzuki-brake-shoe.jpg">
+  <meta property="og:url" content="https://borhanauto.github.io/borhan-auto-parts/suzuki.html">
+  <meta name="twitter:card" content="summary_large_image">
+
   <link rel="icon" href="favicon.ico" />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
   <style>
@@ -21,6 +29,7 @@
     .product-description { font-size: 0.9em; color: #4b5563; margin-top: 6px; }
     .price { color: #16a34a; font-weight: bold; font-size: 1.1em; }
     footer { text-align: center; padding: 20px; background: #1e293b; color: white; font-size: 0.9em; }
+    footer a { color: white; text-decoration: underline; }
     @media (min-width: 600px) {
       .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; }
     }
@@ -28,12 +37,12 @@
 </head>
 <body>
   <header>Suzuki Spare Parts - Borhan Auto Parts Centre</header>
-  <div class="container">
+  <div class="container" role="main">
     <div class="product-grid">
 
       <!-- Suzuki Brake Shoe -->
-      <a class="product-card" href="bike-models-suzuki.html?product=suzuki-brake-shoe">
-        <img src="images/suzuki-brake-shoe.jpg" alt="Suzuki Brake Shoe" />
+      <a class="product-card" href="bike-models-suzuki.html?product=suzuki-brake-shoe" aria-label="Suzuki Brake Shoe for Gixxer, Hayate, and Access 125">
+        <img src="images/suzuki-brake-shoe.jpg" alt="Suzuki Brake Shoe for Gixxer, Hayate, and Access 125" loading="lazy" />
         <span class="badge">New</span>
         <div class="product-title">Suzuki Brake Shoe</div>
         <div class="product-description">High-quality brake shoe compatible with Suzuki Gixxer, Hayate, and Access 125.</div>
@@ -41,8 +50,8 @@
       </a>
 
       <!-- Suzuki Air Filter -->
-      <a class="product-card" href="bike-models-suzuki.html?product=suzuki-air-filter">
-        <img src="images/suzuki-air-filter.jpg" alt="Suzuki Air Filter" />
+      <a class="product-card" href="bike-models-suzuki.html?product=suzuki-air-filter" aria-label="Suzuki Air Filter for Gixxer SF, Burgman, and GS150R">
+        <img src="images/suzuki-air-filter.jpg" alt="Suzuki Air Filter for Gixxer SF, Burgman, and GS150R" loading="lazy" />
         <span class="badge">Popular</span>
         <div class="product-title">Suzuki Air Filter</div>
         <div class="product-description">Genuine air filter for Suzuki Gixxer SF, Burgman, and GS150R. Improved engine performance.</div>
@@ -53,7 +62,7 @@
   </div>
   <footer>
     © 2025 Borhan Auto Parts Centre. All rights reserved.<br />
-    For orders & inquiries, call: 01707659954
+    For orders & inquiries, call: <a href="tel:01707659954">01707659954</a>
   </footer>
 </body>
 </html>
