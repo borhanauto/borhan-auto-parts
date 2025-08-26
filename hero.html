@@ -7,6 +7,14 @@
   <meta name="description" content="Buy genuine Hero motorcycle spare parts including brake shoes, air filters and more. Fast delivery from Borhan Auto Parts Centre in Bangladesh." />
   <meta name="keywords" content="Hero spare parts, Hero motorcycle parts, Hero brake shoe, Hero air filter, Bangladesh, Borhan Auto" />
   <meta name="author" content="Borhan Auto Parts Centre" />
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:title" content="Hero Spare Parts - Borhan Auto Parts Centre">
+  <meta property="og:description" content="Buy genuine Hero motorcycle spare parts including brake shoes, air filters, and more. Fast delivery in Bangladesh.">
+  <meta property="og:image" content="images/hero-brake-shoe.jpg">
+  <meta property="og:url" content="https://borhanauto.github.io/borhan-auto-parts/hero.html">
+  <meta name="twitter:card" content="summary_large_image">
+
   <link rel="icon" href="favicon.ico" />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
   <style>
@@ -21,6 +29,7 @@
     .product-description { font-size: 0.9em; color: #4b5563; margin-top: 6px; }
     .price { color: #16a34a; font-weight: bold; font-size: 1.1em; }
     footer { text-align: center; padding: 20px; background: #1e293b; color: white; font-size: 0.9em; }
+    footer a { color: white; text-decoration: underline; }
     @media (min-width: 600px) {
       .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; }
     }
@@ -28,12 +37,12 @@
 </head>
 <body>
   <header>Hero Spare Parts - Borhan Auto Parts Centre</header>
-  <div class="container">
+  <div class="container" role="main">
     <div class="product-grid">
 
       <!-- Hero Brake Shoe -->
-      <a class="product-card" href="bike-models-hero.html?product=hero-brake-shoe">
-        <img src="images/hero-brake-shoe.jpg" alt="Hero Brake Shoe" />
+      <a class="product-card" href="bike-models-hero.html?product=hero-brake-shoe" aria-label="Hero Brake Shoe for Splendor, HF Deluxe, and Passion">
+        <img src="images/hero-brake-shoe.jpg" alt="Hero Brake Shoe for Splendor, HF Deluxe, and Passion" loading="lazy" />
         <span class="badge">New</span>
         <div class="product-title">Hero Brake Shoe</div>
         <div class="product-description">High-quality brake shoe compatible with Hero Splendor, HF Deluxe, and Passion.</div>
@@ -41,8 +50,8 @@
       </a>
 
       <!-- Hero Air Filter -->
-      <a class="product-card" href="bike-models-hero.html?product=hero-air-filter">
-        <img src="images/hero-air-filter.jpg" alt="Hero Air Filter" />
+      <a class="product-card" href="bike-models-hero.html?product=hero-air-filter" aria-label="Hero Air Filter for Splendor, HF Deluxe, and Passion">
+        <img src="images/hero-air-filter.jpg" alt="Hero Air Filter for Splendor, HF Deluxe, and Passion" loading="lazy" />
         <span class="badge">Popular</span>
         <div class="product-title">Hero Air Filter</div>
         <div class="product-description">Genuine air filter for Hero Splendor, HF Deluxe, and Passion. Improved engine performance.</div>
@@ -53,7 +62,7 @@
   </div>
   <footer>
     © 2025 Borhan Auto Parts Centre. All rights reserved.<br />
-    For orders & inquiries, call: 01707659954
+    For orders & inquiries, call: <a href="tel:01707659954">01707659954</a>
   </footer>
 </body>
 </html>
