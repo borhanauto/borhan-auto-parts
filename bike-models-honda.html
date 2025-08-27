@@ -2,96 +2,66 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Honda Product Detail - Borhan Auto Parts Centre</title>
-  <meta name="description" content="Buy genuine Honda motorcycle spare parts including brake shoes, air filters, and more. Fast delivery from Borhan Auto Parts Centre in Bangladesh." />
-  <meta name="keywords" content="Honda spare parts, Honda motorcycle parts, Honda brake shoe, Honda air filter, Borhan Auto Parts Centre" />
-  <meta name="author" content="Borhan Auto Parts Centre" />
-  <link rel="icon" href="favicon.ico" />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Select Honda Model</title>
   <style>
-    body { font-family: 'Roboto', sans-serif; margin:0; background:#f9f9f9; color:#1e293b; }
-    header { background:#1e293b; color:white; padding:20px 16px; text-align:center; font-size:1.6em; font-weight:700; }
-    main { max-width:900px; margin:24px auto; padding:16px; background:white; border-radius:16px; box-shadow:0 10px 20px rgba(0,0,0,0.1),0 6px 6px rgba(0,0,0,0.08); display:flex; flex-wrap:wrap; gap:24px; }
-    .product-image { flex:1 1 320px; max-width:400px; border-radius:14px; overflow:hidden; box-shadow:0 8px 20px rgba(0,0,0,0.1); background:#fff; }
-    .product-image img { width:100%; height:auto; object-fit:contain; border-radius:14px; transition: box-shadow 0.3s ease, transform 0.3s ease; }
-    main:hover .product-image img { box-shadow:0 12px 32px rgba(0,0,0,0.25); transform:scale(1.03); }
-    .product-info { flex:1 1 400px; display:flex; flex-direction:column; justify-content:center; }
-    .product-title { font-size:2em; font-weight:900; margin-bottom:12px; color:#0f172a; }
-    .badge { display:inline-block; background:#facc15; color:#1e293b; font-weight:700; padding:6px 14px; border-radius:12px; text-transform:uppercase; margin-bottom:16px; font-size:0.85em; box-shadow:0 2px 6px rgba(250,204,21,0.35); }
-    .product-description { font-size:1.1em; line-height:1.5; color:#475569; margin-bottom:20px; }
-    .price { font-size:1.8em; font-weight:900; color:#16a34a; margin-bottom:30px; }
-    .buttons { display:flex; gap:16px; flex-wrap:wrap; align-items:center; }
-    .buy-button { background-color:#1e293b; color:white; font-weight:700; font-size:1.1em; padding:14px 30px; border:none; border-radius:10px; text-decoration:none; box-shadow:0 6px 12px rgba(0,0,0,0.15); transition: background-color 0.3s ease; }
-    .buy-button:hover { background-color:#334155; }
-    footer { text-align:center; padding:24px 16px; background:#1e293b; color:white; font-size:0.95em; margin-top:60px; }
-    @media (max-width:720px) {
-      main { flex-direction:column; padding:12px; }
-      .product-image, .product-info { max-width:100%; }
-      .product-title { font-size:1.6em; }
-      .price { font-size:1.5em; }
-      .buttons { flex-direction:column; gap:12px; }
+    body { font-family: Roboto, sans-serif; background: #f9f9f9; margin: 0; }
+    header { background: #dc2626; color: white; text-align: center; padding: 16px; font-size: 1.4em; }
+    .container { max-width: 800px; margin: auto; padding: 20px; }
+    .model-card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      margin: 16px 0;
+      padding: 20px;
+      text-align: center;
+      font-weight: bold;
+      color: #1e293b;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .model-card:hover {
+      transform: scale(1.03);
+      background: #f1f5f9;
     }
   </style>
 </head>
 <body>
-  <header id="page-header">Honda Product - Borhan Auto Parts Centre</header>
-  <main>
-    <div class="product-image">
-      <img id="product-img" src="" alt="Product Image" loading="lazy" />
-    </div>
-    <div class="product-info" id="product-info">
-      <span class="badge" id="badge-text">New</span>
-      <h1 class="product-title" id="product-title">Loading...</h1>
-      <p class="product-description" id="product-desc"></p>
-      <div class="price" id="product-price"></div>
-      <div class="buttons">
-        <a id="buy-btn" class="buy-button" href="#" target="_blank" rel="noopener noreferrer">Buy Now</a>
-      </div>
-    </div>
-  </main>
-  <footer>© 2025 Borhan Auto Parts Centre. All rights reserved.<br />For inquiries and orders, call: 01707659954</footer>
-
+  <header>Select Your Honda Bike Model</header>
+  <div class="container" id="model-list"></div>
   <script>
-    const params = new URLSearchParams(window.location.search);
-    const model = params.get('model') || '';
-    const productKey = params.get('product') || 'honda-brake-shoe';
+    const urlParams = new URLSearchParams(window.location.search);
+    const product = urlParams.get('product') || 'honda-brake-shoe';
 
-    const products = {
-      "honda-brake-shoe": {
-        name: "Honda Brake Shoe",
-        image: "images/honda-brake-shoe.jpg",
-        price: "৳500",
-        description: () => `High-quality brake shoe compatible with Honda Gixxer, Hayate, and Access 125.`,
-        badge: "New",
-        header: "Honda Brake Shoe - Borhan Auto Parts Centre"
-      },
-      "honda-air-filter": {
-        name: "Honda Air Filter",
-        image: "images/honda-air-filter.jpg",
-        price: "৳480",
-        description: () => `Genuine air filter for Honda Gixxer SF, Burgman, and GS150R. Ensures better engine performance.`,
-        badge: "Popular",
-        header: "Honda Air Filter - Borhan Auto Parts Centre"
-      }
-    };
+    // List of Honda bike models
+    const models = [
+      "CB Shine",
+      "CB Hornet 160R",
+      "CB Trigger",
+      "Livo",
+      "Dream Neo",
+      "Wave 125",
+      "Hayate",
+      "Dio",
+      "Activa",
+      "Navi",
+      "CD 70",
+      "Super Cub C125",
+      "Gixxer SF",
+      "Unicorn",
+      "CBR 150R"
+    ];
 
-    const productDiv = document.getElementById('product-info');
-    let product = products[productKey];
-
-    if (product) {
-      document.getElementById('product-img').src = product.image;
-      document.getElementById('product-img').alt = `${product.name}${model ? ' for ' + model : ''}`;
-      document.getElementById('product-title').textContent = product.name;
-      document.getElementById('product-desc').textContent = typeof product.description === 'function' ? product.description(model || '') : product.description;
-      document.getElementById('product-price').textContent = product.price;
-      document.getElementById('badge-text').textContent = product.badge;
-      document.getElementById('page-header').textContent = product.header;
-      document.title = product.header;
-      document.getElementById('buy-btn').href = `payment.html?product=${encodeURIComponent(product.name)}&model=${encodeURIComponent(model)}&price=${encodeURIComponent(product.price)}`;
-    } else {
-      productDiv.innerHTML = `<p style="padding:40px; font-size:1.2em; color:#b91c1c; text-align:center;">Product not found. Please go back and select a valid product.</p>`;
-    }
+    const list = document.getElementById('model-list');
+    models.forEach(model => {
+      const div = document.createElement('div');
+      div.className = 'model-card';
+      div.textContent = model;
+      div.onclick = () => {
+        window.location.href = `honda-product-detail.html?product=${product}&model=${encodeURIComponent(model)}`;
+      };
+      list.appendChild(div);
+    });
   </script>
 </body>
 </html>
