@@ -2,199 +2,80 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Honda Product Detail - Borhan Auto Parts Centre</title>
-  <meta name="description" content="Buy genuine Honda motorcycle spare parts including brake shoes, air filters, spark plugs, and more from Borhan Auto Parts Centre in Bangladesh. Fast delivery available." />
-  <meta name="keywords" content="Honda motorcycle spare parts, Honda brake shoe, Honda air filter, Honda spark plug, Borhan Auto, Jessore, Bangladesh" />
-  <meta name="author" content="Borhan Auto Parts Centre" />
-  <link rel="icon" href="favicon.ico" />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    body {
-      font-family: 'Roboto', sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f9f9f9;
-      color: #1e293b;
-    }
-    header {
-      background: #1e293b;
-      color: white;
-      padding: 16px;
-      text-align: center;
-      font-size: 1.5em;
-      font-weight: 700;
-    }
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 16px;
-    }
-    .product-wrapper {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-      background: #fff;
-      padding: 16px;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    .product-image {
-      width: 100%;
-      max-height: 350px;
-      border-radius: 10px;
-      object-fit: contain;
-      background: #f3f4f6;
-    }
-    .product-info {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .product-title {
-      font-size: 1.6em;
-      font-weight: 700;
-      color: #1e293b;
-    }
-    .product-description {
-      font-size: 1em;
-      color: #4b5563;
-      line-height: 1.5;
-    }
-    .price {
-      color: #16a34a;
-      font-size: 1.4em;
-      font-weight: bold;
-    }
-    .btn-group {
-      display: flex;
-      gap: 12px;
-      margin-top: 16px;
-      flex-wrap: wrap;
-    }
+    body { font-family: 'Roboto', sans-serif; background: #f9f9f9; margin: 0; padding: 0; }
+    header { background: #dc2626; color: white; text-align: center; padding: 16px; font-size: 1.5em; font-weight: bold; }
+    .container { max-width: 900px; margin: 20px auto; padding: 20px; background: white; border-radius: 12px; box-shadow: 0 3px 8px rgba(0,0,0,0.1); }
+    .product-img { width: 100%; max-height: 320px; object-fit: contain; border-radius: 8px; margin-bottom: 15px; }
+    .product-title { font-size: 1.5em; font-weight: bold; margin-bottom: 10px; color: #1e293b; }
+    .product-model { font-size: 1.1em; color: #475569; margin-bottom: 12px; }
+    .product-price { font-size: 1.4em; font-weight: bold; color: #dc2626; margin-bottom: 20px; }
+    .desc { font-size: 1em; color: #555; line-height: 1.6; margin-bottom: 20px; }
+    .advance-section { background: #f1f5f9; padding: 12px; border-radius: 8px; margin-bottom: 20px; }
+    .advance-section p { margin: 8px 0; }
+    .btn-container { display: flex; gap: 12px; flex-wrap: wrap; }
     .btn {
       flex: 1;
-      background: #1e293b;
-      color: white;
       padding: 12px;
-      text-align: center;
+      background: #dc2626;
+      color: white;
       border: none;
-      border-radius: 8px;
-      font-size: 1em;
-      font-weight: 600;
+      border-radius: 6px;
+      font-size: 1.1em;
       cursor: pointer;
-      text-decoration: none;
-      transition: background 0.2s ease-in-out;
-    }
-    .btn:hover {
-      background: #0f172a;
-    }
-    .btn-whatsapp {
-      background: #25d366;
-    }
-    .btn-whatsapp:hover {
-      background: #1ebe5d;
-    }
-    .advance-payment {
-      background: #fef3c7;
-      border: 1px solid #facc15;
-      padding: 12px;
-      border-radius: 8px;
-      margin-top: 16px;
-      font-size: 0.95em;
-      color: #92400e;
-    }
-    footer {
       text-align: center;
-      padding: 20px;
-      margin-top: 24px;
-      background: #1e293b;
-      color: white;
-      font-size: 0.9em;
+      text-decoration: none;
+      transition: background 0.2s ease;
     }
-    @media (min-width: 768px) {
-      .product-wrapper {
-        flex-direction: row;
-        align-items: flex-start;
-      }
-      .product-image {
-        flex: 1;
-        max-width: 50%;
-      }
-      .product-info {
-        flex: 1;
-      }
-    }
+    .btn:hover { background: #b91c1c; }
   </style>
 </head>
 <body>
-  <header>Honda Product Details - Borhan Auto Parts Centre</header>
+  <header>Honda Product Detail</header>
   <div class="container">
-    <div class="product-wrapper">
-      <img id="product-image" class="product-image" src="" alt="Honda Product" loading="lazy" />
-      <div class="product-info" id="product-info">
-        <!-- Product info loads here dynamically -->
-      </div>
+    <img id="product-img" src="images/honda-product.jpg" alt="Honda Product" class="product-img" />
+    <div class="product-title" id="product-title">Honda Spare Part</div>
+    <div class="product-model" id="product-model"></div>
+    <div class="product-price" id="product-price">৳ 1,200</div>
+    <p class="desc">
+      Buy genuine Honda motorcycle spare parts online from Borhan Auto Parts Centre.
+      100% original, durable, and guaranteed quality for your Honda bike.
+    </p>
+
+    <!-- Advance Payment Section -->
+    <div class="advance-section">
+      <p><b>Advance Payment Required:</b> 500৳</p>
+      <p>Total Price: <span id="total-price">1200</span>৳</p>
+      <p>Remaining Cash on Delivery: <span id="remaining-price">700</span>৳</p>
+    </div>
+
+    <!-- Buttons -->
+    <div class="btn-container">
+      <a id="buy-now-btn" class="btn">Buy Now</a>
     </div>
   </div>
-  <footer>
-    © 2025 Borhan Auto Parts Centre. All rights reserved.<br />
-    For orders & inquiries, call: 01707659954
-  </footer>
 
   <script>
-    const products = {
-      "honda-brake-shoe": {
-        title: "Honda Brake Shoe",
-        image: "images/honda-brake-shoe.jpg",
-        description: "High-quality genuine brake shoe compatible with Honda Gixxer, Hayate, and Access 125 models. Durable and reliable performance.",
-        price: 500
-      },
-      "honda-air-filter": {
-        title: "Honda Air Filter",
-        image: "images/honda-air-filter.jpg",
-        description: "Original Honda air filter designed for improved engine performance and fuel efficiency. Perfect for Honda Gixxer SF, Burgman, and GS150R models.",
-        price: 480
-      },
-      "honda-spark-plug": {
-        title: "Honda Spark Plug",
-        image: "images/honda-spark-plug.jpg",
-        description: "Premium Honda spark plug for better ignition, smoother performance, and enhanced fuel economy.",
-        price: 350
-      }
-    };
+    // Get model name and product from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const model = urlParams.get("model") || "Honda Bike";
+    const product = urlParams.get("product") || "Honda Spare Part";
 
-    const params = new URLSearchParams(window.location.search);
-    const productKey = params.get("product");
-    const product = products[productKey];
-    const productInfo = document.getElementById("product-info");
-    const productImage = document.getElementById("product-image");
+    // Set dynamic data
+    document.getElementById("product-title").textContent = product;
+    document.getElementById("product-model").textContent = "Model: " + model;
 
-    if (product) {
-      document.title = product.title + " - Borhan Auto Parts Centre";
-      productImage.src = product.image;
-      productImage.alt = product.title;
-      productInfo.innerHTML = `
-        <div class="product-title">${product.title}</div>
-        <div class="product-description">${product.description}</div>
-        <div class="price">৳${product.price}</div>
-        <div class="btn-group">
-          <a class="btn" href="tel:01707659954">Call to Order</a>
-          <a class="btn btn-whatsapp" target="_blank" href="https://wa.me/8801707659954?text=Hi%20Borhan%20Auto!%20I%20want%20to%20order%20${encodeURIComponent(product.title)}.">
-            Order via WhatsApp
-          </a>
-        </div>
-        <div class="advance-payment">
-          ⚡ Advance payment required: ৳500 (Send to bKash 01707659954) ✅
-        </div>
-      `;
-    } else {
-      productInfo.innerHTML = `
-        <p style="font-size:1.2em; color:#b91c1c; text-align:center;">
-          Product not found. Please go back and select a valid Honda product.
-        </p>`;
-      productImage.style.display = "none";
-    }
+    // Set price dynamically if needed
+    const price = 1200;
+    const advance = 500;
+    document.getElementById("total-price").textContent = price;
+    document.getElementById("remaining-price").textContent = price - advance;
+
+    // "Buy Now" button action — call directly
+    document.getElementById("buy-now-btn").href = "tel:+8801707659954";
   </script>
 </body>
 </html>
