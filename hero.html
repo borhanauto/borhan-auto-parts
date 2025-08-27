@@ -18,20 +18,118 @@
   <link rel="icon" href="favicon.ico" />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    body { font-family: 'Roboto', sans-serif; margin: 0; padding: 0; background: #f9f9f9; }
-    header { background: #1e293b; color: white; padding: 16px; text-align: center; font-size: 1.5em; font-weight: 700; }
-    .container { padding: 16px; max-width: 1200px; margin: 0 auto; }
-    .product-card { background: white; border-radius: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); margin-bottom: 24px; padding: 16px; display: flex; flex-direction: column; transition: transform 0.2s ease; cursor: pointer; text-decoration: none; color: inherit; }
-    .product-card:hover { transform: scale(1.02); }
-    .product-card img { width: 100%; border-radius: 8px; object-fit: contain; max-height: 200px; }
-    .badge { display: inline-block; background: #facc15; color: #1e293b; font-size: 0.75em; font-weight: bold; padding: 2px 8px; border-radius: 6px; margin-bottom: 6px; width: fit-content; }
-    .product-title { font-size: 1.2em; margin: 12px 0 6px; font-weight: bold; color: #1e293b; }
-    .product-description { font-size: 0.9em; color: #4b5563; margin-top: 6px; }
-    .price { color: #16a34a; font-weight: bold; font-size: 1.1em; }
-    footer { text-align: center; padding: 20px; background: #1e293b; color: white; font-size: 0.9em; }
-    footer a { color: white; text-decoration: underline; }
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9f9f9;
+      color: #1e293b;
+    }
+
+    header {
+      background: #1e293b;
+      color: white;
+      padding: 16px;
+      text-align: center;
+      font-size: 1.6em;
+      font-weight: 700;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .container {
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .product-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      margin-bottom: 24px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      cursor: pointer;
+    }
+
+    .product-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+    }
+
+    .product-card img {
+      width: 100%;
+      border-radius: 10px;
+      object-fit: contain;
+      max-height: 220px;
+      background: #fff;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #facc15;
+      color: #1e293b;
+      font-size: 0.8em;
+      font-weight: bold;
+      padding: 4px 10px;
+      border-radius: 8px;
+      margin-top: 8px;
+      width: fit-content;
+      box-shadow: 0 2px 6px rgba(250, 204, 21, 0.35);
+    }
+
+    .product-title {
+      font-size: 1.25em;
+      margin: 12px 0 6px;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .product-description {
+      font-size: 0.95em;
+      color: #475569;
+      margin: 8px 0 10px;
+      line-height: 1.4;
+    }
+
+    .price {
+      color: #16a34a;
+      font-weight: bold;
+      font-size: 1.15em;
+    }
+
+    footer {
+      text-align: center;
+      padding: 24px;
+      background: #1e293b;
+      color: white;
+      font-size: 0.95em;
+      margin-top: 40px;
+      box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    footer a {
+      color: #facc15;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
     @media (min-width: 600px) {
-      .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; }
+      .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 24px;
+      }
+    }
+
+    @media (max-width: 599px) {
+      .product-card img {
+        max-height: 180px;
+      }
     }
   </style>
 </head>
@@ -54,7 +152,7 @@
         <img src="images/hero-air-filter.jpg" alt="Hero Air Filter for Splendor, HF Deluxe, and Passion" loading="lazy" />
         <span class="badge">Popular</span>
         <div class="product-title">Hero Air Filter</div>
-        <div class="product-description">Genuine air filter for Hero Splendor, HF Deluxe, and Passion. Improved engine performance.</div>
+        <div class="product-description">Genuine air filter for Hero Splendor, HF Deluxe, and Passion. Ensures better engine performance.</div>
         <div class="price">৳480</div>
       </a>
 
