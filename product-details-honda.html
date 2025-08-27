@@ -4,45 +4,133 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Honda Product Detail - Borhan Auto Parts Centre</title>
+  <meta name="description" content="Buy genuine Honda motorcycle spare parts online from Borhan Auto Parts Centre. 100% original, high-quality spare parts for your Honda bike." />
+  <meta name="keywords" content="Honda spare parts, Honda motorcycle parts, Borhan Auto Parts Centre, bike parts Bangladesh" />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    body { font-family: 'Roboto', sans-serif; background: #f9f9f9; margin: 0; padding: 0; }
-    header { background: #dc2626; color: white; text-align: center; padding: 16px; font-size: 1.5em; font-weight: bold; }
-    .container { max-width: 900px; margin: 20px auto; padding: 20px; background: white; border-radius: 12px; box-shadow: 0 3px 8px rgba(0,0,0,0.1); }
-    .product-img { width: 100%; max-height: 320px; object-fit: contain; border-radius: 8px; margin-bottom: 15px; }
-    .product-title { font-size: 1.5em; font-weight: bold; margin-bottom: 10px; color: #1e293b; }
-    .product-model { font-size: 1.1em; color: #475569; margin-bottom: 12px; }
-    .product-price { font-size: 1.4em; font-weight: bold; color: #dc2626; margin-bottom: 20px; }
-    .desc { font-size: 1em; color: #555; line-height: 1.6; margin-bottom: 20px; }
-    .advance-section { background: #f1f5f9; padding: 12px; border-radius: 8px; margin-bottom: 20px; }
-    .advance-section p { margin: 8px 0; }
-    .btn-container { display: flex; gap: 12px; flex-wrap: wrap; }
+    /* Reset & Base */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Roboto', sans-serif; background: #f9f9f9; padding: 0; margin: 0; color: #1e293b; }
+
+    /* Header */
+    header {
+      background: #dc2626;
+      color: white;
+      text-align: center;
+      padding: 18px;
+      font-size: 1.5em;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Container */
+    .container {
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+
+    /* Product Image */
+    .product-img {
+      width: 100%;
+      max-height: 340px;
+      object-fit: contain;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      background: #f8fafc;
+      padding: 8px;
+    }
+
+    /* Product Title & Model */
+    .product-title {
+      font-size: 1.6em;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+    .product-model {
+      font-size: 1.1em;
+      color: #475569;
+      margin-bottom: 12px;
+    }
+
+    /* Price */
+    .product-price {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #dc2626;
+      margin-bottom: 18px;
+    }
+
+    /* Description */
+    .desc {
+      font-size: 1em;
+      color: #555;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    /* Advance Payment Section */
+    .advance-section {
+      background: #f1f5f9;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 22px;
+      border: 1px solid #e2e8f0;
+    }
+    .advance-section p { 
+      margin: 6px 0; 
+      font-size: 1em;
+    }
+
+    /* Button */
+    .btn-container {
+      display: flex;
+      justify-content: center;
+    }
     .btn {
-      flex: 1;
-      padding: 12px;
+      padding: 14px 20px;
       background: #dc2626;
       color: white;
       border: none;
-      border-radius: 6px;
+      border-radius: 8px;
       font-size: 1.1em;
+      font-weight: bold;
       cursor: pointer;
       text-align: center;
       text-decoration: none;
       transition: background 0.2s ease;
+      width: 100%;
+      max-width: 300px;
     }
     .btn:hover { background: #b91c1c; }
+
+    /* Responsive Design */
+    @media (max-width: 600px) {
+      .product-title { font-size: 1.3em; }
+      .product-price { font-size: 1.2em; }
+      .btn { font-size: 1em; padding: 12px; }
+    }
   </style>
 </head>
 <body>
   <header>Honda Product Detail</header>
   <div class="container">
+    <!-- Product Image -->
     <img id="product-img" src="images/honda-product.jpg" alt="Honda Product" class="product-img" />
+
+    <!-- Product Info -->
     <div class="product-title" id="product-title">Honda Spare Part</div>
     <div class="product-model" id="product-model"></div>
     <div class="product-price" id="product-price">৳ 1,200</div>
+
+    <!-- Description -->
     <p class="desc">
       Buy genuine Honda motorcycle spare parts online from Borhan Auto Parts Centre.
-      100% original, durable, and guaranteed quality for your Honda bike.
+      100% original, durable, and high-quality products to keep your Honda bike running smoothly.
     </p>
 
     <!-- Advance Payment Section -->
@@ -59,22 +147,22 @@
   </div>
 
   <script>
-    // Get model name and product from URL
+    // Get product and model from URL
     const urlParams = new URLSearchParams(window.location.search);
     const model = urlParams.get("model") || "Honda Bike";
     const product = urlParams.get("product") || "Honda Spare Part";
 
-    // Set dynamic data
+    // Set dynamic content
     document.getElementById("product-title").textContent = product;
     document.getElementById("product-model").textContent = "Model: " + model;
 
-    // Set price dynamically if needed
+    // Set price & advance calculation
     const price = 1200;
     const advance = 500;
     document.getElementById("total-price").textContent = price;
     document.getElementById("remaining-price").textContent = price - advance;
 
-    // "Buy Now" button action — call directly
+    // "Buy Now" button action — direct phone call
     document.getElementById("buy-now-btn").href = "tel:+8801707659954";
   </script>
 </body>
